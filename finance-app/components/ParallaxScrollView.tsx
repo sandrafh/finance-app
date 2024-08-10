@@ -16,11 +16,11 @@ type Props = PropsWithChildren<{
   headerBackgroundColor: { dark: string; light: string };
 }>;
 
-export default function ParallaxScrollView({
+const ParallaxScrollView = ({
   children,
   headerImage,
   headerBackgroundColor,
-}: Props) {
+}: Props) => {
   const colorScheme = useColorScheme() ?? 'light';
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollRef);
@@ -58,6 +58,8 @@ export default function ParallaxScrollView({
     </ThemedView>
   );
 }
+
+export default ParallaxScrollView
 
 const styles = StyleSheet.create({
   container: {
