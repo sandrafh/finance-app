@@ -1,16 +1,24 @@
-import { Image, StyleSheet, Platform, Button } from 'react-native'
+import { StyleSheet } from 'react-native'
 
-import { ThemedText } from '@/components/ThemedText'
 import { ThemedView } from '@/components/ThemedView'
-import { useThemeColor } from '@/hooks/useThemeColor';
 import { ThemedButton } from '@/components/ThemedButton';
+
+import { firebase } from '@react-native-firebase/database';
+import database from '@react-native-firebase/database';
 
 
 const HomeScreen = () => {
-  const buttonBackground = useThemeColor({}, 'buttonBackground');
 
   const onPressAddExpense = () => {
     console.log("add expense click")
+    firebase
+      .app().database()
+      .ref('/users/sandra')
+      .set({
+        name: 'sandra',
+        age: 26,
+      })
+      .then(() => console.log('Data set.'));
   }
 
   return (
@@ -25,6 +33,7 @@ const HomeScreen = () => {
     </ThemedView>
   )
 }
+
 export default HomeScreen
 
 const styles = StyleSheet.create({
