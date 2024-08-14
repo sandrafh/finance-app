@@ -28,7 +28,7 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>myapp</string>
-          <string>com.sandrafh.financeapp</string>
+          <string>com.financeapp.financeapp</string>
         </array>
       </dict>
       <dict>
