@@ -13,19 +13,37 @@ import {
 import { CTAButton } from "../Components/CTAButton/CTAButton";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
+import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth"
+import db from "@react-native-firebase/database"
+
 export const Register = () => {
   const [name, setName] = useState<string | undefined>();
   const [email, setEmail] = useState<string | undefined>();
   const [password, setPassword] = useState<string | undefined>();
 
-  const nav = useNavigation<NativeStackNavigationProp<any>>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
-  const createProfile = async (response: any) => {
-    // Create Profile Query Here
+  const createProfile = async (response: FirebaseAuthTypes.UserCredential) => {
+    db().ref(`users/${response.user.uid}`).set({ name })
+    db().ref(`users/${response.user.uid}/expenses`).set({ totalExpenses: 0 })
   };
 
   const registerAndGoToMainFlow = async () => {
-    // Register User Query Here
+    if(email && password) {
+      try {
+        const response = await auth().createUserWithEmailAndPassword(
+          email, 
+          password
+        )
+
+        if (response.user) {
+          await createProfile(response)
+          navigation.replace("Main")
+        }
+      } catch (error) {
+        console.error("Error on register an user: ", error)
+      }
+    }
   };
 
   return (
@@ -63,7 +81,7 @@ export const Register = () => {
             onPress={registerAndGoToMainFlow}
             variant="primary"
           />
-          <CTAButton title="Go Back" onPress={nav.goBack} variant="secondary" />
+          <CTAButton title="Go Back" onPress={navigation.goBack} variant="secondary" />
         </View>
       </SafeAreaView>
     </Pressable>

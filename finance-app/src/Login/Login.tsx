@@ -14,18 +14,35 @@ import { CTAButton } from "../Components/CTAButton/CTAButton";
 
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
+import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth"
+
+
 export const Login = () => {
   const [email, setEmail] = useState<string | undefined>();
   const [password, setPassword] = useState<string | undefined>();
 
-  const nav = useNavigation<NativeStackNavigationProp<any>>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const goToRegistration = () => {
-    nav.push("Register");
+    navigation.push("Register");
   };
 
   const goToMainFlow = async () => {
-    // Login Query
+    if(email && password) {
+      try {
+        const response = await auth().signInWithEmailAndPassword(
+          email,
+          password
+        )
+
+        if(response.user) {
+          navigation.replace("Main")
+        }
+      }
+      catch(error) {
+        console.error("Error on login: ", error)
+      }
+    }    
   };
 
   return (

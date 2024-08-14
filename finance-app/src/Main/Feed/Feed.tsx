@@ -16,7 +16,7 @@ import { ListItem } from "../../Components/ListItem/ListItem";
 import { StatusBar } from "expo-status-bar";
 
 export const Feed = () => {
-  const nav = useNavigation<NativeStackNavigationProp<any>>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const [feed, setFeed] = useState<FeedWorkout[]>([]);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
@@ -28,7 +28,7 @@ export const Feed = () => {
   }, [limit]);
 
   const goToWorkout = () => {
-    nav.push("ActiveWorkout");
+    navigation.push("ActiveWorkout");
   };
 
   const onPress = async (id: number) => {

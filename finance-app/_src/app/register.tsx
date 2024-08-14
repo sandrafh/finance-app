@@ -18,7 +18,7 @@ export const Register = () => {
   const [email, setEmail] = useState<string | undefined>();
   const [password, setPassword] = useState<string | undefined>();
 
-  const nav = useNavigation<NativeStackNavigationProp<any>>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const createProfile = async (response: any) => {
     // Create Profile Query Here
@@ -62,7 +62,7 @@ export const Register = () => {
             title="Sign Up"
             onPress={registerAndGoToMainFlow}
           />
-          <ThemedButton title="Go Back" onPress={nav.goBack} />
+          <ThemedButton title="Go Back" onPress={navigation.goBack} />
         </View>
       </SafeAreaView>
     </Pressable>

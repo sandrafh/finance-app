@@ -2,11 +2,11 @@ import React from "react";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Leaderboard } from "./Leaderboard/Leaderboard";
-import { FeedNav } from "./Feed/FeedNav";
 
 const Tab = createBottomTabNavigator();
 
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { FeedNav } from "./Feed/FeedNav";
 
 export const Main = () => {
   return (

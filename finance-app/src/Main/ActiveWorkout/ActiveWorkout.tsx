@@ -51,7 +51,7 @@ const Steps = ({
 };
 
 export const ActiveWorkout = () => {
-  const nav = useNavigation<NativeStackNavigationProp<any>>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [time, setTime] = useState(0);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ export const ActiveWorkout = () => {
 
   const submitForCompletion = async (steps: number) => {
     // Grab the user and save the workout to the DB
-    nav.goBack();
+    navigation.goBack();
   };
 
   const formatTimeString = (rawSeconds: number) => {

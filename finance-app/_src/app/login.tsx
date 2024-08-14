@@ -18,10 +18,10 @@ export const Login = () => {
   const [email, setEmail] = useState<string | undefined>();
   const [password, setPassword] = useState<string | undefined>();
 
-  const nav = useNavigation<NativeStackNavigationProp<any>>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const goToRegistration = () => {
-    nav.push("Register");
+    navigation.push("Register");
   };
 
   const goToMainFlow = async () => {
