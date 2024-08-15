@@ -8,10 +8,9 @@ import {
   ListRenderItemInfo,
   Pressable,
 } from "react-native";
-import { FeedWorkout } from "../../Types/FeedWorkout";
 
 export const ListItem = (
-  listData: ListRenderItemInfo<FeedWorkout> & { onPress?: (id: number) => void }
+  listData: ListRenderItemInfo<any> & { onPress?: (id: number) => void }
 ) => {
   const formatDate = (unixTime: number) => {
     const date = new Date(unixTime);

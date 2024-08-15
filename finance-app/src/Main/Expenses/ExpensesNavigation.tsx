@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 
-import { Feed } from "./Feed";
-import { ActiveWorkout } from "../ActiveWorkout/ActiveWorkout";
+import { ExpensesView } from "./ExpensesView";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // import { requestPermissions } from "expo-sample-pedometer";
 
 const Stack = createNativeStackNavigator();
 
-export const FeedNav = () => {
+export const ExpensesNavigation = () => {
   useEffect(() => {
     // requestPermissions();
   }, []);
@@ -25,17 +24,10 @@ export const FeedNav = () => {
       }}
     >
       <Stack.Screen
-        name="FeedScreen"
-        component={Feed}
+        name="ExpensesView"
+        component={ExpensesView}
         options={{
-          headerTitle: "Feed",
-        }}
-      />
-      <Stack.Screen
-        name="ActiveWorkout"
-        component={ActiveWorkout}
-        options={{
-          headerShown: false,
+          headerTitle: "Expenses",
         }}
       />
     </Stack.Navigator>

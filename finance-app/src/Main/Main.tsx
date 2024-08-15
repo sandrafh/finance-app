@@ -1,12 +1,11 @@
 import React from "react";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Leaderboard } from "./Leaderboard/Leaderboard";
 
 const Tab = createBottomTabNavigator();
 
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { FeedNav } from "./Feed/FeedNav";
+import { ExpensesNavigation } from "./Expenses/ExpensesNavigation";
 
 export const Main = () => {
   return (
@@ -22,7 +21,7 @@ export const Main = () => {
           return (
             <Ionicons
               name={iconName}
-              size={25}
+              size={30}
               color={focused ? "purple" : "grey"}
             />
           );
@@ -32,22 +31,10 @@ export const Main = () => {
       })}
     >
       <Tab.Screen
-        name="Feed"
-        component={FeedNav}
+        name="Expenses"
+        component={ExpensesNavigation}
         options={{
           headerShown: false,
-        }}
-      />
-      <Tab.Screen
-        name="Leaderboard"
-        component={Leaderboard}
-        options={{
-          headerStyle: {
-            backgroundColor: "purple",
-          },
-          headerTitleStyle: {
-            color: "white",
-          },
         }}
       />
     </Tab.Navigator>

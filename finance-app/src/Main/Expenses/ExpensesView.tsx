@@ -7,7 +7,6 @@ import {
   ListRenderItemInfo,
 } from "react-native";
 
-import { FeedWorkout } from "../../Types/FeedWorkout";
 import { CTAButton } from "../../Components/CTAButton/CTAButton";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -15,10 +14,10 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { ListItem } from "../../Components/ListItem/ListItem";
 import { StatusBar } from "expo-status-bar";
 
-export const Feed = () => {
+export const ExpensesView = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
-  const [feed, setFeed] = useState<FeedWorkout[]>([]);
+  const [expenses, setExpenses] = useState<[]>([]);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   const [limit, setLimit] = useState(5);
@@ -35,7 +34,7 @@ export const Feed = () => {
     // Delete on Press
   };
 
-  const renderItem = (listData: ListRenderItemInfo<FeedWorkout>) => {
+  const renderItem = (listData: ListRenderItemInfo<any>) => {
     return <ListItem {...listData} onPress={onPress} />;
   };
 
@@ -43,7 +42,7 @@ export const Feed = () => {
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <StatusBar backgroundColor="purple" />
       <FlatList
-        data={feed}
+        data={expenses}
         renderItem={renderItem}
         contentContainerStyle={{
           paddingBottom: 20,
