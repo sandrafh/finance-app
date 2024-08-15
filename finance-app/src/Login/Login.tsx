@@ -16,9 +16,13 @@ import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth"
 import { Button, ButtonVariants } from "../Components/Button";
 import { NavigationAppScreens } from "../Navigation/NavigationConstants";
+import { useDispatch } from "react-redux";
+import { setUserUid } from "../redux/slices/user";
 
 
 export const Login = () => {
+  const dispatch = useDispatch()
+  
   const [email, setEmail] = useState<string | undefined>();
   const [password, setPassword] = useState<string | undefined>();
 
@@ -37,6 +41,7 @@ export const Login = () => {
         )
 
         if(response.user) {
+          dispatch(setUserUid(response.user.uid))
           navigation.replace(NavigationAppScreens.Main)
         }
       }
@@ -51,7 +56,7 @@ export const Login = () => {
       <SafeAreaView style={styles.contentView}>
         <View style={styles.container}>
           <View style={styles.titleContainer}>
-            <Text style={styles.titleText}>Walk Hero</Text>
+            <Text style={styles.titleText}>Finance App</Text>
           </View>
           <View style={styles.mainContent}>
             <TextInput

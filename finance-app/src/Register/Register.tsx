@@ -16,8 +16,12 @@ import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth"
 import db from "@react-native-firebase/database"
 import { Button, ButtonVariants } from "../Components/Button";
 import { NavigationAppScreens } from "../Navigation/NavigationConstants";
+import { useDispatch } from "react-redux";
+import { setUserUid } from "../redux/slices/user";
 
 export const Register = () => {
+  const dispatch = useDispatch()
+
   const [name, setName] = useState<string | undefined>();
   const [email, setEmail] = useState<string | undefined>();
   const [password, setPassword] = useState<string | undefined>();
@@ -25,6 +29,7 @@ export const Register = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const createProfile = async (response: FirebaseAuthTypes.UserCredential) => {
+    dispatch(setUserUid(response.user.uid))
     db().ref(`users/${response.user.uid}`).set({ name })
     db().ref(`users/${response.user.uid}/expenses`).set({ totalExpenses: 0 })
   }

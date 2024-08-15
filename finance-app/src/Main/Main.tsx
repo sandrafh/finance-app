@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Tab = createBottomTabNavigator();
 
-import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
@@ -26,6 +25,7 @@ export const Main = () => {
                   name="money-check"
                   size={30}
                   color={focused ? colors.background1 : colors.background4}
+                  style={{marginTop: 5}}
                 />
               )
             case NavigationMainScreens.Settings:
@@ -34,6 +34,7 @@ export const Main = () => {
                   name="setting" 
                   size={30} 
                   color={focused ? colors.background1 : colors.background4}
+                  style={{marginTop: 5}}
                 />
               )
             default:
@@ -42,6 +43,20 @@ export const Main = () => {
         },
         tabBarActiveTintColor: colors.background1,
         tabBarInactiveTintColor: colors.background4,
+        tabBarIndicatorStyle: {
+          backgroundColor: colors.background1,
+          height: 4,
+          position: 'top'
+        },
+        tabBarStyle: {
+          backgroundColor: colors.white,
+          borderTopWidth: 3, 
+          boorderTopColor: colors.background1,   
+          marginBottom: 5,     
+        },
+        tabBarLabelStyle: {
+          top: 8
+        }
       })}
     >
       <Tab.Screen
