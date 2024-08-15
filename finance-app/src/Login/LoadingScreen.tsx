@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
+import { NavigationAppScreens } from "../Navigation/NavigationConstants";
 
 export const LoadingScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
@@ -13,10 +14,10 @@ export const LoadingScreen = () => {
   const onAuthStateChanged = (user: FirebaseAuthTypes.User | null) => {
     setTimeout(() => {
       if(user) {
-        navigation.replace("Main")
+        navigation.replace(NavigationAppScreens.Main)
       } 
       else {
-        navigation.replace("Login")
+        navigation.replace(NavigationAppScreens.Login)
       }
     })
   }

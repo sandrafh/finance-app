@@ -10,11 +10,12 @@ import {
   Keyboard,
   Alert,
 } from "react-native";
-import { CTAButton } from "../Components/CTAButton/CTAButton";
 
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth"
+import { Button, ButtonVariants } from "../Components/Button";
+import { NavigationAppScreens } from "../Navigation/NavigationConstants";
 
 
 export const Login = () => {
@@ -24,7 +25,7 @@ export const Login = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const goToRegistration = () => {
-    navigation.push("Register");
+    navigation.push(NavigationAppScreens.Register);
   };
 
   const goToMainFlow = async () => {
@@ -36,7 +37,7 @@ export const Login = () => {
         )
 
         if(response.user) {
-          navigation.replace("Main")
+          navigation.replace(NavigationAppScreens.Main)
         }
       }
       catch(error) {
@@ -69,11 +70,11 @@ export const Login = () => {
               secureTextEntry
             />
           </View>
-          <CTAButton title="Login" onPress={goToMainFlow} variant="primary" />
-          <CTAButton
+          <Button title="Login" onPress={goToMainFlow} variant={ButtonVariants.Primary} />
+          <Button
             title="Sign Up"
             onPress={goToRegistration}
-            variant="secondary"
+            variant={ButtonVariants.Secondary}
           />
         </View>
       </SafeAreaView>

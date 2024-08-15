@@ -10,11 +10,12 @@ import {
   Keyboard,
   Alert,
 } from "react-native";
-import { CTAButton } from "../Components/CTAButton/CTAButton";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth"
 import db from "@react-native-firebase/database"
+import { Button, ButtonVariants } from "../Components/Button";
+import { NavigationAppScreens } from "../Navigation/NavigationConstants";
 
 export const Register = () => {
   const [name, setName] = useState<string | undefined>();
@@ -26,7 +27,7 @@ export const Register = () => {
   const createProfile = async (response: FirebaseAuthTypes.UserCredential) => {
     db().ref(`users/${response.user.uid}`).set({ name })
     db().ref(`users/${response.user.uid}/expenses`).set({ totalExpenses: 0 })
-  };
+  }
 
   const registerAndGoToMainFlow = async () => {
     if(email && password) {
@@ -38,7 +39,7 @@ export const Register = () => {
 
         if (response.user) {
           await createProfile(response)
-          navigation.replace("Main")
+          navigation.replace(NavigationAppScreens.Main)
         }
       } catch (error) {
         console.error("Error on register an user: ", error)
@@ -76,12 +77,12 @@ export const Register = () => {
               secureTextEntry
             />
           </View>
-          <CTAButton
+          <Button
             title="Sign Up"
             onPress={registerAndGoToMainFlow}
-            variant="primary"
+            variant={ButtonVariants.Primary}
           />
-          <CTAButton title="Go Back" onPress={navigation.goBack} variant="secondary" />
+          <Button title="Go Back" onPress={navigation.goBack} variant={ButtonVariants.Secondary} />
         </View>
       </SafeAreaView>
     </Pressable>

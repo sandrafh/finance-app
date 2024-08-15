@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 
-import { ExpensesView } from "./ExpensesView";
+import { SettingsView } from "./SettingsView";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { colors } from "@/src/Constants/ColorsConstants";
-import { NavigationExpensesScreens } from "@/src/Navigation/NavigationConstants";
+import { NavigationSettingsScreens } from "@/src/Navigation/NavigationConstants";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
-export const ExpensesNavigation = () => {
-
+export const SettingsNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -21,10 +20,10 @@ export const ExpensesNavigation = () => {
       }}
     >
       <Stack.Screen
-        name={NavigationExpensesScreens.ExpensesView}
-        component={ExpensesView}
+        name={NavigationSettingsScreens.SettingsView}
+        component={SettingsView}
         options={{
-          headerTitle: "Expenses",
+          headerTitle: "Settings",
         }}
       />
     </Stack.Navigator>
