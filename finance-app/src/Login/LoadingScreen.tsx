@@ -23,8 +23,8 @@ export const LoadingScreen = () => {
   }
 
   useEffect(() => {
-    // const subscribe = auth().onAuthStateChanged(onAuthStateChanged)
-    // return subscribe
+    const subscribe = auth().onAuthStateChanged(onAuthStateChanged)
+    return subscribe
   }, []);
 
   return (
