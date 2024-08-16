@@ -3,6 +3,7 @@ export const NavigationAppScreens = {
   Login: "Login",
   Register: "Register",
   Main: "Main",
+  AddCategory : "AddCategory",
 }
 
 export const NavigationMainScreens = {
@@ -15,6 +16,5 @@ export const NavigationExpensesScreens = {
 }
 
 export const NavigationSettingsScreens = {
-  SettingsView : "SettingsView",
-  AddCategory : "AddCategory",
+  SettingsView : "SettingsView",  
 }
