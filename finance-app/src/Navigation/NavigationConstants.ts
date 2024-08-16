@@ -16,4 +16,5 @@ export const NavigationExpensesScreens = {
 
 export const NavigationSettingsScreens = {
   SettingsView : "SettingsView",
+  AddCategory : "AddCategory",
 }

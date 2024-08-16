@@ -67,7 +67,7 @@ export const ExpensesView = () => {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.white }}>      
+    <View style={{ flex: 1, backgroundColor: colors.lightBlue }}>      
       {/* <StatusBar backgroundColor="purple" /> */}
       <View style={styles.cardComponent}>
         <View style={styles.card}>
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     height: 200,
     display: "flex",
     borderRadius: 8,
-    backgroundColor: colors.background2,
+    backgroundColor: colors.accentOrange,
     padding: 12,
     shadowColor: '#171717',
     shadowOffset: {width: -2, height: 4},

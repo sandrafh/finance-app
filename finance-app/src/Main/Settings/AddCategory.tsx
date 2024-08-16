@@ -11,7 +11,7 @@ import { Button, ButtonVariants } from "@/src/Components/Button"
 import { NavigationSettingsScreens } from "@/src/Navigation/NavigationConstants"
 
 
-export const SettingsView = () => {
+export const AddCategory = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   const onAddCategory = () => () => {
@@ -20,9 +20,10 @@ export const SettingsView = () => {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.lightBlue }}>  
-      <View style={styles.buttonContainer}>
-        <Button title="Add Category" onPress={onAddCategory()} variant={ButtonVariants.Primary} />
-      </View>        
+      <View>
+        
+      </View>  
+      
     </View>
   )
 }

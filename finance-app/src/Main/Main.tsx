@@ -24,7 +24,7 @@ export const Main = () => {
                 <FontAwesome5
                   name="money-check"
                   size={30}
-                  color={focused ? colors.background1 : colors.background4}
+                  color={focused ? colors.primary : colors.lightGrey}
                   style={{marginTop: 5}}
                 />
               )
@@ -33,7 +33,7 @@ export const Main = () => {
                 <AntDesign 
                   name="setting" 
                   size={30} 
-                  color={focused ? colors.background1 : colors.background4}
+                  color={focused ? colors.primary : colors.lightBlue}
                   style={{marginTop: 5}}
                 />
               )
@@ -41,17 +41,17 @@ export const Main = () => {
               break;
           }
         },
-        tabBarActiveTintColor: colors.background1,
-        tabBarInactiveTintColor: colors.background4,
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.lightGrey,
         tabBarIndicatorStyle: {
-          backgroundColor: colors.background1,
+          backgroundColor: colors.primary,
           height: 4,
           position: 'top'
         },
         tabBarStyle: {
           backgroundColor: colors.white,
           borderTopWidth: 3, 
-          boorderTopColor: colors.background1,   
+          boorderTopColor: colors.primary,   
           marginBottom: 5,     
         },
         tabBarLabelStyle: {

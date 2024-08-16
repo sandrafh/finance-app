@@ -51,22 +51,22 @@ export const Button = ({ title, onPress, variant }: ButtonProps) => {
 
 const styles = StyleSheet.create({
   containerPrimary: {
-    height: 60,
-    backgroundColor: colors.background1,
+    height: 44,
+    backgroundColor: colors.primary,
     borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",
   },
   containerSecondary: {
-    height: 60,
-    backgroundColor: colors.background2,
+    height: 44,
+    backgroundColor: colors.secondary,
     borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",
   },
   containerTertiary: {
-    height: 60,
-    backgroundColor: colors.background3,
+    height: 44,
+    backgroundColor: colors.lightGrey,
     borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",
@@ -74,12 +74,12 @@ const styles = StyleSheet.create({
   textPrimary: {
     fontSize: 16,
     fontWeight: "bold",
-    color: colors.textColor,
+    color: colors.white,
   },
   textSecondary: {
     fontSize: 16,
     fontWeight: "bold",
-    color: colors.textColor,
+    color: colors.white,
   },
   textTertiary: {
     fontSize: 16,

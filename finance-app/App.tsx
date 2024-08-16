@@ -27,13 +27,13 @@ export default function App() {
               headerShown: false,
             }}
           />
-          {/* <Stack.Screen
+          <Stack.Screen
             name={NavigationAppScreens.LoadingScreen}
             component={LoadingScreen}
             options={{
               headerShown: false,
             }}
-          />         */}
+          />        
           <Stack.Screen
             name={NavigationAppScreens.Register}
             component={Register}

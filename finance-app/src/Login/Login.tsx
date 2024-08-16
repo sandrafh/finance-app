@@ -75,12 +75,14 @@ export const Login = () => {
               secureTextEntry
             />
           </View>
-          <Button title="Login" onPress={goToMainFlow} variant={ButtonVariants.Primary} />
-          <Button
-            title="Sign Up"
-            onPress={goToRegistration}
-            variant={ButtonVariants.Secondary}
-          />
+          <View style={styles.buttonsView}>
+            <Button title="Login" onPress={goToMainFlow} variant={ButtonVariants.Primary} />
+            <Button
+              title="Sign Up"
+              onPress={goToRegistration}
+              variant={ButtonVariants.Secondary}
+            />
+          </View>          
         </View>
       </SafeAreaView>
     </Pressable>
@@ -109,12 +111,17 @@ const styles = StyleSheet.create({
   },
   loginTextField: {
     borderBottomWidth: 1,
-    height: 60,
-    fontSize: 30,
+    height: 44,
+    fontSize: 18,
     marginVertical: 10,
     fontWeight: "300",
   },
   mainContent: {
     flex: 6,
   },
+  buttonsView: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 8
+  }
 });
