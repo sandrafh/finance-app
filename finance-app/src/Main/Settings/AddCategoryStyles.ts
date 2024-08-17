@@ -27,14 +27,19 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
   },
   previewColor: {
-    height: 44,
-    width: 44,
-    borderRadius: 50,
+    height: 124,
+    width: 124,
+    borderRadius: 100,
   },
   button: {
     position: 'absolute',
     bottom: 40,
     left: 24,
     width: '100%'
+  },
+  image: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   }
 })
