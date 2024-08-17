@@ -1,30 +1,43 @@
 import React, { useRef, useState } from 'react';
-import { View, TextInput, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
+import { useSelector } from 'react-redux';
+import { View, TextInput, ScrollView, Text, TouchableOpacity } from 'react-native';
+
+import { styles } from './AddCategoryStyles';
 
 import ColorPicker, { Preview } from 'reanimated-color-picker';
 import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal';
 //@ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import db from "@react-native-firebase/database"
+import { v4 } from 'uuid';
+import Toast from 'react-native-toast-message';
 
 import { ColorPickerModal } from '@/src/Modals/ColorPickerModal';
 import { IconPickerModal } from '@/src/Modals/IconPickerModal';
 import { colors } from '@/src/Constants/ColorsConstants';
 import { Button, ButtonVariants } from '@/src/Components/Button';
+import { getUserUid } from '@/src/redux/slices/user';
+import { ToastTypes } from '@/src/Constants/ToastConstants';
 
 
 export const AddCategory = () => {
   const colorModalRef = useRef<SwipeModalPublicMethods>(null)
   const iconModalRef = useRef<SwipeModalPublicMethods>(null)
+
+  const userUid = useSelector((state: any) => getUserUid(state))
   
   const [name, setName] = useState('')
   const [color, setColor] = useState(colors.primary)
   const [icon, setIcon] = useState('home')
-  const [budget, setBudget] = useState('')
+  const [budget, setBudget] = useState(0)
 
   const handleSave = () => {
-    if(!name || !color || !icon || !budget) {
-      alert('Please fill all fields')
-      return;
+    if(!name || !color || !icon) {
+      Toast.show({
+        type: ToastTypes.Error,
+        text1: 'Fill all the required fields'
+      })
+      return
     }
     const formData = {
       name,
@@ -32,8 +45,14 @@ export const AddCategory = () => {
       icon,
       budget,
     }
+
+    // db().ref(`users/${userUid}/categories/${v4()}`).set({ name: name, budget: budget, icon: icon, color: color, expensesUids: [] })
+
     console.log(formData)
-    alert('Form saved successfully!')
+    Toast.show({
+      type: ToastTypes.Success,
+      text1: 'Category added successfully'
+    })
   }
 
   const onSelectColor = (color: any) => {
@@ -83,7 +102,7 @@ export const AddCategory = () => {
         </TouchableOpacity>       
 
         <View style={styles.field}>
-          <Text style={styles.label}>Monthly Budget (€)</Text>
+          <Text style={styles.label}>Monthly Budget (€)*</Text>
           <TextInput
             style={styles.input}
             placeholder="Enter budget"
@@ -102,41 +121,5 @@ export const AddCategory = () => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,    
-  },
-  formContainer: {
-    flex: 1,
-    padding: 24,
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 16
-  },
-  field: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 8
-  },
-  label: {
-    fontSize: 16,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: colors.grey2,
-    padding: 10,
-    borderRadius: 5,
-  },
-  previewColor: {
-    height: 44,
-    width: 44,
-    borderRadius: 50,
-  },
-  button: {
-    position: 'absolute',
-    bottom: 40,
-    left: 24,
-    width: '100%'
-  }
-})
+
 

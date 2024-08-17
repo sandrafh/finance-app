@@ -34,4 +34,10 @@ export const colors = {
   lightBlue: "#E3F2FD",
   white: "#ffffff",
   black: "#000000",
+  lightSuccess: "#9df5aa",
+  lightWarning: "#f5c06c",
+  success: '#2ECC71',
+  warning: '#eda532',
+  lightError: '#EE8277',
+  error: '#E74C3C'
 }
