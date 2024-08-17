@@ -13,9 +13,10 @@ interface ButtonProps {
   title: string
   variant: ButtonVariants
   onPress: () => void
+  style?: any
 }
 
-export const Button = ({ title, onPress, variant }: ButtonProps) => {
+export const Button = ({ title, onPress, variant, style }: ButtonProps) => {
   const containerStyle = () => {
     switch(variant) {
       case ButtonVariants.Primary:
@@ -43,7 +44,7 @@ export const Button = ({ title, onPress, variant }: ButtonProps) => {
   }
 
   return (
-    <TouchableOpacity onPress={onPress} style={containerStyle()}>
+    <TouchableOpacity onPress={onPress} style={[containerStyle(), style]}>
       <Text style={textStyle()}>{title}</Text>
     </TouchableOpacity>
   )
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
   },
   containerTertiary: {
     height: 44,
-    backgroundColor: colors.lightGrey,
+    backgroundColor: colors.grey2,
     borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",

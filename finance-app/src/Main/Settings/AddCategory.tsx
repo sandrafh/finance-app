@@ -1,106 +1,142 @@
 import React, { useRef, useState } from 'react';
-import { View, TextInput, StyleSheet, ScrollView, Text, Modal } from 'react-native';
+import { View, TextInput, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
 
-
+import ColorPicker, { Preview } from 'reanimated-color-picker';
+import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal';
+//@ts-ignore
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { ColorPickerModal } from '@/src/Modals/ColorPickerModal';
-import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal';
 import { IconPickerModal } from '@/src/Modals/IconPickerModal';
 import { colors } from '@/src/Constants/ColorsConstants';
 import { Button, ButtonVariants } from '@/src/Components/Button';
 
 
-interface IconPickerProps {
-  selectedIcon: any
-  setSelectedIcon: (icon: any) => void
-}
-
-
 export const AddCategory = () => {
-  const colorModalRef = useRef<SwipeModalPublicMethods>(null);
-  const iconModalRef = useRef<SwipeModalPublicMethods>(null);
+  const colorModalRef = useRef<SwipeModalPublicMethods>(null)
+  const iconModalRef = useRef<SwipeModalPublicMethods>(null)
   
-  const [name, setName] = useState('');
-  const [color, setColor] = useState(colors.primary);
-  const [selectedIcon, setSelectedIcon] = useState('home');
-  const [budget, setBudget] = useState('');
-  const [showModal, setShowModal] = useState(false);
+  const [name, setName] = useState('')
+  const [color, setColor] = useState(colors.primary)
+  const [icon, setIcon] = useState('home')
+  const [budget, setBudget] = useState('')
 
   const handleSave = () => {
+    if(!name || !color || !icon || !budget) {
+      alert('Please fill all fields')
+      return;
+    }
     const formData = {
       name,
       color,
-      selectedIcon,
+      icon,
       budget,
-    };
-    console.log(formData); // Replace this with your save logic
-    alert('Form saved successfully!');
+    }
+    console.log(formData)
+    alert('Form saved successfully!')
   }
 
   const onSelectColor = (color: any) => {
-    console.log("newcolor: ", color)
     setColor(color.hex)
   }
 
   const onSelectIcon = (icon: string) => {
-    console.log("newicon: ", icon)
-    setSelectedIcon(icon)
+    setIcon(icon)
+  }
+
+  const showIconModal = () => {
+    iconModalRef.current?.show()
+  }
+
+  const showColorModal = () => {
+    colorModalRef.current?.show()
   }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.formContainer}>
-        <Text style={styles.label}>Name</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter name"
-          value={name}
-          onChangeText={setName}
-        />
+        <View style={styles.field}>
+          <Text style={styles.label}>Name</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter name"
+            value={name}
+            onChangeText={setName}
+          />
+        </View>        
 
-        <Text style={styles.label}>Color</Text>
-        <Button title='Choose a color' onPress={() => colorModalRef.current?.show()} variant={ButtonVariants.Tertiary} />           
+        <TouchableOpacity style={styles.field} onPress={showColorModal} >
+          <Text style={styles.label}>Color</Text>
+          <ColorPicker  value={color} onComplete={onSelectColor}>
+            <Preview hideText={true} style={styles.previewColor} />
+          </ColorPicker>
+        </TouchableOpacity>                
 
-        <Text style={styles.label}>Icon</Text>
-        <Button title='Choose an icon' onPress={() => iconModalRef.current?.show()} variant={ButtonVariants.Tertiary} /> 
-       
+        <TouchableOpacity style={styles.field} onPress={showIconModal} >
+          <Text style={styles.label}>Icon</Text>
+          <Icon
+            key={icon}
+            name={icon}
+            size={44}
+            color={color}
+          />
+        </TouchableOpacity>       
 
-        <Text style={styles.label}>Monthly Budget</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter budget"
-          value={budget}
-          onChangeText={setBudget}
-          keyboardType="numeric"
-        />
+        <View style={styles.field}>
+          <Text style={styles.label}>Monthly Budget (€)</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter budget"
+            value={budget}
+            onChangeText={setBudget}
+            keyboardType="numeric"
+          />
+        </View>        
 
-        <Button title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
+        <Button style={styles.button} title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
       </View>     
 
       <ColorPickerModal modalRef={colorModalRef} onSelectColor={onSelectColor} color={color} />  
-      <IconPickerModal modalRef={iconModalRef} selectedIcon={selectedIcon} onSelectIcon={onSelectIcon} color={color} />
+      <IconPickerModal modalRef={iconModalRef} selectedIcon={icon} onSelectIcon={onSelectIcon} color={color} />
     </ScrollView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1    
+    flex: 1,    
   },
   formContainer: {
     flex: 1,
-    padding: 20
+    padding: 24,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 16
+  },
+  field: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 8
   },
   label: {
-    fontSize: 18,
-    marginBottom: 8,
+    fontSize: 16,
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: colors.grey2,
     padding: 10,
-    marginBottom: 20,
     borderRadius: 5,
   },
-});
+  previewColor: {
+    height: 44,
+    width: 44,
+    borderRadius: 50,
+  },
+  button: {
+    position: 'absolute',
+    bottom: 40,
+    left: 24,
+    width: '100%'
+  }
+})
 

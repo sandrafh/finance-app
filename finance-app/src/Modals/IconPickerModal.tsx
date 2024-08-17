@@ -54,7 +54,7 @@ export const IconPickerModal = ({ modalRef, selectedIcon, onSelectIcon, color }:
                 key={icon}
                 name={icon}
                 size={32}
-                color={selectedIcon === icon ? color : colors.mediumGrey}
+                color={selectedIcon === icon ? color : colors.grey3}
                 onPress={() => onSelectIcon(icon)}
                 style={styles.icon}
               />

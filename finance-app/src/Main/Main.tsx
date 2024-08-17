@@ -24,7 +24,7 @@ export const Main = () => {
                 <FontAwesome5
                   name="money-check"
                   size={30}
-                  color={focused ? colors.primary : colors.lightGrey}
+                  color={focused ? colors.primary : colors.grey1}
                   style={{marginTop: 5}}
                 />
               )
@@ -42,7 +42,7 @@ export const Main = () => {
           }
         },
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.lightGrey,
+        tabBarInactiveTintColor: colors.grey1,
         tabBarIndicatorStyle: {
           backgroundColor: colors.primary,
           height: 4,
