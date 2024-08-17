@@ -1,6 +1,9 @@
 {
   "extends": "expo/tsconfig.base",
+  "compileOnSave": true,
   "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "strict": true,
     "paths": {
       "@/*": [

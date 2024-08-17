@@ -29,6 +29,7 @@ export const colors = {
   accentYellow: "#FFD600", //warning messages with texts in darkgrey
   lightGrey: "#F5F5F5", //card components & background with texts in #ffffff
   darkGrey: "#212121", 
+  mediumGrey: "#757575", //used for secondary buttons with texts in #ffffff
   lightBlue: "#E3F2FD",
   white: "#ffffff",
   black: "#000000",
