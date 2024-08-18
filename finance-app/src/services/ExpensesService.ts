@@ -29,6 +29,11 @@ export const ExpensesService = () => {
   const addExpense = (expense: Partial<Expense>) => {
     try {
       db().ref(`users/${userUid}/expenses/${v4()}`).set(expense)
+      const categoryUid = expense.categoryUid
+      db().ref(`users/${userUid}/categories/${categoryUid}/expensesUids`).push(expense.uid)
+      db().ref(`users/${userUid}/categories/${categoryUid}`).update({ 
+        spent: db().ref(`users/${userUid}/categories/${categoryUid}/spent`).transaction((spent: number) => spent + expense.spent) 
+      })
     } catch(e) {
       console.log("Error adding expense", e)
     }
