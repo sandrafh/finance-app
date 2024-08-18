@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { View, TextInput, ScrollView } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -8,25 +7,21 @@ import { styles } from './AddCategoryStyles';
 
 import ColorIcon from '../../assets/icons/color-picker.svg'
 import EditIcon from '../../assets/icons/edit.svg'
-
 //External libraries
 import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal';
 //@ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import db from "@react-native-firebase/database"
 //@ts-ignore
-import { v4 } from 'uuid';
 import Toast from 'react-native-toast-message';
-
 //Internal components
 import { ColorPickerModal } from '@/src/modals/ColorPickerModal';
 import { IconPickerModal } from '@/src/modals/IconPickerModal';
 import { colors } from '@/src/constants/ColorsConstants';
 import { Button, ButtonVariants } from '@/src/components/Button';
-import { getUserUid } from '@/src/redux/slices/user';
 import { ToastTypes } from '@/src/constants/ToastConstants';
-import { NavigationSettingsScreens } from '@/src/navigation/NavigationConstants';
+import { NavigationCategoriesScreens } from '@/src/navigation/NavigationConstants';
 import { CustomText } from '@/src/components/CustomText';
+import { CategoryService } from '@/src/services/CategoryService';
 
 
 export const AddCategory = () => {
@@ -34,7 +29,7 @@ export const AddCategory = () => {
   const colorModalRef = useRef<SwipeModalPublicMethods>(null)
   const iconModalRef = useRef<SwipeModalPublicMethods>(null)
 
-  const userUid = useSelector((state: any) => getUserUid(state))
+  const { addCategory } = CategoryService()
   
   const [name, setName] = useState('')
   const [color, setColor] = useState(colors.primary)
@@ -49,21 +44,21 @@ export const AddCategory = () => {
       })
       return
     }
-    const formData = {
+    const category = {
       name,
       color,
       icon,
-      budget,
+      budget: +budget,
+      spent: 0,
+      expensesUids: []
     }
+    addCategory(category)
 
-    db().ref(`users/${userUid}/categories/${v4()}`).set({ name: name, budget: budget, icon: icon, color: color, expensesUids: [], spent: 0})
-
-    console.log(formData)
     Toast.show({
       type: ToastTypes.Success,
       text1: 'Category added successfully'
     })
-    navigation.navigate(NavigationSettingsScreens.SettingsView)
+    navigation.navigate(NavigationCategoriesScreens.CategoriesList)
   }
 
   const onSelectColor = (color: any) => {

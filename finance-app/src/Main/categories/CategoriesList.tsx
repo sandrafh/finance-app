@@ -17,24 +17,19 @@ import { CustomText, FontSize, FontWeight } from '@/src/components/CustomText';
 import { Category } from '@/src/constants/Category';
 import { Button, ButtonVariants } from '@/src/components/Button';
 import { NavigationAppScreens } from '@/src/navigation/NavigationConstants';
+import { getCategories } from '@/src/redux/slices/category';
+import { CategoryService } from '@/src/services/CategoryService';
 
 
 export const CategoriesList = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
+  const { subscribeToCategories } = CategoryService()
 
-  const userUid = useSelector((state: any) => getUserUid(state))
-
-  const [categories, setCategories] = useState<Category[]>([])
-
+  const categories = useSelector((state: any) => getCategories(state))  
+  
   useEffect(() => {
-    db().ref(`users/${userUid}/categories`).on('value', snapshot => {
-      const data = snapshot.val()
-      if(data) {
-        const categories = Object.entries(data).map(([key, value]: any) => ({ ...value, uid: key }))
-        setCategories(categories)
-      }
-    })
-  }, [])  
+    subscribeToCategories()
+  }, [])
 
   const onAddCategory = () => () => {
     navigation.navigate(NavigationAppScreens.AddCategory)
