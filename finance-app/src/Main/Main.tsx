@@ -6,25 +6,26 @@ const Tab = createBottomTabNavigator();
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 import { ExpensesNavigation } from "./expenses/ExpensesNavigation";
 import { colors } from "../constants/ColorsConstants";
 import { SettingsNavigation } from "./settings/SettingsNavigation";
 import { NavigationMainScreens } from "../navigation/NavigationConstants";
+import { CategoriesNavigation } from "./categories/CategoriesNavigation";
 
 export const Main = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
           switch (route.name) {
             case NavigationMainScreens.Expenses:
               return (
                 <FontAwesome5
                   name="money-check"
                   size={30}
-                  color={focused ? colors.primary : colors.grey1}
+                  color={focused ? colors.primary : colors.grey2}
                   style={{marginTop: 5}}
                 />
               )
@@ -33,8 +34,17 @@ export const Main = () => {
                 <AntDesign 
                   name="setting" 
                   size={30} 
-                  color={focused ? colors.primary : colors.lightBlue}
+                  color={focused ? colors.primary : colors.grey2}
                   style={{marginTop: 5}}
+                />
+              )
+            case NavigationMainScreens.Categories:
+              return (
+                <MaterialIcons 
+                  name="category" 
+                  size={30} 
+                  color={focused ? colors.primary : colors.grey2}
+                  style={{marginTop: 5}} 
                 />
               )
             default:
@@ -42,7 +52,7 @@ export const Main = () => {
           }
         },
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.grey1,
+        tabBarInactiveTintColor: colors.grey2,
         tabBarIndicatorStyle: {
           backgroundColor: colors.primary,
           height: 4,
@@ -62,6 +72,13 @@ export const Main = () => {
       <Tab.Screen
         name={NavigationMainScreens.Expenses}
         component={ExpensesNavigation}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name={NavigationMainScreens.Categories}
+        component={CategoriesNavigation}
         options={{
           headerShown: false,
         }}

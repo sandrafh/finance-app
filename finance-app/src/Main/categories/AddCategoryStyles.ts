@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,    
+    backgroundColor: colors.lightBlue,
   },
   formContainer: {
     flex: 1,
@@ -25,11 +26,6 @@ export const styles = StyleSheet.create({
     borderColor: colors.grey2,
     padding: 10,
     borderRadius: 5,
-  },
-  previewColor: {
-    height: 124,
-    width: 124,
-    borderRadius: 100,
   },
   button: {
     position: 'absolute',

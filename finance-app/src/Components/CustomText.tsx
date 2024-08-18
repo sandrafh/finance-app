@@ -7,17 +7,25 @@ export enum FontWeight {
   Medium = 'medium'
 }
 
+export enum FontSize {
+  Small = 12,
+  Medium = 16,
+  Large = 20,
+  XLarge = 24
+}
+
 interface TextProps {
   style?: any
+  fontSize?: FontSize
   fontWeight?: FontWeight
   children: string
 }
 
 export const CustomText = (props: TextProps) => {
-  const {style, children, fontWeight = FontWeight.Normal, ...rest} = props
+  const {style, children, fontWeight = FontWeight.Normal, fontSize = FontSize.Medium, ...rest} = props
 
   return (
-    <Text {...rest} style={[{fontFamily: getFontFamily(fontWeight)}, style]}>
+    <Text {...rest} style={[{fontFamily: getFontFamily(fontWeight)}, {fontSize: fontSize}, style]}>
       {children}
     </Text>
   )

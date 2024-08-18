@@ -56,7 +56,7 @@ export const AddCategory = () => {
       budget,
     }
 
-    db().ref(`users/${userUid}/categories/${v4()}`).set({ name: name, budget: budget, icon: icon, color: color, expensesUids: [] })
+    db().ref(`users/${userUid}/categories/${v4()}`).set({ name: name, budget: budget, icon: icon, color: color, expensesUids: [], spent: 0})
 
     console.log(formData)
     Toast.show({

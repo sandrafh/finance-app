@@ -8,13 +8,17 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
 import { NavigationAppScreens } from "../navigation/NavigationConstants";
 import { CustomText } from "../components/CustomText";
+import { useDispatch } from "react-redux";
+import { setUserUid } from "../redux/slices/user";
 
 export const LoadingScreen = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<any>>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>()
+  const dispatch = useDispatch()
 
   const onAuthStateChanged = (user: FirebaseAuthTypes.User | null) => {
     setTimeout(() => {
       if(user) {
+        dispatch(setUserUid(user.uid))
         navigation.replace(NavigationAppScreens.Main)
       } 
       else {

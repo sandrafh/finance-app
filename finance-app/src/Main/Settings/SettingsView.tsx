@@ -7,28 +7,17 @@ import {
 import { useNavigation } from "@react-navigation/native"
 import { NativeStackNavigationProp } from "@react-navigation/native-stack"
 import { colors } from "@/src/constants/ColorsConstants"
-import { Button, ButtonVariants } from "@/src/components/Button"
-import { NavigationAppScreens, NavigationSettingsScreens } from "@/src/navigation/NavigationConstants"
 
 
 export const SettingsView = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<any>>()
-
-  const onAddCategory = () => () => {
-    navigation.navigate(NavigationAppScreens.AddCategory)
-  }
+  const navigation = useNavigation<NativeStackNavigationProp<any>>()  
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.lightBlue }}>  
-      <View style={styles.buttonContainer}>
-        <Button title="Add Category" onPress={onAddCategory()} variant={ButtonVariants.Primary} />
-      </View>        
+    <View style={{ flex: 1, backgroundColor: colors.lightBlue }}> 
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  buttonContainer: {
-    margin: 20,
-  },
+ 
 })
