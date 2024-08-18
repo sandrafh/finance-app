@@ -18,6 +18,7 @@ import { Button, ButtonVariants } from "../Components/Button";
 import { NavigationAppScreens } from "../Navigation/NavigationConstants";
 import { useDispatch } from "react-redux";
 import { setUserUid } from "../redux/slices/user";
+import { CustomText } from "../Components/CustomText";
 
 export const Register = () => {
   const dispatch = useDispatch()
@@ -57,7 +58,7 @@ export const Register = () => {
       <SafeAreaView style={styles.contentView}>
         <View style={styles.container}>
           <View style={styles.titleContainer}>
-            <Text style={styles.titleText}>Register</Text>
+            <CustomText style={styles.titleText}>Register</CustomText>
           </View>
           <View style={styles.mainContent}>
             <TextInput

@@ -6,6 +6,9 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import { styles } from './AddCategoryStyles';
 
+import ColorIcon from '../../assets/icons/color-picker.svg'
+import EditIcon from '../../assets/icons/edit.svg'
+
 import ColorPicker, { Preview } from 'reanimated-color-picker';
 import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal';
 //@ts-ignore
@@ -22,6 +25,7 @@ import { Button, ButtonVariants } from '@/src/Components/Button';
 import { getUserUid } from '@/src/redux/slices/user';
 import { ToastTypes } from '@/src/Constants/ToastConstants';
 import { NavigationSettingsScreens } from '@/src/Navigation/NavigationConstants';
+import { CustomText } from '@/src/Components/CustomText';
 
 
 export const AddCategory = () => {
@@ -82,36 +86,41 @@ export const AddCategory = () => {
       <View style={styles.formContainer}>
         <View style={styles.field}>
           <View style={styles.image}>
-            <TouchableOpacity style={styles.field} onPress={showIconModal} >
-              {/* <Text style={styles.label}>Icon</Text> */}
+            <View style={styles.icon}>
               <Icon
                 key={icon}
                 name={icon}
                 size={124}
                 color={color}
               />
-            </TouchableOpacity> 
+            </View>  
+            <View style={styles.editButtons}>
+              <Button 
+                icon={<EditIcon width={24} height={24} color={colors.grey5} />} 
+                onPress={showIconModal} 
+                variant={ButtonVariants.Tertiary} 
+              />
+              <Button 
+                icon={<ColorIcon width={24} height={24} color={colors.grey5} />} 
+                onPress={showColorModal} 
+                variant={ButtonVariants.Tertiary} 
+              />
+            </View>            
+          </View>
+        </View> 
 
-            <Button title="Select color" onPress={showColorModal} variant={ButtonVariants.Tertiary} />
-            {/* <TouchableOpacity style={styles.field} onPress={showColorModal} >
-              <Text style={styles.label}>Color</Text>
-              <ColorPicker  value={color} onComplete={onSelectColor}>
-                <Preview hideText={true} style={styles.previewColor} />
-              </ColorPicker>
-            </TouchableOpacity>     */}
-          </View>                   
-
-          <Text style={styles.label}>Name</Text>
+        <View style={styles.field}>
+          <CustomText style={styles.label}>Name</CustomText>
           <TextInput
             style={styles.input}
             placeholder="Enter name"
             value={name}
             onChangeText={setName}
-          />
-        </View>               
+          />  
+        </View>   
 
         <View style={styles.field}>
-          <Text style={styles.label}>Monthly Budget (€)*</Text>
+          <CustomText style={styles.label}>Monthly Budget (€)*</CustomText>
           <TextInput
             style={styles.input}
             placeholder="Enter budget"

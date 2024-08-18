@@ -19,6 +19,7 @@ import { colors } from "@/src/Constants/ColorsConstants";
 import { useSelector } from "react-redux";
 import { getUserUid } from "@/src/redux/slices/user";
 import { v4 } from 'uuid';
+import { CustomText } from "@/src/Components/CustomText";
 
 export const ExpensesView = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
@@ -71,7 +72,7 @@ export const ExpensesView = () => {
       {/* <StatusBar backgroundColor="purple" /> */}
       <View style={styles.cardComponent}>
         <View style={styles.card}>
-          <Text>Expenses</Text>
+          <CustomText>Expenses</CustomText>
         </View>
       </View>      
       <FlatList

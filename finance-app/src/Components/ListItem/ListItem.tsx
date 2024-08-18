@@ -8,6 +8,7 @@ import {
   ListRenderItemInfo,
   Pressable,
 } from "react-native";
+import { CustomText } from "../CustomText";
 
 export const ListItem = (
   listData: ListRenderItemInfo<any> & { onPress?: (id: number) => void }
@@ -30,14 +31,14 @@ export const ListItem = (
   return (
     <Pressable style={styles.listItem} onPress={onPressHandler}>
       {listData.item?.name && (
-        <Text style={styles.rankText}>{listData.index + 1}</Text>
+        <CustomText style={styles.rankText}>{listData.index + 1}</CustomText>
       )}
-      <Text style={styles.listItemDateText}>{titleText}</Text>
+      <CustomText style={styles.listItemDateText}>{titleText}</CustomText>
       <View>
-        <Text style={styles.stepsText}>
+        <CustomText style={styles.stepsText}>
           {listData.item.steps.toLocaleString()}
-        </Text>
-        <Text style={styles.stepsLabel}>STEPS</Text>
+        </CustomText>
+        <CustomText style={styles.stepsLabel}>STEPS</CustomText>
       </View>
     </Pressable>
   );

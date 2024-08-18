@@ -7,6 +7,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
 import { NavigationAppScreens } from "../Navigation/NavigationConstants";
+import { CustomText } from "../Components/CustomText";
 
 export const LoadingScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
@@ -29,7 +30,7 @@ export const LoadingScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.loadingText}>Loading</Text>
+      <CustomText style={styles.loadingText}>Loading</CustomText>
     </View>
   );
 };

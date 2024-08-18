@@ -37,9 +37,33 @@ export const styles = StyleSheet.create({
     left: 24,
     width: '100%'
   },
+  icon: {
+    display: 'flex',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.grey2,
+    borderRadius: 12,
+    
+    shadowColor: colors.grey5,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.40,
+    shadowRadius: 4.65,
+
+    elevation: 8,
+  },
   image: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-  }
+    gap: 24,
+    alignItems: 'center',
+  },
+  editButtons: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 12,
+    alignItems: 'center',
+  },
 })

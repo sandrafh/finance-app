@@ -1,7 +1,8 @@
-import React, { FC } from "react"
+import React, { FC, ReactNode } from "react"
 
 import { TouchableOpacity, Text, StyleSheet } from "react-native"
 import { colors } from "../Constants/ColorsConstants"
+import { CustomText } from "./CustomText"
 
 export enum ButtonVariants {
   Primary = 'primary',
@@ -10,13 +11,14 @@ export enum ButtonVariants {
 }
 
 interface ButtonProps {
-  title: string
+  title?: string
   variant: ButtonVariants
   onPress: () => void
+  icon?: ReactNode
   style?: any
 }
 
-export const Button = ({ title, onPress, variant, style }: ButtonProps) => {
+export const Button = ({ title, onPress, variant, icon, style }: ButtonProps) => {
   const containerStyle = () => {
     switch(variant) {
       case ButtonVariants.Primary:
@@ -45,7 +47,8 @@ export const Button = ({ title, onPress, variant, style }: ButtonProps) => {
 
   return (
     <TouchableOpacity onPress={onPress} style={[containerStyle(), style]}>
-      <Text style={textStyle()}>{title}</Text>
+      {icon}
+      {title && <CustomText style={textStyle()}>{title}</CustomText>}
     </TouchableOpacity>
   )
 }
@@ -53,6 +56,7 @@ export const Button = ({ title, onPress, variant, style }: ButtonProps) => {
 const styles = StyleSheet.create({
   containerPrimary: {
     height: 44,
+    minWidth: 44,
     backgroundColor: colors.primary,
     borderRadius: 8,
     justifyContent: "center",
@@ -60,6 +64,7 @@ const styles = StyleSheet.create({
   },
   containerSecondary: {
     height: 44,
+    minWidth: 44,
     backgroundColor: colors.secondary,
     borderRadius: 8,
     justifyContent: "center",
@@ -67,6 +72,7 @@ const styles = StyleSheet.create({
   },
   containerTertiary: {
     height: 44,
+    minWidth: 44,
     backgroundColor: colors.grey2,
     borderRadius: 8,
     justifyContent: "center",

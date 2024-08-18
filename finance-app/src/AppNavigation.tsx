@@ -2,7 +2,7 @@ import React from "react";
 
 import 'react-native-get-random-values';
 
-import BackArrowIcon from "../assets/icons/back-arrow.svg";
+import BackArrowIcon from "./assets/icons/back-arrow.svg";
 
 import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
