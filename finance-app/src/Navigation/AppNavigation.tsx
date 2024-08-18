@@ -2,19 +2,19 @@ import React from "react";
 
 import 'react-native-get-random-values';
 
-import BackArrowIcon from "./assets/icons/back-arrow.svg";
+import BackArrowIcon from "../assets/icons/back-arrow.svg";
 
 import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-import { Login } from "./login/Login";
-import { Register } from "./register/Register";
-import { Main } from "./main/Main";
-import { LoadingScreen } from "./login/LoadingScreen";
-import { NavigationAppScreens } from "./navigation/NavigationConstants";
-import { AddCategory } from "./main/settings/AddCategory";
-import { IconButton } from "./components/IconButton";
-import { colors } from "./constants/ColorsConstants";
+import { Login } from "../login/Login";
+import { Register } from "../register/Register";
+import { Main } from "../main/Main";
+import { LoadingScreen } from "../login/LoadingScreen";
+import { NavigationAppScreens } from "./NavigationConstants";
+import { AddCategory } from "../main/categories/AddCategory";
+import { IconButton } from "../components/IconButton";
+import { colors } from "../constants/ColorsConstants";
 
 
 export const AppNavigation = () => {
@@ -55,7 +55,7 @@ export const AppNavigation = () => {
         name={NavigationAppScreens.AddCategory}
         component={AddCategory}
         options={{
-          title: '',
+          title: 'New Category',
           headerStyle: {
             backgroundColor: colors.primary,
           },

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { View, TextInput, ScrollView, Text, TouchableOpacity } from 'react-native';
+import { View, TextInput, ScrollView } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
@@ -9,7 +9,7 @@ import { styles } from './AddCategoryStyles';
 import ColorIcon from '../../assets/icons/color-picker.svg'
 import EditIcon from '../../assets/icons/edit.svg'
 
-import ColorPicker, { Preview } from 'reanimated-color-picker';
+//External libraries
 import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal';
 //@ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -18,6 +18,7 @@ import db from "@react-native-firebase/database"
 import { v4 } from 'uuid';
 import Toast from 'react-native-toast-message';
 
+//Internal components
 import { ColorPickerModal } from '@/src/modals/ColorPickerModal';
 import { IconPickerModal } from '@/src/modals/IconPickerModal';
 import { colors } from '@/src/constants/ColorsConstants';
@@ -121,6 +122,7 @@ export const AddCategory = () => {
 
         <View style={styles.field}>
           <CustomText style={styles.label}>Monthly Budget (€)*</CustomText>
+          {/* TODO: change for numeric input */}
           <TextInput
             style={styles.input}
             placeholder="Enter budget"

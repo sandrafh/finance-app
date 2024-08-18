@@ -6,7 +6,7 @@ import { SettingsView } from "./SettingsView";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { colors } from "@/src/constants/ColorsConstants";
 import { NavigationSettingsScreens } from "@/src/navigation/NavigationConstants";
-import { AddCategory } from "./AddCategory";
+import { AddCategory } from "../categories/AddCategory";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
 import { Button, ButtonVariants } from "@/src/components/Button";
