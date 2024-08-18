@@ -18,14 +18,14 @@ import db from "@react-native-firebase/database"
 import { v4 } from 'uuid';
 import Toast from 'react-native-toast-message';
 
-import { ColorPickerModal } from '@/src/Modals/ColorPickerModal';
-import { IconPickerModal } from '@/src/Modals/IconPickerModal';
-import { colors } from '@/src/Constants/ColorsConstants';
-import { Button, ButtonVariants } from '@/src/Components/Button';
+import { ColorPickerModal } from '@/src/modals/ColorPickerModal';
+import { IconPickerModal } from '@/src/modals/IconPickerModal';
+import { colors } from '@/src/constants/ColorsConstants';
+import { Button, ButtonVariants } from '@/src/components/Button';
 import { getUserUid } from '@/src/redux/slices/user';
-import { ToastTypes } from '@/src/Constants/ToastConstants';
-import { NavigationSettingsScreens } from '@/src/Navigation/NavigationConstants';
-import { CustomText } from '@/src/Components/CustomText';
+import { ToastTypes } from '@/src/constants/ToastConstants';
+import { NavigationSettingsScreens } from '@/src/navigation/NavigationConstants';
+import { CustomText } from '@/src/components/CustomText';
 
 
 export const AddCategory = () => {

@@ -6,9 +6,9 @@ import {
 
 import { useNavigation } from "@react-navigation/native"
 import { NativeStackNavigationProp } from "@react-navigation/native-stack"
-import { colors } from "@/src/Constants/ColorsConstants"
-import { Button, ButtonVariants } from "@/src/Components/Button"
-import { NavigationAppScreens, NavigationSettingsScreens } from "@/src/Navigation/NavigationConstants"
+import { colors } from "@/src/constants/ColorsConstants"
+import { Button, ButtonVariants } from "@/src/components/Button"
+import { NavigationAppScreens, NavigationSettingsScreens } from "@/src/navigation/NavigationConstants"
 
 
 export const SettingsView = () => {

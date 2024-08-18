@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 
 import { ExpensesView } from "./ExpensesView";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { colors } from "@/src/Constants/ColorsConstants";
-import { NavigationExpensesScreens } from "@/src/Navigation/NavigationConstants";
+import { colors } from "@/src/constants/ColorsConstants";
+import { NavigationExpensesScreens } from "@/src/navigation/NavigationConstants";
 
 const Stack = createNativeStackNavigator();
 

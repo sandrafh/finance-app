@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react"
 
 import { TouchableOpacity, Text, StyleSheet } from "react-native"
-import { colors } from "../Constants/ColorsConstants"
+import { colors } from "../constants/ColorsConstants"
 import { CustomText } from "./CustomText"
 
 export enum ButtonVariants {

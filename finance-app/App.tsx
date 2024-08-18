@@ -8,7 +8,7 @@ import Toast from 'react-native-toast-message';
 import { Provider } from "react-redux";
 import { store } from "./src/redux/store";
 import { AppNavigation } from "./src/AppNavigation";
-import { toastConfig } from "./src/Components/ToastConfig";
+import { toastConfig } from "./src/components/ToastConfig";
 
 
 export default function App() {    

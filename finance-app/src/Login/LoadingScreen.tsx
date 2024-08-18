@@ -6,8 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
-import { NavigationAppScreens } from "../Navigation/NavigationConstants";
-import { CustomText } from "../Components/CustomText";
+import { NavigationAppScreens } from "../navigation/NavigationConstants";
+import { CustomText } from "../components/CustomText";
 
 export const LoadingScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();

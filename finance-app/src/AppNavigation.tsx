@@ -7,14 +7,14 @@ import BackArrowIcon from "./assets/icons/back-arrow.svg";
 import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-import { Login } from "./Login/Login";
-import { Register } from "./Register/Register";
-import { Main } from "./Main/Main";
-import { LoadingScreen } from "./Login/LoadingScreen";
-import { NavigationAppScreens } from "./Navigation/NavigationConstants";
-import { AddCategory } from "./Main/Settings/AddCategory";
-import { IconButton } from "./Components/IconButton";
-import { colors } from "./Constants/ColorsConstants";
+import { Login } from "./login/Login";
+import { Register } from "./register/Register";
+import { Main } from "./main/Main";
+import { LoadingScreen } from "./login/LoadingScreen";
+import { NavigationAppScreens } from "./navigation/NavigationConstants";
+import { AddCategory } from "./main/settings/AddCategory";
+import { IconButton } from "./components/IconButton";
+import { colors } from "./constants/ColorsConstants";
 
 
 export const AppNavigation = () => {

@@ -4,8 +4,8 @@ import { styles } from './ColorPickerModalStyles'
 
 import ColorPicker, { Panel1, HueSlider } from 'reanimated-color-picker';
 import SwipeModal, { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal';
-import { colors } from "../Constants/ColorsConstants";
-import { Button, ButtonVariants } from "../Components/Button";
+import { colors } from "../constants/ColorsConstants";
+import { Button, ButtonVariants } from "../components/Button";
 import { RefObject } from "react";
 
 interface ColorPickerModalProps {

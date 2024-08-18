@@ -12,14 +12,14 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import db from "@react-native-firebase/database"
 
-import { ListItem } from "../../Components/ListItem/ListItem";
+import { ListItem } from "../../components/listItem/ListItem";
 import { StatusBar } from "expo-status-bar";
-import { Button, ButtonVariants } from "@/src/Components/Button";
-import { colors } from "@/src/Constants/ColorsConstants";
+import { Button, ButtonVariants } from "@/src/components/Button";
+import { colors } from "@/src/constants/ColorsConstants";
 import { useSelector } from "react-redux";
 import { getUserUid } from "@/src/redux/slices/user";
 import { v4 } from 'uuid';
-import { CustomText } from "@/src/Components/CustomText";
+import { CustomText } from "@/src/components/CustomText";
 
 export const ExpensesView = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()

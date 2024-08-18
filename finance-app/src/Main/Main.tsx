@@ -7,10 +7,10 @@ const Tab = createBottomTabNavigator();
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
-import { ExpensesNavigation } from "./Expenses/ExpensesNavigation";
-import { colors } from "../Constants/ColorsConstants";
-import { SettingsNavigation } from "./Settings/SettingsNavigation";
-import { NavigationMainScreens } from "../Navigation/NavigationConstants";
+import { ExpensesNavigation } from "./expenses/ExpensesNavigation";
+import { colors } from "../constants/ColorsConstants";
+import { SettingsNavigation } from "./settings/SettingsNavigation";
+import { NavigationMainScreens } from "../navigation/NavigationConstants";
 
 export const Main = () => {
   return (

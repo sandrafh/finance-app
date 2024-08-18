@@ -7,8 +7,8 @@ import SwipeModal, { SwipeModalPublicMethods } from '@birdwingo/react-native-swi
 //@ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { colors } from "../Constants/ColorsConstants";
-import { Button, ButtonVariants } from "../Components/Button";
+import { colors } from "../constants/ColorsConstants";
+import { Button, ButtonVariants } from "../components/Button";
 
 
 interface IconPickerModalProps {

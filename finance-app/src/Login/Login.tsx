@@ -14,11 +14,11 @@ import {
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth"
-import { Button, ButtonVariants } from "../Components/Button";
-import { NavigationAppScreens } from "../Navigation/NavigationConstants";
+import { Button, ButtonVariants } from "../components/Button";
+import { NavigationAppScreens } from "../navigation/NavigationConstants";
 import { useDispatch } from "react-redux";
 import { setUserUid } from "../redux/slices/user";
-import { CustomText } from "../Components/CustomText";
+import { CustomText } from "../components/CustomText";
 
 
 export const Login = () => {
