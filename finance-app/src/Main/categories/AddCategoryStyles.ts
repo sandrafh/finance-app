@@ -18,9 +18,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     gap: 8
   },
-  label: {
-    fontSize: 16,
-  },
   input: {
     borderWidth: 1,
     borderColor: colors.grey2,

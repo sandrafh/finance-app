@@ -6,6 +6,7 @@ import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/n
 import { colors } from "@/src/constants/ColorsConstants";
 import { NavigationCategoriesScreens } from "@/src/navigation/NavigationConstants";
 import { CategoriesList } from "./CategoriesList";
+import { CategoriesView } from "./CategoriesView";
 
 
 const Stack = createNativeStackNavigator()
@@ -25,8 +26,8 @@ export const CategoriesNavigation = () => {
       }}
     >
       <Stack.Screen
-        name={NavigationCategoriesScreens.CategoriesList}
-        component={CategoriesList}
+        name={NavigationCategoriesScreens.CategoriesView}
+        component={CategoriesView}
         options={{
           headerTitle: "Categories",
         }}

@@ -4,7 +4,6 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     display: 'flex',
     flexDirection: 'column',
     gap: 12,
@@ -37,11 +36,5 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     gap: 8,
-  },
-  buttonContainer: {
-    position: 'absolute',
-    bottom: 40,
-    left: 20,
-    width: '100%',
   },
 })

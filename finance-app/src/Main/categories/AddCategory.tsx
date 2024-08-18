@@ -58,7 +58,7 @@ export const AddCategory = () => {
       type: ToastTypes.Success,
       text1: 'Category added successfully'
     })
-    navigation.navigate(NavigationCategoriesScreens.CategoriesList)
+    navigation.navigate(NavigationCategoriesScreens.CategoriesView)
   }
 
   const onSelectColor = (color: any) => {
@@ -106,7 +106,7 @@ export const AddCategory = () => {
         </View> 
 
         <View style={styles.field}>
-          <CustomText style={styles.label}>Name</CustomText>
+          <CustomText>Name</CustomText>
           <TextInput
             style={styles.input}
             placeholder="Enter name"
@@ -116,7 +116,7 @@ export const AddCategory = () => {
         </View>   
 
         <View style={styles.field}>
-          <CustomText style={styles.label}>Monthly Budget (€)*</CustomText>
+          <CustomText>Monthly Budget (€)*</CustomText>
           {/* TODO: change for numeric input */}
           <TextInput
             style={styles.input}

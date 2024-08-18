@@ -1,9 +1,12 @@
+import { AddExpense } from "../main/expenses/AddExpense"
+
 export const NavigationAppScreens = {
   LoadingScreen: "LoadingScreen",
   Login: "Login",
   Register: "Register",
   Main: "Main",
   AddCategory : "AddCategory",
+  AddExpense : "AddExpense",
 }
 
 export const NavigationMainScreens = {
@@ -21,5 +24,5 @@ export const NavigationSettingsScreens = {
 }
 
 export const NavigationCategoriesScreens = {
-  CategoriesList : "CategoriesList",  
+  CategoriesView : "CategoriesView",  
 }
