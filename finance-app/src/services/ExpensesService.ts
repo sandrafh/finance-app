@@ -13,17 +13,25 @@ export const ExpensesService = () => {
   const userUid = useSelector((state: any) => getUserUid(state))
 
   const subscribeToExpenses = () => {
-    db().ref(`users/${userUid}/expenses`).on('value', snapshot => {
-      const data = snapshot.val()
-      if(data) {
-        const expense = Object.entries(data).map(([key, value]: any) => ({ ...value, uid: key }))
-        dispatch(setExpenses(expense))
-      }
-    })
+    try {
+      db().ref(`users/${userUid}/expenses`).on('value', snapshot => {
+        const data = snapshot.val()
+        if(data) {
+          const expense = Object.entries(data).map(([key, value]: any) => ({ ...value, uid: key }))
+          dispatch(setExpenses(expense))
+        }
+      })
+    } catch(e) {
+      console.log("Error subscribing to expenses", e)
+    }    
   }
 
   const addExpense = (expense: Partial<Expense>) => {
-    db().ref(`users/${userUid}/expenses/${v4()}`).set(expense)
+    try {
+      db().ref(`users/${userUid}/expenses/${v4()}`).set(expense)
+    } catch(e) {
+      console.log("Error adding expense", e)
+    }
   }
 
   return {

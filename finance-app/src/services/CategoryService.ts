@@ -13,17 +13,25 @@ export const CategoryService = () => {
   const userUid = useSelector((state: any) => getUserUid(state))
 
   const subscribeToCategories = () => {
-    db().ref(`users/${userUid}/categories`).on('value', snapshot => {
-      const data = snapshot.val()
-      if(data) {
-        const categories = Object.entries(data).map(([key, value]: any) => ({ ...value, uid: key }))
-        dispatch(setCategories(categories))
-      }
-    })
+    try {
+      db().ref(`users/${userUid}/categories`).on('value', snapshot => {
+        const data = snapshot.val()
+        if(data) {
+          const categories = Object.entries(data).map(([key, value]: any) => ({ ...value, uid: key }))
+          dispatch(setCategories(categories))
+        }
+      })
+    } catch(e) {
+      console.log("Error subscribing to categories", e)
+    }    
   }
 
   const addCategory = (category: Partial<Category>) => {
-    db().ref(`users/${userUid}/categories/${v4()}`).set(category)
+    try {
+      db().ref(`users/${userUid}/categories/${v4()}`).set(category)
+    } catch(e) {
+      console.log("Error adding category", e)
+    }    
   }
 
   return {
