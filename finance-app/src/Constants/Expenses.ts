@@ -1,7 +1,7 @@
 export interface Expense {
   uid: string
   name: string
-  import: number
+  spent: number
   categoryUid: string
   date: Date
 }

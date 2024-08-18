@@ -15,6 +15,7 @@ import { NavigationAppScreens } from "./NavigationConstants";
 import { AddCategory } from "../main/categories/AddCategory";
 import { IconButton } from "../components/IconButton";
 import { colors } from "../constants/ColorsConstants";
+import { AddExpense } from "../main/expenses/AddExpense";
 
 
 export const AppNavigation = () => {
@@ -56,6 +57,27 @@ export const AppNavigation = () => {
         component={AddCategory}
         options={{
           title: 'New Category',
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTitleStyle: {
+            color: colors.white,
+          },         
+          headerLeft: () => {
+            return (
+              <IconButton 
+                icon={<BackArrowIcon width={16} height={16} color={colors.white} />} 
+                onPress={() => navigation.navigate(NavigationAppScreens.Main)} 
+              />
+            )
+          }
+        }}
+      />
+      <Stack.Screen
+        name={NavigationAppScreens.AddExpense}
+        component={AddExpense}
+        options={{
+          title: 'New Expense',
           headerStyle: {
             backgroundColor: colors.primary,
           },

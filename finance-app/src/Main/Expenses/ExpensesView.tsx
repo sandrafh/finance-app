@@ -12,6 +12,7 @@ import { colors } from "@/src/constants/ColorsConstants";
 import { getUserUid } from "@/src/redux/slices/user";
 import { CustomText } from "@/src/components/CustomText";
 import { getExpenses } from "@/src/redux/slices/expenses";
+import { NavigationAppScreens } from "@/src/navigation/NavigationConstants";
 
 export const ExpensesView = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
@@ -24,6 +25,7 @@ export const ExpensesView = () => {
   }, [])
 
   const onAddExpense = () => { 
+    navigation.navigate(NavigationAppScreens.AddExpense)
   }
 
   return (
