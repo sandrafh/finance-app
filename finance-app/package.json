@@ -1,6 +1,6 @@
 {
   "name": "finance-app",
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "./Index.tsx",
   "version": "1.0.0",
   "author": "sandrafh",
   "scripts": {
