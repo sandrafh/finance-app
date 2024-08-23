@@ -7,9 +7,10 @@ import { styles } from './CategoriesListStyles';
 //Internal components
 import { getCategories } from '@/src/redux/slices/category';
 import { CategoryItem } from './CategoryItem';
+import { Category } from '@/src/constants/Category';
 
 interface CategoriesListProps {
-  onSelect: (categoryUid: string) => void
+  onSelect: (category: Category) => void
 }
 
 export const CategoriesList = ({ onSelect }: CategoriesListProps) => {
@@ -19,7 +20,7 @@ export const CategoriesList = ({ onSelect }: CategoriesListProps) => {
     <ScrollView contentContainerStyle={styles.container}>
       {categories.map(category => {
         return (
-          <TouchableOpacity key={category.uid} style={styles.card} onPress={() => onSelect(category.uid)}>
+          <TouchableOpacity key={category.uid} style={styles.card} onPress={() => onSelect(category)}>
             <CategoryItem category={category} showBudget={true}/>
           </TouchableOpacity>
         )        

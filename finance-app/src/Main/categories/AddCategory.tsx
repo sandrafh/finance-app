@@ -22,6 +22,7 @@ import { ToastTypes } from '@/src/constants/ToastConstants';
 import { NavigationCategoriesScreens } from '@/src/navigation/NavigationConstants';
 import { CustomText } from '@/src/components/CustomText';
 import { CategoryService } from '@/src/services/CategoryService';
+import { Category } from '@/src/constants/Category';
 
 
 export const AddCategory = () => {
@@ -44,13 +45,13 @@ export const AddCategory = () => {
       })
       return
     }
-    const category = {
+    const category: Partial<Category> = {
       name,
       color,
       icon,
       budget: +budget,
-      spent: 0,
-      expensesUids: []
+      totalSpent: 0,
+      expenses: []
     }
     addCategory(category)
 

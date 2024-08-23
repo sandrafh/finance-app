@@ -30,4 +30,18 @@ export const styles = StyleSheet.create({
     left: 24,
     width: '100%'
   },
+  dropDown: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+
+    borderWidth: 1,
+    borderColor: colors.grey2,
+    borderRadius: 5,
+
+    padding: 10,
+    paddingLeft: 12,    
+    height: 44
+  }
 })

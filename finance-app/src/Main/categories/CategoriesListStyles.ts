@@ -31,10 +31,5 @@ export const styles = StyleSheet.create({
     shadowRadius: 4.65,
 
     elevation: 4,
-  },
-  cardTitle: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: 8,
-  },
+  }
 })

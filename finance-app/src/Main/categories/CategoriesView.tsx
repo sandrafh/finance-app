@@ -20,7 +20,7 @@ export const CategoriesView = () => {
 
   return (
     <View style={styles.container}>
-      <CategoriesList /> 
+      <CategoriesList onSelect={() => { console.log("on select category") }}/> 
       <View style={styles.buttonContainer}>
         <Button title="Add Category" onPress={onAddCategory()} variant={ButtonVariants.Primary} />
       </View>    
