@@ -54,7 +54,8 @@ export const AddExpense = () => {
     const expense = {
       name,
       spent: +spent,
-      categoryUid: selectedCategory.uid
+      categoryUid: selectedCategory.uid,
+      data: new Date()
     }
     addExpense(expense)
 

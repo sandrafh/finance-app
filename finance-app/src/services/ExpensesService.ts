@@ -31,10 +31,11 @@ export const ExpensesService = () => {
   const addExpense = (expense: Partial<Expense>) => {
     try {
       const expenseUid = v4()
-      console.log("expenseUid", expenseUid)
-      db().ref(`users/${userUid}/expenses/${expenseUid}`).set(expense)      
+      db().ref(`users/${userUid}/expenses/${expenseUid}`).set(expense)   
+
       const categoryUid = expense.categoryUid
       db().ref(`users/${userUid}/categories/${categoryUid}/expenses/${expenseUid}`).set({spent: expense.spent})
+      
       const category = categories.find((category: any) => category.uid === categoryUid)
       const newTotalSpent = +(category?.totalSpent as number) + (expense.spent as number) 
       db().ref(`users/${userUid}/categories/${categoryUid}`).update({ totalSpent: newTotalSpent })
