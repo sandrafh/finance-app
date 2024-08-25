@@ -29,12 +29,13 @@ export const CategoriesListModal = ({ modalRef }: CategoriesListModalProps) => {
       showBar={true} 
       wrapInGestureHandlerRootView={true} 
       bg={colors.lightBlue} 
-      maxHeight={420} 
+      maxHeight={400} 
       style={styles.modal}
       closeOnEmptySpace={true}
       closeOnPressBack={true}
       closeSpaceVisibility={0.3}
       hideKeyboardOnShow={true}
+      scrollEnabled={true}
     >     
       <View style={styles.viewContainer}>
         <CategoriesList onSelect={onSelectCategory}/>  
