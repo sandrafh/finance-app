@@ -3,5 +3,5 @@ export interface Expense {
   name: string
   spent: number
   categoryUid: string
-  date: Date
+  date: string
 }

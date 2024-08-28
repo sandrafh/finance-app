@@ -8,7 +8,8 @@ export const colors = {
   grey4: "#545454", 
   grey3: "#757575", //used for secondary buttons with texts in #ffffff
   grey2: "#a8a7a7",
-  grey1: "#F5F5F5", //card components & background with texts in #ffffff
+  grey1: '#d4d4d4',
+  grey0: "#F5F5F5", //card components & background with texts in #ffffff
   lightBlue: "#edf5fa",
   white: "#ffffff",
   black: "#000000",

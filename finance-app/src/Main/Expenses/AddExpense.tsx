@@ -10,20 +10,22 @@ import DownArrowIcon from '../../assets/icons/down-arrow.svg'
 
 //External libraries
 import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal';
-//@ts-ignore
+import DateTimePicker from 'react-native-ui-datepicker';
+import dayjs from 'dayjs';
 //@ts-ignore
 import Toast from 'react-native-toast-message';
 //Internal components
 import { Button, ButtonVariants } from '@/src/components/Button';
 import { ToastTypes } from '@/src/constants/ToastConstants';
 import { NavigationExpensesScreens } from '@/src/navigation/NavigationConstants';
-import { CustomText } from '@/src/components/CustomText';
+import { CustomText, FontWeight } from '@/src/components/CustomText';
 import { ExpensesService } from '@/src/services/ExpensesService';
 import { CategoriesListModal } from '@/src/modals/CategoriesListModal';
 import { colors } from '@/src/constants/ColorsConstants';
 import { getCategories } from '@/src/redux/slices/category';
 import { CategoryItem } from '../categories/CategoryItem';
 import { getSelectedCategory, setSelectedCategory } from '@/src/redux/slices/ui';
+import { getFontFamily } from '@/src/utils/fontFamily';
 
 
 export const AddExpense = () => {
@@ -38,6 +40,7 @@ export const AddExpense = () => {
   
   const [name, setName] = useState('')
   const [spent, setSpent] = useState('0')
+  const [date, setDate] = useState(new Date(Date.now()).toISOString())
 
   useEffect(() => {
     dispatch(setSelectedCategory(categories[0]))
@@ -55,8 +58,9 @@ export const AddExpense = () => {
       name,
       spent: +spent,
       categoryUid: selectedCategory.uid,
-      data: new Date()
+      date
     }
+    console.log("expense: ",expense)
     addExpense(expense)
 
     Toast.show({
@@ -100,7 +104,21 @@ export const AddExpense = () => {
             {selectedCategory && <CategoryItem category={selectedCategory} showBudget={false} />}
             <DownArrowIcon width={24} color={colors.grey4} />
           </TouchableOpacity>
-        </View>    
+        </View> 
+
+        <View style={styles.field}>
+          <CustomText>Date</CustomText>
+          <DateTimePicker
+            mode="single"
+            date={date}
+            onChange={(params) => setDate((params.date as Date).toISOString())}
+            locale="es"
+            firstDayOfWeek={1}
+            calendarTextStyle={{fontFamily: getFontFamily(FontWeight.Normal)}}
+            headerTextStyle={{fontFamily: getFontFamily(FontWeight.Normal)}}
+            selectedItemColor={colors.primary}
+          />
+        </View>       
 
         <Button style={styles.button} title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
       </View>  

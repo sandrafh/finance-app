@@ -33,18 +33,16 @@ export const ExpenseItem = ({ expense, showCategory }: ExpenseItemProps) => {
   }
 
   return (
-    <>
+    <>      
       <View style={styles.cardTitle}>
-        {/* <Icon key={expense.icon} name={expense.icon} size={24} color={expense.color}/> */}
-        <CustomText fontSize={FontSize.Medium} fontWeight={FontWeight.Bold}>
-          {expenseSpent}
-        </CustomText>
+        {getCategory()}
         <CustomText fontSize={FontSize.Medium} fontWeight={FontWeight.Normal}>
           {expense.name}
         </CustomText>
       </View>
-      
-      {getCategory()}
+      <CustomText fontSize={FontSize.Medium} fontWeight={FontWeight.Normal}>
+        {expenseSpent}
+      </CustomText>    
     </>        
   )
 }
