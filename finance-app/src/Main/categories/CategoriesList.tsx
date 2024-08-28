@@ -20,12 +20,12 @@ export const CategoriesList = ({ onSelect }: CategoriesListProps) => {
     <ScrollView contentContainerStyle={styles.container}>
       {categories.map(category => {
         return (
-          <>
-            <TouchableOpacity key={category.uid} style={styles.card} onPress={() => onSelect(category)}>
+          <View key={category.uid}>
+            <TouchableOpacity style={styles.card} onPress={() => onSelect(category)}>
               <CategoryItem category={category} showBudget={true}/>
             </TouchableOpacity>
             <View style={styles.separator}></View>
-          </>          
+          </View>          
         )        
       })}       
     </ScrollView>

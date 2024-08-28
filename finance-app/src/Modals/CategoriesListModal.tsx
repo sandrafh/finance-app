@@ -44,12 +44,12 @@ export const CategoriesListModal = ({ modalRef }: CategoriesListModalProps) => {
       <View style={styles.viewContainer}>
         {categories.map(category => {
           return (
-            <>
-              <TouchableOpacity key={category.uid} style={styles.item} onPress={() => onSelectCategory(category)}>
+            <View key={category.uid}>
+              <TouchableOpacity style={styles.item} onPress={() => onSelectCategory(category)}>
                 <CategoryItem category={category} showBudget={false}/>
               </TouchableOpacity>
               <View style={styles.separator}></View>
-            </>          
+            </View>          
           )        
         })}  
       </View>         
