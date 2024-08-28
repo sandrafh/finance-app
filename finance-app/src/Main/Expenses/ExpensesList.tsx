@@ -65,7 +65,7 @@ export const ExpensesList = ({ onSelect }: ExpensesListProps) => {
     <ScrollView contentContainerStyle={styles.container}>
       {groupedExpenses.map(item => {
         return (
-          <View style={styles.dayContainer}>
+          <View key={item.date} style={styles.dayContainer}>
             <CustomText style={styles.day} fontSize={FontSize.Small}>{item.date}</CustomText>
             <View style={styles.separator}></View>
             {item.expenses.map(expense => (
