@@ -9,22 +9,22 @@
     "userInterfaceStyle": "automatic",
     "entryPoint": "./src/App.tsx",
     "splash": {
-      "image": "./src/images/splash.png",
+      "image": "./src/assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.financeapp.financeapp",
+      "bundleIdentifier": "com.sandraflores.financeapp",
       "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "foregroundImage": "./src/images/adaptive-icon.png",
+        "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.financeapp.financeapp"
+      "package": "com.sandraflores.financeapp"
     },
     "web": {
       "bundler": "metro",

@@ -1,4 +1,4 @@
-package com.financeapp.financeapp
+package com.sandraflores.financeapp
 
 import android.os.Build
 import android.os.Bundle

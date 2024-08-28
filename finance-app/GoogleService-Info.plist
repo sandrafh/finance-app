@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.financeapp.financeapp</string>
+	<string>com.sandraflores.financeapp</string>
 	<key>PROJECT_ID</key>
 	<string>finance-app-10872</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:711632685651:ios:64e1fe3f7a312a6e4394a6</string>
+	<string>1:711632685651:ios:835edb7b71a37c224394a6</string>
+	<key>DATABASE_URL</key>
+	<string>https://finance-app-10872-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
