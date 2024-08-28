@@ -1,5 +1,6 @@
 import { RefObject } from "react";
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
 import { styles } from './CategoriesListModalStyles'
 //External components
@@ -7,9 +8,10 @@ import SwipeModal, { SwipeModalPublicMethods } from '@birdwingo/react-native-swi
 //Internal components
 import { colors } from "../constants/ColorsConstants";
 import { CategoriesList } from "../main/categories/CategoriesList";
-import { useDispatch } from "react-redux";
 import { Category } from "../constants/Category";
 import { setSelectedCategory } from "../redux/slices/ui";
+import { getCategories } from "../redux/slices/category";
+import { CategoryItem } from "../main/categories/CategoryItem";
 
 interface CategoriesListModalProps {
   modalRef: RefObject<SwipeModalPublicMethods>
@@ -17,6 +19,8 @@ interface CategoriesListModalProps {
 
 export const CategoriesListModal = ({ modalRef }: CategoriesListModalProps) => {   
   const dispatch = useDispatch()
+
+  const categories = useSelector((state: any) => getCategories(state)) 
 
   const onSelectCategory = (category: Category) => {
     dispatch(setSelectedCategory(category))
@@ -38,7 +42,16 @@ export const CategoriesListModal = ({ modalRef }: CategoriesListModalProps) => {
       scrollEnabled={true}
     >     
       <View style={styles.viewContainer}>
-        <CategoriesList onSelect={onSelectCategory}/>  
+        {categories.map(category => {
+          return (
+            <>
+              <TouchableOpacity key={category.uid} style={styles.item} onPress={() => onSelectCategory(category)}>
+                <CategoryItem category={category} showBudget={false}/>
+              </TouchableOpacity>
+              <View style={styles.separator}></View>
+            </>          
+          )        
+        })}  
       </View>         
     </SwipeModal>
   )

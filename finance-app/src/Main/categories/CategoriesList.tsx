@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { ScrollView, TouchableOpacity } from 'react-native';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
 
 import { styles } from './CategoriesListStyles';
 
@@ -20,9 +20,12 @@ export const CategoriesList = ({ onSelect }: CategoriesListProps) => {
     <ScrollView contentContainerStyle={styles.container}>
       {categories.map(category => {
         return (
-          <TouchableOpacity key={category.uid} style={styles.card} onPress={() => onSelect(category)}>
-            <CategoryItem category={category} showBudget={true}/>
-          </TouchableOpacity>
+          <>
+            <TouchableOpacity key={category.uid} style={styles.card} onPress={() => onSelect(category)}>
+              <CategoryItem category={category} showBudget={true}/>
+            </TouchableOpacity>
+            <View style={styles.separator}></View>
+          </>          
         )        
       })}       
     </ScrollView>

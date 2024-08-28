@@ -18,5 +18,6 @@ export const colors = {
   success: '#2ECC71',
   warning: '#eda532',
   lightError: '#EE8277',
-  error: '#E74C3C'
+  error: '#E74C3C',
+  separator: 'rgba(0, 0, 0, 0.1)',
 }

@@ -19,8 +19,8 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.grey0,
   },
   separator: {
-    borderWidth: 0.5,
-    borderColor: colors.grey2
+    height: 1,
+    backgroundColor: colors.separator,
   },
   dayContainer: {
     display: 'flex',
