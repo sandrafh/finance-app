@@ -2,15 +2,31 @@
 
 ## Get started
 
-1. Install dependencies
+### Requirements
+- nvm
+- pnpm
+
+1. Enter to the project folder
 
    ```bash
-   npm install
+   cd finance-app
+   ```
+   
+2. Activate Node version
+
+   ```bash
+   nvm use
    ```
 
-2. Install Expo Go app in your movile
+3. Install dependencies
 
-3. Start the app
+   ```bash
+   pnpm install
+   ```
+
+4. Install Expo Go app in your movile
+
+5. Start the app
 - When you see the QR in the terminal if you can't scan with your movile, click 's' to change to a movile mode
 - If you can use the web mode (I prefer this for develop) you just have to open the local url
 
