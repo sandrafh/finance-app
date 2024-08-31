@@ -21,4 +21,5 @@ export const colors = {
   error: '#E74C3C',
   separator: 'rgba(0, 0, 0, 0.1)',
   bgInput: 'rgba(255, 255, 255, 0.35)',
+  bg: '#01052D'
 }
