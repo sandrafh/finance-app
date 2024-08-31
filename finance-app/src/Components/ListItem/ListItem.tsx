@@ -8,7 +8,7 @@ import {
   ListRenderItemInfo,
   Pressable,
 } from "react-native";
-import { CustomText } from "../CustomText";
+import { CustomText } from "../CustomInput";
 
 export const ListItem = (
   listData: ListRenderItemInfo<any> & { onPress?: (id: number) => void }

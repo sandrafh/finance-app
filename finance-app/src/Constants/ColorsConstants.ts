@@ -1,5 +1,5 @@
 export const colors = {
-  primary: "#0D47A1", //used for primary buttons and links with texts in #ffffff
+  primary: "#0251fa", //used for primary buttons and links with texts in #ffffff
   secondary: "#1565C0", //used for secondary buttons in with texts in #ffffff
   accentOrange: "#FFB74D",
   accentTeal: "#00897B", //success messages with texts in #ffffff
@@ -20,4 +20,5 @@ export const colors = {
   lightError: '#EE8277',
   error: '#E74C3C',
   separator: 'rgba(0, 0, 0, 0.1)',
+  bgInput: 'rgba(255, 255, 255, 0.35)',
 }
