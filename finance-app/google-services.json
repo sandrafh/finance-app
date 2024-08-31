@@ -8,25 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:711632685651:android:78fe53a7ab97deda4394a6",
-        "android_client_info": {
-          "package_name": "com.financeapp.financeapp"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAJ9wermCZd7-qgKjxfrIKBxtbDGKJjVbY"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:711632685651:android:d257c7e5aee873ce4394a6",
         "android_client_info": {
           "package_name": "com.sandraflores.financeapp"

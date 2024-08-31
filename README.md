@@ -4,7 +4,8 @@
 
 ### Requirements
 - nvm
-- pnpm
+- npm
+- node 
 
 1. Enter to the project folder
 
@@ -12,7 +13,7 @@
    cd finance-app
    ```
    
-2. Activate Node version
+2. Use Node version
 
    ```bash
    nvm use
@@ -21,26 +22,24 @@
 3. Install dependencies
 
    ```bash
-   pnpm install
+   npm install
    ```
 
-4. Install Expo Go app in your movile
+4. Install XCode or Android Studio
 
-5. Start the app
-- When you see the QR in the terminal if you can't scan with your movile, click 's' to change to a movile mode
-- If you can use the web mode (I prefer this for develop) you just have to open the local url
+5. Install a simulator if you want to use it
 
+6. Make a dev build for Android or iOS
+  ```bash
+   npm run ios
+   ```
    ```bash
-    npx expo start
+   npm run android
    ```
 
-4. Scan the QR to show the app in the device
+7. Start the local server
+  ```bash
+   npm start
+   ```
 
-
-# Other stuff
-- In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Follow the terminal instructions to run on iPhone, Android or Web
