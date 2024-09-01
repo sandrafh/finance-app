@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     flexGrow: 1,
     display: 'flex',
     flexDirection: 'column',
+    paddingVertical: 16,
   },
   card: {
     display: 'flex',
@@ -15,7 +16,6 @@ export const styles = StyleSheet.create({
     
     padding: 16,
     paddingHorizontal: 26,
-    backgroundColor: colors.bg,
   },
   separator: {
     height: 1,

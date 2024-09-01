@@ -71,13 +71,15 @@ export const ExpensesList = ({ onSelect }: ExpensesListProps) => {
             <View style={styles.dateContainer}>
               <CustomText style={styles.date} fontSize={FontSize.Small}>{item?.date}</CustomText>
             </View>
-            <View style={styles.separator}></View>
             {item.expenses.map(expense => (
               <View key={expense.uid}>
                 <TouchableOpacity key={expense.uid} style={styles.card} onPress={() => onSelect(expense)}>
                   <ExpenseItem expense={expense} showCategory={true} />
                 </TouchableOpacity>
-                <View style={styles.separator}></View>
+                {/* If last item of the day dont put separator */}
+                {item.expenses[item.expenses.length - 1].uid !== expense.uid && 
+                  <View style={styles.separator}></View>
+                }
               </View> 
             ))}   
           </View>                         

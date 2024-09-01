@@ -19,7 +19,7 @@ export const colors = {
   warning: '#eda532',
   lightError: '#EE8277',
   error: '#E74C3C',
-  separator: 'rgba(0, 0, 0, 0.1)',
+  separator: 'rgba(255, 255, 255, 0.2)',
   bgInput: 'rgba(255, 255, 255, 0.35)',
   bg: '#01052D',
   bgCard: 'rgba(255, 255, 255, 0.25)',
