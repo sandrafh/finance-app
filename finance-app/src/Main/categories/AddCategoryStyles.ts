@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,    
-    backgroundColor: colors.lightBlue,
+    backgroundColor: colors.bg,
   },
   formContainer: {
     flex: 1,
@@ -13,50 +13,30 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     gap: 16
   },
-  field: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 8
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: colors.grey2,
-    padding: 10,
-    borderRadius: 5,
-  },
   button: {
     position: 'absolute',
-    bottom: 40,
+    bottom: 50,
     left: 24,
     width: '100%'
   },
   icon: {
     display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: colors.grey2,
-    borderRadius: 12,
+    alignSelf: 'flex-start',
+    padding: 6,
+
+    borderRadius: 25,
+    backgroundColor: colors.bgInput,
     
     shadowColor: colors.grey5,
     shadowOffset: {
       width: 0,
       height: 4,
     },
-    shadowOpacity: 0.40,
+    shadowOpacity: 0.90,
     shadowRadius: 4.65,
 
     elevation: 8,
-  },
-  image: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: 24,
-    alignItems: 'center',
-  },
-  editButtons: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 12,
-    alignItems: 'center',
   },
 })

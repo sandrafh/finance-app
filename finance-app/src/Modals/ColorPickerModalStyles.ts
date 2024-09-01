@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     height: 200,
     display: 'flex',
     flexDirection: 'column',
-    gap: 8
+    gap: 12
   },
   viewContainer: {
     flex: 1,

@@ -45,6 +45,8 @@ export const CustomInput = (props: InputProps) => {
         placeholderTextColor={colors.grey2}
         multiline={multiline}
         numberOfLines={numberOfLines}
+        cursorColor={colors.white}
+        selectionColor={colors.grey1}
       />
     </View>
   )

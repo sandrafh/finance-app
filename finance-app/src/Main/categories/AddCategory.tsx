@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { View, TextInput, ScrollView } from 'react-native';
+import { View, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
@@ -23,6 +23,8 @@ import { NavigationCategoriesScreens } from '@/src/navigation/NavigationConstant
 import { CustomText } from '@/src/components/CustomText';
 import { CategoryService } from '@/src/services/CategoryService';
 import { Category } from '@/src/constants/Category';
+import { CustomInput } from '@/src/components/CustomInput';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 
 export const AddCategory = () => {
@@ -81,58 +83,32 @@ export const AddCategory = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.formContainer}>
-        <View style={styles.field}>
-          <View style={styles.image}>
-            <View style={styles.icon}>
-              <Icon
-                key={icon}
-                name={icon}
-                size={124}
-                color={color}
-              />
-            </View>  
-            <View style={styles.editButtons}>
-              <Button 
-                icon={<EditIcon width={24} height={24} color={colors.grey5} />} 
-                onPress={showIconModal} 
-                variant={ButtonVariants.Secondary} 
-              />
-              <Button 
-                icon={<ColorIcon width={24} height={24} color={colors.grey5} />} 
-                onPress={showColorModal} 
-                variant={ButtonVariants.Secondary} 
-              />
-            </View>            
-          </View>
-        </View> 
-
-        <View style={styles.field}>
-          <CustomText>Name</CustomText>
-          <TextInput
-            style={styles.input}
-            placeholder="Enter name"
-            value={name}
-            onChangeText={setName}
-          />  
-        </View>   
-
-        <View style={styles.field}>
-          <CustomText>Monthly Budget (€)*</CustomText>
-          {/* TODO: change for numeric input */}
-          <TextInput
-            style={styles.input}
-            placeholder="Enter budget"
-            value={budget}
-            onChangeText={setBudget}
-            keyboardType="numeric"
+        <TouchableOpacity style={styles.icon} onPress={showIconModal}>
+          <Icon
+            key={icon}
+            name={icon}
+            size={124}
+            color={color}
           />
-        </View>        
-
+        </TouchableOpacity>  
+        <CustomInput
+          label="Name"
+          placeholder="Enter name"
+          value={name}
+          onChangeText={setName}
+        />   
+        <CustomInput
+          label="Monthly Budget (€)"
+          placeholder="Enter budget"
+          value={budget}
+          onChangeText={setBudget}
+          inputMode="numeric"
+        />  
         <Button style={styles.button} title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
       </View>     
 
       <ColorPickerModal modalRef={colorModalRef} onSelectColor={onSelectColor} color={color} />  
-      <IconPickerModal modalRef={iconModalRef} selectedIcon={icon} onSelectIcon={onSelectIcon} color={color} />
+      <IconPickerModal modalRef={iconModalRef} selectedIcon={icon} onSelectIcon={onSelectIcon} color={color} colorPickerModalRef={colorModalRef} />
     </ScrollView>
   )
 }

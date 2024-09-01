@@ -16,9 +16,10 @@ interface IconPickerModalProps {
   selectedIcon: string
   onSelectIcon: (icon: string) => void
   color: string
+  colorPickerModalRef?: RefObject<SwipeModalPublicMethods>
 }
 
-export const IconPickerModal = ({ modalRef, selectedIcon, onSelectIcon, color }: IconPickerModalProps) => {   
+export const IconPickerModal = ({ modalRef, selectedIcon, onSelectIcon, color, colorPickerModalRef }: IconPickerModalProps) => {   
   const icons = [
     'home', 'shopping-cart', 'local-dining', 'commute', 'directions-car',
     'flight', 'local-movies', 'school', 'fitness-center', 'local-hospital',
@@ -32,13 +33,17 @@ export const IconPickerModal = ({ modalRef, selectedIcon, onSelectIcon, color }:
     'savings', 'support-agent'
   ] 
   
+  const onPressNext = () => {
+    modalRef.current?.hide()
+    colorPickerModalRef?.current?.show()
+  }
 
   return (
     <SwipeModal 
       ref={modalRef} 
       showBar={true} 
       wrapInGestureHandlerRootView={true} 
-      bg={colors.lightBlue} 
+      bg={colors.bgModal} 
       maxHeight={620} 
       style={styles.modal}
       closeOnEmptySpace={true}
@@ -62,7 +67,7 @@ export const IconPickerModal = ({ modalRef, selectedIcon, onSelectIcon, color }:
           </View>
           
         </ScrollView>     
-        <Button title='Accept' onPress={() => modalRef.current?.hide()} variant={ButtonVariants.Primary} /> 
+        <Button title='Next' onPress={onPressNext} variant={ButtonVariants.Primary} /> 
       </View>          
     </SwipeModal>
   )

@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
   },
   button: {
    padding: 20,
-   marginBottom: 20
+   marginBottom: 30
   },
   label: {
     color: colors.white,
