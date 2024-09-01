@@ -4,7 +4,7 @@ export const NavigationAppScreens = {
   LoadingScreen: "LoadingScreen",
   Login: "Login",
   Register: "Register",
-  Main: "Main",
+  Tabs: "Tabs",
   AddCategory : "AddCategory",
   AddExpense : "AddExpense",
 }

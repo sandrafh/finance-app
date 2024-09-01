@@ -13,7 +13,7 @@ export const SettingsView = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()  
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.lightBlue }}> 
+    <View style={{ flex: 1, backgroundColor: colors.bg }}> 
     </View>
   )
 }

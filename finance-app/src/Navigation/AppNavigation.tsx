@@ -9,7 +9,7 @@ import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-na
 
 import { Login } from "../login/Login";
 import { Register } from "../register/Register";
-import { Main } from "../main/Main";
+import { Tabs } from "../main/TabsNavigation";
 import { LoadingScreen } from "../login/LoadingScreen";
 import { NavigationAppScreens } from "./NavigationConstants";
 import { AddCategory } from "../main/categories/AddCategory";
@@ -46,8 +46,8 @@ export const AppNavigation = () => {
         }}
       />
       <Stack.Screen
-        name={NavigationAppScreens.Main}
-        component={Main}
+        name={NavigationAppScreens.Tabs}
+        component={Tabs}
         options={{
           headerShown: false,
         }}
@@ -67,7 +67,7 @@ export const AppNavigation = () => {
             return (
               <IconButton 
                 icon={<BackArrowIcon width={16} height={16} color={colors.white} />} 
-                onPress={() => navigation.navigate(NavigationAppScreens.Main)} 
+                onPress={() => navigation.navigate(NavigationAppScreens.Tabs)} 
               />
             )
           }
@@ -88,7 +88,7 @@ export const AppNavigation = () => {
             return (
               <IconButton 
                 icon={<BackArrowIcon width={16} height={16} color={colors.white} />} 
-                onPress={() => navigation.navigate(NavigationAppScreens.Main)} 
+                onPress={() => navigation.navigate(NavigationAppScreens.Tabs)} 
               />
             )
           }

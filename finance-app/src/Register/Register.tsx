@@ -44,7 +44,7 @@ export const Register = () => {
 
         if (response.user) {
           await createProfile(response)
-          navigation.replace(NavigationAppScreens.Main)
+          navigation.replace(NavigationAppScreens.Tabs)
         }
       } catch (error) {
         console.error("Error on register an user: ", error)

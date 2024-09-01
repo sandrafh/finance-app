@@ -9,6 +9,7 @@ export enum FontWeight {
 }
 
 export enum FontSize {
+  XSmall = 10,
   Small = 12,
   Medium = 16,
   Large = 20,

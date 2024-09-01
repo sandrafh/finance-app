@@ -19,7 +19,7 @@ export const LoadingScreen = () => {
     setTimeout(() => {
       if(user) {
         dispatch(setUserUid(user.uid))
-        navigation.replace(NavigationAppScreens.Main)
+        navigation.replace(NavigationAppScreens.Tabs)
       } 
       else {
         navigation.replace(NavigationAppScreens.Login)

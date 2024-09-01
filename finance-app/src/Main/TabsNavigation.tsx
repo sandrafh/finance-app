@@ -13,8 +13,9 @@ import { colors } from "../constants/ColorsConstants";
 import { SettingsNavigation } from "./settings/SettingsNavigation";
 import { NavigationMainScreens } from "../navigation/NavigationConstants";
 import { CategoriesNavigation } from "./categories/CategoriesNavigation";
+import { FontSize } from "../components/CustomText";
 
-export const Main = () => {
+export const Tabs = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -61,9 +62,11 @@ export const Main = () => {
         tabBarStyle: {
           backgroundColor: colors.bg,   
           borderTopWidth: 0,
+          
         },
         tabBarLabelStyle: {
-          top: 8
+          top: 8,
+          fontSize: FontSize.Small,
         },
       })}
     >

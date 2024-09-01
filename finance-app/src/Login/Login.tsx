@@ -45,7 +45,7 @@ export const Login = () => {
 
         if(response.user) {
           dispatch(setUserUid(response.user.uid))
-          navigation.replace(NavigationAppScreens.Main)
+          navigation.replace(NavigationAppScreens.Tabs)
         }
       }
       catch(error) {
