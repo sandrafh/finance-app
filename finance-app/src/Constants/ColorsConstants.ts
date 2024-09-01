@@ -23,4 +23,5 @@ export const colors = {
   bgInput: 'rgba(255, 255, 255, 0.35)',
   bg: '#01052D',
   bgCard: 'rgba(255, 255, 255, 0.25)',
+  bgModal: '#111538',
 }

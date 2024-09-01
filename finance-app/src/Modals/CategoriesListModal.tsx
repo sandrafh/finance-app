@@ -32,7 +32,7 @@ export const CategoriesListModal = ({ modalRef }: CategoriesListModalProps) => {
       ref={modalRef} 
       showBar={true} 
       wrapInGestureHandlerRootView={true} 
-      bg={colors.lightBlue} 
+      bg={colors.bgModal} 
       maxHeight={400} 
       style={styles.modal}
       closeOnEmptySpace={true}

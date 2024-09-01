@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   },
   modal: {
     borderRadius: 20,
-    paddingBottom: 32 
+    paddingBottom: 32,
   },
   item: {
     display: 'flex',
@@ -24,7 +24,6 @@ export const styles = StyleSheet.create({
   },
   separator: {
     height: 1,
-    backgroundColor: colors.black,
-    opacity: 0.1
+    backgroundColor: colors.separator
   }
 });
