@@ -32,7 +32,6 @@ export const Register = () => {
   const createProfile = async (response: FirebaseAuthTypes.UserCredential) => {
     dispatch(setUserUid(response.user.uid))
     db().ref(`users/${response.user.uid}`).set({ name })
-    db().ref(`users/${response.user.uid}/expenses`).set({ totalExpenses: 0 })
   }
 
   const registerAndGoToMainFlow = async () => {

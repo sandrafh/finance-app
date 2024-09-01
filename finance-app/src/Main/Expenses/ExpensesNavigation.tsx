@@ -13,7 +13,7 @@ export const ExpensesNavigation = () => {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: colors.primary,
+          backgroundColor: colors.bg,
         },
         headerTitleStyle: {
           color: colors.white,

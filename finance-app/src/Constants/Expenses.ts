@@ -4,4 +4,5 @@ export interface Expense {
   spent: number
   categoryUid: string
   date: string
+  notes: string
 }

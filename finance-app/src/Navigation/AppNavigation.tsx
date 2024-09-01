@@ -58,7 +58,7 @@ export const AppNavigation = () => {
         options={{
           title: 'New Category',
           headerStyle: {
-            backgroundColor: colors.primary,
+            backgroundColor: colors.bg,
           },
           headerTitleStyle: {
             color: colors.white,
@@ -79,7 +79,7 @@ export const AppNavigation = () => {
         options={{
           title: 'New Expense',
           headerStyle: {
-            backgroundColor: colors.primary,
+            backgroundColor: colors.bg,
           },
           headerTitleStyle: {
             color: colors.white,

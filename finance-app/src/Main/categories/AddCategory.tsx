@@ -95,12 +95,12 @@ export const AddCategory = () => {
               <Button 
                 icon={<EditIcon width={24} height={24} color={colors.grey5} />} 
                 onPress={showIconModal} 
-                variant={ButtonVariants.Tertiary} 
+                variant={ButtonVariants.Secondary} 
               />
               <Button 
                 icon={<ColorIcon width={24} height={24} color={colors.grey5} />} 
                 onPress={showColorModal} 
-                variant={ButtonVariants.Tertiary} 
+                variant={ButtonVariants.Secondary} 
               />
             </View>            
           </View>

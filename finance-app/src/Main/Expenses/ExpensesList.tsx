@@ -35,6 +35,8 @@ export const ExpensesList = ({ onSelect }: ExpensesListProps) => {
   }
 
   const groupExpensesByDate = (expenses: Expense[]): GroupedExpenses[] => {
+    console.log("expenses", expenses)
+    if(!expenses.length) return []
     const grouped = expenses.reduce((acc, expense) => {
       const formattedDate = formatDate(expense.date)
       
@@ -66,7 +68,9 @@ export const ExpensesList = ({ onSelect }: ExpensesListProps) => {
       {groupedExpenses.map(item => {
         return (
           <View key={item.date} style={styles.dayContainer}>
-            <CustomText style={styles.day} fontSize={FontSize.Small}>{item.date}</CustomText>
+            <View style={styles.dateContainer}>
+              <CustomText style={styles.date} fontSize={FontSize.Small}>{item?.date}</CustomText>
+            </View>
             <View style={styles.separator}></View>
             {item.expenses.map(expense => (
               <View key={expense.uid}>

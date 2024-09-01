@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
     flexGrow: 1,
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: colors.lightBlue,
   },
   card: {
     display: 'flex',
@@ -16,7 +15,7 @@ export const styles = StyleSheet.create({
     
     padding: 16,
     paddingHorizontal: 26,
-    backgroundColor: colors.grey0,
+    backgroundColor: colors.bg,
   },
   separator: {
     height: 1,
@@ -25,11 +24,15 @@ export const styles = StyleSheet.create({
   dayContainer: {
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: colors.lightBlue,
+    backgroundColor: colors.bg,
   },
-  day: {
+  dateContainer:{
+    backgroundColor: colors.bgCard,
+    borderRadius: 25,
+    marginHorizontal: 6
+  },
+  date: {
     padding: 8,
     paddingHorizontal: 26,
-    backgroundColor: colors.grey1,
   }
 })

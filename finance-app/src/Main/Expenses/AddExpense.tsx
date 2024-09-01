@@ -1,17 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { View, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import { styles } from './AddExpenseStyles';
 
-import DownArrowIcon from '../../assets/icons/down-arrow.svg'
-
 //External libraries
 import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal';
 import DateTimePicker from 'react-native-ui-datepicker';
-import dayjs from 'dayjs';
 //@ts-ignore
 import Toast from 'react-native-toast-message';
 //Internal components
@@ -26,6 +23,8 @@ import { getCategories } from '@/src/redux/slices/category';
 import { CategoryItem } from '../categories/CategoryItem';
 import { getSelectedCategory, setSelectedCategory } from '@/src/redux/slices/ui';
 import { getFontFamily } from '@/src/utils/fontFamily';
+import { CustomInput } from '@/src/components/CustomInput';
+import { CustomDropDown } from '@/src/components/CustomDropDown';
 
 
 export const AddExpense = () => {
@@ -41,6 +40,7 @@ export const AddExpense = () => {
   const [name, setName] = useState('')
   const [spent, setSpent] = useState('0')
   const [date, setDate] = useState(new Date(Date.now()).toISOString())
+  const [notes, setNotes] = useState('')
 
   useEffect(() => {
     dispatch(setSelectedCategory(categories[0]))
@@ -58,7 +58,8 @@ export const AddExpense = () => {
       name,
       spent: +spent,
       categoryUid: selectedCategory.uid,
-      date
+      date,
+      notes
     }
     console.log("expense: ",expense)
     addExpense(expense)
@@ -75,55 +76,62 @@ export const AddExpense = () => {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.formContainer}>
-        <View style={styles.field}>
-          <CustomText>Name</CustomText>
-          <TextInput
-            style={styles.input}
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.formContainer}>
+          <CustomInput
+            label="Name"
             placeholder="Enter name"
             value={name}
             onChangeText={setName}
           />  
-        </View>   
-
-        <View style={styles.field}>
-          <CustomText>Import (€)</CustomText>
-          {/* TODO: change for numeric input */}
-          <TextInput
-            style={styles.input}
+          <CustomInput
+            label="Import (€)"
             placeholder="Enter budget"
             value={spent}
             onChangeText={setSpent}
-            keyboardType="numeric"
-          />
-        </View>    
-        <View style={styles.field}>
-          <CustomText>Category</CustomText>
-          <TouchableOpacity style={styles.dropDown} onPress={onClickSelectCategory}>
+            inputMode="numeric"
+          />   
+          <CustomDropDown label="Category" onClick={onClickSelectCategory}>
             {selectedCategory && <CategoryItem category={selectedCategory} showBudget={false} />}
-            <DownArrowIcon width={24} color={colors.grey4} />
-          </TouchableOpacity>
-        </View> 
+          </CustomDropDown>
 
-        <View style={styles.field}>
-          <CustomText>Date</CustomText>
-          <DateTimePicker
-            mode="single"
-            date={date}
-            onChange={(params) => setDate((params.date as Date).toISOString())}
-            locale="es"
-            firstDayOfWeek={1}
-            calendarTextStyle={{fontFamily: getFontFamily(FontWeight.Normal)}}
-            headerTextStyle={{fontFamily: getFontFamily(FontWeight.Normal)}}
-            selectedItemColor={colors.primary}
+          <CustomInput
+            label="Notes"
+            placeholder="Enter notes"
+            multiline={true}
+            numberOfLines={4}
+            value={notes}
+            onChangeText={setNotes}
+            inputMode={'text'}
           />
-        </View>       
 
-        <Button style={styles.button} title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
-      </View>  
-      <CategoriesListModal modalRef={categoriesModalRef} />   
-    </ScrollView>
+          <View style={styles.field}>
+            <CustomText style={styles.label}>Date</CustomText>
+            <DateTimePicker
+              mode="single"
+              date={date}
+              onChange={(params) => setDate((params.date as Date).toISOString())}
+              locale="es-ES"
+              firstDayOfWeek={1}
+              calendarTextStyle={{fontFamily: getFontFamily(FontWeight.Normal), color: colors.white}}
+              headerTextStyle={{fontFamily: getFontFamily(FontWeight.Normal), color: colors.white}}
+              headerButtonColor={colors.white}
+              selectedItemColor={colors.primary}
+              monthContainerStyle={{backgroundColor: colors.bgCard, borderColor: 'transparent'}}
+              yearContainerStyle={{backgroundColor: colors.bgCard, borderColor: 'transparent'}}
+              weekDaysTextStyle={{fontFamily: getFontFamily(FontWeight.Normal), color: colors.white}}
+            />
+          </View>  
+        </View>           
+      </ScrollView>
+
+      <View style={styles.button}>
+        <Button title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
+      </View>
+
+      <CategoriesListModal modalRef={categoriesModalRef} /> 
+    </View>
   )
 }
 

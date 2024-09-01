@@ -3,11 +3,15 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,    
-    backgroundColor: colors.lightBlue,
+    flex: 1,
+    backgroundColor: colors.bg,
+    display: 'flex',
+  },
+  scrollContainer: {
+    flexGrow: 1,    
+    backgroundColor: colors.bg,
   },
   formContainer: {
-    flex: 1,
     padding: 24,
     display: 'flex',
     flexDirection: 'column',
@@ -18,30 +22,13 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     gap: 8
   },
-  input: {
-    borderWidth: 1,
-    borderColor: colors.grey2,
-    padding: 10,
-    borderRadius: 5,
-  },
   button: {
-    position: 'absolute',
-    bottom: 40,
-    left: 24,
-    width: '100%'
+   padding: 20,
+   marginBottom: 20
   },
-  dropDown: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-
-    borderWidth: 1,
-    borderColor: colors.grey2,
-    borderRadius: 5,
-
-    padding: 10,
-    paddingLeft: 12,    
-    height: 44
+  label: {
+    color: colors.white,
+    marginBottom: 8,
+    marginLeft: 16,
   }
 })
