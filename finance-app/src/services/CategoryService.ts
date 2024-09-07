@@ -18,6 +18,12 @@ export const CategoryService = () => {
         const data = snapshot.val()
         if(data) {
           const categories = Object.entries(data).map(([key, value]: any) => ({ ...value, uid: key }))
+          categories.forEach(category => {
+            if(!!category?.categories) {
+              category.categories = Object.entries(category.categories).map(([key, value]: any) => ({ ...value, uid: key })
+              )
+            }
+          })
           dispatch(setCategories(categories))
         }
       })
@@ -28,6 +34,11 @@ export const CategoryService = () => {
 
   const addCategory = (category: Partial<Category>) => {
     try {
+      console.log("category: ", category)
+      if(category.parentCategoryUid) {
+        db().ref(`users/${userUid}/categories/${category.parentCategoryUid}/categories/${v4()}`).set(category)
+        return
+      }
       db().ref(`users/${userUid}/categories/${v4()}`).set(category)
     } catch(e) {
       console.log("Error adding category", e)

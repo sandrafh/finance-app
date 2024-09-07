@@ -35,7 +35,6 @@ export const ExpensesList = ({ onSelect }: ExpensesListProps) => {
   }
 
   const groupExpensesByDate = (expenses: Expense[]): GroupedExpenses[] => {
-    console.log("expenses", expenses)
     if(!expenses.length) return []
     const grouped = expenses.reduce((acc, expense) => {
       const formattedDate = formatDate(expense.date)

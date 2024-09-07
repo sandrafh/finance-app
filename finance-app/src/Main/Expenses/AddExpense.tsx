@@ -25,6 +25,7 @@ import { getSelectedCategory, setSelectedCategory } from '@/src/redux/slices/ui'
 import { getFontFamily } from '@/src/utils/fontFamily';
 import { CustomInput } from '@/src/components/CustomInput';
 import { CustomDropDown } from '@/src/components/CustomDropDown';
+import { Category } from '@/src/constants/Category';
 
 
 export const AddExpense = () => {
@@ -61,7 +62,6 @@ export const AddExpense = () => {
       date,
       notes
     }
-    console.log("expense: ",expense)
     addExpense(expense)
 
     Toast.show({
@@ -73,6 +73,10 @@ export const AddExpense = () => {
 
   const onClickSelectCategory = () => {
     categoriesModalRef.current?.show()
+  }
+
+  const onSelectCategory = (category: Category) => {
+    dispatch(setSelectedCategory(category))
   }
 
   return (
@@ -130,7 +134,7 @@ export const AddExpense = () => {
         <Button title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
       </View>
 
-      <CategoriesListModal modalRef={categoriesModalRef} /> 
+      <CategoriesListModal modalRef={categoriesModalRef} onSelectCategory={(category) => onSelectCategory(category)}/> 
     </View>
   )
 }

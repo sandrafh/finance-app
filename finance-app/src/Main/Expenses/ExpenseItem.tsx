@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { CustomText, FontSize, FontWeight } from "@/src/components/CustomText";
 import { Expense } from "@/src/constants/Expenses";
 import { getCategories } from "@/src/redux/slices/category";
+import { findCategory } from "@/src/utils/functions";
 
 
 interface ExpenseItemProps {
@@ -26,7 +27,7 @@ export const ExpenseItem = ({ expense, showCategory }: ExpenseItemProps) => {
 
   const getCategory = () => {
     if (!showCategory) return null
-    const cateogory = categories.find(category => category.uid === expense.categoryUid)
+    const cateogory = findCategory(categories, expense.categoryUid)
     return (
       <Icon key={cateogory?.icon} name={cateogory?.icon} size={24} color={cateogory?.color}/>
     )

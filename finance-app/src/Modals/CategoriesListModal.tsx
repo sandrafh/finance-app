@@ -1,29 +1,28 @@
 import { RefObject } from "react";
 import { TouchableOpacity, View } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { styles } from './CategoriesListModalStyles'
 //External components
 import SwipeModal, { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal';
 //Internal components
 import { colors } from "../constants/ColorsConstants";
-import { CategoriesList } from "../main/categories/CategoriesList";
 import { Category } from "../constants/Category";
-import { setSelectedCategory } from "../redux/slices/ui";
-import { getCategories } from "../redux/slices/category";
+import { getCategories, getSubCategories } from "../redux/slices/category";
 import { CategoryItem } from "../main/categories/CategoryItem";
 
 interface CategoriesListModalProps {
   modalRef: RefObject<SwipeModalPublicMethods>
+  onSelectCategory: (category: Category) => void
 }
 
-export const CategoriesListModal = ({ modalRef }: CategoriesListModalProps) => {   
-  const dispatch = useDispatch()
-
+export const CategoriesListModal = ({ modalRef, onSelectCategory }: CategoriesListModalProps) => {   
   const categories = useSelector((state: any) => getCategories(state)) 
+  const subCategories = useSelector((state: any) => getSubCategories(state))
+  const allCategories = [...categories, ...subCategories]
 
-  const onSelectCategory = (category: Category) => {
-    dispatch(setSelectedCategory(category))
+  const onClickCategory = (category: Category) => {
+    onSelectCategory(category)
     modalRef.current?.hide()
   }
 
@@ -42,10 +41,10 @@ export const CategoriesListModal = ({ modalRef }: CategoriesListModalProps) => {
       scrollEnabled={true}
     >     
       <View style={styles.viewContainer}>
-        {categories.map(category => {
+        {allCategories.map(category => {
           return (
             <View key={category.uid}>
-              <TouchableOpacity style={styles.item} onPress={() => onSelectCategory(category)}>
+              <TouchableOpacity style={styles.item} onPress={() => onClickCategory(category)}>
                 <CategoryItem category={category} showBudget={false}/>
               </TouchableOpacity>
               <View style={styles.separator}></View>

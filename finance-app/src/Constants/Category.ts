@@ -6,6 +6,8 @@ export interface Category {
   color: string
   expenses: CategoryExpenses[]
   totalSpent: number
+  parentCategoryUid?: string
+  categories?: Category[]
 }
 
 export interface CategoryExpenses {

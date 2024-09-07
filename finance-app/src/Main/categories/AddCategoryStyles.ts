@@ -39,4 +39,20 @@ export const styles = StyleSheet.create({
 
     elevation: 8,
   },
+  checkboxContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    padding: 6,
+    gap: 12
+  },
+  checkbox: {
+    display: 'flex',
+    alignItems: 'center',
+    width: 36,
+    height: 36,
+    padding: 4,
+    borderRadius: 8,    
+  }
 })
