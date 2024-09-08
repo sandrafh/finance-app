@@ -22,9 +22,12 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     gap: 8
   },
-  button: {
-   padding: 20,
-   marginBottom: 30
+  buttons: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 12,
+    padding: 20,
+    marginBottom: 30
   },
   label: {
     color: colors.white,

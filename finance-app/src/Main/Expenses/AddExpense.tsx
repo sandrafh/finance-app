@@ -26,25 +26,28 @@ import { getFontFamily } from '@/src/utils/fontFamily';
 import { CustomInput } from '@/src/components/CustomInput';
 import { CustomDropDown } from '@/src/components/CustomDropDown';
 import { Category } from '@/src/constants/Category';
+import { Expense } from '@/src/constants/Expenses';
 
-
-export const AddExpense = () => {
+export const AddExpense = ({ route }: any) => {
   const dispatch = useDispatch()
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
   const categoriesModalRef = useRef<SwipeModalPublicMethods>(null)
 
-  const { addExpense } = ExpensesService()
+  const isEdit = route.params?.isEdit
+  const expense: Expense = route.params?.expense
+
+  const { addExpense, updateExpense, deleteExpense } = ExpensesService()
 
   const categories = useSelector((state: any) => getCategories(state))
   const selectedCategory = useSelector((state: any) => getSelectedCategory(state))
   
-  const [name, setName] = useState('')
-  const [spent, setSpent] = useState('0')
-  const [date, setDate] = useState(new Date(Date.now()).toISOString())
-  const [notes, setNotes] = useState('')
+  const [name, setName] = useState(expense?.name || '')
+  const [spent, setSpent] = useState(expense?.spent.toString() || '0')
+  const [date, setDate] = useState(expense?.date || new Date(Date.now()).toISOString())
+  const [notes, setNotes] = useState(expense?.notes || '')
 
   useEffect(() => {
-    dispatch(setSelectedCategory(categories[0]))
+    if(!isEdit) dispatch(setSelectedCategory(categories[0]))
   }, [])
 
   const handleSave = () => {
@@ -55,18 +58,24 @@ export const AddExpense = () => {
       })
       return
     }
-    const expense = {
+    const newExpense = {
+      uid: isEdit ? expense.uid : undefined,
       name,
       spent: +spent,
       categoryUid: selectedCategory.uid,
       date,
       notes
     }
-    addExpense(expense)
+    let toastText = 'Expense added successfully'
+    if(isEdit) {
+      toastText = 'Expense updated successfully'
+      updateExpense(newExpense)
+    }
+    else addExpense(newExpense)
 
     Toast.show({
       type: ToastTypes.Success,
-      text1: 'Expense added successfully'
+      text1: toastText
     })
     navigation.navigate(NavigationExpensesScreens.ExpensesView)
   }
@@ -77,6 +86,15 @@ export const AddExpense = () => {
 
   const onSelectCategory = (category: Category) => {
     dispatch(setSelectedCategory(category))
+  }
+
+  const handleDelete = () => {
+    deleteExpense(expense.uid)
+    Toast.show({
+      type: ToastTypes.Success,
+      text1: 'Expense deleted successfully'
+    })
+    navigation.navigate(NavigationExpensesScreens.ExpensesView)
   }
 
   return (
@@ -130,8 +148,9 @@ export const AddExpense = () => {
         </View>           
       </ScrollView>
 
-      <View style={styles.button}>
+      <View style={styles.buttons}>
         <Button title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
+        {isEdit && <Button title="Delete" onPress={handleDelete} variant={ButtonVariants.Danger} />}
       </View>
 
       <CategoriesListModal modalRef={categoriesModalRef} onSelectCategory={(category) => onSelectCategory(category)}/> 

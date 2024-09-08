@@ -22,4 +22,14 @@ export const styles = StyleSheet.create({
     height: 1,
     backgroundColor: colors.separator
   },
+  subCategoryCard: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',    
+    
+    padding: 16,
+    paddingRight: 26,
+    paddingLeft: 46,
+  }
 })

@@ -11,9 +11,10 @@ import { Category } from '@/src/constants/Category';
 
 interface CategoriesListProps {
   onSelect: (category: Category) => void
+  showBudget?: boolean
 }
 
-export const CategoriesList = ({ onSelect }: CategoriesListProps) => {
+export const CategoriesList = ({ onSelect, showBudget = true }: CategoriesListProps) => {
   const categories = useSelector((state: any) => getCategories(state))  
 
   return (
@@ -22,9 +23,19 @@ export const CategoriesList = ({ onSelect }: CategoriesListProps) => {
         return (
           <View key={category.uid}>
             <TouchableOpacity style={styles.card} onPress={() => onSelect(category)}>
-              <CategoryItem category={category} showBudget={true}/>
+              <CategoryItem category={category} showBudget={showBudget}/>
             </TouchableOpacity>
             <View style={styles.separator}></View>
+            {(!!category?.categories) && (category?.categories as Category[]).map(subcategory => {
+              return (
+                <>
+                  <TouchableOpacity style={styles.subCategoryCard} key={subcategory.uid} onPress={() => onSelect(subcategory)}>
+                    <CategoryItem category={subcategory} showBudget={showBudget}/>
+                  </TouchableOpacity>
+                  <View style={styles.separator}></View>
+                </>                
+              )
+            })}
           </View>          
         )        
       })}       

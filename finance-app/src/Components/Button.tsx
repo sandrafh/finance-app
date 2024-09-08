@@ -7,7 +7,7 @@ import { CustomText } from "./CustomText"
 export enum ButtonVariants {
   Primary = 'primary',
   Secondary = 'secondary',
-  Tertiary = 'tertiary'
+  Danger = 'danger'
 }
 
 interface ButtonProps {
@@ -25,8 +25,8 @@ export const Button = ({ title, onPress, variant, icon, style }: ButtonProps) =>
         return styles.containerPrimary
       case ButtonVariants.Secondary:
         return styles.containerSecondary
-      case ButtonVariants.Tertiary:
-        return styles.containerTertiary
+      case ButtonVariants.Danger:
+        return styles.containerDanger
       default:
         return styles.containerPrimary
     }
@@ -38,8 +38,8 @@ export const Button = ({ title, onPress, variant, icon, style }: ButtonProps) =>
         return styles.textPrimary
       case ButtonVariants.Secondary:
         return styles.textSecondary
-      case ButtonVariants.Tertiary:
-        return styles.textTertiary
+      case ButtonVariants.Danger:
+        return styles.textDanger
       default:
         return styles.textPrimary
     }
@@ -70,6 +70,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  containerDanger: {
+    height: 44,
+    minWidth: 44,
+    backgroundColor: colors.danger,
+    borderRadius: 25,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   textPrimary: {
     fontSize: 16,
     fontWeight: "bold",
@@ -79,5 +87,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: colors.black,
+  },
+  textDanger: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: colors.white,
   },
 })

@@ -24,4 +24,5 @@ export const colors = {
   bg: '#01052D',
   bgCard: 'rgba(255, 255, 255, 0.25)',
   bgModal: '#111538',
+  danger: '#fc6232'
 }

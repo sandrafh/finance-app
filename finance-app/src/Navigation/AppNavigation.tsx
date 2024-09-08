@@ -16,10 +16,16 @@ import { AddCategory } from "../main/categories/AddCategory";
 import { IconButton } from "../components/IconButton";
 import { colors } from "../constants/ColorsConstants";
 import { AddExpense } from "../main/expenses/AddExpense";
+import { Expense } from "../constants/Expenses";
 
 
-export const AppNavigation = () => {
-  const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  [NavigationAppScreens.AddExpense]: { isEdit: boolean, expense: Expense }
+}
+const Stack = createNativeStackNavigator<RootStackParamList>()
+
+
+export const AppNavigation = () => {  
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   return (
@@ -76,8 +82,8 @@ export const AppNavigation = () => {
       <Stack.Screen
         name={NavigationAppScreens.AddExpense}
         component={AddExpense}
-        options={{
-          title: 'New Expense',
+        options={(props) => ({
+          title: props.route?.params?.isEdit ? 'Edit Expense' : 'New Expense',
           headerStyle: {
             backgroundColor: colors.bg,
           },
@@ -92,7 +98,7 @@ export const AppNavigation = () => {
               />
             )
           }
-        }}
+        })}
       />
     </Stack.Navigator>
   );
