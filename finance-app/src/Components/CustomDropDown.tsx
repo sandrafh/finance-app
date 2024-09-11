@@ -10,19 +10,21 @@ interface TextProps {
   children: any
   onClick: () => void
   label?: string
+  disabled?: boolean
 }
 
 export const CustomDropDown = (props: TextProps) => {
   const {
     label,
     children,
-    onClick
+    onClick,
+    disabled = false
   } = props
 
   return (
     <View>
       {label && <CustomText style={styles.label} fontSize={FontSize.Medium} fontWeight={FontWeight.Normal}>{label}</CustomText>}
-      <TouchableOpacity style={styles.dropDown} onPress={onClick}>
+      <TouchableOpacity style={styles.dropDown} onPress={onClick} disabled={disabled}>
         {children}
         <DownArrowIcon width={24} color={colors.white} />
       </TouchableOpacity>

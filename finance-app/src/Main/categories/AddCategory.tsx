@@ -142,7 +142,7 @@ export const AddCategory = ({ route }: any) => {
             inputMode="numeric"
           />  
           {showSubcategoryCheckbox && (
-            <TouchableOpacity style={styles.checkboxContainer} onPress={() => setIsChecked(!isChecked)}>
+            <TouchableOpacity style={styles.checkboxContainer} onPress={() => setIsChecked(!isChecked)} disabled={isEdit}>
               <View style={[{backgroundColor: isChecked ? colors.primary : colors.bgInput}, styles.checkbox]}>
                 {isChecked && (          
                   <CheckIcon width={28} height={28} color={colors.white} />                      
@@ -153,7 +153,7 @@ export const AddCategory = ({ route }: any) => {
           )}          
 
           {isChecked && (
-            <CustomDropDown label="Parent Category" onClick={onClickSelectParentCategory}>
+            <CustomDropDown label="Parent Category" onClick={onClickSelectParentCategory} disabled={isEdit}>
               {parentCategory && <CategoryItem category={parentCategory} showBudget={false} />}
             </CustomDropDown>
           )}   
