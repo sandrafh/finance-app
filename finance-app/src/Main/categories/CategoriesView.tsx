@@ -9,21 +9,28 @@ import { styles } from './CategoriesViewStyles';
 import { Button, ButtonVariants } from '@/src/components/Button';
 import { NavigationAppScreens } from '@/src/navigation/NavigationConstants';
 import { CategoriesList } from './CategoriesList';
-import { useDispatch } from 'react-redux';
-import { setSelectedCategory } from '@/src/redux/slices/category';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategories, setCurrentCategory } from '@/src/redux/slices/category';
+import { setSelectedParentCategory } from '@/src/redux/slices/ui';
+import { Category } from '@/src/constants/Category';
 
 
 export const CategoriesView = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
+  const categories = useSelector((state: any) => getCategories(state))
+
   const onAddCategory = () => () => {
     navigation.navigate(NavigationAppScreens.AddCategory)
   }
 
   const onSelectCategory = (category: any) => {
-    dispatch(setSelectedCategory(category))
-    navigation.navigate(NavigationAppScreens.AddCategory)
+    if(category.parentCategoryUid) {
+      const parentCategory = categories.find((c: any) => c.uid === category.parentCategoryUid)
+      dispatch(setSelectedParentCategory(parentCategory as Category))
+    }
+    navigation.navigate(NavigationAppScreens.AddCategory, { isEdit: true, category })
   }
 
   return (

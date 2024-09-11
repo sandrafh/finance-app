@@ -37,6 +37,7 @@ export const ExpensesService = () => {
       db().ref(`users/${userUid}/expenses/${expenseUid}`).set(expense)   
 
       const categoryUid = expense.categoryUid
+      
       const category = categories.find((category: Category) => category.uid === categoryUid) as Category
       if(!!category) {
         db().ref(`users/${userUid}/categories/${categoryUid}/expenses/${expenseUid}`).set({spent: expense.spent})
@@ -76,17 +77,24 @@ export const ExpensesService = () => {
     try {
       await deleteExpense(expense.uid)
 
+      const expenseUid = expense?.uid
+      db().ref(`users/${userUid}/expenses/${expenseUid}`).set(expense)  
+
       const oldExpense = expenses.find((exp: Expense) => exp.uid === expense.uid) as Expense
       const diffSpent = expense.spent - oldExpense.spent
-      
-      const expenseUid = expense?.uid
-      db().ref(`users/${userUid}/expenses/${expenseUid}`).set(expense)   
+      const oldCategoryUid = oldExpense.categoryUid
+      const isSameCategory = oldCategoryUid === expense.categoryUid
+      let newSpent = isSameCategory ? diffSpent : expense.spent
 
       const categoryUid = expense.categoryUid
       const category = categories.find((category: Category) => category.uid === categoryUid) as Category
       if(!!category) {
+        const oldCategory = findCategory(categories, oldExpense.categoryUid)
+        const newCategoryIsOldParent = oldCategory?.parentCategoryUid === category.uid
+        newSpent = newCategoryIsOldParent ? diffSpent : newSpent
+
         db().ref(`users/${userUid}/categories/${categoryUid}/expenses/${expenseUid}`).set({spent: expense.spent})
-        const newTotalSpent = +(category?.totalSpent as number) + (diffSpent as number) 
+        const newTotalSpent = +(category?.totalSpent as number) + (newSpent as number) 
         db().ref(`users/${userUid}/categories/${categoryUid}`).update({ totalSpent: newTotalSpent })
       }
       else {
@@ -101,16 +109,21 @@ export const ExpensesService = () => {
           }
         })
         const parentCategory = categories.find((category: any) => category.uid === subCategory.parentCategoryUid) as Category
+
+        const oldCategory = findCategory(categories, oldExpense.categoryUid)
+        const newCategoryIsOldChild = oldCategory?.categories?.some((c: any) => c.uid === categoryUid)
+        const newChildSpent = newSpent
+        const newParentSpent = newCategoryIsOldChild ? diffSpent : newSpent
         
         //Add expense to parent category
         db().ref(`users/${userUid}/categories/${parentCategory.uid}/expenses/${expenseUid}`).set({spent: expense.spent})
         //Add expense to category itself
         db().ref(`users/${userUid}/categories/${parentCategory.uid}/categories/${subCategory.uid}/expenses/${expenseUid}`).set({spent: expense.spent})
         //Update total spent for parent category
-        const newTotalSpentParentCategory = +(parentCategory.totalSpent) + (diffSpent as number) 
+        const newTotalSpentParentCategory = +(parentCategory.totalSpent) + (newParentSpent as number) 
         db().ref(`users/${userUid}/categories/${parentCategory.uid}`).update({ totalSpent: newTotalSpentParentCategory })
         //Update total spent for category itself
-        const newTotalSpentCategory = +(subCategory.totalSpent) + (diffSpent as number) 
+        const newTotalSpentCategory = +(subCategory.totalSpent) + (newChildSpent as number) 
         db().ref(`users/${userUid}/categories/${parentCategory.uid}/categories/${subCategory.uid}`).update({ totalSpent: newTotalSpentCategory })
       }
     } catch(e) {
@@ -123,8 +136,9 @@ export const ExpensesService = () => {
       const expense = expenses.find((exp: Expense) => exp.uid === expenseUid) as Expense
       db().ref(`users/${userUid}/expenses/${expenseUid}`).remove()
 
-      const categoryUid = expense.categoryUid
+      const categoryUid = expense?.categoryUid
       const category = findCategory(categories, categoryUid)
+      if(!category?.uid) return
       if(!category.parentCategoryUid) {
         db().ref(`users/${userUid}/categories/${categoryUid}/expenses/${expenseUid}`).remove()
         const newTotalSpent = +(category?.totalSpent as number) - (expense.spent as number) 

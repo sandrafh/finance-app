@@ -29,23 +29,28 @@ import { CustomDropDown } from '@/src/components/CustomDropDown';
 import { CategoryItem } from './CategoryItem';
 import { CategoriesListModal } from '@/src/modals/CategoriesListModal';
 import { getSelectedParentCategory, setSelectedParentCategory } from '@/src/redux/slices/ui';
+import category from '@/src/redux/slices/category';
 
 
-export const AddCategory = () => {
+export const AddCategory = ({ route }: any) => {
   const dispatch = useDispatch()
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
   const colorModalRef = useRef<SwipeModalPublicMethods>(null)
   const iconModalRef = useRef<SwipeModalPublicMethods>(null)
   const categoriesModalRef = useRef<SwipeModalPublicMethods>(null)
 
-  const { addCategory } = CategoryService()
+  const isEdit = route.params?.isEdit
+  const category: Category = route.params?.category
+  const showSubcategoryCheckbox = ((isEdit && category.parentCategoryUid) || !isEdit) ? true : false
+
+  const { addCategory, updateCategory, deleteCategory } = CategoryService()
   const parentCategory = useSelector((state: RootState) => getSelectedParentCategory(state))
   
-  const [name, setName] = useState('')
-  const [color, setColor] = useState(colors.primary)
-  const [icon, setIcon] = useState('home')
-  const [budget, setBudget] = useState('0')
-  const [isChecked, setIsChecked] = useState(false)
+  const [name, setName] = useState(category?.name || '')
+  const [color, setColor] = useState(category?.color || colors.primary)
+  const [icon, setIcon] = useState(category?.icon || 'home')
+  const [budget, setBudget] = useState(category?.budget.toString() || '0')
+  const [isChecked, setIsChecked] = useState(category?.parentCategoryUid ? true : false)
 
   const handleSave = () => {
     if(!name || !color || !icon || !budget) {
@@ -55,20 +60,37 @@ export const AddCategory = () => {
       })
       return
     }
-    const category: Partial<Category> = {
+    /*uid: string
+  name: string
+  budget: number
+  icon: string
+  color: string
+  expenses: CategoryExpenses[]
+  totalSpent: number
+  parentCategoryUid?: string
+  categories?: Category[]
+  */
+    const newCategory: Partial<Category> = {
+      uid: isEdit ? category.uid : undefined,
       name,
       color,
       icon,
       budget: +budget,
-      totalSpent: 0,
-      expenses: [],
-      parentCategoryUid: isChecked ? parentCategory.uid : undefined
+      totalSpent: category?.totalSpent || 0,
+      expenses: category?.expenses || [],
+      parentCategoryUid: isChecked ? parentCategory.uid : undefined,
+      categories: category?.categories || []
     }
-    addCategory(category)
+    let toastText = 'Category added successfully'
+    if(isEdit) {
+      toastText = 'Category updated successfully'
+      updateCategory(newCategory)
+    }
+    else addCategory(newCategory)
 
     Toast.show({
       type: ToastTypes.Success,
-      text1: 'Category added successfully'
+      text1: toastText
     })
     navigation.navigate(NavigationCategoriesScreens.CategoriesView)
   }
@@ -85,52 +107,69 @@ export const AddCategory = () => {
     dispatch(setSelectedParentCategory(category))
   }
 
+  const handleDelete = () => {
+    deleteCategory(category)
+    Toast.show({
+      type: ToastTypes.Success,
+      text1: 'Category deleted successfully'
+    })
+    navigation.navigate(NavigationCategoriesScreens.CategoriesView)
+  }
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.formContainer}>
-        <TouchableOpacity style={styles.icon} onPress={showIconModal}>
-          <Icon
-            key={icon}
-            name={icon}
-            size={124}
-            color={color}
-          />
-        </TouchableOpacity>  
-        <CustomInput
-          label="Name"
-          placeholder="Enter name"
-          value={name}
-          onChangeText={setName}
-        />   
-        <CustomInput
-          label="Monthly Budget (€)"
-          placeholder="Enter budget"
-          value={budget}
-          onChangeText={setBudget}
-          inputMode="numeric"
-        />  
-        <TouchableOpacity style={styles.checkboxContainer} onPress={() => setIsChecked(!isChecked)}>
-          <View style={[{backgroundColor: isChecked ? colors.primary : colors.bgInput}, styles.checkbox]}>
-            {isChecked && (          
-              <CheckIcon width={28} height={28} color={colors.white} />                      
-            )}
-          </View>  
-          <CustomText >Is Subcategory</CustomText>
-        </TouchableOpacity>
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.formContainer}>
+          <TouchableOpacity style={styles.icon} onPress={showIconModal}>
+            <Icon
+              key={icon}
+              name={icon}
+              size={124}
+              color={color}
+            />
+          </TouchableOpacity>  
+          <CustomInput
+            label="Name"
+            placeholder="Enter name"
+            value={name}
+            onChangeText={setName}
+          />   
+          <CustomInput
+            label="Monthly Budget (€)"
+            placeholder="Enter budget"
+            value={budget}
+            onChangeText={setBudget}
+            inputMode="numeric"
+          />  
+          {showSubcategoryCheckbox && (
+            <TouchableOpacity style={styles.checkboxContainer} onPress={() => setIsChecked(!isChecked)}>
+              <View style={[{backgroundColor: isChecked ? colors.primary : colors.bgInput}, styles.checkbox]}>
+                {isChecked && (          
+                  <CheckIcon width={28} height={28} color={colors.white} />                      
+                )}
+              </View>  
+              <CustomText >Is Subcategory</CustomText>
+            </TouchableOpacity>
+          )}          
 
-        {isChecked && (
-          <CustomDropDown label="Parent Category" onClick={onClickSelectParentCategory}>
-            {parentCategory && <CategoryItem category={parentCategory} showBudget={false} />}
-          </CustomDropDown>
-        )}        
+          {isChecked && (
+            <CustomDropDown label="Parent Category" onClick={onClickSelectParentCategory}>
+              {parentCategory && <CategoryItem category={parentCategory} showBudget={false} />}
+            </CustomDropDown>
+          )}   
+        </View>  
+      </ScrollView>
 
-        <Button style={styles.button} title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
-      </View>     
+        <View style={styles.buttonContainer}>
+          <Button title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
+          {isEdit && <Button title="Delete" onPress={handleDelete} variant={ButtonVariants.Danger} />}
+        </View>
 
-      <ColorPickerModal modalRef={colorModalRef} onSelectColor={(color) => setColor(color.hex)} color={color} />  
-      <IconPickerModal modalRef={iconModalRef} selectedIcon={icon} onSelectIcon={(icon) => setIcon(icon)} color={color} colorPickerModalRef={colorModalRef} />
-      <CategoriesListModal modalRef={categoriesModalRef} onSelectCategory={(category) => onSelectCategory(category)}/> 
-    </ScrollView>
+        <ColorPickerModal modalRef={colorModalRef} onSelectColor={(color) => setColor(color.hex)} color={color} />  
+        <IconPickerModal modalRef={iconModalRef} selectedIcon={icon} onSelectIcon={(icon) => setIcon(icon)} color={color} colorPickerModalRef={colorModalRef} />
+        <CategoriesListModal modalRef={categoriesModalRef} onSelectCategory={(category) => onSelectCategory(category)}/> 
+    </View>
+    
   )
 }
 

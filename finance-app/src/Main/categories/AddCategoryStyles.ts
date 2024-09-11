@@ -3,7 +3,12 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,    
+    flex: 1,
+    backgroundColor: colors.bg,
+    display: 'flex',
+  },
+  scrollContainer: {
+    flexGrow: 1,    
     backgroundColor: colors.bg,
   },
   formContainer: {
@@ -12,12 +17,6 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     gap: 16
-  },
-  button: {
-    position: 'absolute',
-    bottom: 50,
-    left: 24,
-    width: '100%'
   },
   icon: {
     display: 'flex',
@@ -54,5 +53,12 @@ export const styles = StyleSheet.create({
     height: 36,
     padding: 4,
     borderRadius: 8,    
+  },
+  buttonContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 12,
+    padding: 20,
+    marginBottom: 30
   }
 })

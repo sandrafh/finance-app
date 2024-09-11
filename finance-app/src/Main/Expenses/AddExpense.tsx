@@ -69,7 +69,7 @@ export const AddExpense = ({ route }: any) => {
     let toastText = 'Expense added successfully'
     if(isEdit) {
       toastText = 'Expense updated successfully'
-      updateExpense(newExpense)
+      updateExpense(newExpense as Expense)
     }
     else addExpense(newExpense)
 

@@ -17,16 +17,23 @@ import { IconButton } from "../components/IconButton";
 import { colors } from "../constants/ColorsConstants";
 import { AddExpense } from "../main/expenses/AddExpense";
 import { Expense } from "../constants/Expenses";
+import { CategoryDetails } from "../main/categories/CategoryDetails";
+import { useSelector } from "react-redux";
+import { getCurrentCategory } from "../redux/slices/category";
+import { Category } from "../constants/Category";
 
 
 export type RootStackParamList = {
   [NavigationAppScreens.AddExpense]: { isEdit: boolean, expense: Expense }
+  [NavigationAppScreens.AddCategory]: { isEdit: boolean, category: Category }
 }
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 
 export const AppNavigation = () => {  
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
+
+  const currentCategory = useSelector((state: any) => getCurrentCategory(state))
 
   return (
     <Stack.Navigator>
@@ -80,6 +87,27 @@ export const AppNavigation = () => {
         }}
       />
       <Stack.Screen
+        name={NavigationAppScreens.CategoryDetails}
+        component={CategoryDetails}
+        options={{
+          title: currentCategory?.name,
+          headerStyle: {
+            backgroundColor: colors.bg,
+          },
+          headerTitleStyle: {
+            color: colors.white,
+          },         
+          headerLeft: () => {
+            return (
+              <IconButton 
+                icon={<BackArrowIcon width={16} height={16} color={colors.white} />} 
+                onPress={() => navigation.navigate(NavigationAppScreens.Tabs)} 
+              />
+            )
+          }
+        }}
+      />
+      <Stack.Screen
         name={NavigationAppScreens.AddExpense}
         component={AddExpense}
         options={(props) => ({
@@ -94,7 +122,7 @@ export const AppNavigation = () => {
             return (
               <IconButton 
                 icon={<BackArrowIcon width={16} height={16} color={colors.white} />} 
-                onPress={() => navigation.navigate(NavigationAppScreens.Tabs)} 
+                onPress={() => navigation.goBack()} 
               />
             )
           }

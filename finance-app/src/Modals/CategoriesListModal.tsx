@@ -35,7 +35,7 @@ export const CategoriesListModal = ({ modalRef, onSelectCategory }: CategoriesLi
       scrollEnabled={true}
     >     
       <View style={styles.viewContainer}>
-        <CategoriesList onSelect={onClickCategory} showBudget={false} />
+        <CategoriesList onSelect={onClickCategory} showBudget={false} haveRightArrow={false} backgroundColor={colors.bgModal} />
       </View>         
     </SwipeModal>
   )

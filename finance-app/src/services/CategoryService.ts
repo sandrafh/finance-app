@@ -45,8 +45,34 @@ export const CategoryService = () => {
     }    
   }
 
+  const updateCategory = (category: Partial<Category>) => {
+    try {
+      if(category.parentCategoryUid) {
+        db().ref(`users/${userUid}/categories/${category.parentCategoryUid}/categories/${category.uid}`).update(category)
+        return
+      }
+      db().ref(`users/${userUid}/categories/${category.uid}`).update(category)
+    } catch(e) {
+      console.log("Error updating category", e)
+    }    
+  }
+
+  const deleteCategory = (category: Category) => {
+    try {
+      if(category.parentCategoryUid) {
+        db().ref(`users/${userUid}/categories/${category.parentCategoryUid}/categories/${category.uid}`).remove()
+        return
+      }
+      db().ref(`users/${userUid}/categories/${category.uid}`).remove()
+    } catch(e) {
+      console.log("Error deleting category", e)
+    }
+  }
+
   return {
     subscribeToCategories,
-    addCategory
+    addCategory,
+    updateCategory,
+    deleteCategory
   }
 }

@@ -7,4 +7,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 12,
   },
+  end: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
 })

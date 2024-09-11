@@ -17,10 +17,12 @@ interface GroupedExpenses {
 
 interface ExpensesListProps {
   onSelect: (expense: Expense) => void
+  expensesList?: Expense[]
 }
 
-export const ExpensesList = ({ onSelect }: ExpensesListProps) => {
-  const expenses = useSelector((state: any) => getExpenses(state))  
+export const ExpensesList = ({ onSelect, expensesList }: ExpensesListProps) => {
+  const allExpenses = useSelector((state: any) => getExpenses(state))  
+  const expenses = expensesList?.length ? expensesList : allExpenses
 
   const [groupedExpenses, setGroupedExpenses] = useState<GroupedExpenses[]>([])
 

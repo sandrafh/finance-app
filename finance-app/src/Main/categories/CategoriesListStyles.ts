@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
     flexGrow: 1,
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: colors.bg,
     paddingVertical: 16,
   },
   card: {

@@ -1,3 +1,4 @@
+import { CategoryDetails } from "../main/categories/CategoryDetails"
 import { AddExpense } from "../main/expenses/AddExpense"
 
 export const NavigationAppScreens = {
@@ -6,6 +7,7 @@ export const NavigationAppScreens = {
   Register: "Register",
   Tabs: "Tabs",
   AddCategory : "AddCategory",
+  CategoryDetails : "CategoryDetails",
   AddExpense : "AddExpense",
 }
 
