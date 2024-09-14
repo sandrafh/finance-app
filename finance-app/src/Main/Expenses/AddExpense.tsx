@@ -36,7 +36,7 @@ export const AddExpense = ({ route }: any) => {
   const isEdit = route.params?.isEdit
   const expense: Expense = route.params?.expense
 
-  const { addExpense, updateExpense, deleteExpense } = ExpensesService()
+  const { addExpense, updateExpense } = ExpensesService()
 
   const categories = useSelector((state: any) => getCategories(state))
   const selectedCategory = useSelector((state: any) => getSelectedCategory(state))
@@ -86,15 +86,6 @@ export const AddExpense = ({ route }: any) => {
 
   const onSelectCategory = (category: Category) => {
     dispatch(setSelectedCategory(category))
-  }
-
-  const handleDelete = () => {
-    deleteExpense(expense.uid)
-    Toast.show({
-      type: ToastTypes.Success,
-      text1: 'Expense deleted successfully'
-    })
-    navigation.navigate(NavigationExpensesScreens.ExpensesView)
   }
 
   return (
@@ -150,7 +141,6 @@ export const AddExpense = ({ route }: any) => {
 
       <View style={styles.buttons}>
         <Button title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
-        {isEdit && <Button title="Delete" onPress={handleDelete} variant={ButtonVariants.Danger} />}
       </View>
 
       <CategoriesListModal modalRef={categoriesModalRef} onSelectCategory={(category) => onSelectCategory(category)}/> 

@@ -43,7 +43,7 @@ export const AddCategory = ({ route }: any) => {
   const category: Category = route.params?.category
   const showSubcategoryCheckbox = ((isEdit && category.parentCategoryUid) || !isEdit) ? true : false
 
-  const { addCategory, updateCategory, deleteCategory } = CategoryService()
+  const { addCategory, updateCategory } = CategoryService()
   const parentCategory = useSelector((state: RootState) => getSelectedParentCategory(state))
   
   const [name, setName] = useState(category?.name || '')
@@ -60,16 +60,6 @@ export const AddCategory = ({ route }: any) => {
       })
       return
     }
-    /*uid: string
-  name: string
-  budget: number
-  icon: string
-  color: string
-  expenses: CategoryExpenses[]
-  totalSpent: number
-  parentCategoryUid?: string
-  categories?: Category[]
-  */
     const newCategory: Partial<Category> = {
       uid: isEdit ? category.uid : undefined,
       name,
@@ -105,15 +95,6 @@ export const AddCategory = ({ route }: any) => {
 
   const onSelectCategory = (category: Category) => {
     dispatch(setSelectedParentCategory(category))
-  }
-
-  const handleDelete = () => {
-    deleteCategory(category)
-    Toast.show({
-      type: ToastTypes.Success,
-      text1: 'Category deleted successfully'
-    })
-    navigation.navigate(NavigationCategoriesScreens.CategoriesView)
   }
 
   return (
@@ -162,7 +143,6 @@ export const AddCategory = ({ route }: any) => {
 
         <View style={styles.buttonContainer}>
           <Button title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
-          {isEdit && <Button title="Delete" onPress={handleDelete} variant={ButtonVariants.Danger} />}
         </View>
 
         <ColorPickerModal modalRef={colorModalRef} onSelectColor={(color) => setColor(color.hex)} color={color} />  

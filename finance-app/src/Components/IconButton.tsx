@@ -6,11 +6,12 @@ import { colors } from "../constants/ColorsConstants"
 interface IconButtonProps {
   icon: any
   onPress: () => void
+  backgroundColor?: string
 }
 
-export const IconButton = ({ icon, onPress }: IconButtonProps) => {
+export const IconButton = ({ icon, onPress, backgroundColor = 'transparent' }: IconButtonProps) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
+    <TouchableOpacity onPress={onPress} style={[{backgroundColor: backgroundColor}, styles.container]}>
       {icon}
     </TouchableOpacity>
   )
@@ -19,9 +20,10 @@ export const IconButton = ({ icon, onPress }: IconButtonProps) => {
 const styles = StyleSheet.create({
   container: {
     height: 44,
-    backgroundColor: "transparent",
+    width: 44,
     justifyContent: "center",
     alignItems: "center",
-    color: colors.white
+    color: colors.white,
+    borderRadius: 22,
   },
 })
