@@ -27,7 +27,7 @@ export const CustomText = (props: TextProps) => {
   const {style, children, fontWeight = FontWeight.Normal, fontSize = FontSize.Medium, ...rest} = props
 
   return (
-    <Text {...rest} style={[{fontFamily: getFontFamily(fontWeight), color: colors.white}, {fontSize: fontSize}, style]}>
+    <Text {...rest} style={[{fontFamily: getFontFamily(fontWeight), color: colors.white}, {fontSize: fontSize}, {borderRadius: 22}, style]}>
       {children}
     </Text>
   )

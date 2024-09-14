@@ -3,6 +3,7 @@ import userSlice from '../slices/user'
 import categorySlice from '../slices/category'
 import expensesSlice from '../slices/expenses'
 import uiSlice from '../slices/ui'
+import settingsSlice from '../slices/settings'
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     category: categorySlice,
     expenses: expensesSlice,
     ui: uiSlice,
+    settings: settingsSlice
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 })
