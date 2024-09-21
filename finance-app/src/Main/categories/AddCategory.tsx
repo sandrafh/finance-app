@@ -30,6 +30,7 @@ import { CategoryItem } from './CategoryItem';
 import { CategoriesListModal } from '@/src/modals/CategoriesListModal';
 import { getSelectedParentCategory, setSelectedParentCategory } from '@/src/redux/slices/ui';
 import category from '@/src/redux/slices/category';
+import { CategoryBudgetTypeEnum, getCategoryBudgetType } from '@/src/redux/slices/settings';
 
 
 export const AddCategory = ({ route }: any) => {
@@ -45,6 +46,8 @@ export const AddCategory = ({ route }: any) => {
 
   const { addCategory, updateCategory } = CategoryService()
   const parentCategory = useSelector((state: RootState) => getSelectedParentCategory(state))
+  const categoryBudgetType = useSelector((state: RootState) => getCategoryBudgetType(state))
+  const labelBudget = categoryBudgetType === CategoryBudgetTypeEnum.Percentage ? 'Monthly Budget (%)' : 'Monthly Budget (€)'
   
   const [name, setName] = useState(category?.name || '')
   const [color, setColor] = useState(category?.color || colors.primary)
@@ -97,6 +100,20 @@ export const AddCategory = ({ route }: any) => {
     dispatch(setSelectedParentCategory(category))
   }
 
+  const onChangeBudget = (value: string) => {
+    if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) {
+      if(+value > 100) {
+        setBudget('100')
+        return
+      }
+    }
+    if(+value < 0) {
+      setBudget('0')
+      return
+    }
+    setBudget(value)
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -116,10 +133,9 @@ export const AddCategory = ({ route }: any) => {
             onChangeText={setName}
           />   
           <CustomInput
-            label="Monthly Budget (€)"
-            placeholder="Enter budget"
+            label={labelBudget}
             value={budget}
-            onChangeText={setBudget}
+            onChangeText={onChangeBudget}
             inputMode="numeric"
           />  
           {showSubcategoryCheckbox && (

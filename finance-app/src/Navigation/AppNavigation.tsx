@@ -111,13 +111,15 @@ export const AppNavigation = () => {
             )
           },
           headerRight: () => {
-            return (
-              <IconButton 
-                icon={<TrashIcon width={24} height={24} color={colors.danger} />} 
-                onPress={() => onPressDeleteCategory(props.route.params?.category)} 
-                backgroundColor={colors.bgInput}
-              />
-            )
+            if(props.route?.params?.isEdit) {
+              return (
+                <IconButton 
+                  icon={<TrashIcon width={24} height={24} color={colors.danger} />} 
+                  onPress={() => onPressDeleteCategory(props.route.params?.category)} 
+                  backgroundColor={colors.bgInput}
+                />
+              )
+            }
           }
         })}
       />
@@ -162,13 +164,15 @@ export const AppNavigation = () => {
             )
           },
           headerRight: () => {
-            return (
-              <IconButton 
-                icon={<TrashIcon width={24} height={24} color={colors.danger} />} 
-                onPress={() => onPressDeleteExpense(props.route.params?.expense)} 
-                backgroundColor={colors.bgInput}
-              />
-            )
+            if(props.route?.params?.isEdit) {
+              return (
+                <IconButton 
+                  icon={<TrashIcon width={24} height={24} color={colors.danger} />} 
+                  onPress={() => onPressDeleteExpense(props.route.params?.expense)} 
+                  backgroundColor={colors.bgInput}
+                />
+              )
+            }
           }
         })}
       />

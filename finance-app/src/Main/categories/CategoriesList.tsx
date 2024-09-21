@@ -32,7 +32,7 @@ export const CategoriesList = ({ onSelect, showBudget = true, haveRightArrow = t
             {(!!category?.categories) && (category?.categories as Category[]).map(subcategory => {
               return (
                 <>
-                  <TouchableOpacity style={styles.subCategoryCard} key={subcategory.uid} onPress={() => onSelect(subcategory)}>
+                  <TouchableOpacity key={subcategory.uid} style={styles.subCategoryCard} onPress={() => onSelect(subcategory)}>
                     <CategoryItem category={subcategory} showBudget={showBudget} haveRightArrow={haveRightArrow} />
                   </TouchableOpacity>
                   <View style={styles.separator}></View>
