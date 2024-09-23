@@ -103,7 +103,8 @@ export const AddExpense = ({ route }: any) => {
             placeholder="Enter budget"
             value={spent}
             onChangeText={setSpent}
-            inputMode="numeric"
+            //TODO: change for android
+            keyboardType="numbers-and-punctuation"
           />   
           <CustomDropDown label="Category" onClick={onClickSelectCategory}>
             {selectedCategory && <CategoryItem category={selectedCategory} showBudget={false} />}
@@ -116,7 +117,7 @@ export const AddExpense = ({ route }: any) => {
             numberOfLines={4}
             value={notes}
             onChangeText={setNotes}
-            inputMode={'text'}
+            keyboardType={'text'}
           />
 
           <View style={styles.field}>

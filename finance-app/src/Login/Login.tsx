@@ -72,7 +72,7 @@ export const Login = () => {
                   value={email}
                   onChangeText={setEmail}
                   placeholder="Email"
-                  inputMode="email"
+                  keyboardType="email-address"
                   autoCapitalize="none"
                 />
                 <CustomInput

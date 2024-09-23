@@ -105,7 +105,7 @@ export const SettingsView = () => {
             <CustomInput 
               label={getLabelIncomeInput()}
               placeholder="Enter your yearly income" 
-              inputMode="numeric" 
+              keyboardType="numeric" 
               value={totalIncome} 
               onChangeText={onSetTotalIncome}
             />  

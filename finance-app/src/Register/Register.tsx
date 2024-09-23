@@ -73,7 +73,7 @@ export const Register = () => {
               placeholder="Email"
               value={email}
               onChangeText={setEmail}
-              inputMode="email"
+                keyboardType="email-address"
               autoCapitalize="none"
             />
             <CustomInput

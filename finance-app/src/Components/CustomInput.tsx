@@ -7,7 +7,7 @@ interface InputProps {
   value: string
   onChangeText?: (value: string) => void
   label?: string  
-  inputMode?: any
+  keyboardType?: any
   autoFocus?: boolean
   placeholder?: string
   autoCapitalize?: any
@@ -22,7 +22,7 @@ export const CustomInput = (props: InputProps) => {
     value, 
     onChangeText, 
     label, 
-    inputMode = "text", 
+    keyboardType = "default", 
     autoFocus = false, 
     placeholder = "", 
     autoCapitalize = "none", 
@@ -40,7 +40,7 @@ export const CustomInput = (props: InputProps) => {
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
-        inputMode={inputMode}
+        keyboardType={keyboardType}
         autoFocus={autoFocus}
         autoCapitalize={autoCapitalize}
         secureTextEntry={secureTextEntry}
@@ -49,7 +49,7 @@ export const CustomInput = (props: InputProps) => {
         numberOfLines={numberOfLines}
         cursorColor={colors.white}
         selectionColor={colors.grey1}
-        editable={!disabled}
+        editable={!disabled}        
       />
     </View>
   )
