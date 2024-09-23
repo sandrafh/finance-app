@@ -8,10 +8,11 @@ import {
 } from "react-native"
 
 import { styles } from "./SettingsViewStyles"
+import { stylesApp } from "@/src/AppStyles"
 
 //Internal components
 import { Button, ButtonVariants } from "@/src/components/Button"
-import { setUserUid } from "@/src/redux/slices/user"
+import { getName, setUserUid } from "@/src/redux/slices/user"
 import { NavigationAppScreens } from "@/src/navigation/NavigationConstants"
 import { OptionsType, Switch } from "@/src/components/Switch"
 import { SettingsService } from "@/src/services/SettingsService"
@@ -19,6 +20,7 @@ import { CategoryBudgetTypeEnum, getCategoryBudgetType, getTotalIncome, getVisua
 import { FontSize } from "@/src/components/CustomText"
 import { CustomInput } from "@/src/components/CustomInput"
 import { RootState } from "@/src/redux/store"
+import { ProfileService } from "@/src/services/ProfileService"
 
 
 export const SettingsView = () => {
@@ -26,10 +28,12 @@ export const SettingsView = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
   
   const { updateCategoryBudgetType, updateVisualization, updateTotalIncome } = SettingsService()
+  const { setUserName } = ProfileService()
 
   const categoryBudgetType: CategoryBudgetTypeEnum = useSelector((state: RootState) => getCategoryBudgetType(state))
   const visualizationType = useSelector((state: RootState) => getVisualization(state))
   const totalIncome = useSelector((state: RootState) => getTotalIncome(state))
+  const userName = useSelector((state: RootState) => getName(state))
 
   const initCategoryBudgetOptions: OptionsType = {
     [CategoryBudgetTypeEnum.Percentage]: categoryBudgetType === CategoryBudgetTypeEnum.Percentage,
@@ -84,6 +88,8 @@ export const SettingsView = () => {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.options}>
+          <CustomInput label="Name" value={userName} onChangeText={setUserName}/>
+          <View style={stylesApp.separator}></View>
           <Switch 
             options={categoryBudgetOptions} 
             label="Category budget in" 

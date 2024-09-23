@@ -12,26 +12,28 @@ import { useDispatch } from "react-redux";
 import { styles } from "./RegisterStyles";
 //External libraries
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth"
-import db from "@react-native-firebase/database"
 //Internal components
 import { Button, ButtonVariants } from "../components/Button";
 import { NavigationAppScreens } from "../navigation/NavigationConstants";
 import { setUserUid } from "../redux/slices/user";
 import { CustomText } from "../components/CustomText";
 import { CustomInput } from "../components/CustomInput";
+import { ProfileService } from "../services/ProfileService";
 
 export const Register = () => {
   const dispatch = useDispatch()
 
-  const [name, setName] = useState<string | undefined>()
-  const [email, setEmail] = useState<string | undefined>()
-  const [password, setPassword] = useState<string | undefined>()
+  const { setUserName } = ProfileService()
+
+  const [name, setName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   const createProfile = async (response: FirebaseAuthTypes.UserCredential) => {
     dispatch(setUserUid(response.user.uid))
-    db().ref(`users/${response.user.uid}`).set({ name })
+    if(name) setUserName(name)
   }
 
   const registerAndGoToMainFlow = async () => {

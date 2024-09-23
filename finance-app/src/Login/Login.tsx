@@ -26,8 +26,8 @@ import { CustomText, FontSize } from "../components/CustomText";
 export const Login = () => {
   const dispatch = useDispatch()
   
-  const [email, setEmail] = useState<string | undefined>()
-  const [password, setPassword] = useState<string | undefined>()
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
