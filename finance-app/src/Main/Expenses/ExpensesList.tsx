@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
 
 import { styles } from './ExpensesListStyles';
+import { stylesApp } from "@/src/AppStyles"
 
 //Internal components
 import { ExpenseItem } from './ExpenseItem';
@@ -79,7 +80,7 @@ export const ExpensesList = ({ onSelect, expensesList }: ExpensesListProps) => {
                 </TouchableOpacity>
                 {/* If last item of the day dont put separator */}
                 {item.expenses[item.expenses.length - 1].uid !== expense.uid && 
-                  <View style={styles.separator}></View>
+                  <View style={stylesApp.separator}></View>
                 }
               </View> 
             ))}   

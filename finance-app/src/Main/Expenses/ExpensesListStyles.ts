@@ -17,10 +17,6 @@ export const styles = StyleSheet.create({
     padding: 16,
     paddingHorizontal: 26,
   },
-  separator: {
-    height: 1,
-    backgroundColor: colors.separator,
-  },
   dayContainer: {
     display: 'flex',
     flexDirection: 'column',

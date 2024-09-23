@@ -21,9 +21,5 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 16,
     paddingHorizontal: 36,
-  },
-  separator: {
-    height: 1,
-    backgroundColor: colors.separator
   }
 });

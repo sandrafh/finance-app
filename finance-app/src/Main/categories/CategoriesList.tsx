@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
 
 import { styles } from './CategoriesListStyles';
+import { stylesApp } from "@/src/AppStyles"
 
 //Internal components
 import { getCategories } from '@/src/redux/slices/category';
@@ -28,14 +29,14 @@ export const CategoriesList = ({ onSelect, showBudget = true, haveRightArrow = t
             <TouchableOpacity style={styles.card} onPress={() => onSelect(category)}>
               <CategoryItem category={category} showBudget={showBudget} haveRightArrow={haveRightArrow} />
             </TouchableOpacity>
-            <View style={styles.separator}></View>
+            <View style={stylesApp.separator}></View>
             {(!!category?.categories) && (category?.categories as Category[]).map(subcategory => {
               return (
                 <>
                   <TouchableOpacity key={subcategory.uid} style={styles.subCategoryCard} onPress={() => onSelect(subcategory)}>
                     <CategoryItem category={subcategory} showBudget={showBudget} haveRightArrow={haveRightArrow} />
                   </TouchableOpacity>
-                  <View style={styles.separator}></View>
+                  <View style={stylesApp.separator}></View>
                 </>                
               )
             })}
