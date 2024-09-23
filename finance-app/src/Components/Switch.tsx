@@ -8,18 +8,18 @@ export interface OptionsType {
 
 interface SwitchProps {
   options: OptionsType
-  title: string
+  label?: string
   onPressOption: (key: string) => void
   fontSize?: FontSize
 }
 
-export const Switch = ({ options, title, onPressOption, fontSize = FontSize.Large }: SwitchProps) => {
+export const Switch = ({ options, label, onPressOption, fontSize = FontSize.Large }: SwitchProps) => {
   return (
     <View style={styles.switch}>
-      <CustomText>{title}</CustomText>
+      {label && <CustomText style={styles.label}>{label}</CustomText>}
       <View style={styles.switchContainer}>
         {Object.entries(options).map(([key, value]: any) => (
-          <TouchableOpacity style={[styles.switchOption, value && styles.selectedOption]} onPress={() => onPressOption(key)}>
+          <TouchableOpacity key={key} style={[styles.switchOption, value && styles.selectedOption]} onPress={() => onPressOption(key)}>
             <CustomText fontSize={fontSize}>{key}</CustomText>
           </TouchableOpacity>
         ))}
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     flex: 1,
     display: "flex",
     flexDirection: "column",
-    gap: 12,
+    gap: 8,
   },
   switchContainer: {
     height: 44,
@@ -41,9 +41,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignSelf: 'flex-start',
     justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: 16,
-    backgroundColor: colors.grey3,
+    alignItems: 'center', 
+    backgroundColor: colors.bgInput,
     borderRadius: 22
   },
   switchOption: {
@@ -58,5 +57,9 @@ const styles = StyleSheet.create({
   },
   selectedOption: {
     backgroundColor: colors.primary,
+  },
+  label: {
+    color: colors.white,
+    marginLeft: 16,
   }
 })
