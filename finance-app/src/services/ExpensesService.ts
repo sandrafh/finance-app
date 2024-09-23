@@ -25,6 +25,7 @@ export const ExpensesService = () => {
           const expense = Object.entries(data).map(([key, value]: any) => ({ ...value, uid: key }))
           dispatch(setExpenses(expense))
         }
+        else dispatch(setExpenses([]))
       })
     } catch(e) {
       console.error("Error subscribing to expenses", e)

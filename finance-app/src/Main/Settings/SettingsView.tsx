@@ -21,8 +21,6 @@ import { CustomInput } from "@/src/components/CustomInput"
 import { RootState } from "@/src/redux/store"
 
 
-
-
 export const SettingsView = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation<NativeStackNavigationProp<any>>()

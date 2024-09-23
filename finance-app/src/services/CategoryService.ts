@@ -19,13 +19,21 @@ export const CategoryService = () => {
         if(data) {
           const categories = Object.entries(data).map(([key, value]: any) => ({ ...value, uid: key }))
           categories.forEach(category => {
+            if(!!category?.expenses) {
+              category.expenses = Object.entries(category.expenses).map(([key, value]: any) => ({ ...value, uid: key }))
+            }
             if(!!category?.categories) {
-              category.categories = Object.entries(category.categories).map(([key, value]: any) => ({ ...value, uid: key })
-              )
+              category.categories = Object.entries(category.categories).map(([key, value]: any) => ({ ...value, uid: key }))
+              category.categories.forEach((category: any) => {
+                if(!!category.expenses) {
+                  category.expenses = Object.entries(category.expenses).map(([key, value]: any) => ({ ...value, uid: key }))
+                }
+              })
             }
           })
           dispatch(setCategories(categories))
         }
+        else dispatch(setCategories([]))
       })
     } catch(e) {
       console.error("Error subscribing to categories", e)

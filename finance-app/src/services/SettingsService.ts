@@ -15,7 +15,6 @@ export const SettingsService = () => {
       db().ref(`users/${userUid}/settings`).on('value', snapshot => {
         const data = snapshot.val()
         if(data) {
-          console.log("Settings data", data)
           if(data.categoryBudgetType) {
             dispatch(setCategoryBudgetType(data.categoryBudgetType))
           }
