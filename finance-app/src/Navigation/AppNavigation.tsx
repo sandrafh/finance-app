@@ -95,7 +95,7 @@ export const AppNavigation = () => {
         name={NavigationAppScreens.AddCategory}
         component={AddCategory}
         options={(props) => ({
-          title: 'New Category',
+          title: props.route?.params?.isEdit ? 'Edit Category' : 'New Category',
           headerStyle: {
             backgroundColor: colors.bg,
           },

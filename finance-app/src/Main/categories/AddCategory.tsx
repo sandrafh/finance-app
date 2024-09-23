@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { View, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
@@ -29,7 +29,6 @@ import { CustomDropDown } from '@/src/components/CustomDropDown';
 import { CategoryItem } from './CategoryItem';
 import { CategoriesListModal } from '@/src/modals/CategoriesListModal';
 import { getSelectedParentCategory, setSelectedParentCategory } from '@/src/redux/slices/ui';
-import category from '@/src/redux/slices/category';
 import { CategoryBudgetTypeEnum, getCategoryBudgetType } from '@/src/redux/slices/settings';
 
 

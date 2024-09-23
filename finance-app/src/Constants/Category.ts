@@ -13,4 +13,5 @@ export interface Category {
 export interface CategoryExpenses {
   uid: string
   spent: number
+  date: string
 }

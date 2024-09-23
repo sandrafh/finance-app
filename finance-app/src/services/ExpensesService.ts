@@ -40,7 +40,7 @@ export const ExpensesService = () => {
       
       const category = categories.find((category: Category) => category.uid === categoryUid) as Category
       if(!!category) {
-        db().ref(`users/${userUid}/categories/${categoryUid}/expenses/${expenseUid}`).set({spent: expense.spent})
+        db().ref(`users/${userUid}/categories/${categoryUid}/expenses/${expenseUid}`).set({spent: expense.spent, date: expense.date})
         const newTotalSpent = +(category?.totalSpent as number) + (expense.spent as number) 
         db().ref(`users/${userUid}/categories/${categoryUid}`).update({ totalSpent: newTotalSpent })
       }
@@ -58,13 +58,12 @@ export const ExpensesService = () => {
         const parentCategory = categories.find((category: any) => category.uid === subCategory.parentCategoryUid) as Category
         
         //Add expense to parent category
-        db().ref(`users/${userUid}/categories/${parentCategory.uid}/expenses/${expenseUid}`).set({spent: expense.spent})
-        //Add expense to category itself
-        db().ref(`users/${userUid}/categories/${parentCategory.uid}/categories/${subCategory.uid}/expenses/${expenseUid}`).set({spent: expense.spent})
-        //Update total spent for parent category
+        db().ref(`users/${userUid}/categories/${parentCategory.uid}/expenses/${expenseUid}`).set({spent: expense.spent, date: expense.date})
         const newTotalSpentParentCategory = +(parentCategory.totalSpent) + (expense.spent as number) 
         db().ref(`users/${userUid}/categories/${parentCategory.uid}`).update({ totalSpent: newTotalSpentParentCategory })
-        //Update total spent for category itself
+
+        //Add expense to category itself
+        db().ref(`users/${userUid}/categories/${parentCategory.uid}/categories/${subCategory.uid}/expenses/${expenseUid}`).set({spent: expense.spent, date: expense.date})
         const newTotalSpentCategory = +(subCategory.totalSpent) + (expense.spent as number) 
         db().ref(`users/${userUid}/categories/${parentCategory.uid}/categories/${subCategory.uid}`).update({ totalSpent: newTotalSpentCategory })
       }
@@ -93,7 +92,7 @@ export const ExpensesService = () => {
         const newCategoryIsOldParent = oldCategory?.parentCategoryUid === category.uid
         newSpent = newCategoryIsOldParent ? diffSpent : newSpent
 
-        db().ref(`users/${userUid}/categories/${categoryUid}/expenses/${expenseUid}`).set({spent: expense.spent})
+        db().ref(`users/${userUid}/categories/${categoryUid}/expenses/${expenseUid}`).set({spent: expense.spent, date: expense.date})
         const newTotalSpent = +(category?.totalSpent as number) + (newSpent as number) 
         db().ref(`users/${userUid}/categories/${categoryUid}`).update({ totalSpent: newTotalSpent })
       }
@@ -116,13 +115,12 @@ export const ExpensesService = () => {
         const newParentSpent = newCategoryIsOldChild ? diffSpent : newSpent
         
         //Add expense to parent category
-        db().ref(`users/${userUid}/categories/${parentCategory.uid}/expenses/${expenseUid}`).set({spent: expense.spent})
-        //Add expense to category itself
-        db().ref(`users/${userUid}/categories/${parentCategory.uid}/categories/${subCategory.uid}/expenses/${expenseUid}`).set({spent: expense.spent})
-        //Update total spent for parent category
+        db().ref(`users/${userUid}/categories/${parentCategory.uid}/expenses/${expenseUid}`).set({spent: expense.spent, date: expense.date})
         const newTotalSpentParentCategory = +(parentCategory.totalSpent) + (newParentSpent as number) 
         db().ref(`users/${userUid}/categories/${parentCategory.uid}`).update({ totalSpent: newTotalSpentParentCategory })
-        //Update total spent for category itself
+
+        //Add expense to category itself
+        db().ref(`users/${userUid}/categories/${parentCategory.uid}/categories/${subCategory.uid}/expenses/${expenseUid}`).set({spent: expense.spent, date: expense.date})
         const newTotalSpentCategory = +(subCategory.totalSpent) + (newChildSpent as number) 
         db().ref(`users/${userUid}/categories/${parentCategory.uid}/categories/${subCategory.uid}`).update({ totalSpent: newTotalSpentCategory })
       }
