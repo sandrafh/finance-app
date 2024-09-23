@@ -28,20 +28,19 @@ export const CategoryService = () => {
         }
       })
     } catch(e) {
-      console.log("Error subscribing to categories", e)
+      console.error("Error subscribing to categories", e)
     }    
   }
 
   const addCategory = (category: Partial<Category>) => {
     try {
-      console.log("category: ", category)
       if(category.parentCategoryUid) {
         db().ref(`users/${userUid}/categories/${category.parentCategoryUid}/categories/${v4()}`).set(category)
         return
       }
       db().ref(`users/${userUid}/categories/${v4()}`).set(category)
     } catch(e) {
-      console.log("Error adding category", e)
+      console.error("Error adding category", e)
     }    
   }
 
@@ -53,7 +52,7 @@ export const CategoryService = () => {
       }
       db().ref(`users/${userUid}/categories/${category.uid}`).update(category)
     } catch(e) {
-      console.log("Error updating category", e)
+      console.error("Error updating category", e)
     }    
   }
 
@@ -65,7 +64,7 @@ export const CategoryService = () => {
       }
       db().ref(`users/${userUid}/categories/${category.uid}`).remove()
     } catch(e) {
-      console.log("Error deleting category", e)
+      console.error("Error deleting category", e)
     }
   }
 

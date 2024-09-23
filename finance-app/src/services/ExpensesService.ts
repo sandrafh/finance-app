@@ -27,7 +27,7 @@ export const ExpensesService = () => {
         }
       })
     } catch(e) {
-      console.log("Error subscribing to expenses", e)
+      console.error("Error subscribing to expenses", e)
     }    
   }
 
@@ -68,7 +68,7 @@ export const ExpensesService = () => {
         db().ref(`users/${userUid}/categories/${parentCategory.uid}/categories/${subCategory.uid}`).update({ totalSpent: newTotalSpentCategory })
       }
     } catch(e) {
-      console.log("Error adding expense", e)
+      console.error("Error adding expense", e)
     }
   }
 
@@ -125,7 +125,7 @@ export const ExpensesService = () => {
         db().ref(`users/${userUid}/categories/${parentCategory.uid}/categories/${subCategory.uid}`).update({ totalSpent: newTotalSpentCategory })
       }
     } catch(e) {
-      console.log("Error updating expense", e)
+      console.error("Error updating expense", e)
     }
   }
 
@@ -156,7 +156,7 @@ export const ExpensesService = () => {
         db().ref(`users/${userUid}/categories/${parentCategory.uid}/categories/${category.uid}`).update({ totalSpent: newTotalSpentCategory })
       }
     } catch(e) {
-      console.log("Error deleting expense", e)
+      console.error("Error deleting expense", e)
     }
   }
 
