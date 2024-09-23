@@ -14,11 +14,13 @@ export enum VisualizationTypeEnum {
 interface SettingsState {
   categoryBudgetType: CategoryBudgetTypeEnum,
   visualization: VisualizationTypeEnum
+  totalIncome: string
 }
 
 const initialState: SettingsState = {
   categoryBudgetType: CategoryBudgetTypeEnum.Amount,
-  visualization: VisualizationTypeEnum.Monthly
+  visualization: VisualizationTypeEnum.Monthly,
+  totalIncome: '0'
 }
 
 export const settingsSlice = createSlice({
@@ -30,16 +32,21 @@ export const settingsSlice = createSlice({
     },
     setVisualization: (state, action: PayloadAction<VisualizationTypeEnum>) => {
       state.visualization = action.payload
+    },
+    setTotalIncome: (state, action: PayloadAction<string>) => {
+      state.totalIncome = action.payload
     }
   },
 })
 
 export const {
   setCategoryBudgetType,
-  setVisualization
+  setVisualization,
+  setTotalIncome
 } = settingsSlice.actions
 
 export const getCategoryBudgetType = (state: RootState): CategoryBudgetTypeEnum => state.settings.categoryBudgetType
 export const getVisualization = (state: RootState): VisualizationTypeEnum => state.settings.visualization
+export const getTotalIncome = (state: RootState): string => state.settings.totalIncome
 
 export default settingsSlice.reducer

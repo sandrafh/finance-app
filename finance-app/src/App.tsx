@@ -9,11 +9,13 @@ import { CategoryService } from "./services/CategoryService";
 import { useSelector } from "react-redux";
 import { getUserUid } from "./redux/slices/user";
 import { ExpensesService } from "./services/ExpensesService";
+import { SettingsService } from "./services/SettingsService";
 
 
 export default function App() {    
   const { subscribeToCategories } = CategoryService()
   const { subscribeToExpenses } = ExpensesService()
+  const { subscribeToSettings } = SettingsService()
 
   const userUid = useSelector((state: any) => getUserUid(state))
 
@@ -26,6 +28,7 @@ export default function App() {
   const subscribeToChanges = () => {
     subscribeToCategories()
     subscribeToExpenses()
+    subscribeToSettings()
   }
 
   return (
