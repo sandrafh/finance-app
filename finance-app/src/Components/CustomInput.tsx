@@ -5,7 +5,7 @@ import { CustomText, FontSize, FontWeight } from './CustomText'
 
 interface InputProps {
   value: string
-  onChangeText: (value: string) => void
+  onChangeText?: (value: string) => void
   label?: string  
   inputMode?: any
   autoFocus?: boolean
@@ -14,6 +14,7 @@ interface InputProps {
   secureTextEntry?: boolean
   multiline?: boolean
   numberOfLines?: number
+  disabled?: boolean
 }
 
 export const CustomInput = (props: InputProps) => {
@@ -27,7 +28,8 @@ export const CustomInput = (props: InputProps) => {
     autoCapitalize = "none", 
     secureTextEntry = false,
     multiline = false,
-    numberOfLines = 1
+    numberOfLines = 1,
+    disabled = false
   } = props
 
   return (
@@ -47,6 +49,7 @@ export const CustomInput = (props: InputProps) => {
         numberOfLines={numberOfLines}
         cursorColor={colors.white}
         selectionColor={colors.grey1}
+        editable={!disabled}
       />
     </View>
   )
