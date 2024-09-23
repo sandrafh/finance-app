@@ -29,7 +29,7 @@ import { CustomDropDown } from '@/src/components/CustomDropDown';
 import { CategoryItem } from './CategoryItem';
 import { CategoriesListModal } from '@/src/modals/CategoriesListModal';
 import { getSelectedParentCategory, setSelectedParentCategory } from '@/src/redux/slices/ui';
-import { CategoryBudgetTypeEnum, getCategoryBudgetType } from '@/src/redux/slices/settings';
+import { CategoryBudgetTypeEnum, getCategoryBudgetType, getVisualization, VisualizationTypeEnum } from '@/src/redux/slices/settings';
 
 
 export const AddCategory = ({ route }: any) => {
@@ -46,7 +46,7 @@ export const AddCategory = ({ route }: any) => {
   const { addCategory, updateCategory } = CategoryService()
   const parentCategory = useSelector((state: RootState) => getSelectedParentCategory(state))
   const categoryBudgetType = useSelector((state: RootState) => getCategoryBudgetType(state))
-  const labelBudget = categoryBudgetType === CategoryBudgetTypeEnum.Percentage ? 'Monthly Budget (%)' : 'Monthly Budget (€)'
+  const visualizationType = useSelector((state: RootState) => getVisualization(state))
   
   const [name, setName] = useState(category?.name || '')
   const [color, setColor] = useState(category?.color || colors.primary)
@@ -113,6 +113,16 @@ export const AddCategory = ({ route }: any) => {
     setBudget(value)
   }
 
+  const getLabelBudget = (): string => {
+    let text = ''
+    if(visualizationType === VisualizationTypeEnum.Monthly) text = 'Monthly Budget'
+    else text = 'Yearly Budget'
+    if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) text += ' (%)'
+    else text += ' (€)'
+
+    return text
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -132,7 +142,7 @@ export const AddCategory = ({ route }: any) => {
             onChangeText={setName}
           />   
           <CustomInput
-            label={labelBudget}
+            label={getLabelBudget()}
             value={budget}
             onChangeText={onChangeBudget}
             inputMode="numeric"
