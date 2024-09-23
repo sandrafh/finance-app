@@ -10,16 +10,17 @@ interface SwitchProps {
   options: OptionsType
   title: string
   onPressOption: (key: string) => void
+  fontSize?: FontSize
 }
 
-export const Switch = ({ options, title, onPressOption }: SwitchProps) => {
+export const Switch = ({ options, title, onPressOption, fontSize = FontSize.Large }: SwitchProps) => {
   return (
     <View style={styles.switch}>
       <CustomText>{title}</CustomText>
       <View style={styles.switchContainer}>
         {Object.entries(options).map(([key, value]: any) => (
           <TouchableOpacity style={[styles.switchOption, value && styles.selectedOption]} onPress={() => onPressOption(key)}>
-            <CustomText fontSize={FontSize.Large}>{key}</CustomText>
+            <CustomText fontSize={fontSize}>{key}</CustomText>
           </TouchableOpacity>
         ))}
       </View>
@@ -46,13 +47,14 @@ const styles = StyleSheet.create({
     borderRadius: 22
   },
   switchOption: {
-    width: 72,
     height: 44,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    alignSelf: 'flex-start',
     borderRadius: 22,    
-    overflow: "hidden"
+    overflow: "hidden",
+    paddingHorizontal: 16
   },
   selectedOption: {
     backgroundColor: colors.primary,

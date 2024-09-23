@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import db from "@react-native-firebase/database"
 //Internal components
 import { getUserUid } from "../redux/slices/user"
-import { CategoryBudgetTypeEnum, setCategoryBudgetType } from "../redux/slices/settings";
+import { CategoryBudgetTypeEnum, setCategoryBudgetType, setVisualization, VisualizationTypeEnum } from "../redux/slices/settings";
 
 export const SettingsService = () => {
   const dispatch = useDispatch()
@@ -22,7 +22,7 @@ export const SettingsService = () => {
     }    
   }
 
-  const updateCategoryBudget = (categoryBudget: CategoryBudgetTypeEnum) => {
+  const updateCategoryBudgetType = (categoryBudget: CategoryBudgetTypeEnum) => {
     try {
       dispatch(setCategoryBudgetType(categoryBudget))
       db().ref(`users/${userUid}/settings/categoryBudgetType`).set(categoryBudget)
@@ -31,8 +31,18 @@ export const SettingsService = () => {
     }    
   }
 
+  const updateVisualization = (visualization: VisualizationTypeEnum) => {
+    try {
+      dispatch(setVisualization(visualization))
+      db().ref(`users/${userUid}/settings/visualization`).set(visualization)
+    } catch(e) {
+      console.log("Error updating visualization type", e)
+    }    
+  }
+
   return {
     subscribeToSettings,
-    updateCategoryBudget
+    updateCategoryBudgetType,
+    updateVisualization
   }
 }
