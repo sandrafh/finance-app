@@ -7,6 +7,7 @@ const Tab = createBottomTabNavigator();
 import ListIcon from '../assets/icons/list.svg';
 import CategoriesIcon from '../assets/icons/categories.svg';
 import SettingsIcon from '../assets/icons/settings.svg';
+import StatsIcon from '../assets/icons/stats.svg';
 
 import { ExpensesNavigation } from "./expenses/ExpensesNavigation";
 import { colors } from "../constants/ColorsConstants";
@@ -14,6 +15,7 @@ import { SettingsNavigation } from "./settings/SettingsNavigation";
 import { NavigationMainScreens } from "../navigation/NavigationConstants";
 import { CategoriesNavigation } from "./categories/CategoriesNavigation";
 import { FontSize } from "../components/CustomText";
+import { StatsView } from "./stats/StatsView";
 
 export const Tabs = () => {
   return (
@@ -32,6 +34,14 @@ export const Tabs = () => {
             case NavigationMainScreens.Categories:
               return (
                 <CategoriesIcon 
+                  width={30} 
+                  color={focused ? colors.white : colors.grey3}
+                  style={{marginTop: 5}} 
+                />
+              )
+            case NavigationMainScreens.Stats:
+              return (
+                <StatsIcon 
                   width={30} 
                   color={focused ? colors.white : colors.grey3}
                   style={{marginTop: 5}} 
@@ -77,6 +87,13 @@ export const Tabs = () => {
       <Tab.Screen
         name={NavigationMainScreens.Categories}
         component={CategoriesNavigation}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name={NavigationMainScreens.Stats}
+        component={StatsView}
         options={{
           headerShown: false,
         }}

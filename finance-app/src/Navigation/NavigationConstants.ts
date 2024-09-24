@@ -15,6 +15,7 @@ export const NavigationMainScreens = {
   Expenses : "Expenses",
   Settings : "Settings",
   Categories: "Categories",
+  Stats: "Stats",
 }
 
 export const NavigationExpensesScreens = {
