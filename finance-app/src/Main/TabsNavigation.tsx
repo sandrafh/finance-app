@@ -4,9 +4,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Tab = createBottomTabNavigator();
 
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import ListIcon from '../assets/icons/list.svg';
+import CategoriesIcon from '../assets/icons/categories.svg';
+import SettingsIcon from '../assets/icons/settings.svg';
 
 import { ExpensesNavigation } from "./expenses/ExpensesNavigation";
 import { colors } from "../constants/ColorsConstants";
@@ -23,31 +23,28 @@ export const Tabs = () => {
           switch (route.name) {
             case NavigationMainScreens.Expenses:
               return (
-                <FontAwesome5
-                  name="money-check"
-                  size={30}
-                  color={focused ? colors.white : colors.grey3}
-                  style={{marginTop: 5}}
-                />
-              )
-            case NavigationMainScreens.Settings:
-              return (
-                <AntDesign 
-                  name="setting" 
-                  size={30} 
+                <ListIcon
+                  width={30}
                   color={focused ? colors.white : colors.grey3}
                   style={{marginTop: 5}}
                 />
               )
             case NavigationMainScreens.Categories:
               return (
-                <MaterialIcons 
-                  name="category" 
-                  size={30} 
+                <CategoriesIcon 
+                  width={30} 
                   color={focused ? colors.white : colors.grey3}
                   style={{marginTop: 5}} 
                 />
               )
+            case NavigationMainScreens.Settings:
+              return (
+                <SettingsIcon 
+                  width={30} 
+                  color={focused ? colors.white : colors.grey3}
+                  style={{marginTop: 5}}
+                />
+              )            
             default:
               break;
           }
