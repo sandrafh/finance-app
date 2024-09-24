@@ -21,17 +21,38 @@ interface IconPickerModalProps {
 
 export const IconPickerModal = ({ modalRef, selectedIcon, onSelectIcon, color, colorPickerModalRef }: IconPickerModalProps) => {   
   const icons = [
-    'home', 'shopping-cart', 'local-dining', 'commute', 'directions-car',
-    'flight', 'local-movies', 'school', 'fitness-center', 'local-hospital',
-    'pets', 'child-care', 'local-bar', 'local-mall', 'redeem', 'money', 'work',
-    'restaurant', 'beach-access', 'music-note', 'brush', 'build',
-    'local-gas-station', 'subscriptions', 'event', 'spa', 'casino',
-    'emoji-events', 'cake', 'camera', 'computer', 'local-library',
-    'local-offer', 'point-of-sale', 'shopping-bag', 'receipt', 'local-atm',
-    'security', 'theater-comedy', 'weekend', 'liquor', 'fastfood', 'house',
-    'cleaning-services', 'directions-bus', 'delivery-dining', 'policy',
-    'savings', 'support-agent'
-  ] 
+    // Home and Family
+    'home', 'child-care', 'pets', 'cleaning-services', 'weekend', 'cake', 'fitness-center',
+  
+    // Work and Office
+    'work', 'computer', 'build', 'subscriptions', 'support-agent', 'security', 'attach-money', 'credit-card',
+  
+    // Shopping and Retail
+    'shopping-cart', 'local-mall', 'local-offer', 'point-of-sale', 'redeem',
+  
+    // Transportation and Travel
+    'commute', 'directions-car', 'flight', 'delivery-dining', 'local-gas-station',
+  
+    // Food and Dining
+    'restaurant', 'fastfood', 'liquor', 'coffee',
+  
+    // Entertainment and Events
+    'local-movies', 'music-note', 'camera', 'theater-comedy', 'event', 'emoji-events', 'auto-awesome', 'auto-stories',
+  
+    // Health and Education
+    'local-hospital', 'school',
+  
+    // Finance and Services
+    'local-atm', 'savings',
+  
+    // Miscellaneous
+    'beach-access', 'brush', 'cloud', 'eco',
+    
+    //Others
+    'emoji-objects', 'network-wifi-3-bar', 'opacity'
+  ];
+  
+  
   
   const onPressNext = () => {
     modalRef.current?.hide()
