@@ -27,6 +27,7 @@ import { CustomInput } from '@/src/components/CustomInput';
 import { CustomDropDown } from '@/src/components/CustomDropDown';
 import { Category } from '@/src/constants/Category';
 import { Expense } from '@/src/constants/Expenses';
+import { isiOS } from '@/src/utils/functions';
 
 export const AddExpense = ({ route }: any) => {
   const dispatch = useDispatch()
@@ -103,8 +104,7 @@ export const AddExpense = ({ route }: any) => {
             placeholder="Enter budget"
             value={spent}
             onChangeText={setSpent}
-            //TODO: change for android
-            keyboardType="numbers-and-punctuation"
+            keyboardType={isiOS() ? "numbers-and-punctuation":"numeric"}
           />   
           <CustomDropDown label="Category" onClick={onClickSelectCategory}>
             {selectedCategory && <CategoryItem category={selectedCategory} showBudget={false} />}

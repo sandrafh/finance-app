@@ -30,6 +30,7 @@ import { CategoryItem } from './CategoryItem';
 import { CategoriesListModal } from '@/src/modals/CategoriesListModal';
 import { getSelectedParentCategory, setSelectedParentCategory } from '@/src/redux/slices/ui';
 import { CategoryBudgetTypeEnum, getCategoryBudgetType, getVisualization, VisualizationTypeEnum } from '@/src/redux/slices/settings';
+import { isiOS } from '@/src/utils/functions';
 
 
 export const AddCategory = ({ route }: any) => {
@@ -145,7 +146,7 @@ export const AddCategory = ({ route }: any) => {
             label={getLabelBudget()}
             value={budget}
             onChangeText={onChangeBudget}
-            keyboardType="numeric"
+            keyboardType={isiOS() ? "numbers-and-punctuation":"numeric"}
           />  
           {showSubcategoryCheckbox && (
             <TouchableOpacity style={styles.checkboxContainer} onPress={() => setIsChecked(!isChecked)} disabled={isEdit}>

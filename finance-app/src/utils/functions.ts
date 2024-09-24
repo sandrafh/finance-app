@@ -1,3 +1,4 @@
+import { Platform } from 'react-native'
 import { Category } from '../constants/Category'
 
 
@@ -17,4 +18,8 @@ export const findCategory = (categories: any[], categoryUid: string) => {
     })
     return subCategory
   }
+}
+
+export const isiOS = (): boolean => {
+  return Platform.OS === 'ios'
 }
