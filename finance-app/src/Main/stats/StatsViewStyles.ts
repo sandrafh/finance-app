@@ -11,14 +11,6 @@ export const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,         
   },
-  chart: {
-    color: colors.white,
-    backgroundColor: colors.separator,
-    paddingRight: 0,
-    paddingLeft: 20,
-    borderRadius: 10,
-  },
   chartContainer: {
-    marginHorizontal: -20,
   }
 })

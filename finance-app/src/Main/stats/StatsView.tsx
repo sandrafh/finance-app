@@ -4,7 +4,8 @@ import { useNavigation } from "@react-navigation/native"
 import { NativeStackNavigationProp } from "@react-navigation/native-stack"
 import {
   View,
-  ScrollView
+  ScrollView,
+  Dimensions
 } from "react-native"
 
 import { styles } from "./StatsViewStyles"
@@ -47,22 +48,25 @@ export const StatsView = () => {
     navigation.navigate(NavigationAppScreens.CategoryDetails)
   }
 
-  const getThreeLastMonths = () => {
+  const getLastMonths = () => {
     const today = new Date()
-    const currentMonth = formatDateMonth(new Date(today.setMonth(today.getMonth())).toString())
-    const lastMonth = formatDateMonth(new Date(today.setMonth(today.getMonth() - 1)).toString())
-    const twoMonthsAgo = formatDateMonth(new Date(today.setMonth(today.getMonth() - 1)).toString())
-    const threeMonthsAgo = formatDateMonth(new Date(today.setMonth(today.getMonth() - 1)).toString())
-
-    return [threeMonthsAgo, twoMonthsAgo, lastMonth, currentMonth]
-  }
+    const numberOfMonths = Math.floor(Dimensions.get('window').width * 0.7 / 50) // 50 is what one month takes
+  
+    const lastMonths = []    
+    for (let i = 0; i < numberOfMonths; i++) {
+      const date = new Date(today.getFullYear(), today.getMonth() - i, 1);
+      const month = formatDateMonth(date.toString())
+      lastMonths.push(month);
+    }
+    return lastMonths.reverse()
+  }  
 
   const getPercentage = (spent: number, expected: number) => {
     return (spent / expected) * 100
   }
 
-  const getData = (): DataStats[] => {
-    const lastMonths = getThreeLastMonths()
+  const getMontlyData = (): DataStats[] => {
+    const lastMonths = getLastMonths()
     let data: DataStats[] = []
     lastMonths.map((month, index) => {
       const totalExpenses = getMonthlySpent(expenses, month)
@@ -96,7 +100,7 @@ export const StatsView = () => {
 
   const getMaxValue = () => {
     if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) {
-      const data = getData()
+      const data = getMontlyData()
       const max = data.reduce((acc, item) => item.value > acc ? item.value : acc, 0)
       return max < 100 ? 100 : max
     }
@@ -106,8 +110,8 @@ export const StatsView = () => {
   return (
     <View style={styles.container}>
       <View style={styles.chartContainer}>
-      <BarChart
-          data={getData()}
+        <BarChart
+          data={getMontlyData()}
           barWidth={12}
           spacing={24}
           roundedTop
@@ -118,10 +122,11 @@ export const StatsView = () => {
           yAxisTextStyle={{color: colors.grey0}}
           noOfSections={5}
           maxValue={getMaxValue()}
+          width={Dimensions.get('window').width*0.7}
         />
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>    
-      <CategoriesList onSelect={onSelectCategory}/>          
+        <CategoriesList onSelect={onSelectCategory}/>          
       </ScrollView>
     </View>  
   )
