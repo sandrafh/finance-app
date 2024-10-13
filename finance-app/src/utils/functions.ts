@@ -23,3 +23,10 @@ export const findCategory = (categories: any[], categoryUid: string) => {
 export const isiOS = (): boolean => {
   return Platform.OS === 'ios'
 }
+
+export const formatDateMonth = (isoDateString: string): string => {
+  const date = new Date(isoDateString)
+  return new Intl.DateTimeFormat('en-GB', {
+    month: 'short',
+  }).format(date)
+}

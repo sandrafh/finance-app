@@ -9,31 +9,119 @@ import {
 
 import { styles } from "./StatsViewStyles"
 
+//External components
+import { BarChart } from 'react-native-gifted-charts';
+
 //Internal components
-import { getName } from "@/src/redux/slices/user"
-import { SettingsService } from "@/src/services/SettingsService"
 import { CategoryBudgetTypeEnum, getCategoryBudgetType, getTotalIncome, getVisualization } from "@/src/redux/slices/settings"
 import { RootState } from "@/src/redux/store"
-import { ProfileService } from "@/src/services/ProfileService"
+import { CategoriesList } from "../categories/CategoriesList"
+import { NavigationAppScreens } from "@/src/navigation/NavigationConstants"
+import { getCategories, setCurrentCategory } from "@/src/redux/slices/category"
+import { colors } from "@/src/constants/ColorsConstants"
+import { getExpenses } from "@/src/redux/slices/expenses"
+import { getExpectedSpent, getMonthlySpent } from "@/src/utils/stats"
+import { formatDateMonth } from "@/src/utils/functions"
 
+interface DataStats {
+  value: number
+  label?: string
+  spacing?: number
+  labelWidth?: number
+  labelTextStyle?: { color: string }
+  frontColor: string
+}
 
 export const StatsView = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
-  
-  const { updateCategoryBudgetType, updateVisualization, updateTotalIncome } = SettingsService()
-  const { setUserName } = ProfileService()
 
   const categoryBudgetType: CategoryBudgetTypeEnum = useSelector((state: RootState) => getCategoryBudgetType(state))
   const visualizationType = useSelector((state: RootState) => getVisualization(state))
   const totalIncome = useSelector((state: RootState) => getTotalIncome(state))
-  const userName = useSelector((state: RootState) => getName(state))
+  const expenses = useSelector((state: RootState) => getExpenses(state))
+  const categories = useSelector((state: RootState) => getCategories(state))
 
-  
+  const onSelectCategory = (category: any) => {
+    dispatch(setCurrentCategory(category))
+    navigation.navigate(NavigationAppScreens.CategoryDetails)
+  }
+
+  const getThreeLastMonths = () => {
+    const today = new Date()
+    const currentMonth = formatDateMonth(new Date(today.setMonth(today.getMonth())).toString())
+    const lastMonth = formatDateMonth(new Date(today.setMonth(today.getMonth() - 1)).toString())
+    const twoMonthsAgo = formatDateMonth(new Date(today.setMonth(today.getMonth() - 1)).toString())
+    const threeMonthsAgo = formatDateMonth(new Date(today.setMonth(today.getMonth() - 1)).toString())
+
+    return [threeMonthsAgo, twoMonthsAgo, lastMonth, currentMonth]
+  }
+
+  const getPercentage = (spent: number, expected: number) => {
+    return (spent / expected) * 100
+  }
+
+  const getData = (): DataStats[] => {
+    const lastMonths = getThreeLastMonths()
+    let data: DataStats[] = []
+    lastMonths.map((month, index) => {
+      const totalExpenses = getMonthlySpent(expenses, month)
+     
+      let spendedValue = totalExpenses*-1
+      if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) {
+        const monthAmount = getExpectedSpent(categories) * (+totalIncome) / 100
+        spendedValue = getPercentage(spendedValue, monthAmount)
+      }
+
+      const spentMoreThanExpected = spendedValue > getExpectedSpent(categories)
+
+      const spended = {
+        value: spendedValue,
+        label: month,
+        spacing: 2,
+        labelWidth: 30,
+        labelTextStyle: {color: colors.grey0},
+        frontColor: spentMoreThanExpected ? colors.error : colors.success,
+      }
+      data.push(spended)
+      const expected = {
+        value: getExpectedSpent(categories),
+        frontColor: colors.grey2,
+      }      
+      data.push(expected)
+    })
+
+    return data
+  }
+
+  const getMaxValue = () => {
+    if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) {
+      const data = getData()
+      const max = data.reduce((acc, item) => item.value > acc ? item.value : acc, 0)
+      return max < 100 ? 100 : max
+    }
+    return 3000
+  }
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>              
+      <View style={styles.chartContainer}>
+      <BarChart
+          data={getData()}
+          barWidth={12}
+          spacing={24}
+          roundedTop
+          roundedBottom
+          // hideRules //for hide horizontal lines
+          xAxisThickness={0}
+          yAxisThickness={0}
+          yAxisTextStyle={{color: colors.grey0}}
+          noOfSections={5}
+          maxValue={getMaxValue()}
+        />
+      </View>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>    
+      <CategoriesList onSelect={onSelectCategory}/>          
       </ScrollView>
     </View>  
   )

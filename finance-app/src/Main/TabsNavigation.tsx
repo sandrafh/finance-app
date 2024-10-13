@@ -95,7 +95,13 @@ export const Tabs = () => {
         name={NavigationMainScreens.Stats}
         component={StatsView}
         options={{
-          headerShown: false,
+          title: 'Stats',
+          headerStyle: {
+            backgroundColor: colors.bg,
+          },
+          headerTitleStyle: {
+            color: colors.white,
+          },
         }}
       />
       <Tab.Screen

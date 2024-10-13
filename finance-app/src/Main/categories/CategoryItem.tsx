@@ -15,6 +15,7 @@ import { Category } from "@/src/constants/Category";
 import { colors } from "@/src/constants/ColorsConstants";
 import { RootState } from "@/src/redux/store";
 import { CategoryBudgetTypeEnum, getCategoryBudgetType, getTotalIncome, getVisualization, VisualizationTypeEnum } from "@/src/redux/slices/settings";
+import { getMonthlySpentByCategoryInPercentage, getYearlySpentByCategoryInPercentage } from "@/src/utils/stats";
 
 interface CategoryItemProps {
   category: Category
@@ -31,15 +32,11 @@ export const CategoryItem = ({ category, showBudget, haveRightArrow = false }: C
     const categoryInAmount = category.budget * (+totalIncome) / 100
     if(visualizationType === VisualizationTypeEnum.Monthly) {
       const currentMonth = new Date().getMonth()
-      const totalMonthSpent = category?.expenses?.filter(expense => new Date(expense.date).getMonth() === currentMonth)
-                                                .reduce((acc, expense) => acc + expense.spent, 0) || 0     
-      return (totalMonthSpent * -1 / categoryInAmount * 100).toPrecision(3)
+      return getMonthlySpentByCategoryInPercentage(category, categoryInAmount, currentMonth)
     }
     else {
       const currentYear = new Date().getFullYear()
-      const totalYearSpent = category?.expenses?.filter(expense => new Date(expense.date).getFullYear() === currentYear)
-                                              .reduce((acc, expense) => acc + expense.spent, 0) || 0
-      return (totalYearSpent * -1 / categoryInAmount * 100).toPrecision(3)
+      return getYearlySpentByCategoryInPercentage(category, categoryInAmount, currentYear)
     }
   }
 

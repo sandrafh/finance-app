@@ -9,7 +9,16 @@ export const styles = StyleSheet.create({
     padding: 20
   },
   scrollContainer: {
-    flexGrow: 1,    
-    backgroundColor: colors.bg,    
+    flexGrow: 1,         
+  },
+  chart: {
+    color: colors.white,
+    backgroundColor: colors.separator,
+    paddingRight: 0,
+    paddingLeft: 20,
+    borderRadius: 10,
+  },
+  chartContainer: {
+    marginHorizontal: -20,
   }
 })
