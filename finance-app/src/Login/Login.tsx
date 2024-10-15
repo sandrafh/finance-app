@@ -19,8 +19,8 @@ import { Button, ButtonVariants } from "../components/Button";
 import { NavigationAppScreens } from "../navigation/NavigationConstants";
 import { setUserUid } from "../redux/slices/user";
 import { CustomInput } from "../components/CustomInput";
-import { colors } from "../constants/ColorsConstants";
-import { CustomText, FontSize } from "../components/CustomText";
+import { CustomText } from "../components/CustomText";
+import { FontSize } from "../constants/Texts";
 
 
 export const Login = () => {

@@ -1,20 +1,7 @@
 import { Text } from 'react-native'
 import { getFontFamily } from '../utils/fontFamily'
 import { colors } from '../constants/ColorsConstants'
-
-export enum FontWeight {
-  Normal = 'normal',
-  Bold = 'bold',
-  Medium = 'medium'
-}
-
-export enum FontSize {
-  XSmall = 10,
-  Small = 12,
-  Medium = 16,
-  Large = 20,
-  XLarge = 24
-}
+import { FontSize, FontWeight } from '../constants/Texts'
 
 interface TextProps {
   style?: any

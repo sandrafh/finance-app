@@ -6,11 +6,16 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.bg,
     display: 'flex',
-    padding: 20
+    padding: 20,
+    flexDirection: 'column',
+    gap: 20,
   },
   scrollContainer: {
     flexGrow: 1,         
   },
   chartContainer: {
+  },
+  switchContainer: {
+    flex: 1
   }
 })

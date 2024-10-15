@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigation } from "@react-navigation/native"
 import { NativeStackNavigationProp } from "@react-navigation/native-stack"
@@ -14,7 +14,7 @@ import { styles } from "./StatsViewStyles"
 import { BarChart } from 'react-native-gifted-charts';
 
 //Internal components
-import { CategoryBudgetTypeEnum, getCategoryBudgetType, getTotalIncome, getVisualization } from "@/src/redux/slices/settings"
+import { getCategoryBudgetType, getTotalIncome, getVisualization } from "@/src/redux/slices/settings"
 import { RootState } from "@/src/redux/store"
 import { CategoriesList } from "../categories/CategoriesList"
 import { NavigationAppScreens } from "@/src/navigation/NavigationConstants"
@@ -23,6 +23,9 @@ import { colors } from "@/src/constants/ColorsConstants"
 import { getExpenses } from "@/src/redux/slices/expenses"
 import { getExpectedSpent, getMonthlySpent } from "@/src/utils/stats"
 import { formatDateMonth } from "@/src/utils/functions"
+import { OptionsType, Switch } from "@/src/components/Switch"
+import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from "@/src/constants/Settings"
+import { FontSize } from "@/src/constants/Texts"
 
 interface DataStats {
   value: number
@@ -42,6 +45,13 @@ export const StatsView = () => {
   const totalIncome = useSelector((state: RootState) => getTotalIncome(state))
   const expenses = useSelector((state: RootState) => getExpenses(state))
   const categories = useSelector((state: RootState) => getCategories(state))
+
+  const initVisualizationOptions: OptionsType = {
+    [VisualizationTypeEnum.Monthly]: visualizationType === VisualizationTypeEnum.Monthly,
+    [VisualizationTypeEnum.Yearly]: visualizationType === VisualizationTypeEnum.Yearly
+  }
+
+  const [visualizationOptions, setVisualizationOptions] = useState(initVisualizationOptions)
 
   const onSelectCategory = (category: any) => {
     dispatch(setCurrentCategory(category))
@@ -107,8 +117,25 @@ export const StatsView = () => {
     return 3000
   }
 
+  const visualizationToggleOption = (key: VisualizationTypeEnum) => {
+    const newOptions = {...visualizationOptions}
+    Object.keys(newOptions).forEach((k) => {
+      newOptions[k] = false
+    })
+    newOptions[key] = true
+    setVisualizationOptions(newOptions)
+  }
+
   return (
     <View style={styles.container}>
+      <View style={styles.switchContainer}>
+        <Switch 
+          options={visualizationOptions} 
+          label="hola" 
+          onPressOption={(key: any) => visualizationToggleOption(key)}
+          fontSize={FontSize.Medium}
+        /> 
+      </View>
       <View style={styles.chartContainer}>
         <BarChart
           data={getMontlyData()}

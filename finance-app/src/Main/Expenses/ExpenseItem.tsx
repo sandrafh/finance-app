@@ -13,13 +13,14 @@ import RightArrowIcon from "@/src/assets/icons/right-arrow.svg";
 //@ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons';
 //Internal components
-import { CustomText, FontSize, FontWeight } from "@/src/components/CustomText";
+import { CustomText } from "@/src/components/CustomText";
 import { Expense } from "@/src/constants/Expenses";
 import { getCategories } from "@/src/redux/slices/category";
 import { findCategory } from "@/src/utils/functions";
 import { colors } from "@/src/constants/ColorsConstants";
 import { NavigationAppScreens } from "@/src/navigation/NavigationConstants";
 import { setSelectedCategory } from "@/src/redux/slices/ui";
+import { FontSize, FontWeight } from "@/src/constants/Texts";
 
 interface ExpenseItemProps {
   expense: Expense

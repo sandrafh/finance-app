@@ -16,11 +16,12 @@ import { getName, setUserUid } from "@/src/redux/slices/user"
 import { NavigationAppScreens } from "@/src/navigation/NavigationConstants"
 import { OptionsType, Switch } from "@/src/components/Switch"
 import { SettingsService } from "@/src/services/SettingsService"
-import { CategoryBudgetTypeEnum, getCategoryBudgetType, getTotalIncome, getVisualization, VisualizationTypeEnum } from "@/src/redux/slices/settings"
-import { FontSize } from "@/src/components/CustomText"
+import { getCategoryBudgetType, getTotalIncome, getVisualization } from "@/src/redux/slices/settings"
 import { CustomInput } from "@/src/components/CustomInput"
 import { RootState } from "@/src/redux/store"
 import { ProfileService } from "@/src/services/ProfileService"
+import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from "@/src/constants/Settings"
+import { FontSize } from "@/src/constants/Texts"
 
 
 export const SettingsView = () => {

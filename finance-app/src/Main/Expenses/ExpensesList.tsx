@@ -9,7 +9,8 @@ import { stylesApp } from "@/src/AppStyles"
 import { ExpenseItem } from './ExpenseItem';
 import { getExpenses } from '@/src/redux/slices/expenses';
 import { Expense } from '@/src/constants/Expenses';
-import { CustomText, FontSize } from '@/src/components/CustomText';
+import { CustomText } from '@/src/components/CustomText';
+import { FontSize } from '@/src/constants/Texts';
 
 interface GroupedExpenses {
   date: string

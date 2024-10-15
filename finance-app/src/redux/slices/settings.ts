@@ -1,15 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
-
-export enum CategoryBudgetTypeEnum {
-  Percentage = "%",
-  Amount = "€"
-}
-
-export enum VisualizationTypeEnum {
-  Monthly = "Monthly",
-  Yearly = "Yearly"
-}
+import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@/src/constants/Settings'
 
 interface SettingsState {
   categoryBudgetType: CategoryBudgetTypeEnum,

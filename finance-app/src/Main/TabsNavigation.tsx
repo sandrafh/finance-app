@@ -14,8 +14,8 @@ import { colors } from "../constants/ColorsConstants";
 import { SettingsNavigation } from "./settings/SettingsNavigation";
 import { NavigationMainScreens } from "../navigation/NavigationConstants";
 import { CategoriesNavigation } from "./categories/CategoriesNavigation";
-import { FontSize } from "../components/CustomText";
 import { StatsView } from "./stats/StatsView";
+import { FontSize } from "../constants/Texts";
 
 export const Tabs = () => {
   return (

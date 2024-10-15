@@ -1,7 +1,8 @@
 import { View, TextInput, StyleSheet } from 'react-native'
 import React from 'react'
 import { colors } from '../constants/ColorsConstants'
-import { CustomText, FontSize, FontWeight } from './CustomText'
+import { CustomText } from './CustomText'
+import { FontSize, FontWeight } from '../constants/Texts'
 
 interface InputProps {
   value: string

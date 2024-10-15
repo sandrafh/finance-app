@@ -4,7 +4,8 @@ import React from 'react'
 import DownArrowIcon from '../assets/icons/down-arrow.svg'
 
 import { colors } from '../constants/ColorsConstants'
-import { CustomText, FontSize, FontWeight } from './CustomText'
+import { CustomText } from './CustomText'
+import { FontSize, FontWeight } from '../constants/Texts'
 
 interface TextProps {  
   children: any

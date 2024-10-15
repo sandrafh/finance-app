@@ -10,12 +10,14 @@ import RightArrowIcon from "@/src/assets/icons/right-arrow.svg";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { styles } from "./CategoryItemStyles";
-import { CustomText, FontSize, FontWeight } from "@/src/components/CustomText";
+import { CustomText } from "@/src/components/CustomText";
 import { Category } from "@/src/constants/Category";
 import { colors } from "@/src/constants/ColorsConstants";
 import { RootState } from "@/src/redux/store";
-import { CategoryBudgetTypeEnum, getCategoryBudgetType, getTotalIncome, getVisualization, VisualizationTypeEnum } from "@/src/redux/slices/settings";
+import { getCategoryBudgetType, getTotalIncome, getVisualization } from "@/src/redux/slices/settings";
 import { getMonthlySpentByCategoryInPercentage, getYearlySpentByCategoryInPercentage } from "@/src/utils/stats";
+import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from "@/src/constants/Settings";
+import { FontSize, FontWeight } from "@/src/constants/Texts";
 
 interface CategoryItemProps {
   category: Category
