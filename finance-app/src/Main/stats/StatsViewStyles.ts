@@ -7,15 +7,19 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.bg,
     display: 'flex',
     padding: 20,
-    flexDirection: 'column',
-    gap: 20,
   },
   scrollContainer: {
     flexGrow: 1,         
   },
+  chartOptions: {
+    display: 'flex',
+    gap: 16,
+  },
   chartContainer: {
+    display: 'flex',
   },
   switchContainer: {
-    flex: 1
+    display: 'flex',
+    alignItems: 'center',
   }
 })

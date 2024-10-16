@@ -31,9 +31,7 @@ export const Switch = ({ options, label, onPressOption, fontSize = FontSize.Larg
 
 const styles = StyleSheet.create({
   switch: {
-    flex: 1,
     display: "flex",
-    flexDirection: "column",
     gap: 8,
   },
   switchContainer: {
