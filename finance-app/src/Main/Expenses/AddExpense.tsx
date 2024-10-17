@@ -15,7 +15,7 @@ import Toast from 'react-native-toast-message';
 import { Button, ButtonVariants } from '@/src/components/Button';
 import { ToastTypes } from '@/src/constants/ToastConstants';
 import { NavigationExpensesScreens } from '@/src/navigation/NavigationConstants';
-import { CustomText, FontWeight } from '@/src/components/CustomText';
+import { CustomText } from '@/src/components/CustomText';
 import { ExpensesService } from '@/src/services/ExpensesService';
 import { CategoriesListModal } from '@/src/modals/CategoriesListModal';
 import { colors } from '@/src/constants/ColorsConstants';
@@ -28,6 +28,7 @@ import { CustomDropDown } from '@/src/components/CustomDropDown';
 import { Category } from '@/src/constants/Category';
 import { Expense } from '@/src/constants/Expenses';
 import { isiOS } from '@/src/utils/functions';
+import { FontWeight } from '@/src/constants/Texts';
 
 export const AddExpense = ({ route }: any) => {
   const dispatch = useDispatch()
