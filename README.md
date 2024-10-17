@@ -30,10 +30,12 @@
 5. Install a simulator if you want to use it
 
 6. Make a dev build for Android or iOS
-  ```bash
+    ```bash
    npm run ios
    ```
-   ```bash
+    Android will need java runtime environment, version >=17  is required.
+    A java management tool like sdkman is recommended to install java. (https://sdkman.io/)
+    ```bash
    npm run android
    ```
 
