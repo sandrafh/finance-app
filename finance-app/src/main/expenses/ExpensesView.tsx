@@ -1,5 +1,6 @@
 import React from "react";
 import {View,} from "react-native";
+import { useSelector } from "react-redux";
 import {useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 
@@ -9,9 +10,12 @@ import {styles} from "./ExpensesViewStyles";
 import {Button, ButtonVariants} from "@/src/components/Button";
 import {NavigationAppScreens} from "@/src/navigation/NavigationConstants";
 import {ExpensesList} from "./ExpensesList";
+import { getCategories } from "@/src/redux/slices/category";
 
 export const ExpensesView = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
+
+  const haveCategories = useSelector((state: any) => getCategories(state)).length > 0
 
   const onAddExpense = () => { 
     navigation.navigate(NavigationAppScreens.AddExpense)
@@ -20,9 +24,11 @@ export const ExpensesView = () => {
   return (
     <View style={styles.container}>      
       <ExpensesList onSelect={() => { console.log("on select expense") }}/> 
-      <View style={styles.button}>
-        <Button variant={ButtonVariants.Primary} title="Add Expense" onPress={onAddExpense} />
-      </View>
+      {haveCategories && (
+        <View style={styles.button}>
+          <Button variant={ButtonVariants.Primary} title="Add Expense" onPress={onAddExpense} />
+        </View>
+      )}      
     </View>
   )
 }
