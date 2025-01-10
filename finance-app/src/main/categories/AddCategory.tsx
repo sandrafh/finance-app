@@ -30,12 +30,11 @@ import {CategoryItem} from './CategoryItem';
 import {CategoriesListModal} from '@/src/modals/CategoriesListModal';
 import {getSelectedParentCategory, setSelectedParentCategory} from '@/src/redux/slices/ui';
 import {
-  CategoryBudgetTypeEnum,
   getCategoryBudgetType,
   getVisualization,
-  VisualizationTypeEnum
 } from '@/src/redux/slices/settings';
 import {isiOS} from '@/src/utils/functions';
+import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@/src/constants/Settings';
 
 
 export const AddCategory = ({ route }: any) => {
