@@ -2,7 +2,7 @@
   "expo": {
     "name": "finance-app",
     "slug": "finance-app",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
     "scheme": "myapp",
@@ -16,7 +16,8 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.sandraflores.financeapp",
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "buildNumber": "4"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -24,7 +25,8 @@
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.sandraflores.financeapp"
+      "package": "com.sandraflores.financeapp",
+      "versionCode": 4
     },
     "web": {
       "bundler": "metro",

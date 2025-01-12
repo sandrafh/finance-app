@@ -13,6 +13,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getCategories} from '@/src/redux/slices/category';
 import {setSelectedParentCategory} from '@/src/redux/slices/ui';
 import {Category} from '@/src/constants/Category';
+import { EmptyMessage } from '@/src/components/EmptyMessage';
 
 
 export const CategoriesView = () => {
@@ -35,7 +36,11 @@ export const CategoriesView = () => {
 
   return (
     <View style={styles.container}>
-      <CategoriesList onSelect={onSelectCategory}/> 
+      {categories.length === 0 ? (
+        <EmptyMessage text="No categories yet" />
+      ) : (
+        <CategoriesList onSelect={onSelectCategory}/> 
+      )}      
       <View style={styles.buttonContainer}>
         <Button title="Add Category" onPress={onAddCategory()} variant={ButtonVariants.Primary} />
       </View>    
