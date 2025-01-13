@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
-		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
+		9A5EC0EA2D358E1500C466BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5EC0E92D358E1500C466BD /* Images.xcassets */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		CF9FDB50404EE799206BCF07 /* Pods_financeapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6E4473BE7CF837446EDBF8 /* Pods_financeapp.framework */; };
@@ -23,7 +23,6 @@
 		13B07F961A680F5B00A75B9A /* financeapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = financeapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = financeapp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = financeapp/AppDelegate.mm; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = financeapp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = financeapp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = financeapp/main.m; sourceTree = "<group>"; };
 		4CC95A078DD14356BFDDBF52 /* financeapp-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "financeapp-Bridging-Header.h"; path = "financeapp/financeapp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -31,6 +30,7 @@
 		6C2E3173556A471DD304B334 /* Pods-financeapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-financeapp.debug.xcconfig"; path = "Target Support Files/Pods-financeapp/Pods-financeapp.debug.xcconfig"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-financeapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-financeapp.release.xcconfig"; path = "Target Support Files/Pods-financeapp/Pods-financeapp.release.xcconfig"; sourceTree = "<group>"; };
 		84568C618A5A4CC5A84C9AA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "financeapp/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9A5EC0E92D358E1500C466BD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../../../../Downloads/AppIcons/Images.xcassets; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = financeapp/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		DD6E4473BE7CF837446EDBF8 /* Pods_financeapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_financeapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,7 +57,6 @@
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
-				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
@@ -119,6 +118,7 @@
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				9A5EC0E92D358E1500C466BD /* Images.xcassets */,
 				BB2F792C24A3F905000567C9 /* Expo.plist */,
 			);
 			name = Supporting;
@@ -205,7 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
-				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				9A5EC0EA2D358E1500C466BD /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
 				E592E74A6B78476A9AD2CC73 /* GoogleService-Info.plist in Resources */,
 				F4CE9DDF29970F707A9945BD /* PrivacyInfo.xcprivacy in Resources */,
@@ -429,7 +429,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sandraflores.financeapp;
-				PRODUCT_NAME = financeapp;
+				PRODUCT_NAME = "financeapp";
 				SWIFT_OBJC_BRIDGING_HEADER = "financeapp/financeapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -461,7 +461,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sandraflores.financeapp;
-				PRODUCT_NAME = financeapp;
+				PRODUCT_NAME = "financeapp";
 				SWIFT_OBJC_BRIDGING_HEADER = "financeapp/financeapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

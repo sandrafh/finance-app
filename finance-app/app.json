@@ -4,14 +4,14 @@
     "slug": "finance-app",
     "version": "1.0.1",
     "orientation": "portrait",
-    "icon": "./src/assets/images/icon.png",
+    "icon": "./src/assets/logo/logo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "entryPoint": "./src/App.tsx",
     "splash": {
-      "image": "./src/assets/images/splash.png",
+      "image": "./src/assets/logo/logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#b8dfda"
     },
     "ios": {
       "supportsTablet": true,
@@ -22,16 +22,11 @@
     "android": {
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./src/assets/logo/logo.png",
+        "backgroundColor": "#b8dfda"
       },
       "package": "com.sandraflores.financeapp",
       "versionCode": 4
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./src/images/favicon.png"
     },
     "plugins": [
       "@react-native-firebase/app",

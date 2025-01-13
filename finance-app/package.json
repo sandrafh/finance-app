@@ -16,7 +16,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@birdwinlso/react-native-swipe-modal": "^1.2.3",
+    "@birdwingo/react-native-swipe-modal": "^1.2.3",
     "@expo/vector-icons": "^14.0.2",
     "@react-native-community/slider": "^4.5.2",
     "@react-native-firebase/app": "^20.3.0",
