@@ -29,6 +29,7 @@ import {Category} from '@/src/constants/Category';
 import {Expense} from '@/src/constants/Expenses';
 import {isiOS} from '@/src/utils/functions';
 import {FontWeight} from '@/src/constants/Texts';
+import { ToggleInput } from '@/src/components/ToggleInput';
 
 export const AddExpense = ({ route }: any) => {
   const dispatch = useDispatch()
@@ -100,13 +101,15 @@ export const AddExpense = ({ route }: any) => {
             value={name}
             onChangeText={setName}
           />  
-          <CustomInput
+
+          <ToggleInput
             label="Import (€)"
             placeholder="Enter budget"
             value={spent}
             onChangeText={setSpent}
             keyboardType={isiOS() ? "numbers-and-punctuation":"numeric"}
-          />   
+          />
+          
           <CustomDropDown label="Category" onClick={onClickSelectCategory}>
             {selectedCategory && <CategoryItem category={selectedCategory} showBudget={false} />}
           </CustomDropDown>
