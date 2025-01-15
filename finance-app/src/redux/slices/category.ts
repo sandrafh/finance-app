@@ -19,7 +19,7 @@ export const categorySlice = createSlice({
     setCategories: (state, action: PayloadAction<Category[]>) => {
       state.categories = action.payload
     },
-    setCurrentCategory: (state, action: PayloadAction<Category>) => {
+    setCurrentCategory: (state, action: PayloadAction<Category|null>) => {
       state.currentCategory = action.payload
     }
   },

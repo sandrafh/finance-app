@@ -1,3 +1,5 @@
+import React from 'react'
+
 import {Text} from 'react-native'
 import {getFontFamily} from '../utils/fontFamily'
 import {colors} from '../constants/ColorsConstants'
@@ -7,7 +9,7 @@ interface TextProps {
   style?: any
   fontSize?: FontSize
   fontWeight?: FontWeight
-  children: string
+  children: string[] | string
 }
 
 export const CustomText = (props: TextProps) => {

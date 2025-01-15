@@ -7,4 +7,14 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.bg,
     display: 'flex',
   },
+  infoContainer: {
+    backgroundColor: colors.bgCard,
+    borderRadius: 25,
+    margin: 12,
+    display: 'flex',
+    alignItems: 'center',
+  },
+  info: {
+    padding: 8,  
+  },
 })

@@ -19,8 +19,8 @@ import { colors } from "../constants/ColorsConstants";
 import { AddExpense } from "../main/expenses/AddExpense";
 import { Expense } from "../constants/Expenses";
 import { CategoryDetails } from "../main/categories/CategoryDetails";
-import { useSelector } from "react-redux";
-import { getCurrentCategory } from "../redux/slices/category";
+import { useDispatch, useSelector } from "react-redux";
+import { getCurrentCategory, setCurrentCategory } from "../redux/slices/category";
 import { Category } from "../constants/Category";
 import { View } from "react-native";
 import { CategoryService } from "../services/CategoryService";
@@ -37,7 +37,9 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 
 
 export const AppNavigation = () => {  
+  const dispatch = useDispatch()
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
+
   const { deleteCategory } = CategoryService()
   const { deleteExpense } = ExpensesService()
 
@@ -138,7 +140,10 @@ export const AppNavigation = () => {
             return (
               <IconButton 
                 icon={<BackArrowIcon width={16} height={16} color={colors.white} />} 
-                onPress={() => navigation.navigate(NavigationAppScreens.Tabs)} 
+                onPress={() => {
+                  dispatch(setCurrentCategory(null))
+                  navigation.navigate(NavigationAppScreens.Tabs)
+                }} 
               />
             )
           }
