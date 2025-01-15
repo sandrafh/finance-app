@@ -124,22 +124,20 @@ export const AddExpense = ({ route }: any) => {
             keyboardType={'text'}
           />
 
-          <View style={styles.field}>
-            <DateTimePicker
-              mode="single"
-              date={date}
-              onChange={(params) => setDate((params.date as Date).toISOString())}
-              locale="es-ES"
-              firstDayOfWeek={1}
-              calendarTextStyle={{fontFamily: getFontFamily(FontWeight.Normal), color: colors.white}}
-              headerTextStyle={{fontFamily: getFontFamily(FontWeight.Normal), color: colors.white}}
-              headerButtonColor={colors.white}
-              selectedItemColor={colors.primary}
-              monthContainerStyle={{backgroundColor: colors.bgCard, borderColor: 'transparent'}}
-              yearContainerStyle={{backgroundColor: colors.bgCard, borderColor: 'transparent'}}
-              weekDaysTextStyle={{fontFamily: getFontFamily(FontWeight.Normal), color: colors.white}}
-            />
-          </View>  
+          <DateTimePicker
+            mode="single"
+            date={date}
+            onChange={(params) => setDate((params.date as Date).toISOString())}
+            locale="es-ES"
+            firstDayOfWeek={1}
+            calendarTextStyle={{fontFamily: getFontFamily(FontWeight.Normal), color: colors.white}}
+            headerTextStyle={{fontFamily: getFontFamily(FontWeight.Normal), color: colors.white}}
+            headerButtonColor={colors.white}
+            selectedItemColor={colors.primary}
+            monthContainerStyle={{backgroundColor: colors.bgCard, borderColor: 'transparent'}}
+            yearContainerStyle={{backgroundColor: colors.bgCard, borderColor: 'transparent'}}
+            weekDaysTextStyle={{fontFamily: getFontFamily(FontWeight.Normal), color: colors.white}}
+          />
         </View>           
       </ScrollView>
 

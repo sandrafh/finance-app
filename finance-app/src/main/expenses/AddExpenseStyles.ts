@@ -17,11 +17,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     gap: 16
   },
-  field: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 8
-  },
   buttons: {
     display: 'flex',
     flexDirection: 'column',
