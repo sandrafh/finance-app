@@ -84,11 +84,13 @@ export const StatsChart = () => {
       const totalExpenses = getMonthlySpent(expenses, month, currentCategory)
      
       let spendedValue = totalExpenses*-1
+      let expectedSpent = getExpectedSpent(currentCategories)
       if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) {
+        expectedSpent = currentCategory ? 100 : getExpectedSpent(currentCategories)
         const monthAmount = getExpectedSpent(currentCategories) * (+totalIncome) / 100
         spendedValue = getPercentage(spendedValue, monthAmount)
       }
-      const expectedSpent = currentCategory ? 100 : getExpectedSpent(currentCategories)
+     
       const spentMoreThanExpected = spendedValue > expectedSpent
 
       const spended = {
@@ -117,7 +119,9 @@ export const StatsChart = () => {
       const totalExpenses = getYearlySpent(expenses, year, currentCategory)
      
       let spendedValue = totalExpenses*-1
+      let expectedSpent = getExpectedSpent(currentCategories)*12
       if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) {
+        expectedSpent = currentCategory ? 100 : getExpectedSpent(currentCategories)
         let totalYearlyIncome = +totalIncome
         if (visualizationType === VisualizationTypeEnum.Monthly) {
           totalYearlyIncome = +totalIncome * 12
@@ -125,8 +129,7 @@ export const StatsChart = () => {
         const yearAmount = getExpectedSpent(currentCategories) * totalYearlyIncome / 100
         spendedValue = getPercentage(spendedValue, yearAmount)
       }
-
-      const expectedSpent = currentCategory ? 100 : getExpectedSpent(currentCategories)
+     
       const spentMoreThanExpected = spendedValue > expectedSpent
 
       const spended = {
@@ -156,7 +159,7 @@ export const StatsChart = () => {
   }
 
   const getMaxValue = () => {
-    if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) {
+    // if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) {
       if(visualizationOptions[VisualizationTypeEnum.Monthly]) {
         const data = getMontlyData()
         const max = data.reduce((acc, item) => item.value > acc ? item.value : acc, 0)
@@ -167,7 +170,7 @@ export const StatsChart = () => {
         const max = data.reduce((acc, item) => item.value > acc ? item.value : acc, 0)
         return max //max < 100 ? 100 : max if we want to always set 100 as max
       }
-    }
+    // }
     return 3000
   }
 
