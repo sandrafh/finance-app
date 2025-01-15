@@ -27,6 +27,7 @@ import { CategoryService } from "../services/CategoryService";
 import Toast from "react-native-toast-message";
 import { ToastTypes } from "../constants/ToastConstants";
 import { ExpensesService } from "../services/ExpensesService";
+import { SettingsView } from "../main/settings/SettingsView";
 
 
 export type RootStackParamList = {
@@ -181,6 +182,13 @@ export const AppNavigation = () => {
           }
         })}
       />
+      <Stack.Screen
+        name={NavigationAppScreens.SettingsView}
+        component={SettingsView}
+        options={{
+          headerTitle: "Settings",
+        }}
+      />  
     </Stack.Navigator>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+
 import ListIcon from '../assets/icons/list.svg';
 import CategoriesIcon from '../assets/icons/categories.svg';
 import SettingsIcon from '../assets/icons/settings.svg';
@@ -13,6 +14,7 @@ import {NavigationMainScreens} from "../navigation/NavigationConstants";
 import {CategoriesNavigation} from "./categories/CategoriesNavigation";
 import {StatsView} from "./stats/StatsView";
 import {FontSize} from "../constants/Texts";
+import { MenuHeaderButton } from "../navigation/MenuHeaderButton";
 
 const Tab = createBottomTabNavigator();
 
@@ -46,14 +48,14 @@ export const Tabs = () => {
                   style={{marginTop: 5}} 
                 />
               )
-            case NavigationMainScreens.Settings:
-              return (
-                <SettingsIcon 
-                  width={30} 
-                  color={focused ? colors.white : colors.grey3}
-                  style={{marginTop: 5}}
-                />
-              )            
+            // case NavigationMainScreens.Settings:
+            //   return (
+            //     <SettingsIcon 
+            //       width={30} 
+            //       color={focused ? colors.white : colors.grey3}
+            //       style={{marginTop: 5}}
+            //     />
+            //   )            
             default:
               break;
           }
@@ -101,15 +103,20 @@ export const Tabs = () => {
           headerTitleStyle: {
             color: colors.white,
           },
+          headerRight: () => {
+            return (              
+              <MenuHeaderButton />
+            )
+          }
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name={NavigationMainScreens.Settings}
         component={SettingsNavigation}
         options={{
           headerShown: false,
         }}
-      />
+      /> */}
     </Tab.Navigator>
   )
 }
