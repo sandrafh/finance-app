@@ -28,10 +28,5 @@ export const styles = StyleSheet.create({
     gap: 12,
     padding: 20,
     marginBottom: 30
-  },
-  label: {
-    color: colors.white,
-    marginBottom: 8,
-    marginLeft: 16,
   }
 })

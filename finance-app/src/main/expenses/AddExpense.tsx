@@ -125,7 +125,6 @@ export const AddExpense = ({ route }: any) => {
           />
 
           <View style={styles.field}>
-            <CustomText style={styles.label}>Date</CustomText>
             <DateTimePicker
               mode="single"
               date={date}
