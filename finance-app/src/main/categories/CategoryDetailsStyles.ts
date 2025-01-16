@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.bg,
     display: 'flex',
+    paddingBottom: 40,
   },
   infoContainer: {
     backgroundColor: colors.bgCard,
