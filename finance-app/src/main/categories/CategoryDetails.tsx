@@ -23,7 +23,8 @@ export const CategoryDetails = () => {
   const categoryBudgetType: CategoryBudgetTypeEnum = useSelector((state: RootState) => getCategoryBudgetType(state))
 
   const categoryExpensesList = useMemo(() => {
-    return expenses.filter((expense: any) => expense.categoryUid === currentCategory.uid)
+    return expenses.filter((expense: any) => expense.categoryUid === currentCategory.uid 
+    || currentCategory.categories?.some((category: any) => category.uid === expense.categoryUid))
   }, [expenses, currentCategory])
 
   return (

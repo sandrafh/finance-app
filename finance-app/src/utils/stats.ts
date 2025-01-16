@@ -14,10 +14,10 @@ export const getYearlySpentByCategoryInPercentage = (category: Category, categor
     return (totalYearSpent * -1 / categoryInAmount * 100).toPrecision(3)
 }
 
-export const getMonthlySpent = (expenses: Expense[], month: string, currentCategory: Category | null): number => {
+export const getMonthlySpent = (expenses: Expense[], month: string, currentCategories: Category[] | null): number => {
   const monthExpenses = expenses.filter((expense) => {
-    if(currentCategory) {
-      const sameCategory = expense.categoryUid === currentCategory.uid
+    if(currentCategories) {
+      const sameCategory = currentCategories.some(category => category.uid === expense.categoryUid)
       if(!sameCategory) return false
     }
     const expenseMonth = formatDateMonth(expense.date)
@@ -27,10 +27,10 @@ export const getMonthlySpent = (expenses: Expense[], month: string, currentCateg
   return totalExpenses
 }
 
-export const getYearlySpent = (expenses: Expense[], year: number, currentCategory: Category | null): number => {
+export const getYearlySpent = (expenses: Expense[], year: number, currentCategories: Category[] | null): number => {
   const yearExpenses = expenses.filter((expense) => {
-    if(currentCategory) {
-      const sameCategory = expense.categoryUid === currentCategory.uid
+    if(currentCategories) {
+      const sameCategory = currentCategories.some(category => category.uid === expense.categoryUid)
       if(!sameCategory) return false
     }
     const expenseYear = new Date(expense.date).getFullYear()

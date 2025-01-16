@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useMemo, useState } from "react"
 import { useSelector } from "react-redux"
 import {
   View,
@@ -38,7 +38,16 @@ export const StatsChart = () => {
   const expenses = useSelector((state: RootState) => getExpenses(state))
   const categories = useSelector((state: RootState) => getCategories(state))
   const currentCategory = useSelector((state: RootState) => getCurrentCategory(state))
-  const currentCategories = currentCategory ? [currentCategory] : categories
+
+  const currentCategories = useMemo(() => {
+    if(currentCategory) {
+      if(currentCategory.categories?.length) {
+        return currentCategory.categories.concat(currentCategory)
+      }
+      return [currentCategory]
+    }
+    return categories
+  }, [currentCategory])
 
   const initVisualizationOptions: OptionsType = {
     [VisualizationTypeEnum.Monthly]: visualizationType === VisualizationTypeEnum.Monthly,
@@ -81,7 +90,7 @@ export const StatsChart = () => {
     const lastMonths = getLastMonths()
     let data: DataStats[] = []
     lastMonths.map((month, index) => {
-      const totalExpenses = getMonthlySpent(expenses, month, currentCategory)
+      const totalExpenses = getMonthlySpent(expenses, month, currentCategories)
      
       let spendedValue = totalExpenses*-1
       let expectedSpent = getExpectedSpent(currentCategories)
@@ -116,7 +125,7 @@ export const StatsChart = () => {
     const lastYears = getLastYears()
     let data: DataStats[] = []
     lastYears.map((year, index) => {
-      const totalExpenses = getYearlySpent(expenses, year, currentCategory)
+      const totalExpenses = getYearlySpent(expenses, year, currentCategories)
      
       let spendedValue = totalExpenses*-1
       let expectedSpent = getExpectedSpent(currentCategories)*12
