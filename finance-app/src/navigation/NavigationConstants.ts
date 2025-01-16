@@ -10,23 +10,12 @@ export const NavigationAppScreens = {
   CategoryDetails : "CategoryDetails",
   AddExpense : "AddExpense",
   SettingsView : "SettingsView",
+  ExpensesView : "ExpensesView",
+  CategoriesView : "CategoriesView", 
 }
 
 export const NavigationMainScreens = {
   Expenses : "Expenses",
-  Settings : "Settings",
   Categories: "Categories",
   Stats: "Stats",
-}
-
-export const NavigationExpensesScreens = {
-  ExpensesView : "ExpensesView",
-}
-
-export const NavigationSettingsScreens = {
-  SettingsView : "SettingsView",  
-}
-
-export const NavigationCategoriesScreens = {
-  CategoriesView : "CategoriesView",  
 }

@@ -7,11 +7,12 @@ interface IconButtonProps {
   icon: any
   onPress: () => void
   backgroundColor?: string
+  style?: any
 }
 
-export const IconButton = ({ icon, onPress, backgroundColor = 'transparent' }: IconButtonProps) => {
+export const IconButton = ({ icon, onPress, backgroundColor = 'transparent', style }: IconButtonProps) => {
   return (
-    <TouchableOpacity onPress={onPress} style={[{backgroundColor: backgroundColor}, styles.container]}>
+    <TouchableOpacity onPress={onPress} style={[{backgroundColor: backgroundColor}, style, styles.container]}>
       {icon}
     </TouchableOpacity>
   )

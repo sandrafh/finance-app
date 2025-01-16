@@ -12,7 +12,7 @@ import { Login } from "../login/Login";
 import { Register } from "../register/Register";
 import { Tabs } from "../main/TabsNavigation";
 import { LoadingScreen } from "../login/LoadingScreen";
-import { NavigationAppScreens, NavigationCategoriesScreens, NavigationExpensesScreens } from "./NavigationConstants";
+import { NavigationAppScreens } from "./NavigationConstants";
 import { AddCategory } from "../main/categories/AddCategory";
 import { IconButton } from "../components/IconButton";
 import { colors } from "../constants/ColorsConstants";
@@ -22,7 +22,6 @@ import { CategoryDetails } from "../main/categories/CategoryDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentCategory, setCurrentCategory } from "../redux/slices/category";
 import { Category } from "../constants/Category";
-import { View } from "react-native";
 import { CategoryService } from "../services/CategoryService";
 import Toast from "react-native-toast-message";
 import { ToastTypes } from "../constants/ToastConstants";
@@ -52,7 +51,7 @@ export const AppNavigation = () => {
       type: ToastTypes.Success,
       text1: 'Category deleted successfully'
     })
-    navigation.navigate(NavigationCategoriesScreens.CategoriesView)
+    navigation.navigate(NavigationAppScreens.CategoriesView)
   }
 
   const onPressDeleteExpense = (expense: Expense) => {
@@ -61,7 +60,7 @@ export const AppNavigation = () => {
       type: ToastTypes.Success,
       text1: 'Expense deleted successfully'
     })
-    navigation.navigate(NavigationExpensesScreens.ExpensesView)
+    navigation.navigate(NavigationAppScreens.ExpensesView)
   }
 
   return (

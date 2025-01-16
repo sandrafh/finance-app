@@ -4,17 +4,15 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 
 import ListIcon from '../assets/icons/list.svg';
 import CategoriesIcon from '../assets/icons/categories.svg';
-import SettingsIcon from '../assets/icons/settings.svg';
 import StatsIcon from '../assets/icons/stats.svg';
 
-import {ExpensesNavigation} from "./expenses/ExpensesNavigation";
 import {colors} from "../constants/ColorsConstants";
-import {SettingsNavigation} from "./settings/SettingsNavigation";
 import {NavigationMainScreens} from "../navigation/NavigationConstants";
-import {CategoriesNavigation} from "./categories/CategoriesNavigation";
 import {StatsView} from "./stats/StatsView";
 import {FontSize} from "../constants/Texts";
 import { MenuHeaderButton } from "../navigation/MenuHeaderButton";
+import { ExpensesView } from "./expenses/ExpensesView";
+import { CategoriesView } from "./categories/CategoriesView";
 
 const Tab = createBottomTabNavigator();
 
@@ -83,16 +81,38 @@ export const Tabs = () => {
     >
       <Tab.Screen
         name={NavigationMainScreens.Expenses}
-        component={ExpensesNavigation}
+        component={ExpensesView}
         options={{
-          headerShown: false,
+          headerTitle: "Expenses",
+          headerStyle: {
+            backgroundColor: colors.bg,
+          },
+          headerTitleStyle: {
+            color: colors.white,
+          },
+          headerRight: () => {
+            return (              
+              <MenuHeaderButton />
+            )
+          }
         }}
       />
       <Tab.Screen
         name={NavigationMainScreens.Categories}
-        component={CategoriesNavigation}
+        component={CategoriesView}
         options={{
-          headerShown: false,
+          headerTitle: "Categories",
+          headerStyle: {
+            backgroundColor: colors.bg,
+          },
+          headerTitleStyle: {
+            color: colors.white,
+          },
+          headerRight: () => {
+            return (              
+              <MenuHeaderButton />
+            )
+          }
         }}
       />
       <Tab.Screen

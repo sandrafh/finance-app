@@ -18,6 +18,7 @@ export const MenuHeaderButton = () => {
         navigation.navigate(NavigationAppScreens.SettingsView)
       }} 
       backgroundColor={colors.bgCard}
+      style={{marginRight: 10}}
     />
   );
 }
