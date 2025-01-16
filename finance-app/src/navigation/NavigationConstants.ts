@@ -1,6 +1,3 @@
-import {CategoryDetails} from "../main/categories/CategoryDetails"
-import {AddExpense} from "../main/expenses/AddExpense"
-
 export const NavigationAppScreens = {
   LoadingScreen: "LoadingScreen",
   Login: "Login",

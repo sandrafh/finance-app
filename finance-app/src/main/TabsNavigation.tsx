@@ -48,15 +48,7 @@ export const Tabs = () => {
                   color={focused ? colors.white : colors.grey3}
                   style={{marginTop: 5}} 
                 />
-              )
-            // case NavigationMainScreens.Settings:
-            //   return (
-            //     <SettingsIcon 
-            //       width={30} 
-            //       color={focused ? colors.white : colors.grey3}
-            //       style={{marginTop: 5}}
-            //     />
-            //   )            
+              )          
             default:
               break;
           }
@@ -133,13 +125,6 @@ export const Tabs = () => {
           }
         }}
       />
-      {/* <Tab.Screen
-        name={NavigationMainScreens.Settings}
-        component={SettingsNavigation}
-        options={{
-          headerShown: false,
-        }}
-      /> */}
     </Tab.Navigator>
   )
 }

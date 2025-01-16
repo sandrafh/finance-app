@@ -186,6 +186,20 @@ export const AppNavigation = () => {
         component={SettingsView}
         options={{
           headerTitle: "Settings",
+          headerStyle: {
+            backgroundColor: colors.bg,
+          },
+          headerTitleStyle: {
+            color: colors.white,
+          },
+          headerLeft: () => {
+            return (
+              <IconButton 
+                icon={<BackArrowIcon width={16} height={16} color={colors.white} />} 
+                onPress={() => navigation.navigate(NavigationAppScreens.Tabs)} 
+              />
+            )
+          }
         }}
       />  
     </Stack.Navigator>
