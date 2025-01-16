@@ -1,7 +1,7 @@
 {
   "name": "finance-app",
   "main": "./Index.tsx",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "sandrafh",
   "scripts": {
     "start": "expo start --dev-client",
