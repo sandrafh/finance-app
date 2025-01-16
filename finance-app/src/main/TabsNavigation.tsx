@@ -28,6 +28,7 @@ export const Tabs = () => {
               return (
                 <ListIcon
                   width={30}
+                  height={30}
                   color={focused ? colors.white : colors.grey3}
                   style={{marginTop: 5}}
                 />
@@ -36,6 +37,7 @@ export const Tabs = () => {
               return (
                 <CategoriesIcon 
                   width={30} 
+                  height={30}
                   color={focused ? colors.white : colors.grey3}
                   style={{marginTop: 5}} 
                 />
@@ -44,6 +46,7 @@ export const Tabs = () => {
               return (
                 <StatsIcon 
                   width={30} 
+                  height={30}
                   color={focused ? colors.white : colors.grey3}
                   style={{marginTop: 5}} 
                 />
