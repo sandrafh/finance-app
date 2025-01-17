@@ -12,7 +12,7 @@ import { Login } from "../login/Login";
 import { Register } from "../register/Register";
 import { Tabs } from "../main/TabsNavigation";
 import { LoadingScreen } from "../login/LoadingScreen";
-import { NavigationAppScreens } from "./NavigationConstants";
+import { NavigationAppScreens, NavigationMainScreens } from "./NavigationConstants";
 import { AddCategory } from "../main/categories/AddCategory";
 import { IconButton } from "../components/IconButton";
 import { colors } from "../constants/ColorsConstants";
@@ -51,7 +51,7 @@ export const AppNavigation = () => {
       type: ToastTypes.Success,
       text1: 'Category deleted successfully'
     })
-    navigation.navigate(NavigationAppScreens.CategoriesView)
+    navigation.navigate(NavigationMainScreens.Categories)
   }
 
   const onPressDeleteExpense = (expense: Expense) => {
@@ -60,7 +60,7 @@ export const AppNavigation = () => {
       type: ToastTypes.Success,
       text1: 'Expense deleted successfully'
     })
-    navigation.navigate(NavigationAppScreens.ExpensesView)
+    navigation.navigate(NavigationMainScreens.Expenses)
   }
 
   return (

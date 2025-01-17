@@ -14,8 +14,7 @@ import Toast from 'react-native-toast-message';
 //Internal components
 import {Button, ButtonVariants} from '@/src/components/Button';
 import {ToastTypes} from '@/src/constants/ToastConstants';
-import {NavigationAppScreens} from '@/src/navigation/NavigationConstants';
-import {CustomText} from '@/src/components/CustomText';
+import {NavigationMainScreens} from '@/src/navigation/NavigationConstants';
 import {ExpensesService} from '@/src/services/ExpensesService';
 import {CategoriesListModal} from '@/src/modals/CategoriesListModal';
 import {colors} from '@/src/constants/ColorsConstants';
@@ -80,7 +79,7 @@ export const AddExpense = ({ route }: any) => {
       type: ToastTypes.Success,
       text1: toastText
     })
-    navigation.navigate(NavigationAppScreens.ExpensesView)
+    navigation.navigate(NavigationMainScreens.Expenses)
   }
 
   const onClickSelectCategory = () => {

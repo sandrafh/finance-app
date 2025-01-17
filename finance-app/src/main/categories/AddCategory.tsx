@@ -19,7 +19,7 @@ import {IconPickerModal} from '@/src/modals/IconPickerModal';
 import {colors} from '@/src/constants/ColorsConstants';
 import {Button, ButtonVariants} from '@/src/components/Button';
 import {ToastTypes} from '@/src/constants/ToastConstants';
-import {NavigationAppScreens} from '@/src/navigation/NavigationConstants';
+import {NavigationMainScreens} from '@/src/navigation/NavigationConstants';
 import {CustomText} from '@/src/components/CustomText';
 import {CategoryService} from '@/src/services/CategoryService';
 import {Category} from '@/src/constants/Category';
@@ -89,7 +89,7 @@ export const AddCategory = ({ route }: any) => {
       type: ToastTypes.Success,
       text1: toastText
     })
-    navigation.navigate(NavigationAppScreens.CategoriesView)
+    navigation.navigate(NavigationMainScreens.Categories)
   }
 
   const showIconModal = () => {
