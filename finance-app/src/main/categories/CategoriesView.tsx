@@ -14,6 +14,10 @@ import {getCategories} from '@/src/redux/slices/category';
 import {setSelectedParentCategory} from '@/src/redux/slices/ui';
 import {Category} from '@/src/constants/Category';
 import { EmptyMessage } from '@/src/components/EmptyMessage';
+import { getCategoryBudgetType } from '@/src/redux/slices/settings';
+import { CategoryBudgetTypeEnum } from '@/src/constants/Settings';
+import { RootState } from '@/src/redux/store';
+import { InfoText } from '@/src/components/InfoText';
 
 
 export const CategoriesView = () => {
@@ -21,6 +25,7 @@ export const CategoriesView = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   const categories = useSelector((state: any) => getCategories(state))
+  const categoryBudgetType: CategoryBudgetTypeEnum = useSelector((state: RootState) => getCategoryBudgetType(state))
 
   const onAddCategory = () => () => {
     navigation.navigate(NavigationAppScreens.AddCategory)
@@ -34,8 +39,16 @@ export const CategoriesView = () => {
     navigation.navigate(NavigationAppScreens.AddCategory, { isEdit: true, category })
   }
 
+  const sumCategoriesPercentage = () => {
+    return categories.filter((category: Category) => category.parentCategoryUid === undefined)
+      .reduce((acc: number, category: Category) => acc + category.budget, 0)
+  }
+
   return (
     <View style={styles.container}>
+      {categoryBudgetType === CategoryBudgetTypeEnum.Percentage && (
+        <InfoText text={`Your categories add up to ${sumCategoriesPercentage()}%`} />
+      )}
       {categories.length === 0 ? (
         <EmptyMessage text="No categories yet" />
       ) : (

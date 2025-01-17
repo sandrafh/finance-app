@@ -1,3 +1,4 @@
+import { colors } from '@/src/constants/ColorsConstants';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -13,4 +14,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 12,
   },
+  percentageBudget: {
+    backgroundColor: colors.bgCard,
+    padding: 6,
+    borderRadius: 12,
+    overflow: 'hidden',
+  }
 })

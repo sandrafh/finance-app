@@ -2,16 +2,16 @@ import { Category } from "../constants/Category"
 import { Expense } from "../constants/Expenses"
 import { formatDateMonth } from "./functions"
 
-export const getMonthlySpentByCategoryInPercentage = (category: Category, categoryInAmount: number, month: number): string => {
+export const getMonthlySpentByCategoryInAmount = (category: Category, month: number): number => {
     const totalMonthSpent = category?.expenses?.filter(expense => new Date(expense.date).getMonth() === month)
-                                              .reduce((acc, expense) => acc + expense.spent, 0) || 0     
-    return (totalMonthSpent * -1 / categoryInAmount * 100).toPrecision(3)
+                                              .reduce((acc, expense) => acc + expense.spent, 0) || 0  
+    return totalMonthSpent * -1
 }
 
-export const getYearlySpentByCategoryInPercentage = (category: Category, categoryInAmount: number, year: number): string => {
+export const getYearlySpentByCategoryInAmount = (category: Category, year: number): number => {
     const totalYearSpent = category?.expenses?.filter(expense => new Date(expense.date).getFullYear() === year)
                                               .reduce((acc, expense) => acc + expense.spent, 0) || 0
-    return (totalYearSpent * -1 / categoryInAmount * 100).toPrecision(3)
+    return totalYearSpent * -1
 }
 
 export const getMonthlySpent = (expenses: Expense[], month: string, currentCategories: Category[] | null): number => {

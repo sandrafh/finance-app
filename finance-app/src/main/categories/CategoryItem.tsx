@@ -14,7 +14,7 @@ import {Category} from "@/src/constants/Category";
 import {colors} from "@/src/constants/ColorsConstants";
 import {RootState} from "@/src/redux/store";
 import {getCategoryBudgetType, getTotalIncome, getVisualization} from "@/src/redux/slices/settings";
-import {getMonthlySpentByCategoryInPercentage, getYearlySpentByCategoryInPercentage} from "@/src/utils/stats";
+import {getMonthlySpentByCategoryInAmount, getYearlySpentByCategoryInAmount} from "@/src/utils/stats";
 import {CategoryBudgetTypeEnum, VisualizationTypeEnum} from "@/src/constants/Settings";
 import {FontSize, FontWeight} from "@/src/constants/Texts";
 
@@ -22,29 +22,30 @@ interface CategoryItemProps {
   category: Category
   showBudget?: boolean
   haveRightArrow?: boolean
+  showPercentage?: boolean
 }
 
-export const CategoryItem = ({ category, showBudget, haveRightArrow = false }: CategoryItemProps) => {
+export const CategoryItem = ({ category, showBudget, haveRightArrow = false, showPercentage = false }: CategoryItemProps) => {
   const categoryBudgetType: CategoryBudgetTypeEnum = useSelector((state: RootState) => getCategoryBudgetType(state))
   const visualizationType = useSelector((state: RootState) => getVisualization(state))
   const totalIncome = useSelector((state: RootState) => getTotalIncome(state))
 
-  const getPercentageSpent = () => {
+  const getPercentageSpentInAmount = () => {
     const categoryInAmount = category.budget * (+totalIncome) / 100
     if(visualizationType === VisualizationTypeEnum.Monthly) {
       const currentMonth = new Date().getMonth()
-      return getMonthlySpentByCategoryInPercentage(category, categoryInAmount, currentMonth)
+      return getMonthlySpentByCategoryInAmount(category, currentMonth).toString() + "/" + categoryInAmount
     }
     else {
       const currentYear = new Date().getFullYear()
-      return getYearlySpentByCategoryInPercentage(category, categoryInAmount, currentYear)
+      return getYearlySpentByCategoryInAmount(category, currentYear).toString() + "/" + categoryInAmount
     }
   }
 
   const getBudgetText = () => {
     const totalSpent = (category.totalSpent < 0) ? category.totalSpent*-1 : category.totalSpent
     if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) {
-      return getPercentageSpent() + " %";
+      return getPercentageSpentInAmount() + " €";
     } else {
       return totalSpent + "/" + category.budget + " €";
     }
@@ -57,6 +58,7 @@ export const CategoryItem = ({ category, showBudget, haveRightArrow = false }: C
         <CustomText fontSize={FontSize.Medium} fontWeight={FontWeight.Normal}>
           {category.name}
         </CustomText>
+        {showPercentage && <CustomText fontSize={FontSize.Small} style={styles.percentageBudget}>{category.budget.toString()}%</CustomText>}
       </View>
       <View style={styles.end}>
         {showBudget && <CustomText fontSize={FontSize.Small}>{getBudgetText()}</CustomText>}
