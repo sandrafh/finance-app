@@ -8,6 +8,7 @@ import {styles} from "./LoginStyles";
 
 //External libraries
 import auth from "@react-native-firebase/auth"
+import Toast from "react-native-toast-message";
 //Internal components
 import {Button, ButtonVariants} from "../components/Button";
 import {NavigationAppScreens} from "../navigation/NavigationConstants";
@@ -15,6 +16,7 @@ import {setUserUid} from "../redux/slices/user";
 import {CustomInput} from "../components/CustomInput";
 import {CustomText} from "../components/CustomText";
 import {FontSize} from "../constants/Texts";
+import { ToastTypes } from "../constants/ToastConstants";
 
 
 export const Login = () => {
@@ -43,6 +45,10 @@ export const Login = () => {
         }
       }
       catch(error) {
+        Toast.show({
+          type: ToastTypes.Error,
+          text1: 'Email or password is incorrect'
+        })
         console.error("Error on login: ", error)
       }
     }    
