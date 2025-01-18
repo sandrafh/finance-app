@@ -62,13 +62,13 @@ export const Tabs = () => {
         },
         tabBarStyle: {
           backgroundColor: colors.bg,   
-          borderTopWidth: 0,
-          
+          borderTopWidth: 0,       
         },
         tabBarLabelStyle: {
           top: 8,
           fontSize: FontSize.Small,
         },
+        headerShadowVisible: false,
       })}
     >
       <Tab.Screen
