@@ -56,6 +56,12 @@ export const ToggleInput = (props: ToggleInputProps) => {
     }
   }
 
+  const onFocus = () => {
+    if (inputValue === "0") {
+      setInputValue("")
+    }
+  }
+
   return (
     <View>
       {label && (
@@ -94,6 +100,7 @@ export const ToggleInput = (props: ToggleInputProps) => {
           cursorColor={colors.white}
           selectionColor={colors.grey1}
           editable={!disabled}        
+          onFocus={onFocus}
         />
       </View>      
     </View>

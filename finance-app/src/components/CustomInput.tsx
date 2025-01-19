@@ -16,6 +16,7 @@ interface InputProps {
   multiline?: boolean
   numberOfLines?: number
   disabled?: boolean
+  onFocus?: () => void
 }
 
 export const CustomInput = (props: InputProps) => {
@@ -30,7 +31,8 @@ export const CustomInput = (props: InputProps) => {
     secureTextEntry = false,
     multiline = false,
     numberOfLines = 1,
-    disabled = false
+    disabled = false,
+    onFocus
   } = props
 
   return (
@@ -51,6 +53,7 @@ export const CustomInput = (props: InputProps) => {
         cursorColor={colors.white}
         selectionColor={colors.grey1}
         editable={!disabled}        
+        onFocus={onFocus}
       />
     </View>
   )

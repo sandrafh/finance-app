@@ -128,6 +128,12 @@ export const AddCategory = ({ route }: any) => {
     return text
   }
 
+  const onFocus = () => {
+    if(budget === '0') {
+      setBudget('')
+    }
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -151,6 +157,7 @@ export const AddCategory = ({ route }: any) => {
             value={budget}
             onChangeText={onChangeBudget}
             keyboardType="numeric"
+            onFocus={onFocus}
           />  
           {showSubcategoryCheckbox && (
             <TouchableOpacity style={styles.checkboxContainer} onPress={() => setIsChecked(!isChecked)} disabled={isEdit}>
