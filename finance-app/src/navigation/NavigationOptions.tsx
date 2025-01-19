@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import BackArrowIcon from "../assets/icons/back-arrow.svg";
 import TrashIcon from "../assets/icons/trash.svg";
+import SettingsIcon from '../assets/icons/settings.svg';
 
 //Internal components
 import { colors } from '../constants/ColorsConstants'
@@ -65,6 +66,19 @@ const RemoveItemHeader = ({ onPress }: any) => {
   )
 }
 
+export const MenuHeaderButton = ({ navigation }: any) => {
+  return (
+    <IconButton 
+      icon={<SettingsIcon width={24} color={colors.grey1} />} 
+      onPress={() => {
+        navigation.navigate(NavigationAppScreens.SettingsView)
+      }} 
+      backgroundColor={colors.bgCard}
+      style={{marginRight: 10}}
+    />
+  )
+}
+
 export const autoHeader = ({ navigation, route, onPressDeleteCategory, onPressDeleteExpense }: any) => {
   const dispatch = useDispatch()
 
@@ -87,7 +101,7 @@ export const autoHeader = ({ navigation, route, onPressDeleteCategory, onPressDe
           route?.params?.isEdit ? 
             <RemoveItemHeader navigation={navigation} onPress={() => onPressDeleteCategory(route.params?.category)} /> 
             : 
-            undefined          
+            <MenuHeaderButton navigation={navigation} />       
         )
       case NavigationAppScreens.CategoryDetails:
         return buildHeader(
@@ -95,7 +109,8 @@ export const autoHeader = ({ navigation, route, onPressDeleteCategory, onPressDe
           <BackArrowHeader navigation={navigation} onPress={() => {
             dispatch(setCurrentCategory(null))
             navigation.navigate(NavigationAppScreens.Tabs)
-          }} />
+          }} />,
+          <MenuHeaderButton navigation={navigation} />
         )
       case NavigationAppScreens.AddExpense:
         return buildHeader(
@@ -104,7 +119,7 @@ export const autoHeader = ({ navigation, route, onPressDeleteCategory, onPressDe
           route?.params?.isEdit ? 
             <RemoveItemHeader navigation={navigation} onPress={() => onPressDeleteExpense(route.params?.expense)} /> 
             : 
-            undefined  
+            <MenuHeaderButton navigation={navigation} />  
         )
       case NavigationAppScreens.SettingsView:
         return buildHeader(
