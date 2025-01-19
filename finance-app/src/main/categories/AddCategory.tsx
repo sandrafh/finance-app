@@ -150,7 +150,7 @@ export const AddCategory = ({ route }: any) => {
             label={getLabelBudget()}
             value={budget}
             onChangeText={onChangeBudget}
-            keyboardType={isiOS() ? "numbers-and-punctuation":"numeric"}
+            keyboardType="numeric"
           />  
           {showSubcategoryCheckbox && (
             <TouchableOpacity style={styles.checkboxContainer} onPress={() => setIsChecked(!isChecked)} disabled={isEdit}>

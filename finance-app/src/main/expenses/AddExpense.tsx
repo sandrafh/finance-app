@@ -106,7 +106,7 @@ export const AddExpense = ({ route }: any) => {
             placeholder="Enter budget"
             value={spent}
             onChangeText={setSpent}
-            keyboardType={isiOS() ? "numbers-and-punctuation":"numeric"}
+            keyboardType="numeric"
           />
           
           <CustomDropDown label="Category" onClick={onClickSelectCategory}>
