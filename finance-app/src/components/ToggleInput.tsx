@@ -85,9 +85,11 @@ export const ToggleInput = (props: ToggleInputProps) => {
           placeholder={placeholder}
           value={inputValue}  
           onChangeText={(text) => {
-            setInputValue(text)
+            // Ensure only one decimal separator is present
+            let formattedText = text.replace(',', '.')
+            setInputValue(formattedText)
             if (onChangeText) {
-              onChangeText(applySign(text, showedOption))
+              onChangeText(applySign(formattedText, showedOption))
             }
           }}
           keyboardType={keyboardType}
