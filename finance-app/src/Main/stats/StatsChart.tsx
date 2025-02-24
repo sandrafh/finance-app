@@ -98,7 +98,6 @@ export const StatsChart = () => {
       if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) {
         expectedSpent = currentCategory ? 100 : getExpectedSpent(currentCategories)
         const monthAmount = getExpectedSpent(currentCategories) * (+totalIncome) / 100
-        console.log("monthAmount: ", monthAmount)
         spendedValue = getPercentage(spendedValue, monthAmount)
       }
      
@@ -173,13 +172,11 @@ export const StatsChart = () => {
     // if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) {
       if(visualizationOptions[VisualizationTypeEnum.Monthly]) {
         const data = getMontlyData()
-        console.log("data: ", data)
         const max = data.reduce((acc, item) => item.value > acc ? item.value : acc, 0)
         return max //max < 100 ? 100 : max if we want to always set 100 as max
       }
       else {
         const data = getYearlyData()
-        console.log("data year: ", data)
         const max = data.reduce((acc, item) => item.value > acc ? item.value : acc, 0)
         return max //max < 100 ? 100 : max if we want to always set 100 as max
       }
