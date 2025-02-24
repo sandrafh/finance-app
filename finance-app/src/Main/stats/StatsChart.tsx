@@ -83,6 +83,7 @@ export const StatsChart = () => {
   }
 
   const getPercentage = (spent: number, expected: number) => {
+    if(expected === 0) return 0
     return (spent / expected) * 100
   }
 
@@ -97,13 +98,14 @@ export const StatsChart = () => {
       if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) {
         expectedSpent = currentCategory ? 100 : getExpectedSpent(currentCategories)
         const monthAmount = getExpectedSpent(currentCategories) * (+totalIncome) / 100
+        console.log("monthAmount: ", monthAmount)
         spendedValue = getPercentage(spendedValue, monthAmount)
       }
      
       const spentMoreThanExpected = spendedValue > expectedSpent
 
       const spended = {
-        value: spendedValue,
+        value: spendedValue || 0,
         label: month,
         spacing: 2,
         labelWidth: 30,
@@ -112,7 +114,7 @@ export const StatsChart = () => {
       }
       data.push(spended)
       const expected = {
-        value: expectedSpent,
+        value: expectedSpent || 0,
         frontColor: colors.grey2,
       }      
       data.push(expected)
@@ -142,7 +144,7 @@ export const StatsChart = () => {
       const spentMoreThanExpected = spendedValue > expectedSpent
 
       const spended = {
-        value: spendedValue,
+        value: spendedValue || 0,
         label: year.toString(),
         spacing: 2,
         labelWidth: 48,
@@ -151,7 +153,7 @@ export const StatsChart = () => {
       }
       data.push(spended)
       const expected = {
-        value: expectedSpent,
+        value: expectedSpent || 0,
         frontColor: colors.grey2,
       }      
       data.push(expected)
@@ -171,11 +173,13 @@ export const StatsChart = () => {
     // if(categoryBudgetType === CategoryBudgetTypeEnum.Percentage) {
       if(visualizationOptions[VisualizationTypeEnum.Monthly]) {
         const data = getMontlyData()
+        console.log("data: ", data)
         const max = data.reduce((acc, item) => item.value > acc ? item.value : acc, 0)
         return max //max < 100 ? 100 : max if we want to always set 100 as max
       }
       else {
         const data = getYearlyData()
+        console.log("data year: ", data)
         const max = data.reduce((acc, item) => item.value > acc ? item.value : acc, 0)
         return max //max < 100 ? 100 : max if we want to always set 100 as max
       }

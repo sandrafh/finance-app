@@ -69,7 +69,7 @@ const RemoveItemHeader = ({ onPress }: any) => {
 export const MenuHeaderButton = ({ navigation }: any) => {
   return (
     <IconButton 
-      icon={<SettingsIcon width={24} color={colors.grey1} />} 
+      icon={<SettingsIcon width={24} height={24} color={colors.grey1} />} 
       onPress={() => {
         navigation.navigate(NavigationAppScreens.SettingsView)
       }} 
