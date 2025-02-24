@@ -12,10 +12,12 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',    
+    justifyContent: 'flex-start',
+    gap: 8,    
+    backgroundColor: colors.highlight,
     
     padding: 16,
-    paddingHorizontal: 26,
+    paddingRight: 24,
   },
   subCategoryCard: {
     display: 'flex',
@@ -26,5 +28,15 @@ export const styles = StyleSheet.create({
     padding: 16,
     paddingRight: 26,
     paddingLeft: 46,
+  },
+  subCategoryContainer: {
+    marginLeft: 20
+  },
+  accordionArrow: {
+    width: 44,
+    height: 44,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 })

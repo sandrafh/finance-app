@@ -2,6 +2,14 @@ import { colors } from '@/src/constants/ColorsConstants';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 44,
+    alignItems: 'center',
+  },
   cardTitle: {
     display: 'flex',
     flexDirection: 'row',

@@ -52,7 +52,7 @@ export const CategoryItem = ({ category, showBudget, haveRightArrow = false, sho
   }
 
   return (
-    <>
+    <View style={styles.container}>
       <View style={styles.cardTitle}>
         <Icon key={category.icon} name={category.icon} size={24} color={category.color}/>
         <CustomText fontSize={FontSize.Medium} fontWeight={FontWeight.Normal}>
@@ -64,6 +64,6 @@ export const CategoryItem = ({ category, showBudget, haveRightArrow = false, sho
         {showBudget && <CustomText fontSize={FontSize.Small}>{getBudgetText()}</CustomText>}
         {haveRightArrow && <RightArrowIcon width={16} height={16} fill={colors.white} />}
       </View>
-    </>        
+    </View>        
   )
 }

@@ -5,8 +5,11 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.bg,
-    display: 'flex',
-    padding: 20,
+    display: 'flex',    
+  },
+  chartContainer: {
+    paddingTop: 16,
+    paddingHorizontal: 16,
   },
   scrollContainer: {
     flexGrow: 1,         

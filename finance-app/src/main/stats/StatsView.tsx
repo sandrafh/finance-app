@@ -29,7 +29,10 @@ export const StatsView = () => {
 
   return (
     <View style={styles.container}>
-      <StatsChart />     
+      <View style={styles.chartContainer}>
+        <StatsChart />     
+      </View>
+     
       <ScrollView contentContainerStyle={styles.scrollContainer}>   
         {categories.length === 0 ? (
           <EmptyMessage text="No categories yet" />
