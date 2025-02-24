@@ -1,4 +1,3 @@
-import { colors } from '@/src/constants/ColorsConstants';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -12,11 +11,8 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    gap: 8,    
-    backgroundColor: colors.highlight,
-    
-    padding: 16,
+    justifyContent: 'flex-start',   
+    paddingLeft: 8, 
     paddingRight: 24,
   },
   subCategoryCard: {
@@ -26,17 +22,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',    
     
     padding: 16,
-    paddingRight: 26,
-    paddingLeft: 46,
-  },
-  subCategoryContainer: {
-    marginLeft: 20
-  },
-  accordionArrow: {
-    width: 44,
-    height: 44,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingRight: 24,
   }
 })
