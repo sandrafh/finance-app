@@ -34,11 +34,11 @@ export const CategoryItem = ({ category, showBudget, haveRightArrow = false, sho
     const categoryInAmount = category.budget * (+totalIncome) / 100
     if(visualizationType === VisualizationTypeEnum.Monthly) {
       const currentMonth = new Date().getMonth()
-      return getMonthlySpentByCategoryInAmount(category, currentMonth).toString() + "/" + categoryInAmount
+      return getMonthlySpentByCategoryInAmount(category, currentMonth) + "/" + categoryInAmount
     }
     else {
       const currentYear = new Date().getFullYear()
-      return getYearlySpentByCategoryInAmount(category, currentYear).toString() + "/" + categoryInAmount
+      return getYearlySpentByCategoryInAmount(category, currentYear) + "/" + categoryInAmount
     }
   }
 
