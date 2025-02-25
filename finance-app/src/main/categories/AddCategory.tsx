@@ -27,13 +27,12 @@ import {CustomInput} from '@/src/components/CustomInput';
 import {RootState} from '@/src/redux/store';
 import {CustomDropDown} from '@/src/components/CustomDropDown';
 import {CategoryItem} from './CategoryItem';
-import {CategoriesListModal} from '@/src/modals/CategoriesListModal';
+import { useCategoriesListModal } from '@/src/contexts/CategoriesListModalContext';
 import {getSelectedParentCategory, setSelectedParentCategory} from '@/src/redux/slices/ui';
 import {
   getCategoryBudgetType,
   getVisualization,
 } from '@/src/redux/slices/settings';
-import {isiOS} from '@/src/utils/functions';
 import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@/src/constants/Settings';
 
 
@@ -42,13 +41,13 @@ export const AddCategory = ({ route }: any) => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
   const colorModalRef = useRef<SwipeModalPublicMethods>(null)
   const iconModalRef = useRef<SwipeModalPublicMethods>(null)
-  const categoriesModalRef = useRef<SwipeModalPublicMethods>(null)
 
   const isEdit = route.params?.isEdit
   const category: Category = route.params?.category
   const showSubcategoryCheckbox = ((isEdit && category.parentCategoryUid) || !isEdit) ? true : false
 
   const { addCategory, updateCategory } = CategoryService()
+  const { openCategoriesListModal } = useCategoriesListModal()
   const parentCategory = useSelector((state: RootState) => getSelectedParentCategory(state))
   const categoryBudgetType = useSelector((state: RootState) => getCategoryBudgetType(state))
   const visualizationType = useSelector((state: RootState) => getVisualization(state))
@@ -97,7 +96,7 @@ export const AddCategory = ({ route }: any) => {
   }
 
   const onClickSelectParentCategory = () => {
-    categoriesModalRef.current?.show()
+    openCategoriesListModal(onSelectCategory)
   }
 
   const onSelectCategory = (category: Category) => {
@@ -184,7 +183,6 @@ export const AddCategory = ({ route }: any) => {
 
         <ColorPickerModal modalRef={colorModalRef} onSelectColor={(color) => setColor(color.hex)} color={color} />  
         <IconPickerModal modalRef={iconModalRef} selectedIcon={icon} onSelectIcon={(icon) => setIcon(icon)} color={color} colorPickerModalRef={colorModalRef} />
-        <CategoriesListModal modalRef={categoriesModalRef} onSelectCategory={(category) => onSelectCategory(category)}/> 
     </View>
     
   )

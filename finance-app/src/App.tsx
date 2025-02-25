@@ -11,6 +11,7 @@ import { getUserUid } from "./redux/slices/user";
 import { ExpensesService } from "./services/ExpensesService";
 import { SettingsService } from "./services/SettingsService";
 import { ProfileService } from "./services/ProfileService";
+import { CategoriesListModalProvider } from "./contexts/CategoriesListModalContext";
 
 
 export default function App() {    
@@ -36,9 +37,11 @@ export default function App() {
 
   return (
     <>
-      <NavigationContainer>             
-        <AppNavigation />
-      </NavigationContainer>
+      <CategoriesListModalProvider>
+        <NavigationContainer>             
+          <AppNavigation />
+        </NavigationContainer>
+      </CategoriesListModalProvider>
       <Toast config={toastConfig} /> 
     </>
   )

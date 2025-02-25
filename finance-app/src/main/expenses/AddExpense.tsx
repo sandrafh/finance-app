@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {ScrollView, View} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
@@ -7,7 +7,6 @@ import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import {styles} from './AddExpenseStyles';
 
 //External libraries
-import {SwipeModalPublicMethods} from '@birdwingo/react-native-swipe-modal';
 import DateTimePicker from 'react-native-ui-datepicker';
 //@ts-ignore
 import Toast from 'react-native-toast-message';
@@ -16,7 +15,7 @@ import {Button, ButtonVariants} from '@/src/components/Button';
 import {ToastTypes} from '@/src/constants/ToastConstants';
 import {NavigationMainScreens} from '@/src/navigation/NavigationConstants';
 import {ExpensesService} from '@/src/services/ExpensesService';
-import {CategoriesListModal} from '@/src/modals/CategoriesListModal';
+import { useCategoriesListModal } from '@/src/contexts/CategoriesListModalContext';
 import {colors} from '@/src/constants/ColorsConstants';
 import {getCategories} from '@/src/redux/slices/category';
 import {CategoryItem} from '../categories/CategoryItem';
@@ -26,19 +25,18 @@ import {CustomInput} from '@/src/components/CustomInput';
 import {CustomDropDown} from '@/src/components/CustomDropDown';
 import {Category} from '@/src/constants/Category';
 import {Expense} from '@/src/constants/Expenses';
-import {isiOS} from '@/src/utils/functions';
 import {FontWeight} from '@/src/constants/Texts';
 import { ToggleInput } from '@/src/components/ToggleInput';
 
 export const AddExpense = ({ route }: any) => {
   const dispatch = useDispatch()
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
-  const categoriesModalRef = useRef<SwipeModalPublicMethods>(null)
 
   const isEdit = route.params?.isEdit
   const expense: Expense = route.params?.expense
 
   const { addExpense, updateExpense } = ExpensesService()
+  const { openCategoriesListModal } = useCategoriesListModal()
 
   const categories = useSelector((state: any) => getCategories(state))
   const selectedCategory = useSelector((state: any) => getSelectedCategory(state))
@@ -83,7 +81,7 @@ export const AddExpense = ({ route }: any) => {
   }
 
   const onClickSelectCategory = () => {
-    categoriesModalRef.current?.show()
+    openCategoriesListModal(onSelectCategory)
   }
 
   const onSelectCategory = (category: Category) => {
@@ -143,8 +141,6 @@ export const AddExpense = ({ route }: any) => {
       <View style={styles.buttons}>
         <Button title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
       </View>
-
-      <CategoriesListModal modalRef={categoriesModalRef} onSelectCategory={(category) => onSelectCategory(category)}/> 
     </View>
   )
 }
