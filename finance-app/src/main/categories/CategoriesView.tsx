@@ -52,7 +52,7 @@ export const CategoriesView = () => {
       {categories.length === 0 ? (
         <EmptyMessage text="No categories yet" />
       ) : (
-        <CategoriesList onSelect={onSelectCategory}/> 
+        <CategoriesList onSelect={onSelectCategory} showPercentage={categoryBudgetType === CategoryBudgetTypeEnum.Percentage} /> 
       )}      
       <View style={styles.buttonContainer}>
         <Button title="Add Category" onPress={onAddCategory()} variant={ButtonVariants.Primary} />

@@ -36,12 +36,12 @@ export default function App() {
   }
 
   return (
-    <>
-      <CategoriesListModalProvider>
-        <NavigationContainer>             
+    <>      
+      <NavigationContainer>   
+        <CategoriesListModalProvider>          
           <AppNavigation />
-        </NavigationContainer>
-      </CategoriesListModalProvider>
+        </CategoriesListModalProvider>
+      </NavigationContainer>    
       <Toast config={toastConfig} /> 
     </>
   )

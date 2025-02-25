@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { ScrollView, View, TouchableOpacity } from 'react-native'
-import { useRoute } from '@react-navigation/native'
 import { styles } from './CategoriesListStyles'
 import { stylesApp } from '@/src/AppStyles'
 
@@ -10,8 +9,6 @@ import { getCategories } from '@/src/redux/slices/category'
 import { CategoryItem } from './CategoryItem'
 import { Category } from '@/src/constants/Category'
 import { colors } from '@/src/constants/ColorsConstants'
-import { CategoryBudgetTypeEnum } from '@/src/constants/Settings'
-import { getCategoryBudgetType } from '@/src/redux/slices/settings'
 import { RootState } from '@/src/redux/store'
 import { Accordion } from '@/src/components/Accordion'
 
@@ -20,18 +17,17 @@ interface CategoriesListProps {
   showBudget?: boolean
   haveRightArrow?: boolean
   backgroundColor?: string
+  showPercentage?: boolean
 }
 
 export const CategoriesList = ({ 
   onSelect, 
   showBudget = true, 
   haveRightArrow = false, 
-  backgroundColor = colors.bg 
+  backgroundColor = colors.bg,
+  showPercentage = false 
 }: CategoriesListProps) => {
-  const route = useRoute()
   const categories = useSelector((state: RootState) => getCategories(state))
-  const categoryBudgetType: CategoryBudgetTypeEnum = useSelector((state: RootState) => getCategoryBudgetType(state))
-  const showPercentage = categoryBudgetType === CategoryBudgetTypeEnum.Percentage && route.name === 'Categories'
 
   return (
     <ScrollView contentContainerStyle={styles.container} style={{ backgroundColor }}>

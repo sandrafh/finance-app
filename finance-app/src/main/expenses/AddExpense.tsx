@@ -36,7 +36,7 @@ export const AddExpense = ({ route }: any) => {
   const expense: Expense = route.params?.expense
 
   const { addExpense, updateExpense } = ExpensesService()
-  const { openCategoriesListModal } = useCategoriesListModal()
+  const { openCategoriesListModal, closeCategoriesListModal } = useCategoriesListModal()
 
   const categories = useSelector((state: any) => getCategories(state))
   const selectedCategory = useSelector((state: any) => getSelectedCategory(state))
@@ -86,6 +86,7 @@ export const AddExpense = ({ route }: any) => {
 
   const onSelectCategory = (category: Category) => {
     dispatch(setSelectedCategory(category))
+    closeCategoriesListModal()
   }
 
   return (

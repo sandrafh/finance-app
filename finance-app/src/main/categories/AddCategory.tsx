@@ -47,7 +47,7 @@ export const AddCategory = ({ route }: any) => {
   const showSubcategoryCheckbox = ((isEdit && category.parentCategoryUid) || !isEdit) ? true : false
 
   const { addCategory, updateCategory } = CategoryService()
-  const { openCategoriesListModal } = useCategoriesListModal()
+  const { openCategoriesListModal, closeCategoriesListModal } = useCategoriesListModal()
   const parentCategory = useSelector((state: RootState) => getSelectedParentCategory(state))
   const categoryBudgetType = useSelector((state: RootState) => getCategoryBudgetType(state))
   const visualizationType = useSelector((state: RootState) => getVisualization(state))
@@ -101,6 +101,7 @@ export const AddCategory = ({ route }: any) => {
 
   const onSelectCategory = (category: Category) => {
     dispatch(setSelectedParentCategory(category))
+    closeCategoriesListModal()
   }
 
   const onChangeBudget = (value: string) => {
