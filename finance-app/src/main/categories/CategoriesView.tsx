@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {View} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
@@ -18,6 +18,7 @@ import { getCategoryBudgetType } from '@/src/redux/slices/settings';
 import { CategoryBudgetTypeEnum } from '@/src/constants/Settings';
 import { RootState } from '@/src/redux/store';
 import { InfoText } from '@/src/components/InfoText';
+import { CustomInput } from '@/src/components/CustomInput';
 
 
 export const CategoriesView = () => {
@@ -26,6 +27,13 @@ export const CategoriesView = () => {
 
   const categories = useSelector((state: any) => getCategories(state))
   const categoryBudgetType: CategoryBudgetTypeEnum = useSelector((state: RootState) => getCategoryBudgetType(state))
+
+  const [searchText, setSearchText] = useState<string>('')
+  const [filteredCategories, setFilteredCategories] = useState<Category[]>(categories)
+
+  useEffect(() => {
+    setFilteredCategories(categories)
+  }, [categories])
 
   const onAddCategory = () => () => {
     navigation.navigate(NavigationAppScreens.AddCategory)
@@ -36,12 +44,41 @@ export const CategoriesView = () => {
       const parentCategory = categories.find((c: any) => c.uid === category.parentCategoryUid)
       dispatch(setSelectedParentCategory(parentCategory as Category))
     }
+    setSearchText('')
     navigation.navigate(NavigationAppScreens.AddCategory, { isEdit: true, category })
   }
 
   const sumCategoriesPercentage = () => {
     return categories.filter((category: Category) => category.parentCategoryUid === undefined)
       .reduce((acc: number, category: Category) => acc + category.budget, 0)
+  }
+
+  const filterCategories = (value: string) => {
+    setSearchText(value)
+    const lowerCaseValue = value.toLowerCase()
+  
+    const filterCategory = (category: Category): Category | null => {
+      const nameMatches = category.name.toLowerCase().includes(lowerCaseValue)
+  
+      const matchingChildren = category.categories
+        ?.map(filterCategory)
+        .filter((child): child is Category => child !== null)
+  
+      if (nameMatches || (matchingChildren && matchingChildren.length > 0)) {
+        return {
+          ...category,
+          categories: matchingChildren
+        }
+      }
+  
+      return null // Exclude this category if it and its children don't match
+    }
+  
+    const filtered = categories
+      .map(filterCategory)
+      .filter((category): category is Category => category !== null)
+  
+    setFilteredCategories(filtered)
   }
 
   return (
@@ -52,7 +89,10 @@ export const CategoriesView = () => {
       {categories.length === 0 ? (
         <EmptyMessage text="No categories yet" />
       ) : (
-        <CategoriesList onSelect={onSelectCategory}/> 
+        <View style={styles.listContainer}>
+          <CustomInput placeholder="Search categories" value={searchText} onChangeText={filterCategories}/>
+          <CategoriesList onSelect={onSelectCategory} filteredCategories={filteredCategories} /> 
+        </View>
       )}      
       <View style={styles.buttonContainer}>
         <Button title="Add Category" onPress={onAddCategory()} variant={ButtonVariants.Primary} />

@@ -20,23 +20,27 @@ interface CategoriesListProps {
   showBudget?: boolean
   haveRightArrow?: boolean
   backgroundColor?: string
+  filteredCategories?: Category[] | undefined
 }
 
 export const CategoriesList = ({ 
   onSelect, 
   showBudget = true, 
   haveRightArrow = false, 
-  backgroundColor = colors.bg 
+  backgroundColor = colors.bg ,
+  filteredCategories = undefined
 }: CategoriesListProps) => {
   const route = useRoute()
   const categories = useSelector((state: RootState) => getCategories(state))
   const categoryBudgetType: CategoryBudgetTypeEnum = useSelector((state: RootState) => getCategoryBudgetType(state))
   const showPercentage = categoryBudgetType === CategoryBudgetTypeEnum.Percentage && route.name === 'Categories'
 
+  const categoriesToRender = filteredCategories || categories
+
   return (
     <ScrollView contentContainerStyle={styles.container} style={{ backgroundColor }}>
-      {categories.map(category => {
-         const hasChildren = !!category?.categories?.length
+      {categoriesToRender.map(category => {
+        const hasChildren = !!category?.categories?.length
         return (
           <View key={category.uid}>
             <Accordion 

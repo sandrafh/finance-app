@@ -6,8 +6,15 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.bg,
   },  
+  listContainer: {
+    flex: 1,
+    paddingBottom: 48
+  },
   buttonContainer: {
-    padding: 20,
-   
+    position: 'absolute',
+    bottom: 0,
+    alignSelf: 'center',
+    width: '100%',
+    padding: 20,   
   },
 })

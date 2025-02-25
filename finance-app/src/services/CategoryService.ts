@@ -53,6 +53,7 @@ export const CategoryService = () => {
   }
 
   const updateCategory = (category: Partial<Category>) => {
+    console.log("updateCategory", category)
     try {
       if(category.parentCategoryUid) {
         db().ref(`users/${userUid}/categories/${category.parentCategoryUid}/categories/${category.uid}`).update(category)
