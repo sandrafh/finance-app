@@ -23,6 +23,8 @@ import { autoHeader } from "./NavigationOptions";
 import { ToastTypes } from "../constants/ToastConstants";
 import { CategoryService } from "../services/CategoryService";
 import { ExpensesService } from "../services/ExpensesService";
+import { useDispatch, useSelector } from "react-redux";
+import { getCurrentCategory } from "../redux/slices/category";
 
 export type RootStackParamList = {
   [NavigationAppScreens.LoadingScreen]: undefined
@@ -39,6 +41,9 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export const AppNavigation = () => {  
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
+  const dispatch = useDispatch()
+  
+  const currentCategory = useSelector((state: any) => getCurrentCategory(state)) 
 
   const { deleteCategory } = CategoryService()
   const { deleteExpense } = ExpensesService()  
@@ -62,7 +67,7 @@ export const AppNavigation = () => {
   }
 
   return (
-    <Stack.Navigator screenOptions={(props) => autoHeader({ ...props, onPressDeleteCategory, onPressDeleteExpense })}>
+    <Stack.Navigator screenOptions={(props) => autoHeader({ ...props, onPressDeleteCategory, onPressDeleteExpense, currentCategory, dispatch })}>
       <Stack.Screen name={NavigationAppScreens.LoadingScreen} component={LoadingScreen} />   
       <Stack.Screen name={NavigationAppScreens.Login} component={Login} />           
       <Stack.Screen name={NavigationAppScreens.Register} component={Register} />

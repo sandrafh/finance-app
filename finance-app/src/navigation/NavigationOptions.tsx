@@ -1,7 +1,7 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, RouteProp, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack/types';
+import { Dispatch } from '@reduxjs/toolkit';
 
 import BackArrowIcon from "../assets/icons/back-arrow.svg";
 import TrashIcon from "../assets/icons/trash.svg";
@@ -11,11 +11,10 @@ import SettingsIcon from '../assets/icons/settings.svg';
 import { colors } from '../constants/ColorsConstants'
 import { NavigationAppScreens } from './NavigationConstants'
 import { IconButton } from '../components/IconButton'
-import { getCurrentCategory, setCurrentCategory } from '../redux/slices/category';
-import { store } from '../redux/store';
+import { setCurrentCategory } from '../redux/slices/category';
+import { Category } from '../constants/Category';
+import { Expense } from '../constants/Expenses';
 
-
-const useSelector = (fn:any) => fn(store?.getState())
 
 export const defaultHeaderOptions = {
   headerTitleAlign: 'center' as const,
@@ -84,11 +83,16 @@ export const MenuHeaderButton = () => {
   )
 }
 
-export const autoHeader = ({ navigation, route, onPressDeleteCategory, onPressDeleteExpense }: any) => {
-  const dispatch = useDispatch()
+interface AutoHeaderProps {
+  navigation: NavigationProp<any>
+  route: RouteProp<any, any>
+  onPressDeleteCategory: (category: Category) => void
+  onPressDeleteExpense: (expense: Expense) => void
+  currentCategory: Category | null
+  dispatch: Dispatch
+}
 
-  const currentCategory = useSelector((state: any) => getCurrentCategory(state))  
-
+export const autoHeader = ({ navigation, route, onPressDeleteCategory, onPressDeleteExpense, currentCategory, dispatch }: AutoHeaderProps) => {
   const getHeader = () => {
     switch (route.name) {
       case NavigationAppScreens.LoadingScreen:
