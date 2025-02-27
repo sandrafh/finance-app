@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   container: {
@@ -11,17 +11,17 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',   
-    paddingLeft: 8, 
+    justifyContent: 'flex-start',
+    paddingLeft: 8,
     paddingRight: 24,
   },
   subCategoryCard: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',    
-    
+    justifyContent: 'space-between',
+
     padding: 16,
     paddingRight: 24,
-  }
+  },
 })

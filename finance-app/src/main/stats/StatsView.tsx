@@ -1,20 +1,17 @@
-import React from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigation } from "@react-navigation/native"
-import { NativeStackNavigationProp } from "@react-navigation/native-stack"
-import {
-  View,
-  ScrollView
-} from "react-native"
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { View, ScrollView } from 'react-native'
 
-import { styles } from "./StatsViewStyles"
+import { styles } from './StatsViewStyles'
 
 //Internal components
-import { CategoriesList } from "../categories/CategoriesList"
-import { NavigationAppScreens } from "@/src/navigation/NavigationConstants"
-import { getCategories, setCurrentCategory } from "@/src/redux/slices/category"
-import { StatsChart } from "./StatsChart"
-import { EmptyMessage } from "@/src/components/EmptyMessage"
+import { CategoriesList } from '../categories/CategoriesList'
+import { NavigationAppScreens } from '@/src/navigation/NavigationConstants'
+import { getCategories, setCurrentCategory } from '@/src/redux/slices/category'
+import { StatsChart } from './StatsChart'
+import { EmptyMessage } from '@/src/components/EmptyMessage'
 
 export const StatsView = () => {
   const dispatch = useDispatch()
@@ -30,16 +27,16 @@ export const StatsView = () => {
   return (
     <View style={styles.container}>
       <View style={styles.chartContainer}>
-        <StatsChart />     
+        <StatsChart />
       </View>
-     
-      <ScrollView contentContainerStyle={styles.scrollContainer}>   
+
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
         {categories.length === 0 ? (
           <EmptyMessage text="No categories yet" />
         ) : (
-          <CategoriesList onSelect={onSelectCategory}/> 
-        )}        
+          <CategoriesList onSelect={onSelectCategory} />
+        )}
       </ScrollView>
-    </View>  
+    </View>
   )
 }

@@ -3,7 +3,7 @@ import type { RootState } from '../store'
 import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@/src/constants/Settings'
 
 interface SettingsState {
-  categoryBudgetType: CategoryBudgetTypeEnum,
+  categoryBudgetType: CategoryBudgetTypeEnum
   visualization: VisualizationTypeEnum
   totalIncome: string
 }
@@ -11,7 +11,7 @@ interface SettingsState {
 const initialState: SettingsState = {
   categoryBudgetType: CategoryBudgetTypeEnum.Amount,
   visualization: VisualizationTypeEnum.Monthly,
-  totalIncome: '0'
+  totalIncome: '0',
 }
 
 export const settingsSlice = createSlice({
@@ -26,15 +26,11 @@ export const settingsSlice = createSlice({
     },
     setTotalIncome: (state, action: PayloadAction<string>) => {
       state.totalIncome = action.payload
-    }
+    },
   },
 })
 
-export const {
-  setCategoryBudgetType,
-  setVisualization,
-  setTotalIncome
-} = settingsSlice.actions
+export const { setCategoryBudgetType, setVisualization, setTotalIncome } = settingsSlice.actions
 
 export const getCategoryBudgetType = (state: RootState): CategoryBudgetTypeEnum => state.settings.categoryBudgetType
 export const getVisualization = (state: RootState): VisualizationTypeEnum => state.settings.visualization

@@ -1,4 +1,4 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   viewContainer: {
@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignContent: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   modal: {
     borderRadius: 20,
@@ -19,5 +19,5 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 16,
     paddingHorizontal: 36,
-  }
-});
+  },
+})

@@ -16,13 +16,11 @@ export const expensesSlice = createSlice({
   reducers: {
     setExpenses: (state, action: PayloadAction<Expense[]>) => {
       state.expenses = action.payload
-    }
+    },
   },
 })
 
-export const {
-  setExpenses,
-} = expensesSlice.actions
+export const { setExpenses } = expensesSlice.actions
 
 export const getExpenses = (state: RootState): Expense[] => state.expenses.expenses
 

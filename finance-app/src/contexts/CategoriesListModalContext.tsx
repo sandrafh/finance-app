@@ -44,7 +44,12 @@ export const CategoriesListModalProvider = ({ children }: { children: React.Reac
         scrollEnabled={true}
       >
         <View style={styles.viewContainer}>
-          <CategoriesList onSelect={onSelectCategory} showBudget={false} haveRightArrow={false} backgroundColor={colors.bgModal} />
+          <CategoriesList
+            onSelect={onSelectCategory}
+            showBudget={false}
+            haveRightArrow={false}
+            backgroundColor={colors.bgModal}
+          />
         </View>
       </SwipeModal>
     </CategoriesListModalContext.Provider>

@@ -1,5 +1,5 @@
-import {colors} from '@/src/constants/ColorsConstants';
-import {StyleSheet} from 'react-native';
+import { colors } from '@/src/constants/ColorsConstants'
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   container: {
@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     display: 'flex',
   },
   scrollContainer: {
-    flexGrow: 1,    
+    flexGrow: 1,
     backgroundColor: colors.bg,
   },
   formContainer: {
@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     padding: 24,
     display: 'flex',
     flexDirection: 'column',
-    gap: 16
+    gap: 16,
   },
   icon: {
     display: 'flex',
@@ -27,13 +27,13 @@ export const styles = StyleSheet.create({
 
     borderRadius: 25,
     backgroundColor: colors.bgInput,
-    
+
     shadowColor: colors.grey5,
     shadowOffset: {
       width: 0,
       height: 4,
     },
-    shadowOpacity: 0.90,
+    shadowOpacity: 0.9,
     shadowRadius: 4.65,
 
     elevation: 8,
@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'flex-start',
     padding: 6,
-    gap: 12
+    gap: 12,
   },
   checkbox: {
     display: 'flex',
@@ -52,13 +52,13 @@ export const styles = StyleSheet.create({
     width: 36,
     height: 36,
     padding: 4,
-    borderRadius: 8,    
+    borderRadius: 8,
   },
   buttonContainer: {
     display: 'flex',
     flexDirection: 'column',
     gap: 12,
     padding: 20,
-    marginBottom: 30
-  }
+    marginBottom: 30,
+  },
 })

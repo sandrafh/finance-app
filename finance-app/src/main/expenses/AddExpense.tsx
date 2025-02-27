@@ -1,32 +1,32 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {ScrollView, View} from 'react-native';
-import {useNavigation} from "@react-navigation/native";
-import {NativeStackNavigationProp} from "@react-navigation/native-stack";
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { ScrollView, View } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-import {styles} from './AddExpenseStyles';
+import { styles } from './AddExpenseStyles'
 
 //External libraries
-import DateTimePicker from 'react-native-ui-datepicker';
+import DateTimePicker from 'react-native-ui-datepicker'
 //@ts-ignore
-import Toast from 'react-native-toast-message';
+import Toast from 'react-native-toast-message'
 //Internal components
-import {Button, ButtonVariants} from '@/src/components/Button';
-import {ToastTypes} from '@/src/constants/ToastConstants';
-import {NavigationMainScreens} from '@/src/navigation/NavigationConstants';
-import {ExpensesService} from '@/src/services/ExpensesService';
-import { useCategoriesListModal } from '@/src/contexts/CategoriesListModalContext';
-import {colors} from '@/src/constants/ColorsConstants';
-import {getCategories} from '@/src/redux/slices/category';
-import {CategoryItem} from '../categories/CategoryItem';
-import {getSelectedCategory, setSelectedCategory} from '@/src/redux/slices/ui';
-import {getFontFamily} from '@/src/utils/fontFamily';
-import {CustomInput} from '@/src/components/CustomInput';
-import {CustomDropDown} from '@/src/components/CustomDropDown';
-import {Category} from '@/src/constants/Category';
-import {Expense} from '@/src/constants/Expenses';
-import {FontWeight} from '@/src/constants/Texts';
-import { ToggleInput } from '@/src/components/ToggleInput';
+import { Button, ButtonVariants } from '@/src/components/Button'
+import { ToastTypes } from '@/src/constants/ToastConstants'
+import { NavigationMainScreens } from '@/src/navigation/NavigationConstants'
+import { ExpensesService } from '@/src/services/ExpensesService'
+import { useCategoriesListModal } from '@/src/contexts/CategoriesListModalContext'
+import { colors } from '@/src/constants/ColorsConstants'
+import { getCategories } from '@/src/redux/slices/category'
+import { CategoryItem } from '../categories/CategoryItem'
+import { getSelectedCategory, setSelectedCategory } from '@/src/redux/slices/ui'
+import { getFontFamily } from '@/src/utils/fontFamily'
+import { CustomInput } from '@/src/components/CustomInput'
+import { CustomDropDown } from '@/src/components/CustomDropDown'
+import { Category } from '@/src/constants/Category'
+import { Expense } from '@/src/constants/Expenses'
+import { FontWeight } from '@/src/constants/Texts'
+import { ToggleInput } from '@/src/components/ToggleInput'
 
 export const AddExpense = ({ route }: any) => {
   const dispatch = useDispatch()
@@ -40,21 +40,21 @@ export const AddExpense = ({ route }: any) => {
 
   const categories = useSelector((state: any) => getCategories(state))
   const selectedCategory = useSelector((state: any) => getSelectedCategory(state))
-  
+
   const [name, setName] = useState(expense?.name || '')
   const [spent, setSpent] = useState(expense?.spent.toString() || '0')
   const [date, setDate] = useState(expense?.date || new Date(Date.now()).toISOString())
   const [notes, setNotes] = useState(expense?.notes || '')
 
   useEffect(() => {
-    if(!isEdit) dispatch(setSelectedCategory(categories[0]))
+    if (!isEdit) dispatch(setSelectedCategory(categories[0]))
   }, [])
 
   const handleSave = () => {
-    if(!name || !spent || !selectedCategory?.uid) {
+    if (!name || !spent || !selectedCategory?.uid) {
       Toast.show({
         type: ToastTypes.Error,
-        text1: 'Fill all the required fields'
+        text1: 'Fill all the required fields',
       })
       return
     }
@@ -64,18 +64,17 @@ export const AddExpense = ({ route }: any) => {
       spent: +spent,
       categoryUid: selectedCategory.uid,
       date,
-      notes
+      notes,
     }
     let toastText = 'Expense added successfully'
-    if(isEdit) {
+    if (isEdit) {
       toastText = 'Expense updated successfully'
       updateExpense(newExpense as Expense)
-    }
-    else addExpense(newExpense)
+    } else addExpense(newExpense)
 
     Toast.show({
       type: ToastTypes.Success,
-      text1: toastText
+      text1: toastText,
     })
     navigation.navigate(NavigationMainScreens.Expenses)
   }
@@ -93,12 +92,7 @@ export const AddExpense = ({ route }: any) => {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.formContainer}>
-          <CustomInput
-            label="Name"
-            placeholder="Enter name"
-            value={name}
-            onChangeText={setName}
-          />  
+          <CustomInput label="Name" placeholder="Enter name" value={name} onChangeText={setName} />
 
           <ToggleInput
             label="Import (€)"
@@ -107,7 +101,7 @@ export const AddExpense = ({ route }: any) => {
             onChangeText={setSpent}
             keyboardType="numeric"
           />
-          
+
           <CustomDropDown label="Category" onClick={onClickSelectCategory}>
             {selectedCategory && <CategoryItem category={selectedCategory} showBudget={false} />}
           </CustomDropDown>
@@ -128,15 +122,15 @@ export const AddExpense = ({ route }: any) => {
             onChange={(params) => setDate((params.date as Date).toISOString())}
             locale="es-ES"
             firstDayOfWeek={1}
-            calendarTextStyle={{fontFamily: getFontFamily(FontWeight.Normal), color: colors.white}}
-            headerTextStyle={{fontFamily: getFontFamily(FontWeight.Normal), color: colors.white}}
+            calendarTextStyle={{ fontFamily: getFontFamily(FontWeight.Normal), color: colors.white }}
+            headerTextStyle={{ fontFamily: getFontFamily(FontWeight.Normal), color: colors.white }}
             headerButtonColor={colors.white}
             selectedItemColor={colors.primary}
-            monthContainerStyle={{backgroundColor: colors.bgCard, borderColor: 'transparent'}}
-            yearContainerStyle={{backgroundColor: colors.bgCard, borderColor: 'transparent'}}
-            weekDaysTextStyle={{fontFamily: getFontFamily(FontWeight.Normal), color: colors.white}}
+            monthContainerStyle={{ backgroundColor: colors.bgCard, borderColor: 'transparent' }}
+            yearContainerStyle={{ backgroundColor: colors.bgCard, borderColor: 'transparent' }}
+            weekDaysTextStyle={{ fontFamily: getFontFamily(FontWeight.Normal), color: colors.white }}
           />
-        </View>           
+        </View>
       </ScrollView>
 
       <View style={styles.buttons}>
@@ -145,6 +139,3 @@ export const AddExpense = ({ route }: any) => {
     </View>
   )
 }
-
-
-

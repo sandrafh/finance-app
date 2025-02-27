@@ -20,29 +20,29 @@ interface CategoriesListProps {
   showPercentage?: boolean
 }
 
-export const CategoriesList = ({ 
-  onSelect, 
-  showBudget = true, 
-  haveRightArrow = false, 
+export const CategoriesList = ({
+  onSelect,
+  showBudget = true,
+  haveRightArrow = false,
   backgroundColor = colors.bg,
-  showPercentage = false 
+  showPercentage = false,
 }: CategoriesListProps) => {
   const categories = useSelector((state: RootState) => getCategories(state))
 
   return (
     <ScrollView contentContainerStyle={styles.container} style={{ backgroundColor }}>
-      {categories.map(category => {
-         const hasChildren = !!category?.categories?.length
+      {categories.map((category) => {
+        const hasChildren = !!category?.categories?.length
         return (
           <View key={category.uid}>
-            <Accordion 
+            <Accordion
               header={
                 <TouchableOpacity style={styles.card} onPress={() => onSelect(category)}>
-                  <CategoryItem 
-                    category={category} 
-                    showBudget={showBudget} 
-                    haveRightArrow={haveRightArrow} 
-                    showPercentage={showPercentage} 
+                  <CategoryItem
+                    category={category}
+                    showBudget={showBudget}
+                    haveRightArrow={haveRightArrow}
+                    showPercentage={showPercentage}
                   />
                 </TouchableOpacity>
               }
@@ -53,11 +53,11 @@ export const CategoriesList = ({
                 return (
                   <View key={subcategory.uid}>
                     <TouchableOpacity style={styles.subCategoryCard} onPress={() => onSelect(subcategory)}>
-                      <CategoryItem 
-                        category={subcategory} 
-                        showBudget={showBudget} 
-                        haveRightArrow={haveRightArrow} 
-                        showPercentage={showPercentage} 
+                      <CategoryItem
+                        category={subcategory}
+                        showBudget={showBudget}
+                        haveRightArrow={haveRightArrow}
+                        showPercentage={showPercentage}
                       />
                     </TouchableOpacity>
                     {!isLast && <View style={stylesApp.separator}></View>}
@@ -67,8 +67,8 @@ export const CategoriesList = ({
             </Accordion>
             <View style={stylesApp.separator}></View>
           </View>
-        )        
-      })}       
+        )
+      })}
     </ScrollView>
   )
 }

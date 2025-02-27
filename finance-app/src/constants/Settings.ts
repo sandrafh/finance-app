@@ -1,9 +1,9 @@
 export enum CategoryBudgetTypeEnum {
-  Percentage = "%",
-  Amount = "€"
+  Percentage = '%',
+  Amount = '€',
 }
 
 export enum VisualizationTypeEnum {
-  Monthly = "Monthly",
-  Yearly = "Yearly"
+  Monthly = 'Monthly',
+  Yearly = 'Yearly',
 }

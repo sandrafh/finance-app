@@ -1,5 +1,5 @@
-import {colors} from '@/src/constants/ColorsConstants';
-import {StyleSheet} from 'react-native';
+import { colors } from '@/src/constants/ColorsConstants'
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   container: {
@@ -12,8 +12,8 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',    
-    
+    justifyContent: 'space-between',
+
     padding: 16,
     paddingHorizontal: 26,
   },
@@ -22,13 +22,13 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: colors.bg,
   },
-  dateContainer:{
+  dateContainer: {
     backgroundColor: colors.bgCard,
     borderRadius: 25,
-    marginHorizontal: 6
+    marginHorizontal: 6,
   },
   date: {
     padding: 8,
     paddingHorizontal: 26,
-  }
+  },
 })

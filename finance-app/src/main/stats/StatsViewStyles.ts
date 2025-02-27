@@ -1,17 +1,17 @@
-import {colors} from '@/src/constants/ColorsConstants';
-import {StyleSheet} from 'react-native';
+import { colors } from '@/src/constants/ColorsConstants'
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.bg,
-    display: 'flex',    
+    display: 'flex',
   },
   chartContainer: {
     paddingTop: 16,
     paddingHorizontal: 16,
   },
   scrollContainer: {
-    flexGrow: 1,         
-  }
+    flexGrow: 1,
+  },
 })

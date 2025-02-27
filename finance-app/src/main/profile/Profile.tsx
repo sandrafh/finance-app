@@ -1,6 +1,6 @@
-import {CustomText} from "@/src/components/CustomText";
-import React from "react";
-import {StyleSheet, TextInput, View} from "react-native";
+import { CustomText } from '@/src/components/CustomText'
+import React from 'react'
+import { StyleSheet, TextInput, View } from 'react-native'
 
 export const Profile = () => {
   return (
@@ -14,17 +14,17 @@ export const Profile = () => {
         <TextInput style={styles.textInput} />
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   profileRow: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     marginVertical: 10,
   },
   labelFont: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 30,
     width: 100,
   },
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
     fontSize: 30,
     width: 200,
   },
-});
+})

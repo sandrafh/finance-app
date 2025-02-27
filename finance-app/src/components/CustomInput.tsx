@@ -1,13 +1,13 @@
-import {StyleSheet, TextInput, View} from 'react-native'
+import { StyleSheet, TextInput, View } from 'react-native'
 import React from 'react'
-import {colors} from '../constants/ColorsConstants'
-import {CustomText} from './CustomText'
-import {FontSize, FontWeight} from '../constants/Texts'
+import { colors } from '../constants/ColorsConstants'
+import { CustomText } from './CustomText'
+import { FontSize, FontWeight } from '../constants/Texts'
 
 interface InputProps {
   value: string
   onChangeText?: (value: string) => void
-  label?: string  
+  label?: string
   keyboardType?: any
   autoFocus?: boolean
   placeholder?: string
@@ -21,25 +21,29 @@ interface InputProps {
 
 export const CustomInput = (props: InputProps) => {
   const {
-    value, 
-    onChangeText, 
-    label, 
-    keyboardType = "default", 
-    autoFocus = false, 
-    placeholder = "", 
-    autoCapitalize = "none", 
+    value,
+    onChangeText,
+    label,
+    keyboardType = 'default',
+    autoFocus = false,
+    placeholder = '',
+    autoCapitalize = 'none',
     secureTextEntry = false,
     multiline = false,
     numberOfLines = 1,
     disabled = false,
-    onFocus
+    onFocus,
   } = props
 
   return (
     <View>
-      {label && <CustomText style={styles.label} fontSize={FontSize.Medium} fontWeight={FontWeight.Normal}>{label}</CustomText>}
+      {label && (
+        <CustomText style={styles.label} fontSize={FontSize.Medium} fontWeight={FontWeight.Normal}>
+          {label}
+        </CustomText>
+      )}
       <TextInput
-        style={[{ height: 44*numberOfLines }, {lineHeight: numberOfLines === 1 ? 20 : 32}, styles.input]}
+        style={[{ height: 44 * numberOfLines }, { lineHeight: numberOfLines === 1 ? 20 : 32 }, styles.input]}
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
@@ -52,7 +56,7 @@ export const CustomInput = (props: InputProps) => {
         numberOfLines={numberOfLines}
         cursorColor={colors.white}
         selectionColor={colors.grey1}
-        editable={!disabled}        
+        editable={!disabled}
         onFocus={onFocus}
       />
     </View>
@@ -70,6 +74,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: colors.bgInput,
     color: colors.white,
-    fontSize: FontSize.Medium
-  }
+    fontSize: FontSize.Medium,
+  },
 })
