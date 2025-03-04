@@ -11,8 +11,8 @@ import { NavigationMainScreens } from '../navigation/NavigationConstants'
 import { StatsView } from './stats/StatsView'
 import { FontSize } from '../constants/Texts'
 import { ExpensesView } from './expenses/ExpensesView'
-import { CategoriesView } from './categories/CategoriesView'
 import { MenuHeaderButton } from '../navigation/NavigationOptions'
+import { CategoriesComponent } from './categories/CategoriesComponent'
 
 const Tab = createBottomTabNavigator()
 
@@ -89,7 +89,7 @@ export const Tabs = () => {
       />
       <Tab.Screen
         name={NavigationMainScreens.Categories}
-        component={CategoriesView}
+        component={CategoriesComponent}
         options={{
           headerTitle: 'Categories',
           headerStyle: {

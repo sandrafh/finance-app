@@ -7,8 +7,9 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.bg,
   },
   listContainer: {
-    flex: 1,
+    gap: 12,
     paddingBottom: 48,
+    paddingTop: 12,
   },
   buttonContainer: {
     position: 'absolute',

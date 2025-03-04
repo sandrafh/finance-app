@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -18,23 +18,29 @@ import { getCategoryBudgetType } from '@/src/redux/slices/settings'
 import { CategoryBudgetTypeEnum } from '@/src/constants/Settings'
 import { RootState } from '@/src/redux/store'
 import { InfoText } from '@/src/components/InfoText'
-import { CustomInput } from '@/src/components/CustomInput'
+import { CategoriesFilters } from './CategoriesFilters'
+import { FiltersModal } from '@/src/modals/FiltersModal'
+import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal'
+import { CategoryFilterEnum, useCategories } from '@/src/contexts/CategoriesContext'
+import { FilterDates } from '@/src/components/FilterDates'
+import { FilterCustomDates } from '@/src/components/FilterCustomDates'
 
 export const CategoriesView = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
+  const filteresModalRef = useRef<SwipeModalPublicMethods>(null)
+
+  const { setSearchText, filteredCategories, setFilteredCategories, filterComponent } = useCategories()
 
   const categories = useSelector((state: any) => getCategories(state))
   const categoryBudgetType: CategoryBudgetTypeEnum = useSelector((state: RootState) => getCategoryBudgetType(state))
-
-  const [searchText, setSearchText] = useState<string>('')
-  const [filteredCategories, setFilteredCategories] = useState<Category[]>(categories)
 
   useEffect(() => {
     setFilteredCategories(categories)
   }, [categories])
 
   const onAddCategory = () => () => {
+    setSearchText('')
     navigation.navigate(NavigationAppScreens.AddCategory)
   }
 
@@ -79,16 +85,27 @@ export const CategoriesView = () => {
     setFilteredCategories(filtered)
   }
 
+  const getFiltersContent = () => {
+    switch (filterComponent) {
+      case CategoryFilterEnum.Date:
+        return <FilterDates />
+      case CategoryFilterEnum.CustomDate:
+        return <FilterCustomDates />
+      default:
+        return null
+    }
+  }
+
   return (
     <View style={styles.container}>
-      {categoryBudgetType === CategoryBudgetTypeEnum.Percentage && (
-        <InfoText text={`Your categories add up to ${sumCategoriesPercentage()}%`} />
-      )}
       {categories.length === 0 ? (
         <EmptyMessage text="No categories yet" />
       ) : (
         <View style={styles.listContainer}>
-          <CustomInput placeholder="Search categories" value={searchText} onChangeText={filterCategories} />
+          <CategoriesFilters filterCategories={filterCategories} />
+          {categoryBudgetType === CategoryBudgetTypeEnum.Percentage && (
+            <InfoText text={`Your categories add up to ${sumCategoriesPercentage()}%`} />
+          )}
           <CategoriesList
             onSelect={onSelectCategory}
             showPercentage={categoryBudgetType === CategoryBudgetTypeEnum.Percentage}
@@ -99,6 +116,7 @@ export const CategoriesView = () => {
       <View style={styles.buttonContainer}>
         <Button title="Add Category" onPress={onAddCategory()} variant={ButtonVariants.Primary} />
       </View>
+      <FiltersModal modalRef={filteresModalRef}>{getFiltersContent()}</FiltersModal>
     </View>
   )
 }
