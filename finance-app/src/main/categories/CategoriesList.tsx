@@ -17,18 +17,8 @@ interface CategoriesListProps {
   showBudget?: boolean
   haveRightArrow?: boolean
   backgroundColor?: string
-<<<<<<< HEAD
-  filteredCategories?: Category[] | undefined
-}
-
-export const CategoriesList = ({ 
-  onSelect, 
-  showBudget = true, 
-  haveRightArrow = false, 
-  backgroundColor = colors.bg ,
-  filteredCategories = undefined
-=======
   showPercentage?: boolean
+  filteredCategories?: Category[] | undefined
 }
 
 export const CategoriesList = ({
@@ -36,8 +26,8 @@ export const CategoriesList = ({
   showBudget = true,
   haveRightArrow = false,
   backgroundColor = colors.bg,
-  showPercentage = false,
->>>>>>> master
+  filteredCategories = undefined,
+  showPercentage,
 }: CategoriesListProps) => {
   const categories = useSelector((state: RootState) => getCategories(state))
 
@@ -45,11 +35,7 @@ export const CategoriesList = ({
 
   return (
     <ScrollView contentContainerStyle={styles.container} style={{ backgroundColor }}>
-<<<<<<< HEAD
-      {categoriesToRender.map(category => {
-=======
-      {categories.map((category) => {
->>>>>>> master
+      {categoriesToRender.map((category) => {
         const hasChildren = !!category?.categories?.length
         return (
           <View key={category.uid}>
