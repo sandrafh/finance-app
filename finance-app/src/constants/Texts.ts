@@ -1,7 +1,7 @@
 export enum FontWeight {
   Normal = 'normal',
   Bold = 'bold',
-  Medium = 'medium'
+  Medium = 'medium',
 }
 
 export enum FontSize {
@@ -9,5 +9,5 @@ export enum FontSize {
   Small = 12,
   Medium = 16,
   Large = 20,
-  XLarge = 24
+  XLarge = 24,
 }

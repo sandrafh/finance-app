@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { ScrollView, View, TouchableOpacity } from 'react-native'
-import { useRoute } from '@react-navigation/native'
 import { styles } from './CategoriesListStyles'
 import { stylesApp } from '@/src/AppStyles'
 
@@ -10,8 +9,6 @@ import { getCategories } from '@/src/redux/slices/category'
 import { CategoryItem } from './CategoryItem'
 import { Category } from '@/src/constants/Category'
 import { colors } from '@/src/constants/ColorsConstants'
-import { CategoryBudgetTypeEnum } from '@/src/constants/Settings'
-import { getCategoryBudgetType } from '@/src/redux/slices/settings'
 import { RootState } from '@/src/redux/store'
 import { Accordion } from '@/src/components/Accordion'
 
@@ -20,6 +17,7 @@ interface CategoriesListProps {
   showBudget?: boolean
   haveRightArrow?: boolean
   backgroundColor?: string
+<<<<<<< HEAD
   filteredCategories?: Category[] | undefined
 }
 
@@ -29,28 +27,40 @@ export const CategoriesList = ({
   haveRightArrow = false, 
   backgroundColor = colors.bg ,
   filteredCategories = undefined
+=======
+  showPercentage?: boolean
+}
+
+export const CategoriesList = ({
+  onSelect,
+  showBudget = true,
+  haveRightArrow = false,
+  backgroundColor = colors.bg,
+  showPercentage = false,
+>>>>>>> master
 }: CategoriesListProps) => {
-  const route = useRoute()
   const categories = useSelector((state: RootState) => getCategories(state))
-  const categoryBudgetType: CategoryBudgetTypeEnum = useSelector((state: RootState) => getCategoryBudgetType(state))
-  const showPercentage = categoryBudgetType === CategoryBudgetTypeEnum.Percentage && route.name === 'Categories'
 
   const categoriesToRender = filteredCategories || categories
 
   return (
     <ScrollView contentContainerStyle={styles.container} style={{ backgroundColor }}>
+<<<<<<< HEAD
       {categoriesToRender.map(category => {
+=======
+      {categories.map((category) => {
+>>>>>>> master
         const hasChildren = !!category?.categories?.length
         return (
           <View key={category.uid}>
-            <Accordion 
+            <Accordion
               header={
                 <TouchableOpacity style={styles.card} onPress={() => onSelect(category)}>
-                  <CategoryItem 
-                    category={category} 
-                    showBudget={showBudget} 
-                    haveRightArrow={haveRightArrow} 
-                    showPercentage={showPercentage} 
+                  <CategoryItem
+                    category={category}
+                    showBudget={showBudget}
+                    haveRightArrow={haveRightArrow}
+                    showPercentage={showPercentage}
                   />
                 </TouchableOpacity>
               }
@@ -61,11 +71,11 @@ export const CategoriesList = ({
                 return (
                   <View key={subcategory.uid}>
                     <TouchableOpacity style={styles.subCategoryCard} onPress={() => onSelect(subcategory)}>
-                      <CategoryItem 
-                        category={subcategory} 
-                        showBudget={showBudget} 
-                        haveRightArrow={haveRightArrow} 
-                        showPercentage={showPercentage} 
+                      <CategoryItem
+                        category={subcategory}
+                        showBudget={showBudget}
+                        haveRightArrow={haveRightArrow}
+                        showPercentage={showPercentage}
                       />
                     </TouchableOpacity>
                     {!isLast && <View style={stylesApp.separator}></View>}
@@ -75,8 +85,8 @@ export const CategoriesList = ({
             </Accordion>
             <View style={stylesApp.separator}></View>
           </View>
-        )        
-      })}       
+        )
+      })}
     </ScrollView>
   )
 }

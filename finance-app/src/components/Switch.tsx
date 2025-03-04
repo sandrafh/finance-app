@@ -1,7 +1,7 @@
-import {StyleSheet, TouchableOpacity, View} from "react-native"
-import {colors} from "../constants/ColorsConstants"
-import {CustomText} from "./CustomText"
-import {FontSize} from "../constants/Texts"
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { colors } from '../constants/ColorsConstants'
+import { CustomText } from './CustomText'
+import { FontSize } from '../constants/Texts'
 
 export interface OptionsType {
   [key: string]: boolean
@@ -20,7 +20,11 @@ export const Switch = ({ options, label, onPressOption, fontSize = FontSize.Larg
       {label && <CustomText style={styles.label}>{label}</CustomText>}
       <View style={styles.switchContainer}>
         {Object.entries(options).map(([key, value]: any) => (
-          <TouchableOpacity key={key} style={[styles.switchOption, value && styles.selectedOption]} onPress={() => onPressOption(key)}>
+          <TouchableOpacity
+            key={key}
+            style={[styles.switchOption, value && styles.selectedOption]}
+            onPress={() => onPressOption(key)}
+          >
             <CustomText fontSize={fontSize}>{key}</CustomText>
           </TouchableOpacity>
         ))}
@@ -31,28 +35,28 @@ export const Switch = ({ options, label, onPressOption, fontSize = FontSize.Larg
 
 const styles = StyleSheet.create({
   switch: {
-    display: "flex",
+    display: 'flex',
     gap: 8,
   },
   switchContainer: {
     height: 44,
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
     alignSelf: 'flex-start',
     justifyContent: 'center',
-    alignItems: 'center', 
+    alignItems: 'center',
     backgroundColor: colors.bgInput,
-    borderRadius: 22
+    borderRadius: 22,
   },
   switchOption: {
     height: 44,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     alignSelf: 'flex-start',
-    borderRadius: 22,    
-    overflow: "hidden",
-    paddingHorizontal: 16
+    borderRadius: 22,
+    overflow: 'hidden',
+    paddingHorizontal: 16,
   },
   selectedOption: {
     backgroundColor: colors.primary,
@@ -60,5 +64,5 @@ const styles = StyleSheet.create({
   label: {
     color: colors.white,
     marginLeft: 16,
-  }
+  },
 })

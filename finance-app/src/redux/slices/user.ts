@@ -8,7 +8,7 @@ interface UserState {
 
 const initialState: UserState = {
   userUid: '',
-  name: ''
+  name: '',
 }
 
 export const userSlice = createSlice({
@@ -20,14 +20,11 @@ export const userSlice = createSlice({
     },
     setName(state, action: PayloadAction<string>) {
       state.name = action.payload
-    }   
+    },
   },
 })
 
-export const {
-  setUserUid,
-  setName
-} = userSlice.actions
+export const { setUserUid, setName } = userSlice.actions
 
 export const getUserUid = (state: RootState): string => state.user.userUid
 export const getName = (state: RootState): string => state.user.name

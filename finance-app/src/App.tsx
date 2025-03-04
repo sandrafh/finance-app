@@ -1,19 +1,19 @@
-import React, { useEffect } from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import React, { useEffect } from 'react'
+import { NavigationContainer } from '@react-navigation/native'
 //External libraries
-import Toast from 'react-native-toast-message';
+import Toast from 'react-native-toast-message'
 //Internal components
-import { AppNavigation } from "./navigation/AppNavigation";
-import { toastConfig } from "./components/ToastConfig";
-import { CategoryService } from "./services/CategoryService";
-import { useSelector } from "react-redux";
-import { getUserUid } from "./redux/slices/user";
-import { ExpensesService } from "./services/ExpensesService";
-import { SettingsService } from "./services/SettingsService";
-import { ProfileService } from "./services/ProfileService";
+import { AppNavigation } from './navigation/AppNavigation'
+import { toastConfig } from './components/ToastConfig'
+import { CategoryService } from './services/CategoryService'
+import { useSelector } from 'react-redux'
+import { getUserUid } from './redux/slices/user'
+import { ExpensesService } from './services/ExpensesService'
+import { SettingsService } from './services/SettingsService'
+import { ProfileService } from './services/ProfileService'
+import { CategoriesListModalProvider } from './contexts/CategoriesListModalContext'
 
-
-export default function App() {    
+export default function App() {
   const { subscribeToCategories } = CategoryService()
   const { subscribeToExpenses } = ExpensesService()
   const { subscribeToSettings } = SettingsService()
@@ -22,7 +22,7 @@ export default function App() {
   const userUid = useSelector((state: any) => getUserUid(state))
 
   useEffect(() => {
-    if(userUid) {
+    if (userUid) {
       subscribeToChanges()
     }
   }, [userUid])
@@ -36,10 +36,12 @@ export default function App() {
 
   return (
     <>
-      <NavigationContainer>             
-        <AppNavigation />
+      <NavigationContainer>
+        <CategoriesListModalProvider>
+          <AppNavigation />
+        </CategoriesListModalProvider>
       </NavigationContainer>
-      <Toast config={toastConfig} /> 
+      <Toast config={toastConfig} />
     </>
   )
 }

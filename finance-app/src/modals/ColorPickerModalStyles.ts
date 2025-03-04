@@ -1,4 +1,4 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   colorPicker: {
@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     height: 200,
     display: 'flex',
     flexDirection: 'column',
-    gap: 12
+    gap: 12,
   },
   viewContainer: {
     flex: 1,
@@ -15,10 +15,10 @@ export const styles = StyleSheet.create({
     gap: 32,
     padding: 20,
     alignContent: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   modal: {
     borderRadius: 20,
-    paddingBottom: 20 
-  }
-});
+    paddingBottom: 20,
+  },
+})

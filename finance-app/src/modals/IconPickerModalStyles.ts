@@ -1,4 +1,4 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   modal: {
@@ -13,8 +13,7 @@ export const styles = StyleSheet.create({
     gap: 16,
     padding: 24,
   },
-  scrollContainer: {
-  },
+  scrollContainer: {},
   grid: {
     height: '100%',
     width: 350,
@@ -27,5 +26,5 @@ export const styles = StyleSheet.create({
     width: '15%',
     marginBottom: 16,
     alignItems: 'center',
-  }  
-});
+  },
+})

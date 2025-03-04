@@ -12,18 +12,18 @@ interface AccordionProps {
 export const Accordion = ({ header, children, hasArrow = true }: AccordionProps) => {
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const toggleExpand = () => setIsExpanded(prev => !prev)
+  const toggleExpand = () => setIsExpanded((prev) => !prev)
 
   return (
     <View>
       <TouchableOpacity onPress={toggleExpand} style={styles.header}>
         <View style={styles.arrowContainer}>
           {hasArrow && (
-            <RightArrowIcon 
-              width={16} 
-              height={16} 
-              color={colors.grey1} 
-              style={{ transform: [{ rotate: isExpanded ? '90deg' : '0deg' }] }} 
+            <RightArrowIcon
+              width={16}
+              height={16}
+              color={colors.grey1}
+              style={{ transform: [{ rotate: isExpanded ? '90deg' : '0deg' }] }}
             />
           )}
         </View>
@@ -40,15 +40,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
     padding: 16,
-    backgroundColor: colors.highlight
+    backgroundColor: colors.highlight,
   },
   arrowContainer: {
     width: 16, // Reserve space for the arrow even if it's not shown
     height: 16,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   content: {
-    paddingLeft: 48
-  }
+    paddingLeft: 48,
+  },
 })

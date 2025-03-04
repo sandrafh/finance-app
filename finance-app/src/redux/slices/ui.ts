@@ -5,7 +5,7 @@ import { Category } from '@/src/constants/Category'
 interface UiState {
   addExpense: {
     selectedCategory: Category
-  },
+  }
   addCategory: {
     selectedParentCategory: Category
   }
@@ -13,11 +13,11 @@ interface UiState {
 
 const initialState: UiState = {
   addExpense: {
-    selectedCategory: {} as Category
+    selectedCategory: {} as Category,
   },
   addCategory: {
-    selectedParentCategory: {} as Category
-  }
+    selectedParentCategory: {} as Category,
+  },
 }
 
 export const uiSlice = createSlice({
@@ -29,14 +29,11 @@ export const uiSlice = createSlice({
     },
     setSelectedParentCategory: (state, action: PayloadAction<Category>) => {
       state.addCategory.selectedParentCategory = action.payload
-    }
+    },
   },
 })
 
-export const {
-  setSelectedCategory,
-  setSelectedParentCategory
-} = uiSlice.actions
+export const { setSelectedCategory, setSelectedParentCategory } = uiSlice.actions
 
 export const getSelectedCategory = (state: RootState): Category => state.ui.addExpense.selectedCategory
 export const getSelectedParentCategory = (state: RootState): Category => state.ui.addCategory.selectedParentCategory

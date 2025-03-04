@@ -1,5 +1,5 @@
-import {StyleSheet} from "react-native";
-import {colors} from "../constants/ColorsConstants";
+import { StyleSheet } from 'react-native'
+import { colors } from '../constants/ColorsConstants'
 
 export const styles = StyleSheet.create({
   contentView: {
@@ -13,22 +13,22 @@ export const styles = StyleSheet.create({
   },
   mainContent: {
     flex: 6,
-    gap: 12
+    gap: 12,
   },
   titleContainer: {
     flex: 1.2,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   titleText: {
     fontSize: 35,
-    textAlign: "center",
-    fontWeight: "300",
+    textAlign: 'center',
+    fontWeight: '300',
     color: colors.white,
   },
   buttons: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
     gap: 8,
     marginBottom: 20,
-  },  
+  },
 })

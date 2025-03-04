@@ -11,7 +11,7 @@ export const store = configureStore({
     category: categorySlice,
     expenses: expensesSlice,
     ui: uiSlice,
-    settings: settingsSlice
+    settings: settingsSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 })

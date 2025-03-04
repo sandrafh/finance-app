@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react'
 
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import ListIcon from '../assets/icons/list.svg';
-import CategoriesIcon from '../assets/icons/categories.svg';
-import StatsIcon from '../assets/icons/stats.svg';
+import ListIcon from '../assets/icons/list.svg'
+import CategoriesIcon from '../assets/icons/categories.svg'
+import StatsIcon from '../assets/icons/stats.svg'
 
-import { colors } from "../constants/ColorsConstants";
-import { NavigationMainScreens } from "../navigation/NavigationConstants";
-import { StatsView } from "./stats/StatsView";
-import { FontSize } from "../constants/Texts";
-import { ExpensesView } from "./expenses/ExpensesView";
-import { CategoriesView } from "./categories/CategoriesView";
-import { MenuHeaderButton } from "../navigation/NavigationOptions";
+import { colors } from '../constants/ColorsConstants'
+import { NavigationMainScreens } from '../navigation/NavigationConstants'
+import { StatsView } from './stats/StatsView'
+import { FontSize } from '../constants/Texts'
+import { ExpensesView } from './expenses/ExpensesView'
+import { CategoriesView } from './categories/CategoriesView'
+import { MenuHeaderButton } from '../navigation/NavigationOptions'
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator()
 
 export const Tabs = () => {
   return (
@@ -28,29 +28,29 @@ export const Tabs = () => {
                   width={30}
                   height={30}
                   color={focused ? colors.white : colors.grey3}
-                  style={{marginTop: 5}}
+                  style={{ marginTop: 5 }}
                 />
               )
             case NavigationMainScreens.Categories:
               return (
-                <CategoriesIcon 
-                  width={30} 
+                <CategoriesIcon
+                  width={30}
                   height={30}
                   color={focused ? colors.white : colors.grey3}
-                  style={{marginTop: 5}} 
+                  style={{ marginTop: 5 }}
                 />
               )
             case NavigationMainScreens.Stats:
               return (
-                <StatsIcon 
-                  width={30} 
+                <StatsIcon
+                  width={30}
                   height={30}
                   color={focused ? colors.white : colors.grey3}
-                  style={{marginTop: 5}} 
+                  style={{ marginTop: 5 }}
                 />
-              )          
+              )
             default:
-              break;
+              break
           }
         },
         tabBarActiveTintColor: colors.white,
@@ -58,11 +58,11 @@ export const Tabs = () => {
         indicatorStyle: {
           backgroundColor: colors.white,
           height: 4,
-          position: 'bottom'
+          position: 'bottom',
         },
         tabBarStyle: {
-          backgroundColor: colors.bg,   
-          borderTopWidth: 0,       
+          backgroundColor: colors.bg,
+          borderTopWidth: 0,
         },
         tabBarLabelStyle: {
           top: 8,
@@ -75,7 +75,7 @@ export const Tabs = () => {
         name={NavigationMainScreens.Expenses}
         component={ExpensesView}
         options={{
-          headerTitle: "Expenses",
+          headerTitle: 'Expenses',
           headerStyle: {
             backgroundColor: colors.bg,
           },
@@ -83,17 +83,15 @@ export const Tabs = () => {
             color: colors.white,
           },
           headerRight: () => {
-            return (              
-              <MenuHeaderButton />
-            )
-          }
+            return <MenuHeaderButton />
+          },
         }}
       />
       <Tab.Screen
         name={NavigationMainScreens.Categories}
         component={CategoriesView}
         options={{
-          headerTitle: "Categories",
+          headerTitle: 'Categories',
           headerStyle: {
             backgroundColor: colors.bg,
           },
@@ -101,10 +99,8 @@ export const Tabs = () => {
             color: colors.white,
           },
           headerRight: () => {
-            return (              
-              <MenuHeaderButton />
-            )
-          }
+            return <MenuHeaderButton />
+          },
         }}
       />
       <Tab.Screen
@@ -119,10 +115,8 @@ export const Tabs = () => {
             color: colors.white,
           },
           headerRight: () => {
-            return (              
-              <MenuHeaderButton />
-            )
-          }
+            return <MenuHeaderButton />
+          },
         }}
       />
     </Tab.Navigator>

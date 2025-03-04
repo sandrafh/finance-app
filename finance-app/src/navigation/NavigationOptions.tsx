@@ -1,21 +1,19 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack/types';
+import { NavigationProp, RouteProp, useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack/types'
+import { Dispatch } from '@reduxjs/toolkit'
 
-import BackArrowIcon from "../assets/icons/back-arrow.svg";
-import TrashIcon from "../assets/icons/trash.svg";
-import SettingsIcon from '../assets/icons/settings.svg';
+import BackArrowIcon from '../assets/icons/back-arrow.svg'
+import TrashIcon from '../assets/icons/trash.svg'
+import SettingsIcon from '../assets/icons/settings.svg'
 
 //Internal components
 import { colors } from '../constants/ColorsConstants'
 import { NavigationAppScreens } from './NavigationConstants'
 import { IconButton } from '../components/IconButton'
-import { getCurrentCategory, setCurrentCategory } from '../redux/slices/category';
-import { store } from '../redux/store';
-
-
-const useSelector = (fn:any) => fn(store?.getState())
+import { setCurrentCategory } from '../redux/slices/category'
+import { Category } from '../constants/Category'
+import { Expense } from '../constants/Expenses'
 
 export const defaultHeaderOptions = {
   headerTitleAlign: 'center' as const,
@@ -27,43 +25,35 @@ export const defaultHeaderOptions = {
   },
   headerTitleStyle: {
     color: colors.white,
-  }, 
+  },
 }
 
-export const buildHeader = (
-  title: string,
-  headerLeft?: JSX.Element,
-  headerRight?: JSX.Element,
-) => {
+export const buildHeader = (title: string, headerLeft?: JSX.Element, headerRight?: JSX.Element) => {
   return {
     ...defaultHeaderOptions,
     headerStyle: {
       ...defaultHeaderOptions.headerStyle,
     },
     headerTitle: title,
-    headerLeft: headerLeft
-      ? () => headerLeft
-      : undefined,
-    headerRight: headerRight
-      ? () => headerRight
-      : undefined
+    headerLeft: headerLeft ? () => headerLeft : undefined,
+    headerRight: headerRight ? () => headerRight : undefined,
   }
 }
 
 const BackArrowHeader = ({ navigation, onPress }: any) => {
   return (
-    <IconButton 
-      icon={<BackArrowIcon width={16} height={16} color={colors.white} />} 
-      onPress={onPress || (() => navigation.goBack())} 
+    <IconButton
+      icon={<BackArrowIcon width={16} height={16} color={colors.white} />}
+      onPress={onPress || (() => navigation.goBack())}
     />
   )
 }
 
 const RemoveItemHeader = ({ onPress }: any) => {
   return (
-    <IconButton 
-      icon={<TrashIcon width={24} height={24} color={colors.danger} />} 
-      onPress={onPress} 
+    <IconButton
+      icon={<TrashIcon width={24} height={24} color={colors.danger} />}
+      onPress={onPress}
       backgroundColor={colors.bgInput}
     />
   )
@@ -73,22 +63,34 @@ export const MenuHeaderButton = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   return (
-    <IconButton 
-      icon={<SettingsIcon width={24} height={24} color={colors.grey1} />} 
+    <IconButton
+      icon={<SettingsIcon width={24} height={24} color={colors.grey1} />}
       onPress={() => {
         navigation.navigate(NavigationAppScreens.SettingsView)
-      }} 
+      }}
       backgroundColor={colors.bgCard}
-      style={{marginRight: 10}}
+      style={{ marginRight: 10 }}
     />
   )
 }
 
-export const autoHeader = ({ navigation, route, onPressDeleteCategory, onPressDeleteExpense }: any) => {
-  const dispatch = useDispatch()
+interface AutoHeaderProps {
+  navigation: NavigationProp<any>
+  route: RouteProp<any, any>
+  onPressDeleteCategory: (category: Category) => void
+  onPressDeleteExpense: (expense: Expense) => void
+  currentCategory: Category | null
+  dispatch: Dispatch
+}
 
-  const currentCategory = useSelector((state: any) => getCurrentCategory(state))  
-
+export const autoHeader = ({
+  navigation,
+  route,
+  onPressDeleteCategory,
+  onPressDeleteExpense,
+  currentCategory,
+  dispatch,
+}: AutoHeaderProps) => {
   const getHeader = () => {
     switch (route.name) {
       case NavigationAppScreens.LoadingScreen:
@@ -102,29 +104,34 @@ export const autoHeader = ({ navigation, route, onPressDeleteCategory, onPressDe
       case NavigationAppScreens.AddCategory:
         return buildHeader(
           route?.params?.isEdit ? 'Edit Category' : 'New Category',
-          <BackArrowHeader navigation={navigation} onPress={() => navigation.navigate(NavigationAppScreens.Tabs)} />,   
-          route?.params?.isEdit ? 
-            <RemoveItemHeader onPress={() => onPressDeleteCategory(route.params?.category)} /> 
-            : 
-            <MenuHeaderButton />       
+          <BackArrowHeader navigation={navigation} onPress={() => navigation.navigate(NavigationAppScreens.Tabs)} />,
+          route?.params?.isEdit ? (
+            <RemoveItemHeader onPress={() => onPressDeleteCategory(route.params?.category)} />
+          ) : (
+            <MenuHeaderButton />
+          )
         )
       case NavigationAppScreens.CategoryDetails:
         return buildHeader(
           currentCategory?.name || 'Category Details',
-          <BackArrowHeader navigation={navigation} onPress={() => {
-            dispatch(setCurrentCategory(null))
-            navigation.navigate(NavigationAppScreens.Tabs)
-          }} />,
+          <BackArrowHeader
+            navigation={navigation}
+            onPress={() => {
+              dispatch(setCurrentCategory(null))
+              navigation.navigate(NavigationAppScreens.Tabs)
+            }}
+          />,
           <MenuHeaderButton />
         )
       case NavigationAppScreens.AddExpense:
         return buildHeader(
           route?.params?.isEdit ? 'Edit Expense' : 'New Expense',
           <BackArrowHeader navigation={navigation} />,
-          route?.params?.isEdit ? 
-            <RemoveItemHeader onPress={() => onPressDeleteExpense(route.params?.expense)} /> 
-            : 
-            <MenuHeaderButton />  
+          route?.params?.isEdit ? (
+            <RemoveItemHeader onPress={() => onPressDeleteExpense(route.params?.expense)} />
+          ) : (
+            <MenuHeaderButton />
+          )
         )
       case NavigationAppScreens.SettingsView:
         return buildHeader(
@@ -134,7 +141,7 @@ export const autoHeader = ({ navigation, route, onPressDeleteCategory, onPressDe
       default:
         console.warn(`Unhandled route: ${route.name}`)
         return defaultHeaderOptions
-    }  
+    }
   }
 
   return getHeader()

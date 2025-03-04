@@ -1,4 +1,3 @@
-
 export const fontFamilies = {
   QUICKSAND: {
     normal: 'Quicksand-Regular',

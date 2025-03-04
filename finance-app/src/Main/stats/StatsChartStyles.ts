@@ -1,5 +1,5 @@
-import {colors} from '@/src/constants/ColorsConstants';
-import {StyleSheet} from 'react-native';
+import { colors } from '@/src/constants/ColorsConstants'
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   chartOptions: {
@@ -12,5 +12,5 @@ export const styles = StyleSheet.create({
   switchContainer: {
     display: 'flex',
     alignItems: 'center',
-  }
+  },
 })

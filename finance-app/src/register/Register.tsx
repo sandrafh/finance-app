@@ -1,19 +1,19 @@
-import {useNavigation} from "@react-navigation/native";
-import React, {useState} from "react";
-import {Keyboard, Pressable, SafeAreaView, View,} from "react-native";
-import type {NativeStackNavigationProp} from "@react-navigation/native-stack";
-import {useDispatch} from "react-redux";
+import { useNavigation } from '@react-navigation/native'
+import React, { useState } from 'react'
+import { Keyboard, Pressable, SafeAreaView, View } from 'react-native'
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { useDispatch } from 'react-redux'
 
-import {styles} from "./RegisterStyles";
+import { styles } from './RegisterStyles'
 //External libraries
-import auth, {FirebaseAuthTypes} from "@react-native-firebase/auth"
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
 //Internal components
-import {Button, ButtonVariants} from "../components/Button";
-import {NavigationAppScreens} from "../navigation/NavigationConstants";
-import {setUserUid} from "../redux/slices/user";
-import {CustomText} from "../components/CustomText";
-import {CustomInput} from "../components/CustomInput";
-import {ProfileService} from "../services/ProfileService";
+import { Button, ButtonVariants } from '../components/Button'
+import { NavigationAppScreens } from '../navigation/NavigationConstants'
+import { setUserUid } from '../redux/slices/user'
+import { CustomText } from '../components/CustomText'
+import { CustomInput } from '../components/CustomInput'
+import { ProfileService } from '../services/ProfileService'
 
 export const Register = () => {
   const dispatch = useDispatch()
@@ -28,23 +28,20 @@ export const Register = () => {
 
   const createProfile = async (response: FirebaseAuthTypes.UserCredential) => {
     dispatch(setUserUid(response.user.uid))
-    if(name) setUserName(name)
+    if (name) setUserName(name)
   }
 
   const registerAndGoToMainFlow = async () => {
-    if(email && password) {
+    if (email && password) {
       try {
-        const response = await auth().createUserWithEmailAndPassword(
-          email, 
-          password
-        )
+        const response = await auth().createUserWithEmailAndPassword(email, password)
 
         if (response.user) {
           await createProfile(response)
           navigation.replace(NavigationAppScreens.Tabs)
         }
       } catch (error) {
-        console.error("Error on register an user: ", error)
+        console.error('Error on register an user: ', error)
       }
     }
   }
@@ -57,18 +54,13 @@ export const Register = () => {
             <CustomText style={styles.titleText}>Register</CustomText>
           </View>
           <View style={styles.mainContent}>
-            <CustomInput
-              label="Name"
-              placeholder="Name"
-              value={name}
-              onChangeText={setName}
-            />
+            <CustomInput label="Name" placeholder="Name" value={name} onChangeText={setName} />
             <CustomInput
               label="Email"
               placeholder="Email"
               value={email}
               onChangeText={setEmail}
-                keyboardType="email-address"
+              keyboardType="email-address"
               autoCapitalize="none"
             />
             <CustomInput
@@ -80,17 +72,9 @@ export const Register = () => {
             />
           </View>
           <View style={styles.buttons}>
-            <Button
-              title="Sign Up"
-              onPress={registerAndGoToMainFlow}
-              variant={ButtonVariants.Primary}
-            />
-            <Button 
-              title="Go Back" 
-              onPress={navigation.goBack} 
-              variant={ButtonVariants.Secondary} 
-            />
-          </View>          
+            <Button title="Sign Up" onPress={registerAndGoToMainFlow} variant={ButtonVariants.Primary} />
+            <Button title="Go Back" onPress={navigation.goBack} variant={ButtonVariants.Secondary} />
+          </View>
         </View>
       </SafeAreaView>
     </Pressable>
