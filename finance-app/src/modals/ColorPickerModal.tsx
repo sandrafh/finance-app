@@ -6,7 +6,7 @@ import { styles } from './ColorPickerModalStyles'
 import ColorPicker, { HueSlider, Panel1 } from 'reanimated-color-picker'
 import SwipeModal, { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal'
 import { colors } from '../constants/ColorsConstants'
-import { Button, ButtonVariants } from '../components/Button'
+import { CustomButton, ButtonVariants } from '../components/CustomButton'
 
 interface ColorPickerModalProps {
   modalRef: RefObject<SwipeModalPublicMethods>
@@ -34,7 +34,7 @@ export const ColorPickerModal = ({ modalRef, onSelectColor, color }: ColorPicker
           <HueSlider />
         </ColorPicker>
 
-        <Button title="Accept" onPress={() => modalRef.current?.hide()} variant={ButtonVariants.Primary} />
+        <CustomButton title="Accept" onPress={() => modalRef.current?.hide()} variant={ButtonVariants.Primary} />
       </View>
     </SwipeModal>
   )

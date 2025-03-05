@@ -17,7 +17,7 @@ import Toast from 'react-native-toast-message'
 import { ColorPickerModal } from '@/src/modals/ColorPickerModal'
 import { IconPickerModal } from '@/src/modals/IconPickerModal'
 import { colors } from '@/src/constants/ColorsConstants'
-import { Button, ButtonVariants } from '@/src/components/Button'
+import { CustomButton, ButtonVariants } from '@/src/components/CustomButton'
 import { ToastTypes } from '@/src/constants/ToastConstants'
 import { NavigationMainScreens } from '@/src/navigation/NavigationConstants'
 import { CustomText } from '@/src/components/CustomText'
@@ -166,7 +166,7 @@ export const AddCategory = ({ route }: any) => {
       </ScrollView>
 
       <View style={styles.buttonContainer}>
-        <Button title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
+        <CustomButton title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
       </View>
 
       <ColorPickerModal modalRef={colorModalRef} onSelectColor={(color) => setColor(color.hex)} color={color} />

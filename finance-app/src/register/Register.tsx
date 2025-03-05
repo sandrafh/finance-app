@@ -8,7 +8,7 @@ import { styles } from './RegisterStyles'
 //External libraries
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
 //Internal components
-import { Button, ButtonVariants } from '../components/Button'
+import { CustomButton, ButtonVariants } from '../components/CustomButton'
 import { NavigationAppScreens } from '../navigation/NavigationConstants'
 import { setUserUid } from '../redux/slices/user'
 import { CustomText } from '../components/CustomText'
@@ -72,8 +72,8 @@ export const Register = () => {
             />
           </View>
           <View style={styles.buttons}>
-            <Button title="Sign Up" onPress={registerAndGoToMainFlow} variant={ButtonVariants.Primary} />
-            <Button title="Go Back" onPress={navigation.goBack} variant={ButtonVariants.Secondary} />
+            <CustomButton title="Sign Up" onPress={registerAndGoToMainFlow} variant={ButtonVariants.Primary} />
+            <CustomButton title="Go Back" onPress={navigation.goBack} variant={ButtonVariants.Secondary} />
           </View>
         </View>
       </SafeAreaView>

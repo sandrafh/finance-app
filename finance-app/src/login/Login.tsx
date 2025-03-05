@@ -10,7 +10,7 @@ import { styles } from './LoginStyles'
 import auth from '@react-native-firebase/auth'
 import Toast from 'react-native-toast-message'
 //Internal components
-import { Button, ButtonVariants } from '../components/Button'
+import { CustomButton, ButtonVariants } from '../components/CustomButton'
 import { NavigationAppScreens } from '../navigation/NavigationConstants'
 import { setUserUid } from '../redux/slices/user'
 import { CustomInput } from '../components/CustomInput'
@@ -82,8 +82,8 @@ export const Login = () => {
               />
             </View>
             <View style={styles.buttonsView}>
-              <Button title="Login" onPress={goToMainFlow} variant={ButtonVariants.Primary} />
-              <Button title="Sign Up" onPress={goToRegistration} variant={ButtonVariants.Secondary} />
+              <CustomButton title="Login" onPress={goToMainFlow} variant={ButtonVariants.Primary} />
+              <CustomButton title="Sign Up" onPress={goToRegistration} variant={ButtonVariants.Secondary} />
             </View>
           </View>
         </ImageBackground>

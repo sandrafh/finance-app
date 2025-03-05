@@ -8,7 +8,7 @@ import { styles } from './SettingsViewStyles'
 import { stylesApp } from '@/src/AppStyles'
 
 //Internal components
-import { Button, ButtonVariants } from '@/src/components/Button'
+import { CustomButton, ButtonVariants } from '@/src/components/CustomButton'
 import { getName, setUserUid } from '@/src/redux/slices/user'
 import { NavigationAppScreens } from '@/src/navigation/NavigationConstants'
 import { OptionsType, Switch } from '@/src/components/Switch'
@@ -110,7 +110,7 @@ export const SettingsView = () => {
         </View>
       </ScrollView>
       <View style={styles.buttonContainer}>
-        <Button title="Logout" variant={ButtonVariants.Primary} onPress={onPressLogout} />
+        <CustomButton title="Logout" variant={ButtonVariants.Primary} onPress={onPressLogout} />
       </View>
     </View>
   )

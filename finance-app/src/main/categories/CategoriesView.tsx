@@ -6,7 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { styles } from './CategoriesViewStyles'
 
 //Internal components
-import { Button, ButtonVariants } from '@/src/components/Button'
+import { CustomButton, ButtonVariants } from '@/src/components/CustomButton'
 import { NavigationAppScreens } from '@/src/navigation/NavigationConstants'
 import { CategoriesList } from './CategoriesList'
 import { useDispatch, useSelector } from 'react-redux'
@@ -112,7 +112,7 @@ export const CategoriesView = () => {
         </View>
       )}
       <View style={styles.buttonContainer}>
-        <Button title="Add Category" onPress={onAddCategory()} variant={ButtonVariants.Primary} />
+        <CustomButton title="Add Category" onPress={onAddCategory()} variant={ButtonVariants.Primary} />
       </View>
       <FiltersModal modalRef={filtersModalRef}>{getFiltersContent()}</FiltersModal>
     </View>

@@ -18,7 +18,7 @@ export enum ButtonSizes {
   Large = 'large',
 }
 
-interface ButtonProps {
+interface CustomButtonProps {
   title?: string
   variant: ButtonVariants
   onPress: () => void
@@ -28,7 +28,15 @@ interface ButtonProps {
   style?: any
 }
 
-export const Button = ({ title, onPress, variant, size = ButtonSizes.Medium, icon, rightIcon, style }: ButtonProps) => {
+export const CustomButton = ({
+  title,
+  onPress,
+  variant,
+  size = ButtonSizes.Medium,
+  icon,
+  rightIcon,
+  style,
+}: CustomButtonProps) => {
   const containerStyle = () => {
     switch (variant) {
       case ButtonVariants.Primary:

@@ -5,7 +5,7 @@ import { styles } from './FilteresModalStyles'
 
 import SwipeModal, { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal'
 import { colors } from '@/src/constants/ColorsConstants'
-import { Button, ButtonVariants } from '@/src/components/Button'
+import { CustomButton, ButtonVariants } from '@/src/components/CustomButton'
 
 interface ColorPickerModalProps {
   modalRef: RefObject<SwipeModalPublicMethods>
@@ -28,7 +28,7 @@ export const FiltersModal = ({ modalRef, children }: ColorPickerModalProps) => {
     >
       <View style={styles.viewContainer}>
         {children}
-        <Button title="Close" onPress={() => modalRef.current?.hide()} variant={ButtonVariants.Primary} />
+        <CustomButton title="Close" onPress={() => modalRef.current?.hide()} variant={ButtonVariants.Primary} />
       </View>
     </SwipeModal>
   )

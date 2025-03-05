@@ -11,7 +11,7 @@ import DateTimePicker from 'react-native-ui-datepicker'
 //@ts-ignore
 import Toast from 'react-native-toast-message'
 //Internal components
-import { Button, ButtonVariants } from '@/src/components/Button'
+import { CustomButton, ButtonVariants } from '@/src/components/CustomButton'
 import { ToastTypes } from '@/src/constants/ToastConstants'
 import { NavigationMainScreens } from '@/src/navigation/NavigationConstants'
 import { ExpensesService } from '@/src/services/ExpensesService'
@@ -134,7 +134,7 @@ export const AddExpense = ({ route }: any) => {
       </ScrollView>
 
       <View style={styles.buttons}>
-        <Button title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
+        <CustomButton title="Save" onPress={handleSave} variant={ButtonVariants.Primary} />
       </View>
     </View>
   )

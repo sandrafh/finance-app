@@ -5,7 +5,7 @@ import { styles } from './CategoriesFiltersStyles'
 
 import DownArrow from '@/src/assets/icons/down-arrow.svg'
 
-import { Button, ButtonSizes, ButtonVariants } from '@/src/components/Button'
+import { CustomButton, ButtonSizes, ButtonVariants } from '@/src/components/CustomButton'
 import { CustomInput } from '@/src/components/CustomInput'
 import { colors } from '@/src/constants/ColorsConstants'
 import { CategoryFilterEnum, useCategories } from '@/src/contexts/CategoriesContext'
@@ -40,7 +40,7 @@ export const CategoriesFilters = ({ filterCategories }: CategoriesFiltersProps) 
         haveClearButton={true}
       />
       <View style={styles.containerButtons}>
-        <Button
+        <CustomButton
           title="Date"
           onPress={onClickDate}
           variant={ButtonVariants.Outlined}
@@ -48,7 +48,7 @@ export const CategoriesFilters = ({ filterCategories }: CategoriesFiltersProps) 
           size={ButtonSizes.Small}
           rightIcon={<DownArrow width={16} height={16} color={colors.white} />}
         />
-        <Button
+        <CustomButton
           title="Categories"
           onPress={onClickCategories}
           variant={ButtonVariants.Outlined}

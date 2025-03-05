@@ -8,7 +8,7 @@ import SwipeModal, { SwipeModalPublicMethods } from '@birdwingo/react-native-swi
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import { colors } from '../constants/ColorsConstants'
-import { Button, ButtonVariants } from '../components/Button'
+import { CustomButton, ButtonVariants } from '../components/CustomButton'
 
 interface IconPickerModalProps {
   modalRef: RefObject<SwipeModalPublicMethods>
@@ -128,7 +128,7 @@ export const IconPickerModal = ({
             ))}
           </View>
         </ScrollView>
-        <Button title="Next" onPress={onPressNext} variant={ButtonVariants.Primary} />
+        <CustomButton title="Next" onPress={onPressNext} variant={ButtonVariants.Primary} />
       </View>
     </SwipeModal>
   )

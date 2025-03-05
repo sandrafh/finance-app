@@ -7,7 +7,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { styles } from './ExpensesViewStyles'
 
 //Internal components
-import { Button, ButtonVariants } from '@/src/components/Button'
+import { CustomButton, ButtonVariants } from '@/src/components/CustomButton'
 import { NavigationAppScreens } from '@/src/navigation/NavigationConstants'
 import { ExpensesList } from './ExpensesList'
 import { getCategories } from '@/src/redux/slices/category'
@@ -37,7 +37,7 @@ export const ExpensesView = () => {
       )}
       {haveCategories && (
         <View style={styles.button}>
-          <Button variant={ButtonVariants.Primary} title="Add Expense" onPress={onAddExpense} />
+          <CustomButton variant={ButtonVariants.Primary} title="Add Expense" onPress={onAddExpense} />
         </View>
       )}
     </View>
