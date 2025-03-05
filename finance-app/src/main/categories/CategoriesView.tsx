@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -20,7 +20,6 @@ import { RootState } from '@/src/redux/store'
 import { InfoText } from '@/src/components/InfoText'
 import { CategoriesFilters } from './CategoriesFilters'
 import { FiltersModal } from '@/src/modals/FiltersModal'
-import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal'
 import { CategoryFilterEnum, useCategories } from '@/src/contexts/CategoriesContext'
 import { FilterDates } from '@/src/components/FilterDates'
 import { FilterCustomDates } from '@/src/components/FilterCustomDates'
@@ -28,9 +27,8 @@ import { FilterCustomDates } from '@/src/components/FilterCustomDates'
 export const CategoriesView = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
-  const filteresModalRef = useRef<SwipeModalPublicMethods>(null)
 
-  const { setSearchText, filteredCategories, setFilteredCategories, filterComponent } = useCategories()
+  const { setSearchText, filteredCategories, setFilteredCategories, filterComponent, filtersModalRef } = useCategories()
 
   const categories = useSelector((state: any) => getCategories(state))
   const categoryBudgetType: CategoryBudgetTypeEnum = useSelector((state: RootState) => getCategoryBudgetType(state))
@@ -116,7 +114,7 @@ export const CategoriesView = () => {
       <View style={styles.buttonContainer}>
         <Button title="Add Category" onPress={onAddCategory()} variant={ButtonVariants.Primary} />
       </View>
-      <FiltersModal modalRef={filteresModalRef}>{getFiltersContent()}</FiltersModal>
+      <FiltersModal modalRef={filtersModalRef}>{getFiltersContent()}</FiltersModal>
     </View>
   )
 }

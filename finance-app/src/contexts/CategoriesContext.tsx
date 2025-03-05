@@ -2,6 +2,7 @@ import React, { createContext, useContext, useRef, useState } from 'react'
 import { Category } from '../constants/Category'
 import { getCategories } from '../redux/slices/category'
 import { useSelector } from 'react-redux'
+import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal'
 
 export enum CategoryFilterEnum {
   Date = 'Date',
@@ -10,7 +11,7 @@ export enum CategoryFilterEnum {
 }
 
 interface CategoriesContextProps {
-  filtersModalRef: React.RefObject<any>
+  filtersModalRef: React.RefObject<SwipeModalPublicMethods>
   startDate: Date
   setStartDate: (date: Date) => void
   endDate: Date
@@ -28,7 +29,7 @@ interface CategoriesContextProps {
 const CategoriesContext = createContext<CategoriesContextProps | undefined>(undefined)
 
 export const CategoriesProvider = ({ children }: { children: React.ReactNode }) => {
-  const filtersModalRef = useRef<any>(null)
+  const filtersModalRef = useRef<SwipeModalPublicMethods>(null)
   const categories = useSelector((state: any) => getCategories(state))
 
   const [startDate, setStartDate] = useState<Date>(new Date())
