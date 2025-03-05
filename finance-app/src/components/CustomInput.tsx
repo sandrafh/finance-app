@@ -1,8 +1,12 @@
-import { StyleSheet, TextInput, View } from 'react-native'
 import React from 'react'
-import { colors } from '../constants/ColorsConstants'
+import { StyleSheet, TextInput, View } from 'react-native'
+
+import CrossIcon from '@/src/assets/icons/cross.svg'
+
+import { colors } from '@/src/constants/ColorsConstants'
 import { CustomText } from './CustomText'
-import { FontSize, FontWeight } from '../constants/Texts'
+import { FontSize, FontWeight } from '@/src/constants/Texts'
+import { IconButton } from './IconButton'
 
 interface InputProps {
   value: string
@@ -17,6 +21,7 @@ interface InputProps {
   numberOfLines?: number
   disabled?: boolean
   onFocus?: () => void
+  haveClearButton?: boolean
 }
 
 export const CustomInput = (props: InputProps) => {
@@ -33,6 +38,7 @@ export const CustomInput = (props: InputProps) => {
     numberOfLines = 1,
     disabled = false,
     onFocus,
+    haveClearButton = false,
   } = props
 
   return (
@@ -42,23 +48,32 @@ export const CustomInput = (props: InputProps) => {
           {label}
         </CustomText>
       )}
-      <TextInput
-        style={[{ height: 44 * numberOfLines }, { lineHeight: numberOfLines === 1 ? 20 : 32 }, styles.input]}
-        placeholder={placeholder}
-        value={value}
-        onChangeText={onChangeText}
-        keyboardType={keyboardType}
-        autoFocus={autoFocus}
-        autoCapitalize={autoCapitalize}
-        secureTextEntry={secureTextEntry}
-        placeholderTextColor={colors.grey2}
-        multiline={multiline}
-        numberOfLines={numberOfLines}
-        cursorColor={colors.white}
-        selectionColor={colors.grey1}
-        editable={!disabled}
-        onFocus={onFocus}
-      />
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={[{ height: 44 * numberOfLines }, { lineHeight: numberOfLines === 1 ? 20 : 32 }, styles.input]}
+          placeholder={placeholder}
+          value={value}
+          onChangeText={onChangeText}
+          keyboardType={keyboardType}
+          autoFocus={autoFocus}
+          autoCapitalize={autoCapitalize}
+          secureTextEntry={secureTextEntry}
+          placeholderTextColor={colors.grey2}
+          multiline={multiline}
+          numberOfLines={numberOfLines}
+          cursorColor={colors.white}
+          selectionColor={colors.grey1}
+          editable={!disabled}
+          onFocus={onFocus}
+        />
+        {haveClearButton && !!value && (
+          <IconButton
+            icon={<CrossIcon width={24} height={24} color={colors.grey1} />}
+            onPress={() => onChangeText?.('')}
+            backgroundColor={colors.bgInput}
+          />
+        )}
+      </View>
     </View>
   )
 }
@@ -69,7 +84,15 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     marginLeft: 16,
   },
+  inputContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 8,
+  },
   input: {
+    flex: 1,
     paddingHorizontal: 16,
     borderRadius: 25,
     backgroundColor: colors.bgInput,

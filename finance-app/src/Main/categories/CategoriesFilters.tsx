@@ -33,7 +33,12 @@ export const CategoriesFilters = ({ filterCategories }: CategoriesFiltersProps) 
 
   return (
     <View style={styles.container}>
-      <CustomInput placeholder="Search categories" value={searchText} onChangeText={filterCategories} />
+      <CustomInput
+        placeholder="Search categories"
+        value={searchText}
+        onChangeText={filterCategories}
+        haveClearButton={true}
+      />
       <View style={styles.containerButtons}>
         <Button
           title="Date"
