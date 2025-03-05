@@ -8,14 +8,15 @@ import DownArrow from '@/src/assets/icons/down-arrow.svg'
 import { CustomButton, ButtonSizes, ButtonVariants } from '@/src/components/CustomButton'
 import { CustomInput } from '@/src/components/CustomInput'
 import { colors } from '@/src/constants/ColorsConstants'
-import { CategoryFilterEnum, useCategories } from '@/src/contexts/CategoriesContext'
+import { useCategories } from '@/src/contexts/CategoriesContext'
+import { CategoryFilterEnum } from '@/src/constants/Filters'
 
 interface CategoriesFiltersProps {
   filterCategories: (value: string) => void
 }
 
 export const CategoriesFilters = ({ filterCategories }: CategoriesFiltersProps) => {
-  const { searchText, filtersModalRef, setFilterComponent } = useCategories()
+  const { searchText, filtersModalRef, setFilterComponent, filterDatesValue } = useCategories()
 
   const openFiltersModal = () => {
     filtersModalRef.current?.show()
@@ -41,7 +42,7 @@ export const CategoriesFilters = ({ filterCategories }: CategoriesFiltersProps) 
       />
       <View style={styles.containerButtons}>
         <CustomButton
-          title="Date"
+          title={filterDatesValue}
           onPress={onClickDate}
           variant={ButtonVariants.Outlined}
           style={styles.button}

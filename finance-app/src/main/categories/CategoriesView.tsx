@@ -20,15 +20,28 @@ import { RootState } from '@/src/redux/store'
 import { InfoText } from '@/src/components/InfoText'
 import { CategoriesFilters } from './CategoriesFilters'
 import { FiltersModal } from '@/src/modals/FiltersModal'
-import { CategoryFilterEnum, useCategories } from '@/src/contexts/CategoriesContext'
+import { useCategories } from '@/src/contexts/CategoriesContext'
 import { FilterDates } from '@/src/components/FilterDates'
 import { FilterCustomDates } from '@/src/components/FilterCustomDates'
+import { CategoryFilterEnum, FilterDatesEnum } from '@/src/constants/Filters'
 
 export const CategoriesView = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
-  const { setSearchText, filteredCategories, setFilteredCategories, filterComponent, filtersModalRef } = useCategories()
+  const {
+    setSearchText,
+    filteredCategories,
+    setFilteredCategories,
+    filterComponent,
+    filtersModalRef,
+    setFilterDates,
+    closeFiltersModal,
+    startDate,
+    setStartDate,
+    endDate,
+    setEndDate,
+  } = useCategories()
 
   const categories = useSelector((state: any) => getCategories(state))
   const categoryBudgetType: CategoryBudgetTypeEnum = useSelector((state: RootState) => getCategoryBudgetType(state))
@@ -84,11 +97,23 @@ export const CategoriesView = () => {
   }
 
   const getFiltersContent = () => {
+    const onPressFilterDates = (value: FilterDatesEnum) => {
+      setFilterDates(value)
+      if (value !== FilterDatesEnum.CustomDates) closeFiltersModal()
+    }
+
     switch (filterComponent) {
       case CategoryFilterEnum.Date:
-        return <FilterDates />
-      case CategoryFilterEnum.CustomDate:
-        return <FilterCustomDates />
+        return <FilterDates onPress={onPressFilterDates} />
+      case CategoryFilterEnum.CustomDates:
+        return (
+          <FilterCustomDates
+            startDate={startDate}
+            setStartDate={setStartDate}
+            endDate={endDate}
+            setEndDate={setEndDate}
+          />
+        )
       default:
         return null
     }
