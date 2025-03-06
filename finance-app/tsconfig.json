@@ -2,15 +2,25 @@
   "extends": "expo/tsconfig.base",
   "compileOnSave": true,
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-jsx",
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "strict": true,
+    "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+      "@components/*": ["src/components/*"],
+      "@utils/*": ["src/utils/*"],
+      "@assets/*": ["src/assets/*"],
+      "@constants/*": ["src/constants/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@login/*": ["src/login/*"],
+      "@main/*": ["src/main/*"],
+      "@navigation/*": ["src/navigation/*"],
+      "@modals/*": ["src/modals/*"],
+      "@redux/*": ["src/redux/*"],
+      "@register/*": ["src/register/*"],
+      "@services/*": ["src/services/*"],
+    },
   },
   "include": [
     "**/*.ts",

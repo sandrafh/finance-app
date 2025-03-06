@@ -10,6 +10,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import jest from 'eslint-plugin-jest'
 import checkFile from 'eslint-plugin-check-file'
 import stylistic from '@stylistic/eslint-plugin-js'
+import importPlugin from 'eslint-plugin-import'
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -27,6 +28,7 @@ export default [
       'react-hooks': reactHooks,
       jest,
       '@stylistic/js': stylistic,
+      import: importPlugin,
     },
     languageOptions: {
       ecmaVersion: 2020,
@@ -67,6 +69,24 @@ export default [
           },
         },
       ],
+      'import/no-relative-packages': 'error',
+      'import/no-relative-parent-imports': 'error',
+      'import/no-unresolved': 'error',
+      '@typescript-eslint/no-restricted-imports': [
+        'error',
+        {
+          patterns: ['../*'],
+        },
+      ],
+    },
+  },
+  {
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: './tsconfig.json',
+        },
+      },
     },
   },
 ]
