@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 import CalendarIcon from '@assets/icons/calendar.svg'
 import { colors } from '@constants/ColorsConstants'
-import { FontSize } from '@constants/Texts'
+import { FontSize, FontWeight } from '@constants/Texts'
+import { CustomText } from './CustomText'
 
 interface DateInputProps {
   onOpenCalendar: () => void
   date: Date
   setDate: (date: Date) => void
+  label?: string
 }
 
-export const DateInput = ({ onOpenCalendar, date, setDate }: DateInputProps) => {
+export const DateInput = ({ onOpenCalendar, date, setDate, label }: DateInputProps) => {
   const formatDate = (date: Date): string => {
     const day = date.getDate().toString().padStart(2, '0')
     const month = (date.getMonth() + 1).toString().padStart(2, '0')
@@ -54,34 +56,52 @@ export const DateInput = ({ onOpenCalendar, date, setDate }: DateInputProps) => 
   }
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.textInput}
-        keyboardType="numeric"
-        placeholder="DD/MM/YYYY"
-        value={inputValue}
-        onChangeText={handleChange}
-        maxLength={10}
-      />
-      <TouchableOpacity onPress={onOpenCalendar} style={{ marginLeft: 10 }}>
-        <CalendarIcon width={24} height={24} color={colors.grey1} />
-      </TouchableOpacity>
+    <View>
+      {label && (
+        <CustomText style={styles.label} fontSize={FontSize.Medium} fontWeight={FontWeight.Normal}>
+          {label}
+        </CustomText>
+      )}
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          placeholder="DD/MM/YYYY"
+          value={inputValue}
+          onChangeText={handleChange}
+          maxLength={10}
+        />
+        <TouchableOpacity onPress={onOpenCalendar} style={styles.calendarIconContainer}>
+          <CalendarIcon width={24} height={24} color={colors.grey1} />
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
+  inputContainer: {
+    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 8,
+    paddingHorizontal: 16,
     borderRadius: 25,
     backgroundColor: colors.bgInput,
-    paddingHorizontal: 16,
-    paddingVertical: 10,
   },
-  textInput: {
+  input: {
     flex: 1,
     color: colors.white,
     fontSize: FontSize.Medium,
+    height: 44,
+  },
+  label: {
+    color: colors.white,
+    marginBottom: 8,
+    marginLeft: 16,
+  },
+  calendarIconContainer: {
+    marginLeft: 10,
   },
 })

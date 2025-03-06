@@ -14,4 +14,13 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     paddingBottom: 20,
   },
+  error: {
+    color: 'red',
+    marginLeft: 16,
+  },
+  buttonContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 12,
+  },
 })

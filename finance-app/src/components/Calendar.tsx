@@ -12,12 +12,18 @@ interface CaledarProps {
 }
 
 export const Calendar = ({ date, setDate }: CaledarProps) => {
+  const setTimeToZero = (date: Date) => {
+    const newDate = new Date(date)
+    newDate.setUTCHours(0, 0, 0, 0)
+    return newDate
+  }
+
   return (
     <View>
       <DateTimePicker
         mode="single"
         date={date}
-        onChange={(params) => setDate((params.date as Date).toISOString())}
+        onChange={(params) => setDate(setTimeToZero(params.date as Date).toISOString())}
         locale="es-ES"
         firstDayOfWeek={1}
         calendarTextStyle={{ fontFamily: getFontFamily(FontWeight.Normal), color: colors.white }}

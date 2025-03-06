@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useRef, useState } from 'react'
+import { createContext, useContext, useMemo, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 //External libs
@@ -6,7 +6,7 @@ import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal'
 //Internal components
 import { Category } from '@constants/Category'
 import { getCategories } from '@redux/slices/category'
-import { CategoryFilterEnum, FilterDatesEnum } from '@constants/Filters'
+import { FilterComponentEnum, FilterDatesEnum } from '@constants/Filters'
 
 interface CategoriesContextProps {
   filtersModalRef: React.RefObject<SwipeModalPublicMethods>
@@ -20,11 +20,13 @@ interface CategoriesContextProps {
   setSearchText: (text: string) => void
   filteredCategories: Category[]
   setFilteredCategories: (categories: Category[]) => void
-  filterComponent: CategoryFilterEnum
-  setFilterComponent: (filterComponent: CategoryFilterEnum) => void
+  filterComponent: FilterComponentEnum
+  setFilterComponent: (filterComponent: FilterComponentEnum) => void
   setFilterDates: (filterDates: FilterDatesEnum) => void
   filterDatesValue: FilterDatesEnum
   closeFiltersModal: () => void
+  error: string
+  setError: (error: string) => void
 }
 
 const CategoriesContext = createContext<CategoriesContextProps | undefined>(undefined)
@@ -38,8 +40,17 @@ export const CategoriesProvider = ({ children }: { children: React.ReactNode }) 
   const [selectedCategories, setSelectedCategories] = useState<Category[]>([])
   const [searchText, setSearchText] = useState<string>('')
   const [filteredCategories, setFilteredCategories] = useState<Category[]>(categories)
-  const [filterComponent, setFilterComponent] = useState<CategoryFilterEnum>(CategoryFilterEnum.Date)
+  const [filterComponent, setFilterComponent] = useState<FilterComponentEnum>(FilterComponentEnum.Date)
   const [filterDatesValue, setFilterDatesValue] = useState<FilterDatesEnum>(FilterDatesEnum.CurrentMonth)
+  const [error, setError] = useState<string>('')
+
+  useMemo(() => {
+    if (endDate.getDate() < startDate.getDate()) {
+      setError('End date must be greater than start date')
+    } else {
+      setError('')
+    }
+  }, [startDate, endDate])
 
   const closeFiltersModal = () => {
     filtersModalRef.current?.hide()
@@ -73,7 +84,7 @@ export const CategoriesProvider = ({ children }: { children: React.ReactNode }) 
         break
       case FilterDatesEnum.CustomDates:
         setFilterDatesValue(FilterDatesEnum.CustomDates)
-        setFilterComponent(CategoryFilterEnum.CustomDates)
+        setFilterComponent(FilterComponentEnum.CustomDates)
         break
     }
 
@@ -100,6 +111,8 @@ export const CategoriesProvider = ({ children }: { children: React.ReactNode }) 
         setFilterDates,
         filterDatesValue,
         closeFiltersModal,
+        error,
+        setError,
       }}
     >
       {children}

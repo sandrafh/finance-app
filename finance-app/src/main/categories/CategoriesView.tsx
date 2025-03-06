@@ -23,7 +23,8 @@ import { FiltersModal } from '@modals/FiltersModal'
 import { useCategories } from '@contexts/CategoriesContext'
 import { FilterDates } from '@components/FilterDates'
 import { FilterCustomDates } from '@components/FilterCustomDates'
-import { CategoryFilterEnum, FilterDatesEnum } from '@constants/Filters'
+import { FilterComponentEnum, Dates, FilterDatesEnum } from '@constants/Filters'
+import { Calendar } from '@components/Calendar'
 
 export const CategoriesView = () => {
   const dispatch = useDispatch()
@@ -41,6 +42,7 @@ export const CategoriesView = () => {
     setStartDate,
     endDate,
     setEndDate,
+    setFilterComponent,
   } = useCategories()
 
   const categories = useSelector((state: any) => getCategories(state))
@@ -102,18 +104,34 @@ export const CategoriesView = () => {
       if (value !== FilterDatesEnum.CustomDates) closeFiltersModal()
     }
 
+    const onOpenCalendar = (value: Dates) => {
+      switch (value) {
+        case Dates.StartDate:
+          setFilterComponent(FilterComponentEnum.CalendarStartDate)
+          break
+        case Dates.EndDate:
+          setFilterComponent(FilterComponentEnum.CalendarEndDate)
+          break
+      }
+    }
+
     switch (filterComponent) {
-      case CategoryFilterEnum.Date:
+      case FilterComponentEnum.Date:
         return <FilterDates onPress={onPressFilterDates} />
-      case CategoryFilterEnum.CustomDates:
+      case FilterComponentEnum.CustomDates:
         return (
           <FilterCustomDates
             startDate={startDate}
             setStartDate={setStartDate}
             endDate={endDate}
             setEndDate={setEndDate}
+            onOpenCalendar={onOpenCalendar}
           />
         )
+      case FilterComponentEnum.CalendarStartDate:
+        return <Calendar date={startDate.toISOString()} setDate={(date) => setStartDate(new Date(date))} />
+      case FilterComponentEnum.CalendarEndDate:
+        return <Calendar date={endDate.toISOString()} setDate={(date) => setEndDate(new Date(date))} />
       default:
         return null
     }

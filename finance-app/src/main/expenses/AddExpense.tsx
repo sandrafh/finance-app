@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ScrollView, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -7,7 +7,6 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { styles } from './AddExpenseStyles'
 
 //External libraries
-import DateTimePicker from 'react-native-ui-datepicker'
 //@ts-ignore
 import Toast from 'react-native-toast-message'
 //Internal components
@@ -16,17 +15,15 @@ import { ToastTypes } from '@constants/ToastConstants'
 import { NavigationMainScreens } from '@navigation/NavigationConstants'
 import { ExpensesService } from '@services/ExpensesService'
 import { useCategoriesListModal } from '@contexts/CategoriesListModalContext'
-import { colors } from '@constants/ColorsConstants'
 import { getCategories } from '@redux/slices/category'
 import { CategoryItem } from '../categories/CategoryItem'
 import { getSelectedCategory, setSelectedCategory } from '@redux/slices/ui'
-import { getFontFamily } from '@utils/fontFamily'
 import { CustomInput } from '@components/CustomInput'
 import { CustomDropDown } from '@components/CustomDropDown'
 import { Category } from '@constants/Category'
 import { Expense } from '@constants/Expenses'
-import { FontWeight } from '@constants/Texts'
 import { ToggleInput } from '@components/ToggleInput'
+import { Calendar } from '@components/Calendar'
 
 export const AddExpense = ({ route }: any) => {
   const dispatch = useDispatch()
@@ -116,20 +113,7 @@ export const AddExpense = ({ route }: any) => {
             keyboardType={'text'}
           />
 
-          <DateTimePicker
-            mode="single"
-            date={date}
-            onChange={(params) => setDate((params.date as Date).toISOString())}
-            locale="es-ES"
-            firstDayOfWeek={1}
-            calendarTextStyle={{ fontFamily: getFontFamily(FontWeight.Normal), color: colors.white }}
-            headerTextStyle={{ fontFamily: getFontFamily(FontWeight.Normal), color: colors.white }}
-            headerButtonColor={colors.white}
-            selectedItemColor={colors.primary}
-            monthContainerStyle={{ backgroundColor: colors.bgCard, borderColor: 'transparent' }}
-            yearContainerStyle={{ backgroundColor: colors.bgCard, borderColor: 'transparent' }}
-            weekDaysTextStyle={{ fontFamily: getFontFamily(FontWeight.Normal), color: colors.white }}
-          />
+          <Calendar date={date} setDate={setDate} />
         </View>
       </ScrollView>
 

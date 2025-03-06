@@ -6,10 +6,17 @@ export enum FilterDatesEnum {
   CustomDates = 'Custom dates',
 }
 
-export enum CategoryFilterEnum {
+export enum FilterComponentEnum {
   Date = 'Date',
   CustomDates = 'CustomDates',
+  CalendarStartDate = 'CalendarStartDate',
+  CalendarEndDate = 'CalendarEndDate',
   Categories = 'Categories',
+}
+
+export enum Dates {
+  StartDate = 'startDate',
+  EndDate = 'endDate',
 }
 
 export enum DateTimePickerMode {

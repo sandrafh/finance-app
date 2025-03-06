@@ -9,7 +9,7 @@ import { CustomButton, ButtonSizes, ButtonVariants } from '@components/CustomBut
 import { CustomInput } from '@components/CustomInput'
 import { colors } from '@constants/ColorsConstants'
 import { useCategories } from '@contexts/CategoriesContext'
-import { CategoryFilterEnum } from '@constants/Filters'
+import { FilterComponentEnum } from '@constants/Filters'
 
 interface CategoriesFiltersProps {
   filterCategories: (value: string) => void
@@ -23,12 +23,12 @@ export const CategoriesFilters = ({ filterCategories }: CategoriesFiltersProps) 
   }
 
   const onClickDate = () => {
-    setFilterComponent(CategoryFilterEnum.Date)
+    setFilterComponent(FilterComponentEnum.Date)
     openFiltersModal()
   }
 
   const onClickCategories = () => {
-    setFilterComponent(CategoryFilterEnum.Categories)
+    setFilterComponent(FilterComponentEnum.Categories)
     openFiltersModal()
   }
 

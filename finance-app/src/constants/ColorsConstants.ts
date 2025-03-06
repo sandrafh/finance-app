@@ -23,6 +23,7 @@ export const colors = {
   bgInput: 'rgba(255, 255, 255, 0.35)',
   bg: '#01052D',
   bgCard: 'rgba(255, 255, 255, 0.25)',
+  bgButtonSecondary: 'rgba(255, 255, 255, 0.4)',
   bgButton: 'rgba(255, 255, 255, 0.2)',
   highlight: 'rgba(255, 255, 255, 0.1)',
   bgModal: '#111538',

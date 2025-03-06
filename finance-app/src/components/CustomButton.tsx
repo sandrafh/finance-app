@@ -26,6 +26,7 @@ interface CustomButtonProps {
   icon?: ReactNode
   rightIcon?: ReactNode
   style?: any
+  disabled?: boolean
 }
 
 export const CustomButton = ({
@@ -36,6 +37,7 @@ export const CustomButton = ({
   icon,
   rightIcon,
   style,
+  disabled = false,
 }: CustomButtonProps) => {
   const containerStyle = () => {
     switch (variant) {
@@ -92,7 +94,11 @@ export const CustomButton = ({
   }
 
   return (
-    <TouchableOpacity onPress={onPress} style={[containerStyle(), containerSizeStyle(), style]}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[containerStyle(), containerSizeStyle(), style, disabled && styles.disabled]}
+      disabled={disabled}
+    >
       {icon}
       {title && (
         <CustomText style={textStyle()} fontSize={textSizeStyle()}>
@@ -115,7 +121,7 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   containerSecondary: {
-    backgroundColor: colors.grey2,
+    backgroundColor: colors.bgButtonSecondary,
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
@@ -166,5 +172,8 @@ const styles = StyleSheet.create({
   sizeLarge: {
     height: 56,
     minWidth: 56,
+  },
+  disabled: {
+    opacity: 0.5,
   },
 })
