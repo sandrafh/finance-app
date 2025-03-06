@@ -8,10 +8,10 @@ import { styles } from './StatsViewStyles'
 
 //Internal components
 import { CategoriesList } from '../categories/CategoriesList'
-import { NavigationAppScreens } from '@/src/navigation/NavigationConstants'
-import { getCategories, setCurrentCategory } from '@/src/redux/slices/category'
+import { NavigationAppScreens } from '@navigation/NavigationConstants'
+import { getCategories, setCurrentCategory } from '@redux/slices/category'
 import { StatsChart } from './StatsChart'
-import { EmptyMessage } from '@/src/components/EmptyMessage'
+import { EmptyMessage } from '@components/EmptyMessage'
 
 export const StatsView = () => {
   const dispatch = useDispatch()

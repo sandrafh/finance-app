@@ -2,21 +2,21 @@ import React from 'react'
 import { View } from 'react-native'
 import { useSelector } from 'react-redux'
 
-import RightArrowIcon from '@/src/assets/icons/right-arrow.svg'
+import RightArrowIcon from '@assets/icons/right-arrow.svg'
 
 //External libraries
 //@ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import { styles } from './CategoryItemStyles'
-import { CustomText } from '@/src/components/CustomText'
-import { Category } from '@/src/constants/Category'
-import { colors } from '@/src/constants/ColorsConstants'
-import { RootState } from '@/src/redux/store'
-import { getCategoryBudgetType, getTotalIncome, getVisualization } from '@/src/redux/slices/settings'
-import { getMonthlySpentByCategoryInAmount, getYearlySpentByCategoryInAmount } from '@/src/utils/stats'
-import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@/src/constants/Settings'
-import { FontSize, FontWeight } from '@/src/constants/Texts'
+import { CustomText } from '@components/CustomText'
+import { Category } from '@constants/Category'
+import { colors } from '@constants/ColorsConstants'
+import { RootState } from '@redux/store'
+import { getCategoryBudgetType, getTotalIncome, getVisualization } from '@redux/slices/settings'
+import { getMonthlySpentByCategoryInAmount, getYearlySpentByCategoryInAmount } from '@utils/stats'
+import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@constants/Settings'
+import { FontSize, FontWeight } from '@constants/Texts'
 
 interface CategoryItemProps {
   category: Category

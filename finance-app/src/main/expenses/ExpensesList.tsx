@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux'
 import { ScrollView, TouchableOpacity, View } from 'react-native'
 
 import { styles } from './ExpensesListStyles'
-import { stylesApp } from '@/src/AppStyles'
+import { stylesApp } from 'src/AppStyles'
 
 //Internal components
 import { ExpenseItem } from './ExpenseItem'
-import { getExpenses } from '@/src/redux/slices/expenses'
-import { Expense } from '@/src/constants/Expenses'
-import { CustomText } from '@/src/components/CustomText'
-import { FontSize } from '@/src/constants/Texts'
+import { getExpenses } from '@redux/slices/expenses'
+import { Expense } from '@constants/Expenses'
+import { CustomText } from '@components/CustomText'
+import { FontSize } from '@constants/Texts'
 
 interface GroupedExpenses {
   date: string

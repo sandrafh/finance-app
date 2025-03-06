@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux'
 //External libs
 import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal'
 //Internal components
-import { Category } from '@/src/constants/Category'
-import { getCategories } from '@/src/redux/slices/category'
-import { CategoryFilterEnum, FilterDatesEnum } from '@/src/constants/Filters'
+import { Category } from '@constants/Category'
+import { getCategories } from '@redux/slices/category'
+import { CategoryFilterEnum, FilterDatesEnum } from '@constants/Filters'
 
 interface CategoriesContextProps {
   filtersModalRef: React.RefObject<SwipeModalPublicMethods>

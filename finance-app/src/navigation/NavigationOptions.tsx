@@ -3,17 +3,17 @@ import { NavigationProp, RouteProp, useNavigation } from '@react-navigation/nati
 import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack/types'
 import { Dispatch } from '@reduxjs/toolkit'
 
-import BackArrowIcon from '../assets/icons/back-arrow.svg'
-import TrashIcon from '../assets/icons/trash.svg'
-import SettingsIcon from '../assets/icons/settings.svg'
+import BackArrowIcon from '@assets/icons/back-arrow.svg'
+import TrashIcon from '@assets/icons/trash.svg'
+import SettingsIcon from '@assets/icons/settings.svg'
 
 //Internal components
-import { colors } from '../constants/ColorsConstants'
+import { colors } from '@constants/ColorsConstants'
 import { NavigationAppScreens } from './NavigationConstants'
-import { IconButton } from '../components/IconButton'
-import { setCurrentCategory } from '../redux/slices/category'
-import { Category } from '../constants/Category'
-import { Expense } from '../constants/Expenses'
+import { IconButton } from '@components/IconButton'
+import { setCurrentCategory } from '@redux/slices/category'
+import { Category } from '@constants/Category'
+import { Expense } from '@constants/Expenses'
 
 export const defaultHeaderOptions = {
   headerTitleAlign: 'center' as const,

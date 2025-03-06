@@ -1,7 +1,7 @@
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
-import { colors } from '../constants/ColorsConstants'
+import { colors } from '@constants/ColorsConstants'
 import { CustomText } from './CustomText'
-import { FontSize } from '../constants/Texts'
+import { FontSize } from '@constants/Texts'
 
 export interface OptionsType {
   [key: string]: boolean

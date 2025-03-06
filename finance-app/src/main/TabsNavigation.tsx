@@ -2,16 +2,16 @@ import React from 'react'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import ListIcon from '../assets/icons/list.svg'
-import CategoriesIcon from '../assets/icons/categories.svg'
-import StatsIcon from '../assets/icons/stats.svg'
+import ListIcon from '@assets/icons/list.svg'
+import CategoriesIcon from '@assets/icons/categories.svg'
+import StatsIcon from '@assets/icons/stats.svg'
 
-import { colors } from '../constants/ColorsConstants'
-import { NavigationMainScreens } from '../navigation/NavigationConstants'
+import { colors } from '@constants/ColorsConstants'
+import { NavigationMainScreens } from '@navigation/NavigationConstants'
 import { StatsView } from './stats/StatsView'
-import { FontSize } from '../constants/Texts'
+import { FontSize } from '@constants/Texts'
 import { ExpensesView } from './expenses/ExpensesView'
-import { MenuHeaderButton } from '../navigation/NavigationOptions'
+import { MenuHeaderButton } from '@navigation/NavigationOptions'
 import { CategoriesComponent } from './categories/CategoriesComponent'
 
 const Tab = createBottomTabNavigator()

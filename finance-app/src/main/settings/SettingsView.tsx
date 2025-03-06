@@ -5,20 +5,20 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { ScrollView, View } from 'react-native'
 
 import { styles } from './SettingsViewStyles'
-import { stylesApp } from '@/src/AppStyles'
+import { stylesApp } from 'src/AppStyles'
 
 //Internal components
-import { CustomButton, ButtonVariants } from '@/src/components/CustomButton'
-import { getName, setUserUid } from '@/src/redux/slices/user'
-import { NavigationAppScreens } from '@/src/navigation/NavigationConstants'
-import { OptionsType, Switch } from '@/src/components/Switch'
-import { SettingsService } from '@/src/services/SettingsService'
-import { getCategoryBudgetType, getTotalIncome, getVisualization } from '@/src/redux/slices/settings'
-import { CustomInput } from '@/src/components/CustomInput'
-import { RootState } from '@/src/redux/store'
-import { ProfileService } from '@/src/services/ProfileService'
-import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@/src/constants/Settings'
-import { FontSize } from '@/src/constants/Texts'
+import { CustomButton, ButtonVariants } from '@components/CustomButton'
+import { getName, setUserUid } from '@redux/slices/user'
+import { NavigationAppScreens } from '@navigation/NavigationConstants'
+import { OptionsType, Switch } from '@components/Switch'
+import { SettingsService } from '@services/SettingsService'
+import { getCategoryBudgetType, getTotalIncome, getVisualization } from '@redux/slices/settings'
+import { CustomInput } from '@components/CustomInput'
+import { RootState } from '@redux/store'
+import { ProfileService } from '@services/ProfileService'
+import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@constants/Settings'
+import { FontSize } from '@constants/Texts'
 
 export const SettingsView = () => {
   const dispatch = useDispatch()

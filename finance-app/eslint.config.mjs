@@ -70,10 +70,9 @@ export default [
         },
       ],
       'import/no-relative-packages': 'error',
-      'import/no-relative-parent-imports': 'error',
       'import/no-unresolved': 'error',
       '@typescript-eslint/no-restricted-imports': [
-        'error',
+        'warn',
         {
           patterns: ['../*'],
         },

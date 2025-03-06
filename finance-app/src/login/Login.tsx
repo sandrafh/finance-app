@@ -10,13 +10,13 @@ import { styles } from './LoginStyles'
 import auth from '@react-native-firebase/auth'
 import Toast from 'react-native-toast-message'
 //Internal components
-import { CustomButton, ButtonVariants } from '../components/CustomButton'
-import { NavigationAppScreens } from '../navigation/NavigationConstants'
-import { setUserUid } from '../redux/slices/user'
-import { CustomInput } from '../components/CustomInput'
-import { CustomText } from '../components/CustomText'
-import { FontSize } from '../constants/Texts'
-import { ToastTypes } from '../constants/ToastConstants'
+import { CustomButton, ButtonVariants } from '@components/CustomButton'
+import { NavigationAppScreens } from '@navigation/NavigationConstants'
+import { setUserUid } from '@redux/slices/user'
+import { CustomInput } from '@components/CustomInput'
+import { CustomText } from '@components/CustomText'
+import { FontSize } from '@constants/Texts'
+import { ToastTypes } from '@constants/ToastConstants'
 
 export const Login = () => {
   const dispatch = useDispatch()
@@ -53,7 +53,7 @@ export const Login = () => {
     <Pressable style={styles.contentView} onPress={Keyboard.dismiss}>
       <SafeAreaView style={styles.contentView}>
         <ImageBackground
-          source={require('../assets/bg-app.jpg')}
+          source={require('@assets/bg-app.jpg')}
           resizeMode="cover"
           style={styles.imageContainer}
           imageStyle={styles.image}

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
-import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@/src/constants/Settings'
+import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@constants/Settings'
 
 interface SettingsState {
   categoryBudgetType: CategoryBudgetTypeEnum

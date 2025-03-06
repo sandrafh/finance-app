@@ -1,5 +1,5 @@
-import { Category } from '../constants/Category'
-import { Expense } from '../constants/Expenses'
+import { Category } from '@constants/Category'
+import { Expense } from '@constants/Expenses'
 import { formatDateMonth } from './functions'
 
 export const getMonthlySpentByCategoryInAmount = (category: Category, month: number): string => {

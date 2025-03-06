@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
-import { Category } from '@/src/constants/Category'
+import { Category } from '@constants/Category'
 
 interface UiState {
   addExpense: {

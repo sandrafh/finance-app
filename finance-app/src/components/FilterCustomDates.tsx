@@ -3,7 +3,6 @@ import { View } from 'react-native'
 
 import { styles } from './FilterCustomDatesStyles'
 
-import { CustomText } from './CustomText'
 import { DateInput } from './DateInput'
 
 interface FilterCustomDatesProps {
@@ -16,8 +15,8 @@ interface FilterCustomDatesProps {
 export const FilterCustomDates = ({ startDate, setStartDate, endDate, setEndDate }: FilterCustomDatesProps) => {
   return (
     <View style={styles.container}>
-      <DateInput date={startDate} setDate={setStartDate} />
-      <DateInput date={endDate} setDate={setEndDate} />
+      <DateInput date={startDate} setDate={setStartDate} onOpenCalendar={() => {}} />
+      <DateInput date={endDate} setDate={setEndDate} onOpenCalendar={() => {}} />
     </View>
   )
 }

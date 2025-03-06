@@ -1,4 +1,4 @@
-import { CustomText } from '@/src/components/CustomText'
+import { CustomText } from '@components/CustomText'
 import React from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
 

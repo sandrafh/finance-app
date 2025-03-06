@@ -3,9 +3,9 @@ import SwipeModal, { SwipeModalPublicMethods } from '@birdwingo/react-native-swi
 import { View } from 'react-native'
 
 import { styles } from './CategoriesListModalStyles'
-import { colors } from '../constants/ColorsConstants'
-import { CategoriesList } from '../main/categories/CategoriesList'
-import { Category } from '../constants/Category'
+import { colors } from '@constants/ColorsConstants'
+import { CategoriesList } from '@main/categories/CategoriesList'
+import { Category } from '@constants/Category'
 
 interface CategoriesListModalContextProps {
   openCategoriesListModal: (onSelectCategory: (category: Category) => void) => void

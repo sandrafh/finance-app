@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { TouchableOpacity, View, StyleSheet } from 'react-native'
-import RightArrowIcon from '@/src/assets/icons/right-arrow.svg'
-import { colors } from '@/src/constants/ColorsConstants'
+import RightArrowIcon from '@assets/icons/right-arrow.svg'
+import { colors } from '@constants/ColorsConstants'
 
 interface AccordionProps {
   header: React.ReactNode

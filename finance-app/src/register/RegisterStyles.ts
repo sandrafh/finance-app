@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { colors } from '../constants/ColorsConstants'
+import { colors } from '@constants/ColorsConstants'
 
 export const styles = StyleSheet.create({
   contentView: {

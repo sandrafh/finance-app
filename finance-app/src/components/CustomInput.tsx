@@ -1,11 +1,11 @@
 import React from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
 
-import CrossIcon from '@/src/assets/icons/cross.svg'
+import CrossIcon from '@assets/icons/cross.svg'
 
-import { colors } from '@/src/constants/ColorsConstants'
+import { colors } from '@constants/ColorsConstants'
 import { CustomText } from './CustomText'
-import { FontSize, FontWeight } from '@/src/constants/Texts'
+import { FontSize, FontWeight } from '@constants/Texts'
 import { IconButton } from './IconButton'
 
 interface InputProps {

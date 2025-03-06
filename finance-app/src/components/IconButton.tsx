@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { StyleSheet, TouchableOpacity } from 'react-native'
-import { colors } from '../constants/ColorsConstants'
+import { colors } from '@constants/ColorsConstants'
 
 interface IconButtonProps {
   icon: any

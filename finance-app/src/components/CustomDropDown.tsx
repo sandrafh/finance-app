@@ -1,11 +1,11 @@
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
-import DownArrowIcon from '../assets/icons/down-arrow.svg'
+import DownArrowIcon from '@assets/icons/down-arrow.svg'
 
-import { colors } from '../constants/ColorsConstants'
+import { colors } from '@constants/ColorsConstants'
 import { CustomText } from './CustomText'
-import { FontSize, FontWeight } from '../constants/Texts'
+import { FontSize, FontWeight } from '@constants/Texts'
 
 interface TextProps {
   children: any

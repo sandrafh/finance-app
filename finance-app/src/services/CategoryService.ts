@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { v4 } from 'uuid'
 import db from '@react-native-firebase/database'
 //Internal components
-import { Category } from '../constants/Category'
-import { getUserUid } from '../redux/slices/user'
-import { setCategories } from '../redux/slices/category'
+import { Category } from '@constants/Category'
+import { getUserUid } from '@redux/slices/user'
+import { setCategories } from '@redux/slices/category'
 
 export const CategoryService = () => {
   const dispatch = useDispatch()
@@ -63,7 +63,7 @@ export const CategoryService = () => {
   }
 
   const updateCategory = (category: Partial<Category>) => {
-    console.log("updateCategory", category)
+    console.log('updateCategory', category)
     try {
       if (category.parentCategoryUid) {
         db()

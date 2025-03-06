@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { CategoriesProvider } from '@/src/contexts/CategoriesContext'
+import { CategoriesProvider } from '@contexts/CategoriesContext'
 import { CategoriesView } from './CategoriesView'
 
 export const CategoriesComponent = () => {

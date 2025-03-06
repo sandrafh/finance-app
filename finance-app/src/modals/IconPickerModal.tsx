@@ -7,8 +7,8 @@ import SwipeModal, { SwipeModalPublicMethods } from '@birdwingo/react-native-swi
 //@ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import { colors } from '../constants/ColorsConstants'
-import { CustomButton, ButtonVariants } from '../components/CustomButton'
+import { colors } from '@constants/ColorsConstants'
+import { CustomButton, ButtonVariants } from '@components/CustomButton'
 
 interface IconPickerModalProps {
   modalRef: RefObject<SwipeModalPublicMethods>

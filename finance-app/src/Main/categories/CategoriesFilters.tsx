@@ -3,13 +3,13 @@ import { View } from 'react-native'
 
 import { styles } from './CategoriesFiltersStyles'
 
-import DownArrow from '@/src/assets/icons/down-arrow.svg'
+import DownArrow from '@assets/icons/down-arrow.svg'
 
-import { CustomButton, ButtonSizes, ButtonVariants } from '@/src/components/CustomButton'
-import { CustomInput } from '@/src/components/CustomInput'
-import { colors } from '@/src/constants/ColorsConstants'
-import { useCategories } from '@/src/contexts/CategoriesContext'
-import { CategoryFilterEnum } from '@/src/constants/Filters'
+import { CustomButton, ButtonSizes, ButtonVariants } from '@components/CustomButton'
+import { CustomInput } from '@components/CustomInput'
+import { colors } from '@constants/ColorsConstants'
+import { useCategories } from '@contexts/CategoriesContext'
+import { CategoryFilterEnum } from '@constants/Filters'
 
 interface CategoriesFiltersProps {
   filterCategories: (value: string) => void

@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { v4 } from 'uuid'
 import db, { get } from '@react-native-firebase/database'
 //Internal components
-import { getUserUid } from '../redux/slices/user'
-import { Expense } from '../constants/Expenses'
-import { getExpenses, setExpenses } from '../redux/slices/expenses'
-import { getCategories } from '../redux/slices/category'
-import { Category } from '../constants/Category'
-import { findCategory } from '../utils/functions'
+import { getUserUid } from '@redux/slices/user'
+import { Expense } from '@constants/Expenses'
+import { getExpenses, setExpenses } from '@redux/slices/expenses'
+import { getCategories } from '@redux/slices/category'
+import { Category } from '@constants/Category'
+import { findCategory } from '@utils/functions'
 
 export const ExpensesService = () => {
   const dispatch = useDispatch()

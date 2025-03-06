@@ -2,12 +2,12 @@ import React from 'react'
 import { View } from 'react-native'
 import { StyleSheet } from 'react-native'
 
-import EmptyListIcon from '../assets/icons/empty-list.svg'
+import EmptyListIcon from '@assets/icons/empty-list.svg'
 
 //Internal components
-import { CustomText } from '@/src/components/CustomText'
-import { colors } from '@/src/constants/ColorsConstants'
-import { FontSize } from '@/src/constants/Texts'
+import { CustomText } from '@components/CustomText'
+import { colors } from '@constants/ColorsConstants'
+import { FontSize } from '@constants/Texts'
 
 interface EmptyMessageProps {
   text: string

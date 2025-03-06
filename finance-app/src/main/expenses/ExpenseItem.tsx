@@ -6,20 +6,20 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import { styles } from './ExpenseItemStyles'
 
-import RightArrowIcon from '@/src/assets/icons/right-arrow.svg'
+import RightArrowIcon from '@assets/icons/right-arrow.svg'
 
 //External libraries
 //@ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons'
 //Internal components
-import { CustomText } from '@/src/components/CustomText'
-import { Expense } from '@/src/constants/Expenses'
-import { getCategories } from '@/src/redux/slices/category'
-import { findCategory } from '@/src/utils/functions'
-import { colors } from '@/src/constants/ColorsConstants'
-import { NavigationAppScreens } from '@/src/navigation/NavigationConstants'
-import { setSelectedCategory } from '@/src/redux/slices/ui'
-import { FontSize, FontWeight } from '@/src/constants/Texts'
+import { CustomText } from '@components/CustomText'
+import { Expense } from '@constants/Expenses'
+import { getCategories } from '@redux/slices/category'
+import { findCategory } from '@utils/functions'
+import { colors } from '@constants/ColorsConstants'
+import { NavigationAppScreens } from '@navigation/NavigationConstants'
+import { setSelectedCategory } from '@redux/slices/ui'
+import { FontSize, FontWeight } from '@constants/Texts'
 
 interface ExpenseItemProps {
   expense: Expense

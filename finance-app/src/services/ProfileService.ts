@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 //@ts-ignore
 import db from '@react-native-firebase/database'
 //Internal components
-import { getUserUid, setName } from '../redux/slices/user'
+import { getUserUid, setName } from '@redux/slices/user'
 
 export const ProfileService = () => {
   const dispatch = useDispatch()

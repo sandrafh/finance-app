@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 //@ts-ignore
 import db from '@react-native-firebase/database'
 //Internal components
-import { getUserUid } from '../redux/slices/user'
+import { getUserUid } from '@redux/slices/user'
 import {
   CategoryBudgetTypeEnum,
   setCategoryBudgetType,
   setTotalIncome,
   setVisualization,
   VisualizationTypeEnum,
-} from '../redux/slices/settings'
+} from '@redux/slices/settings'
 
 export const SettingsService = () => {
   const dispatch = useDispatch()

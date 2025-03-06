@@ -2,15 +2,15 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { ScrollView, View, TouchableOpacity } from 'react-native'
 import { styles } from './CategoriesListStyles'
-import { stylesApp } from '@/src/AppStyles'
 
 // Internal components
-import { getCategories } from '@/src/redux/slices/category'
+import { getCategories } from '@redux/slices/category'
 import { CategoryItem } from './CategoryItem'
-import { Category } from '@/src/constants/Category'
-import { colors } from '@/src/constants/ColorsConstants'
-import { RootState } from '@/src/redux/store'
-import { Accordion } from '@/src/components/Accordion'
+import { Category } from '@constants/Category'
+import { colors } from '@constants/ColorsConstants'
+import { RootState } from '@redux/store'
+import { Accordion } from '@components/Accordion'
+import { stylesApp } from 'src/AppStyles'
 
 interface CategoriesListProps {
   onSelect: (category: Category) => void

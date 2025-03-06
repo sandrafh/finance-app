@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
-import CalendarIcon from '@/src/assets/icons/calendar.svg'
-import { colors } from '../constants/ColorsConstants'
-import { FontSize } from '../constants/Texts'
+import CalendarIcon from '@assets/icons/calendar.svg'
+import { colors } from '@constants/ColorsConstants'
+import { FontSize } from '@constants/Texts'
 
 interface DateInputProps {
   onOpenCalendar: () => void
-  date: Date | null
-  setDate: (date: Date | null) => void
+  date: Date
+  setDate: (date: Date) => void
 }
 
 export const DateInput = ({ onOpenCalendar, date, setDate }: DateInputProps) => {

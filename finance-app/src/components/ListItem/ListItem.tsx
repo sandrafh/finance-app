@@ -2,7 +2,7 @@ import { format } from 'date-fns'
 import React from 'react'
 
 import { ListRenderItemInfo, Pressable, StyleSheet, View } from 'react-native'
-import { CustomText } from '../CustomInput'
+import { CustomText } from '@CustomInput'
 
 export const ListItem = (listData: ListRenderItemInfo<any> & { onPress?: (id: number) => void }) => {
   const formatDate = (unixTime: number) => {

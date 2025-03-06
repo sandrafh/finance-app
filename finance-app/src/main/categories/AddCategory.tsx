@@ -6,7 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import { styles } from './AddCategoryStyles'
 
-import CheckIcon from '../../assets/icons/check.svg'
+import CheckIcon from '@assets/icons/check.svg'
 //External libraries
 import { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal'
 //@ts-ignore
@@ -14,23 +14,23 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 //@ts-ignore
 import Toast from 'react-native-toast-message'
 //Internal components
-import { ColorPickerModal } from '@/src/modals/ColorPickerModal'
-import { IconPickerModal } from '@/src/modals/IconPickerModal'
-import { colors } from '@/src/constants/ColorsConstants'
-import { CustomButton, ButtonVariants } from '@/src/components/CustomButton'
-import { ToastTypes } from '@/src/constants/ToastConstants'
-import { NavigationMainScreens } from '@/src/navigation/NavigationConstants'
-import { CustomText } from '@/src/components/CustomText'
-import { CategoryService } from '@/src/services/CategoryService'
-import { Category } from '@/src/constants/Category'
-import { CustomInput } from '@/src/components/CustomInput'
-import { RootState } from '@/src/redux/store'
-import { CustomDropDown } from '@/src/components/CustomDropDown'
+import { ColorPickerModal } from '@modals/ColorPickerModal'
+import { IconPickerModal } from '@modals/IconPickerModal'
+import { colors } from '@constants/ColorsConstants'
+import { CustomButton, ButtonVariants } from '@components/CustomButton'
+import { ToastTypes } from '@constants/ToastConstants'
+import { NavigationMainScreens } from '@navigation/NavigationConstants'
+import { CustomText } from '@components/CustomText'
+import { CategoryService } from '@services/CategoryService'
+import { Category } from '@constants/Category'
+import { CustomInput } from '@components/CustomInput'
+import { RootState } from '@redux/store'
+import { CustomDropDown } from '@components/CustomDropDown'
 import { CategoryItem } from './CategoryItem'
-import { useCategoriesListModal } from '@/src/contexts/CategoriesListModalContext'
-import { getSelectedParentCategory, setSelectedParentCategory } from '@/src/redux/slices/ui'
-import { getCategoryBudgetType, getVisualization } from '@/src/redux/slices/settings'
-import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@/src/constants/Settings'
+import { useCategoriesListModal } from '@contexts/CategoriesListModalContext'
+import { getSelectedParentCategory, setSelectedParentCategory } from '@redux/slices/ui'
+import { getCategoryBudgetType, getVisualization } from '@redux/slices/settings'
+import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@constants/Settings'
 
 export const AddCategory = ({ route }: any) => {
   const dispatch = useDispatch()

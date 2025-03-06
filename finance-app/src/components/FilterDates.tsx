@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import { styles } from './FilterDatesStyles'
 
 import { ButtonVariants, CustomButton } from './CustomButton'
-import { FilterDatesEnum } from '@/src/constants/Filters'
+import { FilterDatesEnum } from '@constants/Filters'
 
 interface FilterDatesProps {
   onPress: (filterDates: FilterDatesEnum) => void

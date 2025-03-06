@@ -7,12 +7,12 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { styles } from './ExpensesViewStyles'
 
 //Internal components
-import { CustomButton, ButtonVariants } from '@/src/components/CustomButton'
-import { NavigationAppScreens } from '@/src/navigation/NavigationConstants'
+import { CustomButton, ButtonVariants } from '@components/CustomButton'
+import { NavigationAppScreens } from '@navigation/NavigationConstants'
 import { ExpensesList } from './ExpensesList'
-import { getCategories } from '@/src/redux/slices/category'
-import { getExpenses } from '@/src/redux/slices/expenses'
-import { EmptyMessage } from '@/src/components/EmptyMessage'
+import { getCategories } from '@redux/slices/category'
+import { getExpenses } from '@redux/slices/expenses'
+import { EmptyMessage } from '@components/EmptyMessage'
 
 export const ExpensesView = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()

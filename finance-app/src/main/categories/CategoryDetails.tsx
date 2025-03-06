@@ -5,15 +5,15 @@ import { styles } from './CategoryDetailsStyles'
 
 //Internal components
 import { useSelector } from 'react-redux'
-import { getCurrentCategory } from '@/src/redux/slices/category'
-import { getExpenses } from '@/src/redux/slices/expenses'
-import { Category } from '@/src/constants/Category'
+import { getCurrentCategory } from '@redux/slices/category'
+import { getExpenses } from '@redux/slices/expenses'
+import { Category } from '@constants/Category'
 import { ExpensesList } from '../expenses/ExpensesList'
 import { StatsChart } from '../stats/StatsChart'
-import { CategoryBudgetTypeEnum } from '@/src/constants/Settings'
-import { getCategoryBudgetType } from '@/src/redux/slices/settings'
-import { RootState } from '@/src/redux/store'
-import { InfoText } from '@/src/components/InfoText'
+import { CategoryBudgetTypeEnum } from '@constants/Settings'
+import { getCategoryBudgetType } from '@redux/slices/settings'
+import { RootState } from '@redux/store'
+import { InfoText } from '@components/InfoText'
 
 export const CategoryDetails = () => {
   const currentCategory = useSelector((state: any) => getCurrentCategory(state)) as Category

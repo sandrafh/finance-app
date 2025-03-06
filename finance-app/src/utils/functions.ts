@@ -1,5 +1,5 @@
 import { Platform } from 'react-native'
-import { Category } from '../constants/Category'
+import { Category } from '@constants/Category'
 
 export const findCategory = (categories: any[], categoryUid: string) => {
   const category = categories.find((category: any) => category.uid === categoryUid) as Category

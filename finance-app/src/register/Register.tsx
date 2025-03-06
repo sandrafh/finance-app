@@ -8,12 +8,12 @@ import { styles } from './RegisterStyles'
 //External libraries
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
 //Internal components
-import { CustomButton, ButtonVariants } from '../components/CustomButton'
-import { NavigationAppScreens } from '../navigation/NavigationConstants'
-import { setUserUid } from '../redux/slices/user'
-import { CustomText } from '../components/CustomText'
-import { CustomInput } from '../components/CustomInput'
-import { ProfileService } from '../services/ProfileService'
+import { CustomButton, ButtonVariants } from '@components/CustomButton'
+import { NavigationAppScreens } from '@navigation/NavigationConstants'
+import { setUserUid } from '@redux/slices/user'
+import { CustomText } from '@components/CustomText'
+import { CustomInput } from '@components/CustomInput'
+import { ProfileService } from '@services/ProfileService'
 
 export const Register = () => {
   const dispatch = useDispatch()

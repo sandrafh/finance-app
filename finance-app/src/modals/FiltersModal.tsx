@@ -4,8 +4,8 @@ import { View } from 'react-native'
 import { styles } from './FilteresModalStyles'
 
 import SwipeModal, { SwipeModalPublicMethods } from '@birdwingo/react-native-swipe-modal'
-import { colors } from '@/src/constants/ColorsConstants'
-import { CustomButton, ButtonVariants } from '@/src/components/CustomButton'
+import { colors } from '@constants/ColorsConstants'
+import { CustomButton, ButtonVariants } from '@components/CustomButton'
 
 interface ColorPickerModalProps {
   modalRef: RefObject<SwipeModalPublicMethods>

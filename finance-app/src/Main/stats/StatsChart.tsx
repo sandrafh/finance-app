@@ -8,16 +8,16 @@ import { styles } from './StatsChartStyles'
 import { BarChart } from 'react-native-gifted-charts'
 
 //Internal components
-import { getCategoryBudgetType, getTotalIncome, getVisualization } from '@/src/redux/slices/settings'
-import { RootState } from '@/src/redux/store'
-import { getCategories, getCurrentCategory } from '@/src/redux/slices/category'
-import { colors } from '@/src/constants/ColorsConstants'
-import { getExpenses } from '@/src/redux/slices/expenses'
-import { getExpectedSpent, getMonthlySpent, getYearlySpent } from '@/src/utils/stats'
-import { formatDateMonth } from '@/src/utils/functions'
-import { OptionsType, Switch } from '@/src/components/Switch'
-import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@/src/constants/Settings'
-import { FontSize } from '@/src/constants/Texts'
+import { getCategoryBudgetType, getTotalIncome, getVisualization } from '@redux/slices/settings'
+import { RootState } from '@redux/store'
+import { getCategories, getCurrentCategory } from '@redux/slices/category'
+import { colors } from '@constants/ColorsConstants'
+import { getExpenses } from '@redux/slices/expenses'
+import { getExpectedSpent, getMonthlySpent, getYearlySpent } from '@utils/stats'
+import { formatDateMonth } from '@utils/functions'
+import { OptionsType, Switch } from '@components/Switch'
+import { CategoryBudgetTypeEnum, VisualizationTypeEnum } from '@constants/Settings'
+import { FontSize } from '@constants/Texts'
 
 interface DataStats {
   value: number

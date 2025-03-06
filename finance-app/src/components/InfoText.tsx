@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { StyleSheet, View } from 'react-native'
-import { colors } from '../constants/ColorsConstants'
-import { FontSize } from '../constants/Texts'
+import { colors } from '@constants/ColorsConstants'
+import { FontSize } from '@constants/Texts'
 import { CustomText } from './CustomText'
 
 interface IconButtonProps {
