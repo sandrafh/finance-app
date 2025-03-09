@@ -1,10 +1,14 @@
 import { View } from 'react-native'
 //External libraries
-import DateTimePicker from 'react-native-ui-datepicker'
+import DateTimePicker, { DateType } from 'react-native-ui-datepicker'
 //Internal libraries
 import { colors } from '@constants/ColorsConstants'
 import { FontWeight } from '@constants/Texts'
 import { getFontFamily } from '@utils/fontFamily'
+
+interface DateTypeObject {
+  date: DateType
+}
 
 interface CaledarProps {
   date: string
@@ -12,10 +16,10 @@ interface CaledarProps {
 }
 
 export const Calendar = ({ date, setDate }: CaledarProps) => {
-  const setTimeToZero = (date: Date) => {
-    const newDate = new Date(date)
-    newDate.setUTCHours(0, 0, 0, 0)
-    return newDate
+  const onChangeDate = (params: DateTypeObject) => {
+    if (!params) return
+    const date = new Date(params.date as string)
+    setDate(date.toISOString())
   }
 
   return (
@@ -23,7 +27,7 @@ export const Calendar = ({ date, setDate }: CaledarProps) => {
       <DateTimePicker
         mode="single"
         date={date}
-        onChange={(params) => setDate(setTimeToZero(params.date as Date).toISOString())}
+        onChange={(params) => onChangeDate(params)}
         locale="es-ES"
         firstDayOfWeek={1}
         calendarTextStyle={{ fontFamily: getFontFamily(FontWeight.Normal), color: colors.white }}
