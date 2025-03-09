@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react'
-
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import { colors } from '@constants/ColorsConstants'
 import { CustomText } from './CustomText'
@@ -119,6 +118,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     gap: 6,
+    shadowColor: colors.shadowPrimary,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+    elevation: 5,
   },
   containerSecondary: {
     backgroundColor: colors.bgButtonSecondary,
@@ -128,6 +132,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     gap: 6,
+    shadowColor: colors.shadowSecondary,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+    elevation: 5,
   },
   containerDanger: {
     backgroundColor: colors.danger,
@@ -137,6 +146,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     gap: 6,
+    shadowColor: colors.shadowDanger,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+    elevation: 5,
   },
   containerOutlined: {
     backgroundColor: colors.transparent,
@@ -148,7 +162,13 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     gap: 6,
+    shadowColor: colors.shadowWhite, // Subtle glow effect
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 4,
   },
+
   textPrimary: {
     fontWeight: 'bold',
     color: colors.white,

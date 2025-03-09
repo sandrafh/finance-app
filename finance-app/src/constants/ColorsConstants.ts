@@ -21,7 +21,7 @@ export const colors = {
   error: '#E74C3C',
   separator: 'rgba(255, 255, 255, 0.2)',
   bgInput: 'rgba(255, 255, 255, 0.35)',
-  bg: '#01052D',
+  bg: '#01052D', // Dark blue background
   bgCard: 'rgba(255, 255, 255, 0.25)',
   bgButtonSecondary: 'rgba(255, 255, 255, 0.4)',
   bgButton: 'rgba(255, 255, 255, 0.2)',
@@ -29,4 +29,10 @@ export const colors = {
   bgModal: '#111538',
   danger: '#fc6232',
   transparent: 'transparent',
+
+  // Adjusted Shadows for Dark Background
+  shadowPrimary: 'rgba(2, 81, 250, 0.6)', // Stronger blue shadow
+  shadowSecondary: 'rgba(21, 101, 192, 0.6)', // Stronger secondary shadow
+  shadowDanger: 'rgba(252, 98, 50, 0.5)', // Warmer danger shadow
+  shadowWhite: 'rgba(255, 255, 255, 0.2)', // Subtle white glow effect
 }
